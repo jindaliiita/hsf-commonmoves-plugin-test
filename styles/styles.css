@@ -30,13 +30,3 @@
 header {
   height: var(--nav-height);
 }
-
-
-
-/* Can possibly remove this? *?
-/* progressive section appearance */
-/*main .section[data-section-status='loading'],*/
-/*main .section[data-section-status='initialized'] {*/
-/*  display: none;*/
-/*}*/
-
