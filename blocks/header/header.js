@@ -97,5 +97,6 @@ export default async function decorate(block) {
 
   if (resp.ok) {
     block.innerHTML = 'This is the header.';
+    decorateIcons(block);
   }
 }
