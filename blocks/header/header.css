@@ -1,0 +1,15 @@
+.header.block {
+  border-bottom: 1px solid gray;
+  background-color: lightgray;
+  height: 100%;
+  width: 100%;
+}
+
+.header.block > div {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
