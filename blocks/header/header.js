@@ -96,7 +96,6 @@ export default async function decorate(block) {
   const resp = await fetch(`${navPath}.plain.html`);
 
   if (resp.ok) {
-    block.innerHTML = await resp.text();
-    decorateIcons(block);
+    block.innerHTML = 'This is the header.';
   }
 }
