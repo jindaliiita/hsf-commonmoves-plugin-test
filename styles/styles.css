@@ -13,6 +13,22 @@
 @import url('reset.css');
 
 :root {
+  /* Colors */
+  --body-color: #3a3a3a;
+
+  /* Fonts */
+  --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
+  --font-family-proxima: 'ProximaNova', 'ProximaNova Fallback', 'Arial', sans-serif;
+  --font-family-gotham: 'Gotham', 'Gotham Fallback', 'Arial', sans-serif;
+  --font-family-font-awesome: 'Font Awesome';
+
+  /* Headings */
+  --heading-font-size-xl: 40px;
+
+  /* Body */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+
   /* nav height */
   --nav-height: 90px;
 }
@@ -25,8 +41,76 @@
 
 * {
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  color: var(--body-color);
+}
+
+h2 {
+  font-family: var(--font-family-georgia);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  line-height: 50px;
+}
+
+p {
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  line-height: 23px;
+}
+
+.button-container a {
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  letter-spacing: .7px;
+  line-height: 24px;
 }
 
 header {
   height: var(--nav-height);
 }
+
+main .section {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@font-face {
+  font-family: 'GeorgiaPro Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 92.31%;
+  descent-override: 22.07%;
+  line-gap-override: 0.00%;
+  size-adjust: 99.34%;
+}
+
+@font-face {
+  font-family: 'ProximaNova Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 79.64%;
+  descent-override: 21.17%;
+  line-gap-override: 0.00%;
+  size-adjust: 99.19%;
+}
+
+@font-face {
+  font-family: 'Gotham Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 85.14%;
+  descent-override: 21.29%;
+  line-gap-override: 0.00%;
+  size-adjust: 112.75%;
+}
+
+
