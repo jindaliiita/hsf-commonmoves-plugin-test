@@ -45,6 +45,35 @@ function buildAutoBlocks(main) {
 }
 
 /**
+ * Build Floating image block
+ * @param {Element} main The container element
+ */
+function buildFloatingImages(main) {
+  const sections = main.querySelectorAll('.section.image-right .default-content-wrapper, .section.image-left .default-content-wrapper');
+  if (sections) {
+    sections.forEach((section) => {
+      const image = document.createElement('div');
+      image.classList.add('image');
+      const picture = section.querySelector('picture');
+      if (picture) {
+        // Remove the <p> tag wrapper;
+        const parent = picture.parentElement;
+        image.prepend(picture);
+        parent.remove();
+      }
+
+      const content = section.children;
+      const contentContainer = document.createElement('div');
+      contentContainer.append(...content);
+      const left = document.createElement('div');
+      left.classList.add('content');
+      left.append(contentContainer);
+      section.append(image, left);
+    });
+  }
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -56,6 +85,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  buildFloatingImages(main);
 }
 
 /**
@@ -100,7 +130,6 @@ async function loadLazy(doc) {
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
-
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
 
