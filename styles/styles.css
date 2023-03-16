@@ -11,10 +11,12 @@
  */
 
 @import url('reset.css');
+@import url('floating-images.css');
 
 :root {
   /* Colors */
   --body-color: #3a3a3a;
+  --secondary-button-background: #fff;
 
   /* Fonts */
   --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
@@ -24,6 +26,7 @@
 
   /* Headings */
   --heading-font-size-xl: 40px;
+  --heading-font-size-l: 24px;
 
   /* Body */
   --body-font-size-m: 16px;
@@ -46,6 +49,7 @@
 
 body {
   color: var(--body-color);
+  text-align: left;
 }
 
 h2 {
@@ -69,6 +73,19 @@ p {
   font-weight: 400;
   letter-spacing: .7px;
   line-height: 24px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--body-color);
+}
+
+.button.secondary {
+  background: var(--secondary-button-background);
+  border: 1px solid var(--body-color);
+  text-align: center;
+  vertical-align: middle;
+  padding: 7px 25px;
+  height: 40px;
+  display: block;
 }
 
 header {
