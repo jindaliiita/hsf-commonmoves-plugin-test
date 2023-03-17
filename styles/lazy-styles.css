@@ -14,3 +14,11 @@
   font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: ProximaNova;
+  src: url('./fonts/woff2/ProximaNova-Semibold.woff2') format('woff2'), url('./fonts/woff/ProximaNova-Semibold.woff') format('woff'), url('./fonts/ttf/ProximaNova-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}

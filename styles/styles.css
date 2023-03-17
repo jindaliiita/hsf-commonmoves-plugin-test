@@ -17,6 +17,10 @@
   /* Colors */
   --body-color: #3a3a3a;
   --secondary-button-background: #fff;
+  --lightgray: #f6f6f6;
+  --black: #000;
+  --gray: #d8d8d8;
+  --white: #fff;
 
   /* Fonts */
   --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
@@ -27,6 +31,8 @@
   /* Headings */
   --heading-font-size-xl: 40px;
   --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 16px;
 
   /* Body */
   --body-font-size-m: 16px;
@@ -59,6 +65,20 @@ h2 {
   line-height: 50px;
 }
 
+h3 {
+  font-family: var(--font-family-georgia);
+  font-size: var(--heading-font-size-m);
+  font-weight: 500;
+  line-height: 1.2em;
+  padding-top: 0.8em;
+}
+
+h4 {
+  font-family: var(--font-family-proxima);
+  font-size: var(--heading-font-size-s);
+  font-weight: 500;
+}
+
 p {
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-m);
@@ -67,9 +87,27 @@ p {
   line-height: 23px;
 }
 
+header {
+  height: var(--nav-height);
+}
+
+main .section {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* common styles */
+.background-lightgray {
+  background: var(--lightgray);
+}
+
+.background-white {
+  background: var(--white);
+}
+
 .button-container a {
   font-family: var(--font-family-proxima);
-  font-size: var(--body-font-size-m);
+  font-size: var(--body-font-size-s);
   font-weight: 400;
   letter-spacing: .7px;
   line-height: 24px;
@@ -86,15 +124,6 @@ p {
   padding: 7px 25px;
   height: 40px;
   display: block;
-}
-
-header {
-  height: var(--nav-height);
-}
-
-main .section {
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 @font-face {
