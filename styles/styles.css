@@ -16,17 +16,19 @@
 :root {
   /* Colors */
   --body-color: #3a3a3a;
-  --secondary-button-background: #fff;
   --lightgray: #f6f6f6;
   --black: #000;
   --gray: #d8d8d8;
   --white: #fff;
+  --nav-background: #552448;
+  --white-background: #fff;
+  --border-gray: #d8d8d8;
 
   /* Fonts */
   --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
   --font-family-proxima: 'ProximaNova', 'ProximaNova Fallback', 'Arial', sans-serif;
   --font-family-gotham: 'Gotham', 'Gotham Fallback', 'Arial', sans-serif;
-  --font-family-font-awesome: 'Font Awesome';
+  --font-family-fontawesome: 'FontAwesome';
 
   /* Headings */
   --heading-font-size-xl: 40px;
@@ -35,11 +37,13 @@
   --heading-font-size-s: 16px;
 
   /* Body */
+  --body-font-size-xl: 26px;
   --body-font-size-m: 16px;
   --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
 
   /* nav height */
-  --nav-height: 90px;
+  --nav-height: 65px;
 }
 
 @media screen and (min-width: 992px) {
@@ -48,14 +52,16 @@
   }
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
 
+
 body {
   color: var(--body-color);
   text-align: left;
+  background-color: var(--nav-background)
 }
 
 h2 {
@@ -92,6 +98,8 @@ header {
 }
 
 main .section {
+  max-width: 1350px;
+  margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -117,7 +125,7 @@ main .section {
 }
 
 .button.secondary {
-  background: var(--secondary-button-background);
+  background: var(--white-background);
   border: 1px solid var(--body-color);
   text-align: center;
   vertical-align: middle;
@@ -125,6 +133,7 @@ main .section {
   height: 40px;
   display: block;
 }
+
 
 @font-face {
   font-family: 'GeorgiaPro Fallback';
