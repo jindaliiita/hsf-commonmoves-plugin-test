@@ -27,12 +27,12 @@
   /* Fonts */
   --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
   --font-family-proxima: 'ProximaNova', 'ProximaNova Fallback', 'Arial', sans-serif;
-  --font-family-proxima-light: 'ProximaNovaLight', 'ProximaNova Fallback', 'Arial', sans-serif;
   --font-family-gotham: 'Gotham', 'Gotham Fallback', 'Arial', sans-serif;
   --font-family-fontawesome: 'FontAwesome';
 
   /* Headings */
-  --heading-font-size-xl: 40px;
+  --heading-font-size-xxl: 40px;
+  --heading-font-size-xl: 36px;
   --heading-font-size-l: 24px;
   --heading-font-size-m: 20px;
   --heading-font-size-s: 16px;
@@ -63,11 +63,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
-
 body {
   color: var(--body-color);
   text-align: left;
-  background-color: var(--nav-background);
+  background-color: var(--white-background);
   font-family: var(--font-family-proxima);
 }
 
@@ -105,7 +104,7 @@ header {
 }
 
 main .section {
-  max-width: 1350px;
+  max-width: 1600px;
   margin: 0 auto;
   padding-left: var(--section-padding);
   padding-right: var(--section-padding);
@@ -154,12 +153,34 @@ main .section {
 @font-face {
   font-family: 'GeorgiaPro Fallback';
   font-style: normal;
-  font-weight: 400;
-  src: local('Arial');
-  ascent-override: 92.31%;
-  descent-override: 22.07%;
+  font-weight: 600;
+  src: local('Arial Bold');
+  ascent-override: 92.25%;
+  descent-override: 22.06%;
   line-gap-override: 0.00%;
-  size-adjust: 99.34%;
+  size-adjust: 99.40%;
+}
+
+@font-face {
+  font-family: 'GeorgiaPro Fallback';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Arial Bold');
+  ascent-override: 85.62%;
+  descent-override: 20.47%;
+  line-gap-override: 0.00%;
+  size-adjust: 107.10%;
+}
+
+@font-face {
+  font-family: 'ProximaNova Fallback';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Arial');
+  ascent-override: 80.85%;
+  descent-override: 21.49%;
+  line-gap-override: 0.00%;
+  size-adjust: 97.72%;
 }
 
 @font-face {
@@ -174,6 +195,28 @@ main .section {
 }
 
 @font-face {
+  font-family: 'ProximaNova Fallback';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Arial Bold');
+  ascent-override: 84.49%;
+  descent-override: 22.46%;
+  line-gap-override: 0.00%;
+  size-adjust: 93.50%;
+}
+
+@font-face {
+  font-family: 'ProximaNova Fallback';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Arial Bold');
+  ascent-override: 83.31%;
+  descent-override: 22.15%;
+  line-gap-override: 0.00%;
+  size-adjust: 94.82%;
+}
+
+@font-face {
   font-family: 'Gotham Fallback';
   font-style: normal;
   font-weight: 400;
@@ -183,5 +226,6 @@ main .section {
   line-gap-override: 0.00%;
   size-adjust: 112.75%;
 }
+
 
 

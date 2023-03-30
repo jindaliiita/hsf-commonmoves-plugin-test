@@ -38,7 +38,8 @@
 }
 
 .carousel-content .item .quote {
-    font-family: var(--font-family-proxima-light);
+    font-family: var(--font-family-proxima);
+    font-weight: 300;
     font-size: var(--body-font-size-xl);
     line-height: var(--line-height-l);
     padding: 30px 30px 0;
@@ -46,7 +47,7 @@
 
 .carousel-content .item .author {
     font-family: var(--font-family-georgia);
-    font-weight: 400;
+    font-weight: 600;
     font-size: var(--body-font-size-l);
     line-height: var(--line-height-m);
     margin: 30px 0 0;
