@@ -1,0 +1,100 @@
+
+/* hide everything for now */
+main.liveby-community .section {
+  display: none;
+  margin-top: 32px;
+}
+
+main.liveby-community .liveby-metadata-container {
+  display: none;
+}
+
+main.liveby-community .hero-container {
+  display: block;
+  margin-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+main.liveby-community .hero.block {
+  position: relative;
+  padding: 0;
+}
+
+main.liveby-community .hero.block picture {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  object-fit: cover;
+}
+
+main.liveby-community .hero.block picture img {
+  object-fit: cover;
+  object-position: center 70%;
+  width: 100%;
+  height: 100%;
+}
+
+main.liveby-community .hero.block > div {
+  display: flex;
+  justify-content: center;
+}
+
+main.liveby-community .hero.block > div > div {
+  display: flex;
+  padding: 3em 5%;
+  margin: 6em 0;
+  width: 100%;
+  flex-flow: column;
+  justify-content: center;
+  background-color: rgba(0 0 0 / 60%);
+}
+
+main.liveby-community .hero.block > div > div h1 {
+  margin-left: 0;
+  margin-right: 0;
+  font-family: var(--font-family-proxima);
+  font-size: var(--heading-font-size-xl);
+  font-weight: 700;
+  letter-spacing: 3.6px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0 0 0 / 25%), 0 0 1em rgba(0 0 0 / 37.5%);
+  color: var(--white);
+}
+
+@media screen and (min-width: 600px) {
+  main.liveby-community .hero.block > div > div {
+    width: unset;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  main.liveby-community .hero.block {
+    padding-bottom: 200px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  main.liveby-community .hero-container {
+    padding: 0 15px;
+  }
+
+  main.liveby-community .hero.block {
+    padding-bottom: 360px;
+  }
+}
+
+main.liveby-community h2 {
+  margin-bottom: 13px;
+  font-family: var(--font-family-georgia);
+  font-size: var(--heading-font-size-l);
+  font-weight: 600;
+  line-height: 35px;
+  text-align: center;
+  color: var(--body-color);
+}
+

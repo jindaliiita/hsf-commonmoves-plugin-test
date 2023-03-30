@@ -285,7 +285,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    filter: invert(1);
+    filter: none;
   }
 
   .header.block nav[aria-expanded="true"] .nav-sections {
@@ -309,7 +309,7 @@
   .header.block nav[aria-expanded="true"] .nav-sections > ul > li {
     border-bottom: none;
     margin: 10px 0;
-    color: var(--white);
+    color: var(--body-color);
     cursor: pointer;
   }
 

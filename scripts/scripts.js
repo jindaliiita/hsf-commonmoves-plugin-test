@@ -11,10 +11,11 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  getMetadata,
 } from './lib-franklin.js';
 
-const LCP_BLOCKS = []; // add your LCP blocks to the list
-window.hlx.RUM_GENERATION = 'project-1'; // add your RUM generation information here
+const LCP_BLOCKS = ['hero']; // add your LCP blocks to the list
+window.hlx.RUM_GENERATION = 'bhhs-commonmoves'; // add your RUM generation information here
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -31,6 +32,17 @@ function buildHeroBlock(main) {
   }
 }
 
+function buildLiveByMetadata(main) {
+  const community = getMetadata('liveby-community');
+  if (community) {
+    const section = document.createElement('div');
+    section.append(buildBlock('liveby-metadata', { elems: [] }));
+    main.prepend(section);
+    main.classList.add('liveby-community');
+    loadCSS(`${window.hlx.codeBasePath}/styles/community-styles.css`);
+  }
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
@@ -38,6 +50,7 @@ function buildHeroBlock(main) {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
+    buildLiveByMetadata(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

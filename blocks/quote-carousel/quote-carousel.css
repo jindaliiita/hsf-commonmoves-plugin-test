@@ -39,8 +39,8 @@
 
 .carousel-content .item .quote {
     font-family: var(--font-family-proxima);
-    font-weight: 300;
     font-size: var(--body-font-size-xl);
+    font-weight: 300;
     line-height: var(--line-height-l);
     padding: 30px 30px 0;
 }
