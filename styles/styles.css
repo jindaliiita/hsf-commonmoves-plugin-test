@@ -111,6 +111,10 @@ main .section {
   padding-right: var(--section-padding);
 }
 
+main .section.bottom-border > div:last-of-type {
+  border-bottom: 1px solid var(--border-gray);
+}
+
 /* common styles */
 .background-lightgray {
   background: var(--lightgray);

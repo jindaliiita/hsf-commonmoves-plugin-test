@@ -1,10 +1,8 @@
 
-/* hide everything for now */
 main.liveby-community .section {
   margin-top: 3em;
   margin-bottom: 3em;
 }
-
 
 main.liveby-community .liveby-metadata-container {
   display: none;
@@ -101,7 +99,6 @@ main.liveby-community h2 {
   main.liveby-community .section.narrow > div {
     flex-basis: 33%;
   }
-
 }
 
 @media screen and (min-width: 1200px) {

@@ -1,0 +1,109 @@
+.info-mouseover.block {
+  display: inline-block;
+  position: relative;
+  margin-left: 4px;
+}
+
+
+.info-mouseover.block span.icon {
+  display: block;
+}
+
+.info-mouseover.block span.icon svg {
+  display: block;
+  height: 13px;
+  width: 13px;
+}
+
+.info-mouseover.block .info-content-wrapper {
+  display: block;
+  position: absolute;
+  padding: 1em;
+  top: 28px;
+  left: -180px;
+  width: max-content;
+  max-width: 200px;
+  font-family: var(--font-family-georgia);
+  font-weight: 400;
+  font-size: var(--body-font-size-xs);
+  line-height: 1.25;
+  color: var(--body-color);
+  text-align: left;
+  box-shadow: 0 1px 5px 0 rgba(0 0 0 / 25%);
+  background-color: var(--white-background);
+  opacity: 0;
+  z-index: -1;
+}
+
+.info-mouseover.block .info-content-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 177px;
+  height: 0;
+  width: 0;
+  bottom: 100%;
+  border: 10px solid transparent;
+  border-bottom-color: rgba(0 0 0 / 10%);
+}
+
+.info-mouseover.block .info-content-wrapper::after {
+  content: '';
+  position: absolute;
+  left: 178px;
+  height: 0;
+  width: 0;
+  bottom: 100%;
+  border: 9px solid transparent;
+  border-bottom-color: var(--white);
+}
+
+.info-mouseover.block:hover .info-content-wrapper {
+  transition: opacity .2s ease-in;
+  transition-delay: .3s;
+  opacity: 1;
+  z-index: 10;
+}
+
+.info-mouseover.block .info-content-wrapper a {
+  text-decoration: none;
+  color: var(--body-color);
+}
+
+.info-mouseover .info-content-wrapper h2 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: var(--font-family-georgia);
+  font-weight: 600;
+  font-size: var(--heading-font-size-xs);
+  text-align: left;
+  line-height: unset;
+}
+
+.info-mouseover .info-content-wrapper .info-content p {
+  margin-bottom: 16px;
+  width: 100%;
+  letter-spacing: .5px;
+}
+
+.info-mouseover .info-content-wrapper .info-content p:last-child {
+  margin-bottom: 0;
+}
+
+.info-mouseover .info-content-wrapper .info-content img {
+  object-fit: contain;
+  width: 100%;
+}
+
+@media  screen and (min-width: 900px) {
+  .info-mouseover.block .info-content-wrapper {
+    left: -20px;
+  }
+
+  .info-mouseover.block .info-content-wrapper::before {
+    left: 17px;
+  }
+
+  .info-mouseover.block .info-content-wrapper::after {
+    left: 18px;
+  }
+}
