@@ -1,9 +1,10 @@
 
 /* hide everything for now */
 main.liveby-community .section {
-  display: none;
-  margin-top: 32px;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
+
 
 main.liveby-community .liveby-metadata-container {
   display: none;
@@ -14,6 +15,7 @@ main.liveby-community .hero-container {
   margin-top: 0;
   padding-left: 0;
   padding-right: 0;
+  max-width: 1600px;
 }
 
 main.liveby-community .hero.block {
@@ -66,7 +68,21 @@ main.liveby-community .hero.block > div > div h1 {
   color: var(--white);
 }
 
+main.liveby-community h2 {
+  margin-bottom: 13px;
+  font-family: var(--font-family-georgia);
+  font-size: var(--heading-font-size-m);
+  font-weight: 600;
+  text-align: center;
+  line-height: 35px;
+  color: var(--body-color);
+}
+
 @media screen and (min-width: 600px) {
+  main.liveby-community h2 {
+    font-size: var(--heading-font-size-l);
+  }
+
   main.liveby-community .hero.block > div > div {
     width: unset;
   }
@@ -76,9 +92,23 @@ main.liveby-community .hero.block > div > div h1 {
   main.liveby-community .hero.block {
     padding-bottom: 200px;
   }
+
+  main.liveby-community .section.narrow {
+    display: flex;
+    justify-content: center;
+  }
+
+  main.liveby-community .section.narrow > div {
+    flex-basis: 33%;
+  }
+
 }
 
 @media screen and (min-width: 1200px) {
+  main.liveby-community h2 {
+    font-size: var(--heading-font-size-xxl);
+  }
+
   main.liveby-community .hero-container {
     padding: 0 15px;
   }
@@ -86,15 +116,5 @@ main.liveby-community .hero.block > div > div h1 {
   main.liveby-community .hero.block {
     padding-bottom: 360px;
   }
-}
-
-main.liveby-community h2 {
-  margin-bottom: 13px;
-  font-family: var(--font-family-georgia);
-  font-size: var(--heading-font-size-l);
-  font-weight: 600;
-  line-height: 35px;
-  text-align: center;
-  color: var(--body-color);
 }
 

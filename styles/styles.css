@@ -33,9 +33,10 @@
   /* Headings */
   --heading-font-size-xxl: 40px;
   --heading-font-size-xl: 36px;
-  --heading-font-size-l: 24px;
-  --heading-font-size-m: 20px;
-  --heading-font-size-s: 16px;
+  --heading-font-size-l: 30px;
+  --heading-font-size-m: 24px;
+  --heading-font-size-s: 20px;
+  --heading-font-size-xs: 16px;
 
   /* Body */
   --body-font-size-xxl: 40px;
@@ -87,7 +88,7 @@ h3 {
 
 h4 {
   font-family: var(--font-family-proxima);
-  font-size: var(--heading-font-size-s);
+  font-size: var(--heading-font-size-xs);
   font-weight: 500;
 }
 
@@ -104,7 +105,7 @@ header {
 }
 
 main .section {
-  max-width: 1600px;
+  max-width: 1350px;
   margin: 0 auto;
   padding-left: var(--section-padding);
   padding-right: var(--section-padding);
@@ -141,13 +142,19 @@ main .section {
 }
 
 /* common styles */
- .default-content-wrapper h4 {
+.default-content-wrapper h4 {
   text-transform: uppercase;
   font-family: var(--font-family-proxima);
   font-weight: 600;
   letter-spacing: 0.13em;
   line-height: 1.4em;
   text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+  h2 {
+    font-size: var(--heading-font-size-l);
+  }
 }
 
 @font-face {

@@ -1,0 +1,71 @@
+.toc.block.tabs > nav {
+  display: block;
+  width: 100%;
+}
+
+.toc.block.tabs > nav > p {
+  display: block;
+  width: 100%;
+  padding: 6px 15px;
+  font-family: var(--font-family-proxima);
+  font-weight: 400;
+  font-size: var(--body-font-size-s);
+  letter-spacing: 1.3px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--black);
+  border: 1px solid var(--body-color);
+}
+
+.toc.block.tabs > nav > ul {
+  display: none;
+  margin: 0 auto;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: center;
+  border-top: 1px solid var(--border-gray);
+}
+
+.toc.block.tabs > nav > ul > li {
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.toc.block.tabs > nav > ul > li > a {
+  display: block;
+  padding: 11px 15px 10px;
+  font-family: var(--font-family-proxima);
+  font-weight: 400;
+  font-size: var(--body-font-size-s);
+  letter-spacing: 1.3px;
+  color: var(--body-color);
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.toc.block.tabs > nav:hover > p,
+.toc.block.tabs > nav[aria-expanded="true"] > p {
+  border: none;
+  font-weight: 700;
+}
+
+.toc.block.tabs > nav:hover > ul,
+.toc.block.tabs > nav[aria-expanded="true"] > ul {
+  display: flex;
+}
+
+@media screen and (min-width: 600px) {
+  .toc.block.tabs > nav > p {
+    display: none;
+  }
+
+  .toc.block.tabs > nav > ul {
+    flex-flow: row;
+    border-bottom: 1px solid var(--border-gray);
+  }
+
+  .toc.block.tabs > nav > ul > li {
+    border-bottom: none;
+  }
+}
