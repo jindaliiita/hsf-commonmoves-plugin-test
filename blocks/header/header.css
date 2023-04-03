@@ -116,7 +116,7 @@
 .header.block nav .nav-sections {
   display: none;
   grid-area: sections;
-  background-color: var(--nav-background);
+  background-color: var(--primary-color);
   padding: 0 15px 81px;
   width: 100%;
 }

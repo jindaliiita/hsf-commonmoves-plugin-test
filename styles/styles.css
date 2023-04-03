@@ -15,14 +15,16 @@
 
 :root {
   /* Colors */
+  --primary-color: #552448;
+  --primary-color-lighten: rgba(98 98 121 / 12.5%);
   --body-color: #3a3a3a;
   --lightgray: #f6f6f6;
   --black: #000;
   --gray: #d8d8d8;
   --white: #fff;
-  --nav-background: #552448;
   --white-background: #fff;
   --border-gray: #d8d8d8;
+
 
   /* Fonts */
   --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
@@ -39,7 +41,8 @@
   --heading-font-size-xs: 16px;
 
   /* Body */
-  --body-font-size-xxl: 40px;
+  --body-font-size-xxxl: 40px;
+  --body-font-size-xxl: 32px;
   --body-font-size-xl: 26px;
   --body-font-size-l: 20px;
   --body-font-size-m: 16px;
@@ -111,9 +114,6 @@ main .section {
   padding-right: var(--section-padding);
 }
 
-main .section.bottom-border > div:last-of-type {
-  border-bottom: 1px solid var(--border-gray);
-}
 
 /* common styles */
 .background-lightgray {
