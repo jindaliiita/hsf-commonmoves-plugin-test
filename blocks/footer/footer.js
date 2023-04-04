@@ -40,5 +40,12 @@ export default async function decorate(block) {
     footerContainerFlexDivs[1].classList.add('column-lg-6');
     footerContainerFlexDivs[2].classList.add('column-md-5');
     footerContainerFlexDivs[2].classList.add('column-lg-3');
+
+    const socialMediaLinks = [...footerContainerFlexDivs[2].getElementsByTagName('a')];
+    socialMediaLinks.forEach((link) => {
+      link.setAttribute('target', '_blank');
+      const ariaLabel = link.firstChild.className.split(' ')[1];
+      link.setAttribute('aria-label', ariaLabel);
+    });
   }
 }
