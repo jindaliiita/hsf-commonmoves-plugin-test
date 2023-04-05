@@ -48,6 +48,7 @@
   --body-font-size-m: 16px;
   --body-font-size-s: 14px;
   --body-font-size-xs: 12px;
+  --body-font-size-xxs: 10px;
   --line-height-l: 1.4em;
   --line-height-m: 1.3em;
 
@@ -114,6 +115,9 @@ main .section {
   padding-right: var(--section-padding);
 }
 
+main .section.center p {
+  text-align: center;
+}
 
 /* common styles */
 .background-lightgray {

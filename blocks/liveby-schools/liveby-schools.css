@@ -1,0 +1,164 @@
+main .section.liveby-schools-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+main .section.liveby-schools-container p {
+  max-width: 900px;
+  margin: 2em auto;
+}
+
+.liveby-schools .sort {
+  display: flex;
+  width: 100%;
+  margin: 8px 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  justify-content: flex-end;
+}
+
+.liveby-schools .sort select {
+  appearance: none;
+  padding: 8px 32px 8px 8px;
+  color: var(--body-color);
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-m);
+  font-weight: 400;
+  border-color: var(--gray);
+  border-radius: 2px;
+  background: url("https://pages.liveby.com/static/media/triangle.f2d6139e.svg") 93% center no-repeat rgb(255 255 255);
+}
+
+.liveby-schools .school-lists {
+  display: flex;
+  width: 100%;
+  flex-flow: column;
+}
+
+.liveby-schools .school-lists section {
+  margin: 1em 0;
+}
+
+.liveby-schools .actions a {
+  padding: .85em 1.15em;
+  font-size: var(--body-font-size-m);
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.liveby-schools .school-lists section h3 {
+  margin-bottom: 1em;
+  padding-top: 0;
+  padding-bottom: .5em;
+  font-family: var(--font-family-georgia);
+  font-weight: 700;
+  font-size: var(--heading-font-size-s);
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.liveby-schools .school-lists section .school-item {
+  display: flex;
+  margin-bottom: 1.5em;
+}
+
+.liveby-schools .school-lists section .school-item:nth-of-type(n+5) {
+  display: none;
+}
+
+.liveby-schools .school-lists.show-all section .school-item:nth-of-type(n+5) {
+  display: flex;
+}
+
+.liveby-schools .school-lists section .school-item .school-details {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex: 1 1 0;
+}
+
+.liveby-schools .school-lists section .school-item .school-details .type {
+  position: absolute;
+  top: -.75em;
+  font-family: var(--font-family-proxima);
+  font-weight: 400;
+  font-size: var(--body-font-size-xxs);
+  text-transform: uppercase;
+  opacity: .625;
+}
+
+
+.liveby-schools .school-lists section .school-item .school-details h3 {
+  margin: 0;
+  font-family: var(--font-family-georgia);
+  font-weight: 700;
+  font-size: var(--heading-font-size-xs);
+  line-height: 1.5;
+  border-bottom: none;
+}
+
+.liveby-schools .school-lists section .school-item .school-details a {
+  color: var(--body-color);
+  text-decoration: none;
+}
+
+.liveby-schools .school-lists section .school-item .school-details a:hover {
+  text-decoration: underline;
+}
+
+.liveby-schools .school-lists section .school-item .school-details li {
+  font-size: var(--body-font-size-xs);
+  line-height: 1.5;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.liveby-schools .school-lists section .school-item .school-details li .info-label {
+  position: relative;
+  left: -.5em;
+  margin-right: .25em;
+}
+
+.liveby-schools .school-lists section .school-item .school-details li .info-value {
+  font-weight: 700;
+}
+
+.liveby-schools .school-lists section .school-item .school-rating {
+  margin-left: .5em;
+  font-size: var(--body-font-size-m);
+}
+
+.liveby-schools .school-lists section .school-item .school-rating.unavailable {
+  max-width: 18%;
+  margin-left: .5em;
+  margin-top: .5em;
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-xxs);
+  text-align: center;
+  line-height: 2.5;
+  opacity: .625;
+}
+
+.liveby-schools .school-lists section .school-item .school-rating span svg {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  fill: var(--lightgray);
+}
+
+.liveby-schools .school-lists section .school-item .school-rating span.filled svg {
+  fill: var(--primary-color);
+}
+
+@media screen and (min-width: 900px) {
+  .liveby-schools .school-lists {
+    flex-direction: row;
+  }
+
+  .liveby-schools .school-lists section {
+    flex-basis: 33%;
+    margin: 1em;
+  }
+}
