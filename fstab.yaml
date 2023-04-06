@@ -1,2 +1,6 @@
 mountpoints:
   /: https://adobe.sharepoint.com/:f:/r/sites/HelixProjects/Shared%20Documents/sites/hsf/commonmoves
+
+folders:
+  /blog/detail/: /blog/detail
+  /drafts/blog/detail/: /drafts/blog/detail
