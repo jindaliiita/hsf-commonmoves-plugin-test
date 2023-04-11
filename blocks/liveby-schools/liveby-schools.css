@@ -42,11 +42,12 @@ main .section.liveby-schools-container p {
   margin: 1em 0;
 }
 
-.liveby-schools .actions a {
+.liveby-schools .actions p.button-container a {
   padding: .85em 1.15em;
   font-size: var(--body-font-size-m);
   color: var(--white);
   background-color: var(--primary-color);
+  text-transform: uppercase;
 }
 
 .liveby-schools .school-lists section h3 {

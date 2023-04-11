@@ -122,14 +122,10 @@ function filterSchools(schools) {
 }
 
 export default async function decorate(block) {
-  const metadataBlock = block.closest('main').querySelector('.liveby-metadata.block');
-
-  if (metadataBlock && metadataBlock.getAttribute('data-liveby-community-id')) {
-    const communityId = metadataBlock.getAttribute('data-liveby-community-id');
-
+  if (window.liveby && window.liveby.communityId) {
     // Fetch the school data.
     const types = encodeURIComponent('public,private,catholic');
-    const resp = await fetch(`${LIVEBY_API}/schools/info?boundary=${communityId}&format=expanded&types=${types}&limit=500&offset=0`);
+    const resp = await fetch(`${LIVEBY_API}/schools/info?boundary=${window.liveby.communityId}&format=expanded&types=${types}&limit=500&offset=0`);
 
     if (resp.ok) {
       const { schools } = await resp.json();

@@ -1,0 +1,15 @@
+main .section.liveby-attribution-container {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.liveby-attribution.block a {
+  display: block;
+  margin: 1em auto 2em;
+  width: 85px;
+  font-size: var(--body-font-size-xs);
+}
+
+.liveby-attribution.block a img {
+  width: 100%;
+}

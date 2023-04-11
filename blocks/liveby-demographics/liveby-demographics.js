@@ -2,17 +2,12 @@ import { LIVEBY_API } from '../../scripts/scripts.js';
 import { decorateIcons } from '../../scripts/lib-franklin.js';
 
 const dollarFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
-
 const percFormatter = new Intl.NumberFormat('en-US', { style: 'percent' });
 
 export default async function decorate(block) {
-  const metadataBlock = block.closest('main').querySelector('.liveby-metadata.block');
-
-  if (metadataBlock && metadataBlock.getAttribute('data-liveby-community-id')) {
-    const communityId = metadataBlock.getAttribute('data-liveby-community-id');
-
+  if (window.liveby && window.liveby.communityId) {
     // Fetch the census data.
-    const resp = await fetch(`${LIVEBY_API}/pages/census?boundaryId=${communityId}`);
+    const resp = await fetch(`${LIVEBY_API}/pages/census?boundaryId=${window.liveby.communityId}`);
 
     if (resp.ok) {
       const data = await resp.json();

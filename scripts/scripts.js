@@ -16,6 +16,12 @@ import {
 
 export const LIVEBY_API = 'https://api.liveby.com/v1/';
 
+export const BREAKPOINTS = {
+  small: window.matchMedia('(min-width: 600px)'),
+  medium: window.matchMedia('(min-width: 900px)'),
+  large: window.matchMedia('(min-width: 1200px)'),
+};
+
 const LCP_BLOCKS = ['hero']; // add your LCP blocks to the list
 window.hlx.RUM_GENERATION = 'bhhs-commonmoves'; // add your RUM generation information here
 
@@ -60,6 +66,10 @@ function buildLiveByMetadata(main) {
     main.prepend(section);
     main.classList.add('liveby-community');
     loadCSS(`${window.hlx.codeBasePath}/styles/community-styles.css`);
+
+    const attribution = document.createElement('div');
+    attribution.append(buildBlock('liveby-attribution', { elems: [] }));
+    main.append(attribution);
   }
 }
 

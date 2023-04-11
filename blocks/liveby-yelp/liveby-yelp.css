@@ -1,0 +1,279 @@
+.liveby-yelp.block {
+  display: block;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.liveby-yelp.block .categories {
+  display: flex;
+  margin: 0 -.5em;
+  flex-flow: wrap;
+  justify-content: center;
+}
+
+.liveby-yelp.block .categories a.category {
+  display: block;
+  padding: .5em .75em;
+  font-size: var(--body-font-size-s);
+  letter-spacing: normal;
+  line-height: 1.15;
+  color: var(--primary-color);
+  background-color: var(--white-background);
+  border: 1px solid var(--primary-color);
+  transition: color .15s ease, background-color .15s ease;
+}
+
+.liveby-yelp.block .categories a.category.active,
+.liveby-yelp.block .categories a.category:hover {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.liveby-yelp.block .yelp-trademark {
+  display: flex;
+  width: 100%;
+  height: 3.5em;
+  justify-content: flex-end;
+}
+
+.liveby-yelp.block .amenities {
+  position: relative;
+  margin: 0 auto 2em;
+  max-width: 350px;
+}
+
+.liveby-yelp.block .amenities.loading .spinner {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(246 246 246 / 50%);
+  align-items: center;
+  justify-content: center;
+}
+
+.liveby-yelp.block .amenities .spinner span {
+  display: none;
+  border: 10px solid var(--border-gray);
+  border-top: 10px solid var(--primary-color);
+  background-color: var(--white-background);
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  animation: spin 2s linear infinite;
+}
+
+.liveby-yelp.block .amenities.loading .spinner span {
+  display: block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.liveby-yelp.block .amenities ul {
+  display: none;
+  width: 100%;
+  grid-template-columns: 1fr;
+}
+
+.liveby-yelp.block .amenities ul.active {
+  display: grid;
+}
+
+.liveby-yelp.block .amenities ul .amenity-item {
+  display: none;
+  position: relative;
+  margin: .625em;
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-size: cover;
+}
+
+.liveby-yelp.block[data-page="1"] .amenities ul .amenity-item:nth-child(-n+3) {
+  display: block;
+}
+
+.liveby-yelp.block[data-page="2"] .amenities ul .amenity-item:nth-child(-n+6) {
+  display: block;
+}
+
+.liveby-yelp.block[data-page="3"] .amenities ul .amenity-item:nth-child(-n+9) {
+  display: block;
+}
+
+.liveby-yelp.block[data-page="4"] .amenities ul .amenity-item:nth-child(-n+12) {
+  display: block;
+}
+
+.liveby-yelp.block[data-page="4"] .load-more {
+  display: none;
+}
+
+.liveby-yelp.block .load-more p {
+  text-align: center;
+}
+
+.liveby-yelp.block .load-more p.button-container a {
+  text-transform: uppercase;
+}
+
+.liveby-yelp.block .amenities ul .amenity-item::before {
+  display: block;
+  content: '';
+  padding-top: 70%;
+}
+
+.liveby-yelp.block .amenities ul .amenity-item > a {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  align-items: center;
+  align-content: flex-end;
+  flex-wrap: wrap;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.liveby-yelp.block .amenities ul .amenity-item > a .name {
+  padding: 0 16px;
+  flex-basis: 100%;
+  font-weight: 600;
+}
+
+.liveby-yelp.block .amenities ul .amenity-item > a .rating,
+.liveby-yelp.block .amenities ul .amenity-item > a .reviews {
+  margin: 16px 0;
+  flex: 1;
+  font-size: var(--body-font-size-xs);
+}
+
+.liveby-yelp.block .amenities ul .amenity-item > a .rating {
+  margin-left: 16px;
+  text-indent: -9999px;
+}
+
+.liveby-yelp.block .amenities ul .amenity-item > a .reviews {
+  text-align: right;
+  margin-right: 16px;
+}
+
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="0"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_0.png');
+}
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="1"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_1.png');
+}
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="1.5"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_1_half.png');
+}
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="2"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_2.png');
+}
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="2.5"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_2_half.png');
+}
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="3"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_3.png');
+}
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="3.5"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_3_half.png');
+}
+
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="4"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_4.png');
+}
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="4.5"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_4_half.png');
+}
+
+.liveby-yelp .amenities ul .amenity-item > a .rating[data-rating="5"] {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/icons/yelp/small_5.png');
+}
+
+@media screen and (min-width: 600px) {
+  .liveby-yelp.block .amenities {
+    max-width: unset;
+  }
+
+  .liveby-yelp.block .amenities ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .liveby-yelp.block .amenities ul .amenity-item::before {
+    padding-top: 100%;
+  }
+
+  .liveby-yelp.block[data-page="1"] .amenities ul .amenity-item:nth-child(-n+4) {
+    display: block;
+  }
+
+  .liveby-yelp.block[data-page="2"] .amenities ul .amenity-item:nth-child(-n+8) {
+    display: block;
+  }
+
+  .liveby-yelp.block[data-page="3"] .amenities ul .amenity-item:nth-child(-n+12) {
+    display: block;
+  }
+
+  .liveby-yelp.block[data-page="3"] .load-more {
+    display: none;
+  }
+
+  .liveby-yelp.block .amenities ul .amenity-item > a .rating {
+    font-size: var(--body-font-size-m);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .liveby-yelp.block .amenities ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .liveby-yelp.block .amenities ul .amenity-item > a .rating {
+    font-size: var(--body-font-size-xs);
+  }
+}
+
+
+@media screen and (min-width: 1200px) {
+  .liveby-yelp.block .amenities ul .amenity-item > a .rating {
+    font-size: var(--body-font-size-s);
+  }
+}

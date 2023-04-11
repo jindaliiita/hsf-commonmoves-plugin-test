@@ -1,8 +1,5 @@
 import { decorateIcons } from '../../scripts/lib-franklin.js';
-
-const bp1 = window.matchMedia('(min-width: 600px)');
-const bp2 = window.matchMedia('(min-width: 900px)');
-const bp3 = window.matchMedia('(min-width: 1200px)');
+import { BREAKPOINTS } from '../../scripts/scripts.js';
 
 function positionIcon(heading, icon) {
   const size = window.getComputedStyle(heading, null).getPropertyValue('font-size');
@@ -32,7 +29,7 @@ export default async function decorate(block) {
   heading.append(block);
 
   // Move the icon if the font size changes at the declared breakpoints.
-  bp1.addEventListener('change', () => positionIcon(heading, icon));
-  bp2.addEventListener('change', () => positionIcon(heading, icon));
-  bp3.addEventListener('change', () => positionIcon(heading, icon));
+  Object.values(BREAKPOINTS).forEach((mq) => {
+    mq.addEventListener('change', () => positionIcon(heading, icon));
+  });
 }
