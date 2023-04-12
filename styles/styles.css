@@ -24,7 +24,7 @@
   --white: #fff;
   --white-background: #fff;
   --border-gray: #d8d8d8;
-
+  --primary-color-svg-filter: invert(14%) sepia(47%) saturate(1309%) hue-rotate(272deg) brightness(96%) contrast(89%);
 
   /* Fonts */
   --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
@@ -57,7 +57,7 @@
   --section-padding: 15px;
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1200px) {
   :root {
     --nav-height: 140px;
   }

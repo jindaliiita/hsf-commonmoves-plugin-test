@@ -1,7 +1,8 @@
+import { BREAKPOINTS } from '../../scripts/scripts.js';
 import { getMetadata, decorateIcons, decorateSections } from '../../scripts/lib-franklin.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = window.matchMedia('(min-width: 992px)');
+const isDesktop = BREAKPOINTS.large;
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -93,7 +94,7 @@ function buildLogo() {
   logo.classList.add('nav-logo');
   logo.innerHTML = `
       <a href="/" rel="noopener">
-        <img alt= class="logo" src="/styles/images/logo-black.svg" loading="lazy"/>
+        <img alt= class="logo" src="/styles/images/logo-black.svg" loading="lazy" width="216" height="35"/>
       </a>
     `;
   return logo;
@@ -185,17 +186,19 @@ export default async function decorate(block) {
     const navSections = nav.querySelector('.nav-sections');
     if (navSections) {
       navSections.querySelectorAll(':scope > ul > li').forEach((navSection) => {
-        let hasSubmenu = false;
-        if (navSection.querySelector('ul')) {
+        const submenu = navSection.querySelector('ul');
+        if (submenu) {
           navSection.classList.add('nav-drop');
-          hasSubmenu = true;
+          const cover = document.createElement('div');
+          cover.classList.add('cover');
+          submenu.insertAdjacentElement('beforebegin', cover);
         }
         navSection.addEventListener('click', (e) => {
           if (isDesktop.matches) {
             const expanded = navSection.getAttribute('aria-expanded') === 'true';
             toggleAllNavSections(navSections);
             navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-            if (!expanded && hasSubmenu) {
+            if (!expanded && submenu) {
               e.preventDefault();
               e.stopPropagation();
             }
