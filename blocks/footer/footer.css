@@ -92,7 +92,9 @@ footer {
   opacity: .4;
 }
 
+
 .footer-container-flex > div:nth-child(1) svg {
+  position: relative;
   height: 68px;
   width: 68px;
 }
@@ -111,6 +113,11 @@ footer {
 
 .footer-container-flex p:nth-of-type(5) {
   padding-top: 15px;
+}
+
+.footer-container-flex > div:nth-child(1) p {
+  position: relative;
+  height: 75px;
 }
 
 .footer-container-flex > div:last-child p {

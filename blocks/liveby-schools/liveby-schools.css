@@ -57,7 +57,7 @@ main .section.liveby-schools-container p {
   font-family: var(--font-family-georgia);
   font-weight: 700;
   font-size: var(--heading-font-size-s);
-  border-bottom: 1px solid var(--border-gray);
+  border-bottom: 1px solid var(--border-light-gray);
 }
 
 .liveby-schools .school-lists section .school-item {

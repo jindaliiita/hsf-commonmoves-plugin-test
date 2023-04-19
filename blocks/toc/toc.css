@@ -24,11 +24,11 @@
   flex-flow: column;
   align-items: stretch;
   justify-content: center;
-  border-top: 1px solid var(--border-gray);
+  border-top: 1px solid var(--border-light-gray);
 }
 
 .toc.block.tabs > nav > ul > li {
-  border-bottom: 1px solid var(--border-gray);
+  border-bottom: 1px solid var(--border-light-gray);
 }
 
 .toc.block.tabs > nav > ul > li > a {
@@ -62,7 +62,7 @@
 
   .toc.block.tabs > nav > ul {
     flex-flow: row;
-    border-bottom: 1px solid var(--border-gray);
+    border-bottom: 1px solid var(--border-light-gray);
   }
 
   .toc.block.tabs > nav > ul > li {

@@ -1,27 +1,29 @@
-/* block specific CSS goes here */
+@import url('./search.css');
 
-main .hero-container > div {
+main .section.hero-container {
+  padding: 0;
   max-width: unset;
 }
-  
-main .hero-container {
-  padding: 0;
-}
-  
-main .hero {
+
+.hero.block {
+  display: flex;
   position: relative;
-  padding: 32px;
-  min-height: 300px;
+  height: 480px;
+  margin-bottom: 57px;
+  justify-content: center;
+  align-items: center;
 }
 
-main .hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: white;
+.hero.block.under-nav {
+  margin-top: calc(var(--nav-height) * -1);
+  background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 50%) 50px, transparent 100px, transparent 100%);
 }
 
-main .hero picture {
+.hero.block.has-content.under-nav {
+  background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 30%) 100px, rgba(0 0 0 / 30%) 100%);
+}
+
+.hero.block .images {
   position: absolute;
   z-index: -1;
   top: 0;
@@ -29,11 +31,93 @@ main .hero picture {
   bottom: 0;
   right: 0;
   object-fit: cover;
-  box-sizing: border-box;
 }
 
-main .hero img {
+.hero.block .images picture {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity .6s linear;
+}
+
+.hero.block .images picture.active {
+  opacity: 1;
+}
+
+.hero.block .images img {
   object-fit: cover;
+  object-position: center;
   width: 100%;
   height: 100%;
 }
+
+.hero.block > div {
+  padding: 0 16px;
+}
+
+.hero.block > div .content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1.5em 16px;
+  color: var(--white);
+}
+
+.hero.block > div .content h2 {
+  margin-bottom: .75em;
+  font-family: var(--font-family-georgia);
+  font-weight: 700;
+  font-size: var(--heading-font-size-m);
+  line-height: 30px;
+  color: var(--white);
+}
+
+.hero.block > div .content h1,
+.hero.block > div .content h2,
+.hero.block > div .content p {
+  color: var(--white);
+}
+
+@media screen and (min-width: 600px) {
+  .hero.block {
+    height: 620px;
+    margin-bottom: 80px;
+  }
+
+  .hero.block > div {
+    padding: 0 60px;
+  }
+
+  .hero.block > div .content h2 {
+    font-size: var(--heading-font-size-xxl);
+    line-height: 50px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .hero.block > div {
+    padding: 0 130px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero.block {
+    height: 600px;
+    justify-content: unset;
+  }
+
+  .hero.block.under-nav {
+    margin-top: -100px;
+  }
+
+  .hero.block > div {
+    margin-top: 100px;
+  }
+}
+

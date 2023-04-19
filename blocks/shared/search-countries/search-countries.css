@@ -1,0 +1,107 @@
+.search-country-select-wrapper {
+  position: relative;
+  width: 80px;
+}
+
+.search-country-select-wrapper select {
+  display: none;
+}
+
+.search-country-select-wrapper .selected,
+.search-country-select-wrapper .select-items .item {
+  position: relative;
+  height: 36px;
+  padding-left: 5px;
+  padding-right: 15px;
+  font-family: var(--font-family-proxima);
+  font-weight: 300;
+  letter-spacing: .5px;
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.search-country-select-wrapper div.selected::after {
+  display: inline;
+  position: absolute;
+  right: 7px;
+  width: 10px;
+  content: '\f0d7';
+  font-family: var(--font-family-fontawesome);
+  height: unset;
+}
+
+.search-country-select-wrapper.open div.selected::after {
+  content: '\f0d8';
+}
+
+.search-country-select-wrapper .selected img,
+.search-country-select-wrapper .select-items .item img {
+  width: 25px;
+  height: auto;
+  margin-right: 5px;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.search-country-select-wrapper .select-items {
+  display: none;
+  position: absolute;
+  top: 36px;
+  background: var(--white-background);
+  border: 1px solid var(--border-medium-gray);
+  z-index: 10;
+}
+
+.search-country-select-wrapper.open .select-items {
+  display: block;
+}
+
+.search-country-select-wrapper .select-items .item:hover,
+.search-country-select-wrapper .select-items .item.selected {
+  background-color: var(--lightgray);
+}
+
+.search-country-select-wrapper .select-items .item.has-children::after {
+  display: inline;
+  position: absolute;
+  right: 5px;
+  content: '\f0da';
+  font-family: var(--font-family-fontawesome);
+  height: unset;
+}
+
+.search-country-select-wrapper .select-items .item > ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: var(--white-background);
+  border: 1px solid var(--border-medium-gray);
+}
+
+.search-country-select-wrapper .select-items .item:hover > ul {
+  display: block;
+}
+
+.search-country-select-wrapper .select-items .item:hover > ul::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  height: 36px;
+  width: 4px;
+  background-color: var(--white-background);
+}
+
+.search-country-select-wrapper .select-items .item:hover > ul > li {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  height: 36px;
+}
+
+.search-country-select-wrapper .select-items .item ul > li > a {
+  white-space: nowrap;
+  line-height: var(--body-font-size-m);
+  text-decoration: none;
+}
