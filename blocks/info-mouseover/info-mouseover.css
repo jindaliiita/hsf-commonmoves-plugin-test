@@ -24,9 +24,9 @@
   width: max-content;
   max-width: 200px;
   font-family: var(--font-family-georgia);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-xs);
-  line-height: 1.25;
+  line-height: var(--line-height-s);
   color: var(--body-color);
   text-align: left;
   box-shadow: 0 1px 5px 0 rgba(0 0 0 / 25%);
@@ -73,7 +73,7 @@
   margin-top: 10px;
   margin-bottom: 10px;
   font-family: var(--font-family-georgia);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   font-size: var(--heading-font-size-xs);
   text-align: left;
   line-height: unset;
@@ -82,7 +82,7 @@
 .info-mouseover .info-content-wrapper .info-content p {
   margin-bottom: 16px;
   width: 100%;
-  letter-spacing: .5px;
+  letter-spacing:var(--letter-spacing-xs);
   text-align: left;
 }
 

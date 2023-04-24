@@ -15,14 +15,14 @@
 .liveby-demographics.block > div .census-item > * {
   width: 100%;
   text-align: center;
-  line-height: 23px;
+  line-height: var(--line-height-m);
 }
 
 .liveby-demographics.block > div .census-item span.census-value {
   margin-top: .6em;
   margin-bottom: .4em;
   font-family: var(--font-family-proxima);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   font-size: var(--body-font-size-xl);
 }
 
@@ -30,7 +30,7 @@
   max-width: 9em;
   margin: 0 auto;
   font-family: var(--font-family-proxima);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-s);
 }
 

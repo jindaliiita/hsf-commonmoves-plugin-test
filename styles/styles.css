@@ -32,6 +32,11 @@
   --font-family-proxima: 'ProximaNova', 'ProximaNova Fallback', 'Arial', sans-serif;
   --font-family-gotham: 'Gotham', 'Gotham Fallback', 'Arial', sans-serif;
   --font-family-fontawesome: 'FontAwesome';
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-heavier: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
   /* Headings */
   --heading-font-size-xxl: 40px;
@@ -50,8 +55,23 @@
   --body-font-size-s: 14px;
   --body-font-size-xs: 12px;
   --body-font-size-xxs: 10px;
-  --line-height-l: 1.4em;
-  --line-height-m: 1.3em;
+
+  /* Line heights */
+  --line-height-xs : 1.15em;
+  --line-height-s  : 1.25em;
+  --line-height-m   : 1.5em;
+  --line-height-l   : 2em;
+  --line-height-xl   : 2.5em;  
+ 
+  /* Common spacing values */
+  --letter-spacing-xs : 0.04em;
+  --letter-spacing-s  : 0.06em;
+  --letter-spacing-reg: 0.07em;
+  --letter-spacing-m  : 0.09em;
+  --letter-spacing-l  : 0.13em;
+
+  /* Common dimensions */
+  --max-page-width: 1350px;
 
   /* nav height */
   --nav-height: 65px;
@@ -81,30 +101,30 @@ body {
 h2 {
   font-family: var(--font-family-georgia);
   font-size: var(--heading-font-size-xl);
-  font-weight: 700;
-  line-height: 50px;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
 }
 
 h3 {
   font-family: var(--font-family-georgia);
   font-size: var(--heading-font-size-m);
-  font-weight: 500;
-  line-height: 1.2em;
+  font-weight: var(--font-weight-heavier);
+  line-height: var(--line-height-m);
   padding-top: 0.8em;
 }
 
 h4 {
   font-family: var(--font-family-proxima);
   font-size: var(--heading-font-size-xs);
-  font-weight: 500;
+  font-weight: var(--font-weight-heavier);
 }
 
 p {
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-m);
-  font-weight: 400;
-  letter-spacing: 0.8px;
-  line-height: 23px;
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-reg);
+  line-height: var(--line-height-m);
 }
 
 header {
@@ -117,7 +137,7 @@ main {
 }
 
 main .section {
-  max-width: 1350px;
+  max-width: var(--max-page-width);
   margin: 0 auto;
   padding-left: var(--section-padding);
   padding-right: var(--section-padding);
@@ -139,9 +159,9 @@ main .section.center p {
 .button-container a {
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-s);
-  font-weight: 400;
-  letter-spacing: .7px;
-  line-height: 24px;
+  font-weight: var(--font-weight-normal);
+  letter-spacing:var(--letter-spacing-s);
+  line-height:normal;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--body-color);
@@ -152,7 +172,7 @@ main .section.center p {
   border: 1px solid var(--body-color);
   text-align: center;
   vertical-align: middle;
-  padding: 7px 25px;
+  padding: 13px 25px;
   height: 40px;
   display: block;
 }
@@ -161,9 +181,9 @@ main .section.center p {
 .default-content-wrapper h4 {
   text-transform: uppercase;
   font-family: var(--font-family-proxima);
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  line-height: 1.4em;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-l);
+  line-height: var(--line-height-m);
   text-align: center;
 }
 
@@ -176,7 +196,7 @@ main .section.center p {
 @font-face {
   font-family: 'GeorgiaPro Fallback';
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   src: local('Arial Bold');
   ascent-override: 92.25%;
   descent-override: 22.06%;
@@ -187,7 +207,7 @@ main .section.center p {
 @font-face {
   font-family: 'GeorgiaPro Fallback';
   font-style: normal;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   src: local('Arial Bold');
   ascent-override: 85.62%;
   descent-override: 20.47%;
@@ -198,7 +218,7 @@ main .section.center p {
 @font-face {
   font-family: 'ProximaNova Fallback';
   font-style: normal;
-  font-weight: 300;
+  font-weight: var(--font-weight-light);
   src: local('Arial');
   ascent-override: 80.85%;
   descent-override: 21.49%;
@@ -209,7 +229,7 @@ main .section.center p {
 @font-face {
   font-family: 'ProximaNova Fallback';
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   src: local('Arial');
   ascent-override: 79.64%;
   descent-override: 21.17%;
@@ -220,7 +240,7 @@ main .section.center p {
 @font-face {
   font-family: 'ProximaNova Fallback';
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   src: local('Arial Bold');
   ascent-override: 84.49%;
   descent-override: 22.46%;
@@ -231,7 +251,7 @@ main .section.center p {
 @font-face {
   font-family: 'ProximaNova Fallback';
   font-style: normal;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   src: local('Arial Bold');
   ascent-override: 83.31%;
   descent-override: 22.15%;
@@ -242,7 +262,7 @@ main .section.center p {
 @font-face {
   font-family: 'Gotham Fallback';
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   src: local('Arial');
   ascent-override: 85.14%;
   descent-override: 21.29%;

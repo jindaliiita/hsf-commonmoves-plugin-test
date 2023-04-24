@@ -88,9 +88,9 @@ body.light-nav {
   padding: 15px 0;
   color: var(--body-color);
   font-family: var(--font-family-proxima);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-s);
-  letter-spacing: .93px;
+  letter-spacing:var(--letter-spacing-reg);
   line-height: var(--body-font-size-s);
   text-decoration: none;
   cursor: pointer;
@@ -145,9 +145,9 @@ body.light-nav {
   display: flex;
   padding: 15px 0;
   font-family: var(--font-family-proxima);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-xl);
-  line-height: 32px;
+  line-height: var(--line-height-s);
   text-decoration: none;
   text-transform: uppercase;
   color: var(--white);
@@ -170,9 +170,9 @@ body.light-nav {
 .header.block nav .nav-sections > ul > li > ul > li > a {
   display: block;
   font-family: var(--font-family-proxima);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-m);
-  line-height: 32px;
+  line-height: var(--line-height-l);
   text-decoration: none;
   text-transform: capitalize;
   color: var(--white);
@@ -240,7 +240,7 @@ body.light-nav {
   .header.block nav .nav-primary-wrapper {
     display: flex;
     width: 100%;
-    max-width: 1350px;
+    max-width: var(--max-page-width);
     margin: 0 auto;
     grid-area: primary;
     align-items: center;
@@ -256,7 +256,7 @@ body.light-nav {
     display: flex;
     height: 100%;
     width: 100%;
-    max-width: 1350px;
+    max-width: var(--max-page-width);
     margin: 0 auto;
     align-items: center;
     justify-content: flex-end;
@@ -279,7 +279,7 @@ body.light-nav {
     width: unset;
     padding: 0 10px;
     font-size: var(--body-font-size-xs);
-    letter-spacing: 1px;
+    letter-spacing: var(--letter-spacing-reg);
     line-height: unset;
   }
 
@@ -337,8 +337,8 @@ body.light-nav {
     padding: 0 15px;
     font-size: var(--body-font-size-s);
     text-align: center;
-    letter-spacing: 1.3px;
-    line-height: 24px;
+    letter-spacing: var(--letter-spacing-reg);
+    line-height: var(--line-height-m);
     color: var(--nav-color);
     column-gap: 2px;
   }
@@ -400,7 +400,6 @@ body.light-nav {
     padding: 10px 15px;
     font-size: var(--body-font-size-s);
     line-height: var(--body-font-size-s);
-    letter-spacing: .25px;
     text-transform: capitalize;
   }
 
@@ -412,6 +411,5 @@ body.light-nav {
 @media screen and (min-width: 1200px) {
   .header.block nav .nav-sections > ul > li > a {
     font-size: var(--body-font-size-m);
-    line-height: 30px;
   }
 }

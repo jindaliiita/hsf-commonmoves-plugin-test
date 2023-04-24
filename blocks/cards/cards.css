@@ -30,7 +30,7 @@
   text-transform: uppercase;
   padding: 1em 1em 0 0;
   width: calc((2 / 3) * 100%);
-  letter-spacing: 0.2em
+  letter-spacing: var(--letter-spacing-l)
 }
 
 .cards.block .cards-card-body p {
@@ -64,9 +64,9 @@
 .cards-checklist .cards-card-body h4{
   text-transform: uppercase;
   font-family: var(--font-family-proxima);
-  font-weight: 600;
-  letter-spacing: 0.13em;
-  line-height: 1.4em;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-l);
+  line-height: var(--line-height-m);
   text-align: center;
 }
 

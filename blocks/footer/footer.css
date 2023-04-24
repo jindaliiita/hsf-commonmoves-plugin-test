@@ -8,13 +8,13 @@ footer {
   padding-bottom: 15px;
   font-family: var(--font-family-proxima);
   color: var(--body-color);
-  line-height: 23px;
+  line-height: var(--line-height-m);
 }
 
 .footer-container-flex {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1350px;
+  max-width: var(--max-page-width);
   margin: 0 auto;
   width: 100%;
   padding: 0 15px;
@@ -58,7 +58,7 @@ footer {
 
 .link-menu-col li {
   padding: 6px 0;
-  letter-spacing: .4px;
+  letter-spacing:var(--letter-spacing-xs);
   font-size: var(--body-font-size-s);
 }
 
@@ -122,8 +122,8 @@ footer {
 
 .footer-container-flex > div:last-child p {
   font-size: 12px;
-  letter-spacing: .6px;
-  line-height: 17px;
+  letter-spacing:var(--letter-spacing-xs);
+  line-height: var(--line-height-m);
 }
 
 .footer-container-flex > div:last-child p a {

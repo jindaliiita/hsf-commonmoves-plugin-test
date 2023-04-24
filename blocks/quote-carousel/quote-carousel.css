@@ -40,23 +40,23 @@
 .carousel-content .item .quote {
     font-family: var(--font-family-proxima);
     font-size: var(--body-font-size-xl);
-    font-weight: 300;
-    line-height: var(--line-height-l);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-m);
     padding: 30px 30px 0;
 }
 
 .carousel-content .item .author {
     font-family: var(--font-family-georgia);
-    font-weight: 600;
+    font-weight: var(--font-weight-semibold);
     font-size: var(--body-font-size-l);
-    line-height: var(--line-height-m);
+    line-height: var(--line-height-s);
     margin: 30px 0 0;
 }
 
 .carousel-content .item .position {
     font-family: var(--font-family-proxima);
     font-size: var(--body-font-size-s);
-    line-height: var(--line-height-m);
+    line-height: var(--line-height-s);
 }
 
 .quote-carousel .controls-container {

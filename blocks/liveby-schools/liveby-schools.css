@@ -16,7 +16,7 @@ main .section.liveby-schools-container p {
   padding-right: 15px;
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-m);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   justify-content: flex-end;
 }
 
@@ -26,7 +26,7 @@ main .section.liveby-schools-container p {
   color: var(--body-color);
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-m);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   border-color: var(--gray);
   border-radius: 2px;
   background: url("https://pages.liveby.com/static/media/triangle.f2d6139e.svg") 93% center no-repeat rgb(255 255 255);
@@ -55,7 +55,7 @@ main .section.liveby-schools-container p {
   padding-top: 0;
   padding-bottom: .5em;
   font-family: var(--font-family-georgia);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   font-size: var(--heading-font-size-s);
   border-bottom: 1px solid var(--border-light-gray);
 }
@@ -84,7 +84,7 @@ main .section.liveby-schools-container p {
   position: absolute;
   top: -.75em;
   font-family: var(--font-family-proxima);
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-xxs);
   text-transform: uppercase;
   opacity: .625;
@@ -94,9 +94,9 @@ main .section.liveby-schools-container p {
 .liveby-schools .school-lists section .school-item .school-details h3 {
   margin: 0;
   font-family: var(--font-family-georgia);
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   font-size: var(--heading-font-size-xs);
-  line-height: 1.5;
+  line-height: var(--line-height-reg);
   border-bottom: none;
 }
 
@@ -111,7 +111,7 @@ main .section.liveby-schools-container p {
 
 .liveby-schools .school-lists section .school-item .school-details li {
   font-size: var(--body-font-size-xs);
-  line-height: 1.5;
+  line-height: var(--line-height-m);
   list-style-type: disc;
   list-style-position: inside;
 }
@@ -123,7 +123,7 @@ main .section.liveby-schools-container p {
 }
 
 .liveby-schools .school-lists section .school-item .school-details li .info-value {
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
 .liveby-schools .school-lists section .school-item .school-rating {
@@ -138,7 +138,7 @@ main .section.liveby-schools-container p {
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-xxs);
   text-align: center;
-  line-height: 2.5;
+  line-height: var(--line-height-xl);
   opacity: .625;
 }
 

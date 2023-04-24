@@ -16,7 +16,7 @@
   padding: .5em .75em;
   font-size: var(--body-font-size-s);
   letter-spacing: normal;
-  line-height: 1.15;
+  line-height: var(--line-height-xs);
   color: var(--primary-color);
   background-color: var(--white-background);
   border: 1px solid var(--primary-color);
@@ -145,7 +145,7 @@
 .liveby-yelp.block .amenities ul .amenity-item > a .name {
   padding: 0 16px;
   flex-basis: 100%;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .liveby-yelp.block .amenities ul .amenity-item > a .rating,
