@@ -9,6 +9,11 @@
   display: block;
 }
 
+.hero.block .content .homes .loading-spinner span {
+  height: 44px;
+  width: 44px;
+}
+
 .hero.block .content .homes .mobile-header {
   display: none;
 }

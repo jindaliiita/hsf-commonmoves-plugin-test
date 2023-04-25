@@ -163,6 +163,7 @@ export default async function decorate(block) {
     html.innerHTML = await resp.text();
 
     const nav = document.createElement('nav');
+    nav.id = 'nav';
 
     const primaryWrapper = document.createElement('div');
     primaryWrapper.classList.add('nav-primary-wrapper');

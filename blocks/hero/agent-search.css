@@ -1,9 +1,0 @@
-/* Agent Search form specific CSS */
-
-.hero.block .content .agents {
-  display: none;
-}
-
-.hero.block .content .agents.active {
-  display: block;
-}

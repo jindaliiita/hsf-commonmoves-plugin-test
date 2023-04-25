@@ -34,6 +34,16 @@ function addListeners(wrapper, cbs) {
 }
 
 /**
+ * Returns the current selected country within the context of the provided parent.
+ *
+ * @param {HTMLElement} parent some ancestor of the country select
+ * @returns {String|undefined} the current selected country, if any.
+ */
+export function getSelected(parent) {
+  return parent.querySelector('.search-country-select-wrapper .select-items .selected')?.getAttribute('data-value');
+}
+
+/**
  * Closes the country select that is within the context of the provided parent.
  * @param {HTMLElement} parent some ancestor of the country select drop down to close
  */

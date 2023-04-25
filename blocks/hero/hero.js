@@ -2,8 +2,7 @@ import {
   preloadHeroImage,
 } from '../../scripts/scripts.js';
 
-import homes from './home-search.js';
-import agents from './agent-search.js';
+import buildSearch from './search/search.js';
 
 async function getPictures(block) {
   let pictures = block.querySelectorAll('picture');
@@ -32,56 +31,6 @@ function rotateImage(images) {
   next.classList.add('active');
 }
 
-async function buildSearch(ul) {
-  if (!ul) {
-    return undefined;
-  }
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('search');
-  const tabs = document.createElement('ul');
-  tabs.classList.add('options');
-  wrapper.append(tabs);
-
-  const items = ul.querySelectorAll('li');
-  for (let i = 0; i < items.length; i += 1) {
-    const item = items[i];
-    item.classList.add('option');
-    let form;
-    if (item.textContent.toLowerCase() === 'homes') {
-      // eslint-disable-next-line no-await-in-loop
-      form = await homes.buildForm();
-    } else if (item.textContent.toLowerCase() === 'agents') {
-      form = agents.buildForm();
-    }
-
-    if (form) {
-      const option = item.textContent.toLowerCase();
-      item.setAttribute('data-option', option);
-      tabs.append(item);
-      form.setAttribute('data-option', option);
-      wrapper.append(form);
-    }
-  }
-  const active = wrapper.querySelector('.search .options .option');
-  active.classList.add('active');
-  wrapper.querySelector(`form[data-option="${active.getAttribute('data-option')}"]`).classList.add('active');
-
-  wrapper.querySelectorAll('.search .options .option').forEach((option) => {
-    option.addEventListener('click', () => {
-      if (option.classList.contains('active')) {
-        return;
-      }
-      const selected = option.getAttribute('data-option');
-      option.parentElement.querySelector('.active').classList.remove('active');
-      option.classList.add('active');
-      wrapper.querySelector('form.active').classList.remove('active');
-      wrapper.querySelector(`form.${selected}`).classList.add('active');
-    });
-  });
-
-  return wrapper;
-}
-
 export default async function decorate(block) {
   const pictures = await getPictures(block);
   preloadHeroImage(pictures[0]);
@@ -98,9 +47,13 @@ export default async function decorate(block) {
     block.classList.add('has-content');
   }
 
-  const search = await buildSearch(block.querySelector('ul'));
-  if (search) {
-    contentWrapper.append(search);
+  const options = block.querySelector('ul');
+  if (options) {
+    const types = Object.values(options.querySelectorAll('li')).map((opt) => opt.textContent);
+    const search = await buildSearch(types);
+    if (search) {
+      contentWrapper.append(search);
+    }
   }
 
   const wrapper = document.createElement('div');

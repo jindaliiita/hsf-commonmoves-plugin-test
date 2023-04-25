@@ -148,6 +148,32 @@ main .section.center p {
 }
 
 /* common styles */
+@keyframes spinner-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0 0 0 / 35%);
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-spinner span {
+  display: block;
+  border: 8px solid var(--border-light-gray);
+  border-top: 8px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spinner-spin 2s linear infinite;
+}
+
 .background-lightgray {
   background: var(--lightgray);
 }

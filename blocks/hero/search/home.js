@@ -1,8 +1,19 @@
-import { decorateIcons } from '../../scripts/lib-franklin.js';
-import { BREAKPOINTS } from '../../scripts/scripts.js';
-import { build as buildCountrySelect, close as closeCountrySelect } from '../shared/search-countries/search-countries.js';
+import { decorateIcons } from '../../../scripts/lib-franklin.js';
+import {
+  build as buildCountrySelect,
+} from '../../shared/search-countries/search-countries.js';
 
-const noOverlayAt = BREAKPOINTS.medium;
+function observeForm() {
+  const script = document.createElement('script');
+  script.type = 'text/partytown';
+  script.innerHTML = `
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = '${window.hlx.codeBasePath}/blocks/hero/search/home-delayed.js';
+    document.head.append(script);
+  `;
+  document.head.append(script);
+}
 
 /**
  * Creates a Select dropdown for filtering search.
@@ -47,73 +58,6 @@ function getPlaceholder(country) {
   return 'Enter City, Address, Zip/Postal Code, Neighborhood, School or MLS#';
 }
 
-function addEventListeners(form) {
-  noOverlayAt.addEventListener('change', () => {
-    if (noOverlayAt.matches) {
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.overflowY = null;
-    }
-  });
-
-  form.querySelector('button.filter').addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    e.currentTarget.closest('form').classList.add('show-filters');
-    if (!noOverlayAt.matches) {
-      document.body.style.overflowY = 'hidden';
-    }
-  });
-
-  form.querySelectorAll('button.close').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const thisForm = e.currentTarget.closest('form');
-      thisForm.classList.remove('show-filters');
-      thisForm.querySelectorAll('.select-wrapper.open').forEach((select) => {
-        select.classList.remove('open');
-      });
-
-      if (!noOverlayAt.matches) {
-        document.body.style.overflowY = 'hidden';
-      }
-    });
-  });
-
-  form.querySelectorAll('.select-wrapper .selected').forEach((button) => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const wrapper = e.currentTarget.closest('.select-wrapper');
-      const wasOpen = wrapper.classList.contains('open');
-      const thisForm = e.currentTarget.closest('form');
-      thisForm.querySelectorAll('.select-wrapper.open').forEach((select) => {
-        select.classList.remove('open');
-      });
-      closeCountrySelect(thisForm);
-      if (!wasOpen) {
-        wrapper.classList.add('open');
-      }
-    });
-  });
-
-  form.querySelectorAll('.select-wrapper .select-items li').forEach((li) => {
-    li.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      const count = e.currentTarget.textContent;
-      const wrapper = e.currentTarget.closest('.select-wrapper');
-      wrapper.querySelector('.selected').textContent = count;
-      wrapper.querySelector('ul li.selected')?.classList.toggle('selected');
-      e.currentTarget.classList.add('selected');
-      wrapper.querySelector('select option[selected="selected"]')?.removeAttribute('selected');
-      wrapper.querySelector(`select option[value="${count.replace('+', '')}"]`).setAttribute('selected', 'selected');
-      wrapper.classList.toggle('open');
-    });
-  });
-}
-
 async function buildForm() {
   const form = document.createElement('form');
   form.classList.add('homes');
@@ -133,8 +77,9 @@ async function buildForm() {
     <div class="search-bar" role="search">
       <div class="search-suggester">
         <div class="suggester-input">
-          <input type="text" placeholder="${getPlaceholder()}" 
-              aria-label="${getPlaceholder()}">
+          <input type="text" placeholder="${getPlaceholder()}" aria-label="${getPlaceholder()}" name="keyword">
+          <input type="hidden" name="query">
+          <input type="hidden" name="type">
           <ul class="suggester-results">
             <li class="list-title">Please enter at least 3 characters.</li>
           </ul>
@@ -172,8 +117,8 @@ async function buildForm() {
   if (countrySelect) {
     form.querySelector('.search-suggester').prepend(countrySelect);
   }
-  addEventListeners(form);
   decorateIcons(form);
+  observeForm();
   return form;
 }
 
