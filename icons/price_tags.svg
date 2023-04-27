@@ -1,9 +1,9 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     class="filter"
+     class="price-tags"
      role="img"
      aria-hidden="true"
      tabindex="-1">
-    <use xlink:href="/icons/icons.svg#filter"
+    <use xlink:href="/icons/icons.svg#price-tags"
          role="presentation"
          aria-hidden="true"
          tabindex="-1"></use>

@@ -1,7 +1,7 @@
 .cards.block {
   display: flex;
   flex-direction: column;
-  max-width: 100vw;
+  align-items: center;
 }
 
 .cards-item {
@@ -11,19 +11,20 @@
   flex-direction: column;
 }
 
-.cards.block .cards-card-image img {
+/* Default experience */
+.cards-item .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   aspect-ratio: 3/2;
 }
 
-.cards.block .cards-card-image {
+.cards-item .card-image {
   display: block;
   position: relative;
 }
 
-.cards.block .cards-card-image p {
+.cards-item .card-image p {
   position: absolute;
   bottom: 0;
   background: var(--lightgrey);
@@ -33,99 +34,86 @@
   letter-spacing: var(--letter-spacing-l)
 }
 
-.cards.block .cards-card-body p {
+.cards-item .card-body p {
   margin: 8px 0 24px;
 }
 
-.cards.block .cards-card-body h3 {
+.cards-item .card-body h3 {
   padding-top: 16px;
 }
 
-.cards.block .cards-card-body .button-container {
+.cards-item .card-body .button-container {
   margin: 16px 0 0 ;
   height: 40px;
   display: flex;
 }
 
-.cards.block .cards-card-body .button-container a {
+.cards-item .card-body .button-container a {
   padding: 10px 24px;
   border: 1px solid var(--black);
   color: var(--black);
 }
 
-.cards-container .default-content-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 32px 0;
+/* Icons variation */
+.cards.block.icons .cards-item {
+  flex-direction: row;
+  padding: 15px 0 25px;
+  margin-bottom: 0;
+  width: 100%;
+  border-top: 1px solid var(--grey);
 }
 
-.cards-container .default-content-wrapper h4,
-.cards-checklist .cards-card-body h4{
+.cards.block.icons .cards-item .card-icon {
+  margin-top: .5em;
+  margin-right: 1em;
+}
+
+.cards.block.icons .cards-item .card-icon .icon {
+  display: block;
+}
+
+.cards.block.icons .cards-item .icon svg {
+  width: 35px;
+  height: 35px;
+}
+
+.cards.block.icons .cards-item .card-body h4 {
   text-transform: uppercase;
   font-family: var(--font-family-proxima);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-l);
+  letter-spacing: var(--letter-spacing-m);
   line-height: var(--line-height-m);
-  text-align: center;
 }
 
-.cards-checklist .cards-item {
-  border-top: 1px solid var(--grey);
-  padding: 15px 0 25px;
-  flex-direction: row;
+.cards.block.icons .cards-item .card-body p {
   margin-bottom: 0;
+  letter-spacing: var(--letter-spacing-xs);
 }
 
-.cards-checklist .cards-card-body h4 {
-  text-align: left;
-}
-
-.cards-checklist .checkmark {
-  width: 32px;
-  height: 32px;
-  background: url('../../icons/checkmark.svg') no-repeat;
-  background-size: 100%;
-  background-position: 50% 50%;
-  margin: 6px 16px 0 0;
-
-}
-
-.cards-checklist .cards-card-body {
-  width: calc(100% - 32px);
-}
-
-.cards.block.cards-checklist .cards-card-body p{
-  margin-bottom: 0;
-}
-
-@media (min-width: 992px) {
-  .section.cards-container {
-    padding: 55px 0 60px;
+@media screen and (min-width: 600px) {
+  .cards.block.icons {
+    margin: 0 auto;
+    max-width: 83.333%;
   }
+}
 
-
+@media (min-width: 900px) {
   .cards.block {
     flex-direction: row;
   }
 
-  .cards.cards-3-cols .cards-item {
-    width: 33.33%;
+  .cards.block .cards-item {
+    flex: 1;
     margin-bottom: 0;
   }
 
-  .cards.cards-2-cols .cards-item {
-    width: 50%;
-    margin-bottom: 0;
+  .cards.block.icons {
+    flex-flow: row wrap;
+    align-items: stretch;
+    column-gap: 20px;
   }
 
-  .cards.cards-checklist.block {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .cards.cards-2-cols.cards-checklist .cards-item {
-    width: calc(100% - 20px);
-    margin-bottom: 0;
+  .cards.block.icons .cards-item {
+    flex-basis: calc(50% - 10px);
   }
 }

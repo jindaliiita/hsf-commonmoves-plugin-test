@@ -306,6 +306,13 @@ form button[type="submit"]:hover {
   color: var(--body-color);
 }
 
+@media screen and (max-width: 599px) {
+  .section.hide-on-mobile,
+  .section .block.hide-on-mobile {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 600px) {
   h2 {
     font-size: var(--heading-font-size-l);
