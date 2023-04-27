@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>UI/Social/Facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="30" height="30" rx="15"></rect>
+    </defs>
+    <g id="----◼︎-UI-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="UI-Elements/Icons" transform="translate(-664.000000, -259.000000)">
+            <g id="UI/Social/Facebook" transform="translate(664.000000, 259.000000)">
+                <g id="Group-2" stroke-width="1">
+                    <g id="COLORS/App/Green---9AA268">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g id="Colors/Dark-Gray" mask="url(#mask-2)" fill="#3A3A3A">
+                            <rect id="3A3A3A" x="0" y="0" width="30" height="30"></rect>
+                        </g>
+                    </g>
+                </g>
+                <path d="M13.0605706,23.3770618 L13.0605706,15.3514936 L10.40042,15.3514936 L10.40042,12.2238036 L13.0605706,12.2238036 L13.0605706,9.91741888 C13.0605706,7.24013401 14.6713039,5.78278876 17.0232952,5.78278876 C18.1499343,5.78278876 19.118487,5.86784062 19.40042,5.90592907 L19.40042,8.70339592 L17.7692884,8.7041355 C16.4900266,8.7041355 16.2419693,9.32131622 16.2419693,10.2265639 L16.2419693,12.2238036 L19.2929649,12.2238036 L18.8959275,15.3514936 L16.2419693,15.3514936 L16.2419693,23.3770618" id="Fill-12" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

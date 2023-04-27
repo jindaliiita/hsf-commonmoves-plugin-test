@@ -21,7 +21,6 @@
 .carousel-content {
     display: flex;
     transition: transform 200ms;
-    width: calc(100vw - 2*var(--section-padding));
     flex-wrap: nowrap;
 }
 

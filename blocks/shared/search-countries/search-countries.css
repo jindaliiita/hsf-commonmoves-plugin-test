@@ -48,7 +48,7 @@
   position: absolute;
   top: 36px;
   background: var(--white-background);
-  border: 1px solid var(--border-medium-gray);
+  border: 1px solid var(--border-medium-grey);
   z-index: 10;
 }
 
@@ -58,7 +58,7 @@
 
 .search-country-select-wrapper .select-items .item:hover,
 .search-country-select-wrapper .select-items .item.selected {
-  background-color: var(--lightgray);
+  background-color: var(--lightgrey);
 }
 
 .search-country-select-wrapper .select-items .item.has-children::after {
@@ -76,7 +76,7 @@
   top: 0;
   left: 100%;
   background-color: var(--white-background);
-  border: 1px solid var(--border-medium-gray);
+  border: 1px solid var(--border-medium-grey);
 }
 
 .search-country-select-wrapper .select-items .item:hover > ul {

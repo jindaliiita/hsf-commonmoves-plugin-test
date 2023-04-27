@@ -26,7 +26,7 @@
 .cards.block .cards-card-image p {
   position: absolute;
   bottom: 0;
-  background: var(--lightgray);
+  background: var(--lightgrey);
   text-transform: uppercase;
   padding: 1em 1em 0 0;
   width: calc((2 / 3) * 100%);
@@ -71,7 +71,7 @@
 }
 
 .cards-checklist .cards-item {
-  border-top: 1px solid var(--gray);
+  border-top: 1px solid var(--grey);
   padding: 15px 0 25px;
   flex-direction: row;
   margin-bottom: 0;

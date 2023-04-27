@@ -62,7 +62,7 @@
   width: calc(50% - 5px);
   margin: 8px 0;
   padding: 0 15px;
-  border: 1px solid var(--border-light-gray);
+  border: 1px solid var(--border-light-grey);
   text-overflow: ellipsis;
 }
 
@@ -98,7 +98,7 @@
   right: 0;
   max-height: 150px;
   overflow-y: scroll;
-  border: 1px solid var(--border-light-gray);
+  border: 1px solid var(--border-light-grey);
   border-top: none;
   background-color: var(--white-background);
 }
@@ -114,7 +114,7 @@
 }
 
 .hero.block .content .homes .filters .select-wrapper .select-items li.selected {
-  background-color: var(--lightgray);
+  background-color: var(--lightgrey);
 }
 
 .hero.block .content .homes .submit {
@@ -206,7 +206,7 @@
     padding: 5px 10px;
     flex-wrap: nowrap;
     column-gap: 10px;
-    border: 1px solid var(--border-medium-gray);
+    border: 1px solid var(--border-medium-grey);
     background-color: var(--white-background);
   }
 

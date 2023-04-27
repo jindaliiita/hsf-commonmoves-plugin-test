@@ -18,14 +18,25 @@
   --primary-color: #552448;
   --primary-color-lighten: rgba(98 98 121 / 12.5%);
   --body-color: #3a3a3a;
-  --lightgray: #f6f6f6;
+  --lightgrey: #f6f6f6;
+  --darkgrey: #797676;
   --black: #000;
-  --gray: #d8d8d8;
+  --grey: #d8d8d8;
   --white: #fff;
+  --greyblue: #36758d;
   --white-background: #fff;
-  --border-light-gray: #d8d8d8;
-  --border-medium-gray: #aaa;
+  --border-light-grey: #d8d8d8;
+  --border-medium-grey: #aaa;
   --primary-color-svg-filter: invert(14%) sepia(47%) saturate(1309%) hue-rotate(272deg) brightness(96%) contrast(89%);
+  --seller-advice: rgb(240 240 224);
+  --home-improvement: rgb(252 245 217);
+  --finance: rgb(247 232 229);
+  --lifestyle: rgb(229 249 247);
+  --general: rgb(229 222 227);
+  --buyer-advice: rgb(228 232 234);
+  --grey-blog-category: #aaa;
+  --secondary-grey: #EFEFEF;
+  --transparent: #FFFFFFE6;
 
   /* Fonts */
   --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
@@ -61,8 +72,8 @@
   --line-height-s  : 1.25em;
   --line-height-m   : 1.5em;
   --line-height-l   : 2em;
-  --line-height-xl   : 2.5em;  
- 
+  --line-height-xl   : 2.5em;
+
   /* Common spacing values */
   --letter-spacing-xs : 0.04em;
   --letter-spacing-s  : 0.06em;
@@ -119,12 +130,20 @@ h4 {
   font-weight: var(--font-weight-heavier);
 }
 
-p {
+p, span {
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-reg);
   line-height: var(--line-height-m);
+}
+
+b, strong {
+  font-weight: var(--font-weight-bold);
+}
+
+i {
+  font-style: italic;
 }
 
 header {
@@ -168,14 +187,10 @@ main .section.center p {
 
 .loading-spinner span {
   display: block;
-  border: 8px solid var(--border-light-gray);
+  border: 8px solid var(--border-light-grey);
   border-top: 8px solid var(--primary-color);
   border-radius: 50%;
   animation: spinner-spin 2s linear infinite;
-}
-
-.background-lightgray {
-  background: var(--lightgray);
 }
 
 .background-white {
@@ -201,6 +216,10 @@ main .section.center p {
   padding: 13px 25px;
   height: 40px;
   display: block;
+}
+
+.text-up {
+  text-transform: uppercase;
 }
 
 /* common styles */

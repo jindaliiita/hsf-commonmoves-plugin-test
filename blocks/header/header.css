@@ -54,7 +54,7 @@ body.light-nav {
 
 .header.block nav[aria-expanded="true"] .nav-logo {
   background-color: var(--white-background);
-  border-bottom: 1px solid var(--border-light-gray);
+  border-bottom: 1px solid var(--border-light-grey);
 }
 
 .header.block nav .nav-logo a {
@@ -196,7 +196,7 @@ body.light-nav {
 
 .header.block nav[aria-expanded="true"] .nav-hamburger {
   background-color: var(--white-background);
-  border-bottom: 1px solid var(--border-light-gray);
+  border-bottom: 1px solid var(--border-light-grey);
 }
 
 .header.block nav .nav-hamburger .close {
@@ -249,7 +249,7 @@ body.light-nav {
   .header.block nav[aria-expanded="true"] .nav-profile {
     grid-area: profile;
     height: 40px;
-    border-bottom: 1px solid var(--border-light-gray);
+    border-bottom: 1px solid var(--border-light-grey);
   }
 
   .header.block nav .nav-profile > ul {
@@ -360,7 +360,7 @@ body.light-nav {
   }
 
   .header.block nav[aria-expanded="true"] .nav-sections > ul > li:hover > a {
-    background-color: var(--lightgray);
+    background-color: var(--lightgrey);
   }
 
   .header.block nav .nav-sections > ul > li.nav-drop[aria-expanded="true"] > a,
