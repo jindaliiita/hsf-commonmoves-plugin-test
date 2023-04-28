@@ -1,132 +1,120 @@
-.quote-carousel-container {
-    padding-top: 35px;
-    padding-bottom: 35px;
-    border-top: 1px solid var(--body-color);
-    border-bottom: 1px solid var(--body-color);
-    background-color: var(--white);
-}
-
-.quote-carousel-container .default-content-wrapper h4 {
-    padding: 0 15px 15px
-}
-
 .quote-carousel.block {
-    display:flex;
-    flex-direction: column;
-    overflow: hidden;
-    border: 1px solid var(--body-color);
-    padding-bottom: 50px;
+  display: flex;
+  padding: 2em 0;
+  flex-direction: column;
+  overflow: hidden;
+  border-bottom: 1px solid var(--body-color);;
+  border-top: 1px solid var(--body-color);
 }
 
-.carousel-content {
-    display: flex;
-    transition: transform 200ms;
-    flex-wrap: nowrap;
+.quote-carousel.block .title {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-xs);
+  letter-spacing: var(--letter-spacing-m);
+  margin-bottom: 1em;
 }
 
-.carousel-content .item {
-    display:flex;
-    flex-direction: column;
-    flex: 0 0 100%;
+.quote-carousel.block .carousel-content {
+  display: flex;
+  transition: transform 200ms;
+  flex-wrap: nowrap;
 }
 
-.carousel-content .item p {
-    align-self: center;
-    text-align: center;
-    letter-spacing: normal;
+.quote-carousel.block .carousel-content .item {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 100%;
 }
 
-.carousel-content .item .quote {
-    font-family: var(--font-family-proxima);
-    font-size: var(--body-font-size-xl);
-    font-weight: var(--font-weight-light);
-    line-height: var(--line-height-m);
-    padding: 30px 30px 0;
+.quote-carousel.block .carousel-content .item p {
+  align-self: center;
+  text-align: center;
+  letter-spacing: normal;
 }
 
-.carousel-content .item .author {
-    font-family: var(--font-family-georgia);
-    font-weight: var(--font-weight-semibold);
-    font-size: var(--body-font-size-l);
-    line-height: var(--line-height-s);
-    margin: 30px 0 0;
+.quote-carousel.block .carousel-content .item .quote {
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-xl);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-s);
+  padding: 30px 25px 0;
 }
 
-.carousel-content .item .position {
-    font-family: var(--font-family-proxima);
-    font-size: var(--body-font-size-s);
-    line-height: var(--line-height-s);
+.quote-carousel.block .carousel-content .item .author {
+  font-family: var(--font-family-georgia);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--body-font-size-l);
+  line-height: var(--line-height-s);
+  margin: 30px 0 0;
 }
 
-.quote-carousel .controls-container {
-    align-self: flex-end;
-    display:none;
+.quote-carousel.block .carousel-content .item .position {
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-s);
+  line-height: var(--line-height-m);
 }
 
-.quote-carousel .controls-container .pagination {
-    font-size: var(--body-font-size-xs);
-    padding-right: 16px;
+.quote-carousel.block .controls-container {
+  margin-top: 2em;
+  display: flex;
+  align-self: center;
+  align-items: center;
 }
 
-.quote-carousel .controls-container div{
-    display: flex;
-    align-self: flex-end;
+.quote-carousel.block .controls-container .pagination {
+  display: flex;
+  min-width: 100px;
+  padding: 0 16px;
+  justify-content: center;
+  font-size: var(--body-font-size-xs);
 }
 
-.quote-carousel .controls-container button {
-    background-color: var(--white);
-    border: none;
-    padding: 0;
+.quote-carousel.block .controls-container .pagination > span {
+  flex-basis: 33%;
+  text-align: center;
 }
 
-.controls-container svg {
-    width: 20px;
-    height:20px;
-
+.quote-carousel.block .controls-container button {
+  background-color: var(--white);
+  border: none;
+  padding: 0;
+  height: var(--body-font-size-m);
 }
 
-.controls-container [name="prev"] svg {
-    transform: rotate(-180deg);
+.quote-carousel.block .controls-container svg {
+  width: var(--body-font-size-m);
+  height: var(--body-font-size-m);
+}
+
+.quote-carousel.block .controls-container [name="prev"] svg {
+  transform: rotate(-180deg);
 }
 
 @media (min-width: 600px) {
-    .quote-carousel-container {
-        padding-top: 130px;
-        padding-bottom: 80px;
-    }
+  .quote-carousel.block .title {
+    margin-bottom: 2em;
+  }
 
-    .quote-carousel-container .default-content-wrapper h4 {
-        padding: 0 15px 40px
-    }
-
-    .quote-carousel.block {
-        border-top: none;
-        border-left: none;
-        border-right: none;
-    }
-
-    .carousel-content .item .quote {
-        padding: 0;
-    }
-
-    .quote-carousel .controls-container {
-        display: flex;
-    }
+  .quote-carousel.block .carousel-content .item .quote {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: var(--line-height-s);
+  }
 }
 
-@media (min-width: 992px) {
-    .quote-carousel-container {
-        padding-bottom: 100px;
-    }
+@media (min-width: 900px) {
+  .quote-carousel.block .carousel-content .item .quote {
+    padding: 0;
+    text-align: center;
+    width: 66.66%;
+  }
+}
 
-    .carousel-content .item .quote {
-        font-size: var(--body-font-size-xxxl);
-        padding: 0;
-        text-align: center;
-        width: 66.66%;
-    }
-
-    .quote-carousel-container .default-content-wrapper h4 {
-        padding: 0 15px 15px
-    }
+@media (min-width: 1200px) {
+  .quote-carousel.block .carousel-content .item .quote {
+    font-size: var(--body-font-size-xxxl);
+    line-height: var(--line-height-s);
+  }
 }
