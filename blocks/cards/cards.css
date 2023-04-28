@@ -1,10 +1,22 @@
-.cards.block {
+.cards.block,
+.cards.block .cards-list {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.cards-item {
+.cards.block .title {
+  padding: 2em 0;
+}
+
+.cards.block .title h4 {
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: var(--letter-spacing-l);
+  line-height: var(--line-height-m);
+}
+
+.cards.block .cards-list .cards-item {
   padding: 0 1em;
   margin-bottom: 30px;
   display: flex;
@@ -12,50 +24,54 @@
 }
 
 /* Default experience */
-.cards-item .card-image img {
+.cards.block .cards-list .cards-item .card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   aspect-ratio: 3/2;
 }
 
-.cards-item .card-image {
+.cards.block .cards-list .cards-item .card-image {
   display: block;
   position: relative;
 }
 
-.cards-item .card-image p {
+.cards.block .cards-list .cards-item .card-image p {
   position: absolute;
   bottom: 0;
-  background: var(--lightgrey);
+  background: var(--light-grey);
   text-transform: uppercase;
   padding: 1em 1em 0 0;
+  margin: 0;
   width: calc((2 / 3) * 100%);
   letter-spacing: var(--letter-spacing-l)
 }
 
-.cards-item .card-body p {
-  margin: 8px 0 24px;
-}
-
-.cards-item .card-body h3 {
+.cards.block .cards-list .cards-item .card-body h3 {
   padding-top: 16px;
+  font-size: var(--body-font-size-l);
+  font-weight: var(--font-weight-bold);
 }
 
-.cards-item .card-body .button-container {
+.cards.block .cards-list .cards-item .card-body p {
+  margin: 8px 0 24px;
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.cards.block .cards-list .cards-item .card-body .button-container {
   margin: 16px 0 0 ;
   height: 40px;
   display: flex;
 }
 
-.cards-item .card-body .button-container a {
+.cards.block .cards-list .cards-item .card-body .button-container a {
   padding: 10px 24px;
   border: 1px solid var(--black);
   color: var(--black);
 }
 
 /* Icons variation */
-.cards.block.icons .cards-item {
+.cards.block.icons .cards-list .cards-item {
   flex-direction: row;
   padding: 15px 0 25px;
   margin-bottom: 0;
@@ -63,21 +79,21 @@
   border-top: 1px solid var(--grey);
 }
 
-.cards.block.icons .cards-item .card-icon {
+.cards.block.icons .cards-list .cards-item .card-icon {
   margin-top: .5em;
   margin-right: 1em;
 }
 
-.cards.block.icons .cards-item .card-icon .icon {
+.cards.block.icons .cards-list .cards-item .card-icon .icon {
   display: block;
 }
 
-.cards.block.icons .cards-item .icon svg {
+.cards.block.icons .cards-list .cards-item .icon svg {
   width: 35px;
   height: 35px;
 }
 
-.cards.block.icons .cards-item .card-body h4 {
+.cards.block.icons .cards-list .cards-item .card-body h4 {
   text-transform: uppercase;
   font-family: var(--font-family-proxima);
   font-weight: var(--font-weight-semibold);
@@ -85,7 +101,7 @@
   line-height: var(--line-height-m);
 }
 
-.cards.block.icons .cards-item .card-body p {
+.cards.block.icons .cards-list .cards-item .card-body p {
   margin-bottom: 0;
   letter-spacing: var(--letter-spacing-xs);
 }
@@ -95,19 +111,23 @@
     margin: 0 auto;
     max-width: 83.333%;
   }
+
+  .cards.block .cards-list .cards-item .card-body h3 {
+    font-size: var(--heading-font-size-m);
+  }
 }
 
 @media (min-width: 900px) {
-  .cards.block {
+  .cards.block .cards-list {
     flex-direction: row;
   }
 
-  .cards.block .cards-item {
+  .cards.block .cards-list .cards-item {
     flex: 1;
     margin-bottom: 0;
   }
 
-  .cards.block.icons {
+  .cards.block.icons .cards-list {
     flex-flow: row wrap;
     align-items: stretch;
     column-gap: 20px;
