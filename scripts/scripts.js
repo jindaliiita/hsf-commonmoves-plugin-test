@@ -80,6 +80,41 @@ function buildLiveByMetadata(main) {
 }
 
 /**
+ * Build Floating image block
+ * @param {Element} main The container element
+ */
+function buildFloatingImages(main) {
+  main.querySelectorAll('.section-metadata').forEach((metadata) => {
+    let style;
+    [...metadata.querySelectorAll(':scope > div')].every((div) => {
+      const match = div.children[1]?.textContent.toLowerCase().trim().match(/(image-(left|right))/);
+      if (div.children[0]?.textContent.toLowerCase().trim() === 'style' && match) {
+        [, style] = match;
+        return false;
+      }
+      return true;
+    });
+    if (style) {
+      const section = metadata.parentElement;
+      const left = [];
+      const right = [];
+      [...section.children].forEach((child) => {
+        const picture = child.querySelector(':scope > picture');
+        if (picture) {
+          right.push(picture);
+          child.remove();
+        } else if (!child.classList.contains('section-metadata')) {
+          left.push(child);
+        }
+      });
+      const block = buildBlock('floating-images', [[{ elems: left }, { elems: right }]]);
+      block.classList.add(style);
+      section.prepend(block);
+    }
+  });
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -87,38 +122,10 @@ function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
     buildLiveByMetadata(main);
+    buildFloatingImages(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
-  }
-}
-
-/**
- * Build Floating image block
- * @param {Element} main The container element
- */
-function buildFloatingImages(main) {
-  const sections = main.querySelectorAll('.section.image-right .default-content-wrapper, .section.image-left .default-content-wrapper');
-  if (sections) {
-    sections.forEach((section) => {
-      const image = document.createElement('div');
-      image.classList.add('image');
-      const picture = section.querySelector('picture');
-      if (picture) {
-        // Remove the <p> tag wrapper;
-        const parent = picture.parentElement;
-        image.prepend(picture);
-        parent.remove();
-      }
-
-      const content = section.children;
-      const contentContainer = document.createElement('div');
-      contentContainer.append(...content);
-      const left = document.createElement('div');
-      left.classList.add('content');
-      left.append(contentContainer);
-      section.append(image, left);
-    });
   }
 }
 
@@ -134,7 +141,6 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
-  buildFloatingImages(main);
 }
 
 /**
