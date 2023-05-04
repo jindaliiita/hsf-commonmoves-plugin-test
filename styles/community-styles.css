@@ -86,19 +86,11 @@ main.liveby-community .hero-container .hero.block .content h1 {
 
 main.liveby-community h2 {
   margin-bottom: 1em;
-  font-family: var(--font-family-georgia);
-  font-size: var(--heading-font-size-m);
-  font-weight: var(--font-weight-semibold);
   text-align: center;
-  line-height: var(--line-height-xs);
   color: var(--body-color);
 }
 
 @media screen and (min-width: 600px) {
-  main.liveby-community h2 {
-    font-size: var(--heading-font-size-l);
-  }
-
   main.liveby-community .hero-container .hero.block .content {
     width: unset;
   }
@@ -120,14 +112,6 @@ main.liveby-community h2 {
 }
 
 @media screen and (min-width: 1200px) {
-  main.liveby-community h2 {
-    font-size: var(--heading-font-size-l);
-  }
-
-  main.liveby-community h1 {
-    font-size: var(--heading-font-size-xxl);
-  }
-
   main.liveby-community .hero-container {
     padding: 0 15px;
   }

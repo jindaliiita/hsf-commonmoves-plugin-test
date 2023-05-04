@@ -16,17 +16,17 @@
   /* Colors */
   --primary-color: #552448;
   --primary-color-lighten: rgba(98 98 121 / 12.5%);
-  --body-color: #3a3a3a;
-  --lightgrey: #f6f6f6;
-  --darkgrey: #797676;
-  --black: #000;
-  --grey: #d8d8d8;
-  --white: #fff;
-  --greyblue: #36758d;
-  --white-background: #fff;
-  --border-light-grey: #d8d8d8;
-  --border-medium-grey: #aaa;
   --primary-color-svg-filter: invert(14%) sepia(47%) saturate(1309%) hue-rotate(272deg) brightness(96%) contrast(89%);
+  --body-color: #3a3a3a;
+  --platinum: #e7e7e7;
+  --light-grey: #f6f6f6;
+  --grey: #aaa;
+  --dark-grey: #797676;
+  --black: #000;
+  --white: #fff;
+  --grey-blue: #36758d;
+
+  /* Blog Colors (only?) */
   --seller-advice: rgb(240 240 224);
   --home-improvement: rgb(252 245 217);
   --finance: rgb(247 232 229);
@@ -34,11 +34,13 @@
   --general: rgb(229 222 227);
   --buyer-advice: rgb(228 232 234);
   --grey-blog-category: #aaa;
+
+  /* Needed? */
   --secondary-grey: #EFEFEF;
   --transparent: #FFFFFFE6;
 
   /* Fonts */
-  --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Arial', sans-serif;
+  --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Times New Roman', serif;
   --font-family-proxima: 'ProximaNova', 'ProximaNova Fallback', 'Arial', sans-serif;
   --font-family-gotham: 'Gotham', 'Gotham Fallback', 'Arial', sans-serif;
   --font-family-fontawesome: 'FontAwesome';
@@ -80,17 +82,13 @@
   --letter-spacing-l  : 0.13em;
 
   /* Common dimensions */
-  --max-page-width: 1350px;
+  --full-page-width: 100vw;
+  --wide-page-width: 1600px;
+  --normal-page-width: 1350px;
 
   /* nav height */
   --nav-height: 65px;
   --section-padding: 15px;
-}
-
-@media screen and (min-width: 1200px) {
-  :root {
-    --nav-height: 140px;
-  }
 }
 
 *, *::before, *::after {
@@ -109,7 +107,7 @@ body {
 
 h2 {
   font-family: var(--font-family-georgia);
-  font-size: var(--heading-font-size-xl);
+  font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-m);
 }
@@ -127,12 +125,24 @@ h4 {
   font-weight: var(--font-weight-semibold);
 }
 
+h5 {
+  font-family: var(--font-family-proxima);
+  font-size: var(--heading-font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-xs);
+  line-height: var(--line-height-m);
+}
+
 p, span {
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-reg);
   line-height: var(--line-height-m);
+}
+
+p {
+  margin-bottom: 1.5em;
 }
 
 b, strong {
@@ -147,18 +157,44 @@ header {
   height: var(--nav-height);
 }
 
-main {
-  max-width: 1600px;
-  margin: 0 auto;
-}
-
 main .section {
-  max-width: var(--max-page-width);
+  max-width: var(--normal-page-width);
   margin: 0 auto 3.5em;
   padding-left: var(--section-padding);
   padding-right: var(--section-padding);
 }
 
+main .section.no-margin {
+  margin: 0;
+}
+
+main .section.wide {
+  max-width: var(--wide-page-width);
+}
+
+main .section.full-width {
+  max-width: var(--full-page-width);
+}
+
+main .section.full-width > div {
+  max-width: var(--normal-page-width);
+  margin: 0 auto;
+}
+
+main .section.grey-background {
+  background: var(--light-grey);
+}
+
+main .section.white-background {
+  background: var(--white);
+}
+
+main .section.padding {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+/* Center rules for a section, but don't apply it to blocks! */
 main div[data-align="center"] h1,
 main div[data-align="center"] h2,
 main div[data-align="center"] h3,
@@ -166,23 +202,24 @@ main div[data-align="center"] h4,
 main div[data-align="center"] h5,
 main div[data-align="center"] h6,
 main div[data-align="center"] p,
-main .section.center h1,
-main .section.center h2,
-main .section.center h3,
-main .section.center h4,
-main .section.center h5,
-main .section.center h6,
-main .section.center p {
+main .section.center .default-content-wrapper h1,
+main .section.center .default-content-wrapper h2,
+main .section.center .default-content-wrapper h3,
+main .section.center .default-content-wrapper h4,
+main .section.center .default-content-wrapper h5,
+main .section.center .default-content-wrapper h6,
+main .section.center .default-content-wrapper p {
   text-align: center;
 }
 
-main .section.grey-background {
-  border-top: 1px solid var(--body-color);
-  background: var(--lightgrey);
+/* stylelint-disable-next-line no-descending-specificity */
+main .section .default-content-wrapper h2 {
+  margin-bottom: .5em;
 }
 
-main .section .block.hide-on-mobile {
-  display: none;
+/* stylelint-disable-next-line no-descending-specificity */
+main .section .default-content-wrapper h4 {
+  margin-bottom: 1.25em;
 }
 
 /* common styles */
@@ -206,35 +243,27 @@ main .section .block.hide-on-mobile {
 
 .loading-spinner span {
   display: block;
-  border: 8px solid var(--border-light-grey);
+  border: 8px solid var(--grey);
   border-top: 8px solid var(--primary-color);
   border-radius: 50%;
   animation: spinner-spin 2s linear infinite;
 }
 
-.background-white {
-  background: var(--white);
-}
-
 .button-container a {
+  display: inline-block;
+  padding: .75em 1.5em;
   font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-s);
   font-weight: var(--font-weight-normal);
   letter-spacing:var(--letter-spacing-s);
-  line-height:normal;
+  line-height: var(--line-height-s);
   text-transform: uppercase;
   text-decoration: none;
-  color: var(--body-color);
-}
-
-.button.secondary {
-  background: var(--white);
-  border: 1px solid var(--body-color);
   text-align: center;
-  vertical-align: middle;
-  padding: 13px 25px;
-  height: 40px;
-  display: block;
+  color: var(--body-color);
+  border: 1px solid var(--body-color);
+  background-color: var(--white);
+  cursor: pointer;
 }
 
 .text-up {
@@ -259,13 +288,13 @@ main .section .block.hide-on-mobile {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #212529;
-  opacity: .5;
+  background-color: var(--dark-grey);
+  opacity: .75;
 }
 
 .modal .modal-content {
   padding: 2em 3em;
-  border: 1px solid var(--border-medium-grey);
+  border: 1px solid var(--grey);
   background-color: var(--white);
   z-index: 101;
 }
@@ -296,7 +325,7 @@ form button[type="submit"] {
   line-height: var(--line-height-m);
   color: var(--white);
   background-color: var(--primary-color);
-  border: 1px solid var(--border-medium-grey);
+  border: 1px solid var(--grey);
 }
 
 form button[type="submit"]:hover {
@@ -313,11 +342,19 @@ form button[type="submit"]:hover {
 
 @media screen and (min-width: 600px) {
   h2 {
-    font-size: var(--heading-font-size-l);
+    font-size: var(--heading-font-size-xxl);
+    line-height: var(--line-height-s);
   }
 
-  main .section .block.hide-on-mobile {
-    display: block;
+  main .section.narrow {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  :root {
+    --nav-height: 140px;
   }
 }
 
@@ -325,22 +362,22 @@ form button[type="submit"]:hover {
   font-family: 'GeorgiaPro Fallback';
   font-style: normal;
   font-weight: 600;
-  src: local('Arial Bold');
-  ascent-override: 92.25%;
-  descent-override: 22.06%;
+  src: local('Times New Roman Bold');
+  ascent-override: 82.81%;
+  descent-override: 19.80%;
   line-gap-override: 0.00%;
-  size-adjust: 99.40%;
+  size-adjust: 110.73%;
 }
 
 @font-face {
   font-family: 'GeorgiaPro Fallback';
   font-style: normal;
   font-weight: 700;
-  src: local('Arial Bold');
-  ascent-override: 85.62%;
-  descent-override: 20.47%;
+  src: local('Times New Roman Bold');
+  ascent-override: 76.85%;
+  descent-override: 18.37%;
   line-gap-override: 0.00%;
-  size-adjust: 107.10%;
+  size-adjust: 119.32%;
 }
 
 @font-face {
@@ -390,7 +427,7 @@ form button[type="submit"]:hover {
 @font-face {
   font-family: 'Gotham Fallback';
   font-style: normal;
-  font-weight: var(--font-weight-normal);
+  font-weight: 400;
   src: local('Arial');
   ascent-override: 85.14%;
   descent-override: 21.29%;

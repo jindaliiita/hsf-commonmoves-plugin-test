@@ -47,8 +47,8 @@
   display: none;
   position: absolute;
   top: 36px;
-  background: var(--white-background);
-  border: 1px solid var(--border-medium-grey);
+  background: var(--white);
+  border: 1px solid var(--grey);
   z-index: 10;
 }
 
@@ -58,7 +58,7 @@
 
 .search-country-select-wrapper .select-items .item:hover,
 .search-country-select-wrapper .select-items .item.selected {
-  background-color: var(--lightgrey);
+  background-color: var(--light-grey);
 }
 
 .search-country-select-wrapper .select-items .item.has-children::after {
@@ -75,8 +75,8 @@
   position: absolute;
   top: 0;
   left: 100%;
-  background-color: var(--white-background);
-  border: 1px solid var(--border-medium-grey);
+  background-color: var(--white);
+  border: 1px solid var(--grey);
 }
 
 .search-country-select-wrapper .select-items .item:hover > ul {
@@ -90,7 +90,7 @@
   left: -2px;
   height: 36px;
   width: 4px;
-  background-color: var(--white-background);
+  background-color: var(--white);
 }
 
 .search-country-select-wrapper .select-items .item:hover > ul > li {

@@ -2,7 +2,6 @@
 
 main .section.hero-container {
   padding: 0;
-  max-width: unset;
 }
 
 .hero.block {
@@ -71,10 +70,6 @@ main .section.hero-container {
 
 .hero.block > div .content h2 {
   margin-bottom: .75em;
-  font-family: var(--font-family-georgia);
-  font-weight: 700;
-  font-size: var(--heading-font-size-m);
-  line-height: 30px;
   color: var(--white);
 }
 
@@ -94,10 +89,6 @@ main .section.hero-container {
     padding: 0 60px;
   }
 
-  .hero.block > div .content h2 {
-    font-size: var(--heading-font-size-xxl);
-    line-height: 50px;
-  }
 }
 
 @media screen and (min-width: 900px) {

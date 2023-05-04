@@ -32,13 +32,13 @@ export default function decorate(block) {
         if (div.querySelector('picture')) {
           // update container for picture with label
           div.classList.add('card-image');
-          if (div.lastChild.nodeType === Node.TEXT_NODE) {
-            const picture = div.querySelector('picture');
-            const paragraphElement = document.createElement(('p'));
-            paragraphElement.append(div.lastChild);
-            div.append(picture, paragraphElement);
-          }
-        } else div.classList.add('card-body');
+          const picture = div.querySelector('picture');
+          const paragraphElement = document.createElement(('p'));
+          paragraphElement.textContent = div.textContent.trim();
+          div.replaceChildren(picture, paragraphElement);
+        } else {
+          div.classList.add('card-body');
+        }
       });
       list.append(row);
     });

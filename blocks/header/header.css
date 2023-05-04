@@ -53,8 +53,8 @@ body.light-nav {
 }
 
 .header.block nav[aria-expanded="true"] .nav-logo {
-  background-color: var(--white-background);
-  border-bottom: 1px solid var(--border-light-grey);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--platinum);
 }
 
 .header.block nav .nav-logo a {
@@ -72,7 +72,7 @@ body.light-nav {
 .header.block nav .nav-profile {
   display: none;
   grid-area: profile;
-  background-color: var(--white-background);
+  background-color: var(--white);
   text-transform: uppercase;
 }
 
@@ -195,8 +195,8 @@ body.light-nav {
 }
 
 .header.block nav[aria-expanded="true"] .nav-hamburger {
-  background-color: var(--white-background);
-  border-bottom: 1px solid var(--border-light-grey);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--platinum);
 }
 
 .header.block nav .nav-hamburger .close {
@@ -240,7 +240,7 @@ body.light-nav {
   .header.block nav .nav-primary-wrapper {
     display: flex;
     width: 100%;
-    max-width: var(--max-page-width);
+    max-width: var(--normal-page-width);
     margin: 0 auto;
     grid-area: primary;
     align-items: center;
@@ -249,14 +249,14 @@ body.light-nav {
   .header.block nav[aria-expanded="true"] .nav-profile {
     grid-area: profile;
     height: 40px;
-    border-bottom: 1px solid var(--border-light-grey);
+    border-bottom: 1px solid var(--platinum);
   }
 
   .header.block nav .nav-profile > ul {
     display: flex;
     height: 100%;
     width: 100%;
-    max-width: var(--max-page-width);
+    max-width: var(--normal-page-width);
     margin: 0 auto;
     align-items: center;
     justify-content: flex-end;
@@ -360,13 +360,13 @@ body.light-nav {
   }
 
   .header.block nav[aria-expanded="true"] .nav-sections > ul > li:hover > a {
-    background-color: var(--lightgrey);
+    background-color: var(--light-grey);
   }
 
   .header.block nav .nav-sections > ul > li.nav-drop[aria-expanded="true"] > a,
   .header.block nav[aria-expanded="true"] .nav-sections > ul > li.nav-drop:hover > a {
     box-shadow: 0 0 6px 0 rgba(0 0 0 / 24%);
-    background-color: var(--white-background);
+    background-color: var(--white);
   }
 
   .header.block nav .nav-sections > ul > li[aria-expanded="true"] .cover,
@@ -385,7 +385,7 @@ body.light-nav {
     display: none;
     position: absolute;
     min-width: 200px;
-    background-color: var(--white-background);
+    background-color: var(--white);
     padding: 0;
     box-shadow: 0 0 6px 0 rgba(0 0 0 / 24%);
   }

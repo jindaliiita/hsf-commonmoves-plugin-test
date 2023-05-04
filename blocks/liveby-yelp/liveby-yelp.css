@@ -18,7 +18,7 @@
   letter-spacing: normal;
   line-height: var(--line-height-xs);
   color: var(--primary-color);
-  background-color: var(--white-background);
+  background-color: var(--white);
   border: 1px solid var(--primary-color);
   transition: color .15s ease, background-color .15s ease;
 }
@@ -57,9 +57,9 @@
 
 .liveby-yelp.block .amenities .spinner span {
   display: none;
-  border: 10px solid var(--border-light-grey);
+  border: 10px solid var(--grey);
   border-top: 10px solid var(--primary-color);
-  background-color: var(--white-background);
+  background-color: var(--white);
   border-radius: 50%;
   width: 75px;
   height: 75px;

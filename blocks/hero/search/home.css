@@ -62,7 +62,7 @@
   width: calc(50% - 5px);
   margin: 8px 0;
   padding: 0 15px;
-  border: 1px solid var(--border-light-grey);
+  border: 1px solid var(--grey);
   text-overflow: ellipsis;
 }
 
@@ -98,9 +98,9 @@
   right: 0;
   max-height: 150px;
   overflow-y: scroll;
-  border: 1px solid var(--border-light-grey);
+  border: 1px solid var(--grey);
   border-top: none;
-  background-color: var(--white-background);
+  background-color: var(--white);
 }
 
 .hero.block .content .homes .filters .select-wrapper.open .select-items {
@@ -114,7 +114,7 @@
 }
 
 .hero.block .content .homes .filters .select-wrapper .select-items li.selected {
-  background-color: var(--lightgrey);
+  background-color: var(--light-grey);
 }
 
 .hero.block .content .homes .submit {
@@ -131,7 +131,7 @@
     width: 100vw;
     padding: 15px;
     flex-direction: column;
-    background-color: var(--white-background);
+    background-color: var(--white);
     z-index: 1000;
   }
 
@@ -206,8 +206,8 @@
     padding: 5px 10px;
     flex-wrap: nowrap;
     column-gap: 10px;
-    border: 1px solid var(--border-medium-grey);
-    background-color: var(--white-background);
+    border: 1px solid var(--grey);
+    background-color: var(--white);
   }
 
   .hero.block .content .homes .filters .close {

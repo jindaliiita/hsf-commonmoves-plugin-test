@@ -4,7 +4,6 @@
 }
 
 .avm-report.block h2 {
-  font-size: var(--heading-font-size-m);
   margin-bottom: .5em;
 }
 
@@ -31,7 +30,7 @@
   padding-left: 10px;
   margin-right: 16px;
   height: 50px;
-  border: 1px solid var(--border-medium-grey);
+  border: 1px solid var(--grey);
 }
 
 .avm-report.block form .avm-input input[name="avmaddress"] {
@@ -49,10 +48,6 @@
   .avm-report.block {
     width: 85%;
     margin: 0 auto;
-  }
-
-  .avm-report.block h2 {
-    font-size: var(--heading-font-size-l);
   }
 }
 
@@ -72,12 +67,5 @@
   .avm-report.block form button[type="submit"] {
     flex: unset;
     margin: 0;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .avm-report.block h2 {
-    font-size: var(--heading-font-size-xxl);
-    line-height: var(--line-height-s);
   }
 }
