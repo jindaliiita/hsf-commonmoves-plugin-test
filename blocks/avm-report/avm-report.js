@@ -2,6 +2,23 @@ import {
   showModal,
 } from '../../scripts/util.js';
 
+let alreadyDeferred = false;
+function initGooglePlacesAPI() {
+  if (alreadyDeferred) {
+    return;
+  }
+  alreadyDeferred = true;
+  const script = document.createElement('script');
+  script.type = 'text/partytown';
+  script.innerHTML = `
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = '${window.hlx.codeBasePath}/blocks/avm-report/avm-report-delayed.js';
+    document.head.append(script);
+  `;
+  document.head.append(script);
+}
+
 export default async function decorate(block) {
   const form = document.createElement('form');
   form.setAttribute('action', '/home-value');
@@ -13,9 +30,11 @@ export default async function decorate(block) {
     <button type="submit" aria-label="Get Report">Get Report</button>
   `;
 
+  const addressField = form.querySelector('input[name="avmaddress"]');
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const address = form.querySelector('input[name="avmaddress"]').value;
+    const address = addressField.value;
     if (!address) {
       showModal('Please enter valid address.<br/>Example: 1234 Main Street, Apt 123, New Milford, CT 06776');
       return;
@@ -30,4 +49,5 @@ export default async function decorate(block) {
     window.location = redirect;
   });
   block.append(form);
+  initGooglePlacesAPI();
 }
