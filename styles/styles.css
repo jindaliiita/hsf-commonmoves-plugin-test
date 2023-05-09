@@ -193,6 +193,17 @@ main .section.padding {
   padding-bottom: 3em;
 }
 
+main .section.two-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+main .section.two-columns > div {
+  flex: 0 1 40%;
+}
+
+
 /* Center rules for a section, but don't apply it to blocks! */
 main div[data-align="center"] h1,
 main div[data-align="center"] h2,
