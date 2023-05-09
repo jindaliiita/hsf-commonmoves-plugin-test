@@ -12,13 +12,6 @@ main.liveby-community .liveby-metadata-container {
   display: none;
 }
 
-main.liveby-community .hero-container {
-  display: block;
-  margin: 0;
-  padding: 0;
-  max-width: 1600px;
-}
-
 main.liveby-community .hero-container .hero-wrapper {
   padding: 0;
 }
@@ -112,10 +105,6 @@ main.liveby-community h2 {
 }
 
 @media screen and (min-width: 1200px) {
-  main.liveby-community .hero-container {
-    padding: 0 15px;
-  }
-
   main.liveby-community .hero-container .hero.block {
     padding: 0 15px;
   }
