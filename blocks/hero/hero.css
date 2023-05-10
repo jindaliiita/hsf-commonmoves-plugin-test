@@ -65,7 +65,6 @@ main .section.hero-container {
   flex-direction: column;
   justify-content: flex-start;
   padding: 1.5em 16px;
-  color: var(--white);
 }
 
 .hero.block > div .content h2 {

@@ -105,6 +105,8 @@
   text-transform: uppercase;
   border: 1px solid var(--grey);
   background: transparent;
+  color: var(--body-color);
+  cursor: pointer;
 }
 
 .hero.block .content .search-bar .search-submit span {
