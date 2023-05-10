@@ -21,7 +21,7 @@ body.light-nav {
       / 1fr min-content;
   align-items: start;
   overflow-y: scroll;
-  z-index: 10;
+  z-index: 50;
 }
 
 .header.block nav[aria-expanded="true"] {

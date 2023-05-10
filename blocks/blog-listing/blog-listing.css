@@ -1,0 +1,230 @@
+.section.blog-listing-container {
+  max-width: var(--wide-page-width);
+  padding: 0;
+}
+
+.blog-listing.block {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.blogs-grid-list {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.blog-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.blog-item .blog-content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.blog-item picture img {
+  object-fit: cover;
+  height: 245px;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.blog-item .title {
+  font-size: var(--body-font-size-l);
+  margin-bottom: 16px;
+  font-family: var(--font-family-proxima);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.blog-item .description {
+  text-align: left;
+}
+
+.blog-item .readmore {
+  text-decoration: none;
+  color: var(--grey-blue);
+  letter-spacing: var(--letter-spacing-m);
+  padding-left: 10px;
+  padding-right: 5px;
+  font-size: var(--body-font-size-s);
+}
+
+.blog-item .readmore img {
+  padding: 3px 5px 5px 8px;
+  width: 25px;
+  vertical-align: middle;
+}
+
+.blog-category {
+  margin-bottom: 16px;
+  font-size: var(--body-font-size-s);
+  color: var(--dark-grey);
+  letter-spacing: var(--letter-spacing-xl);
+}
+
+.blogs-grid-list .blog-item {
+  margin-bottom: 50px;
+}
+
+.carousel-list .blog-item {
+  margin: 0;
+  flex: 0 0 100%;
+}
+
+.carousel-list .blog-item.seller-advice {
+  background-color: var(--seller-advice);
+}
+
+.carousel-list .blog-item.home-improvement {
+  background-color: var(--home-improvement);
+}
+
+.carousel-list .blog-item.finance {
+  background-color: var(--finance);
+}
+
+.carousel-list .blog-item.lifestyle {
+  background-color: var(--lifestyle);
+}
+
+.carousel-list .blog-item.general {
+  background-color: var(--general);
+}
+
+.carousel-list .blog-item.buyer-advice {
+  background-color: var(--buyer-advice);
+}
+
+.carousel-list .blog-item picture img {
+  padding: 0;
+}
+
+.carousel-list .container {
+  display: flex;
+  transition: transform 200ms;
+  flex-flow: row nowrap;
+}
+
+.carousel-list .blog-item .blog-content {
+  padding: 0 30px;
+}
+
+.carousel-list .blog-category {
+  margin-top: 30px;
+}
+
+.carousel-list .blog-item .title {
+  margin: 20px 0;
+}
+
+.carousel-list .readmore {
+  margin: 10px 0 60px;
+  padding: 0 0 0 40px;
+}
+
+.carousel-list .owl-dots {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.carousel-list .owl-dot {
+  margin-top: 20px;
+  border: 0;
+  background: 0;
+}
+
+.see-more-content span {
+  font-size: var(--body-font-size-s);
+}
+
+.carousel-list .active span {
+  background-color: rgb(170 170 170);
+}
+
+.carousel-list .owl-dot span {
+  width: 10px;
+  height: 10px;
+  margin: 5px 7px 5px 12px;
+  border-radius: 30px;
+  border: 1px solid var(--grey-blog-category);
+  display: block;
+}
+
+.see-more-content {
+  background-color: var(--primary-color);
+  padding: 10px 25px;
+  width: 229px;
+  height: 48px;
+  align-self: center;
+  border: 2px solid;
+  color: var(--white);
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: var(--body-font-size-s);
+  letter-spacing: var(--letter-spacing-s);
+}
+
+.see-more-content:hover {
+  background-color: var(--white);
+  border: 1px solid var(--grey-blog-category);
+  color: var(--body-color);
+}
+
+@media screen and (min-width: 600px) {
+  .blogs-grid-list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .blog-item {
+    flex-basis: 45%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .carousel-list .container {
+    height: 480px;
+  }
+
+  .carousel-list .blog-item {
+    flex-direction: row;
+    vertical-align: center;
+  }
+
+  .carousel-list .blog-item .blog-content {
+    align-self: center;
+  }
+
+  .carousel-list .blog-item .image-content,
+  .carousel-list .blog-item .blog-content {
+    width: 50%;
+  }
+
+  .carousel-list .blog-item picture img {
+    height: 100%;
+  }
+
+  .carousel-list .blog-item .title {
+    font-size: 1.375rem;
+    line-height: 30px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .blog-item {
+    flex-basis: 30%;
+  }
+
+  .carousel-list .blog-item {
+    flex-direction: row;
+    flex: 0 0 100%;
+  }
+}

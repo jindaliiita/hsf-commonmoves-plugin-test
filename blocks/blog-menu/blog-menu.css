@@ -1,0 +1,263 @@
+.section.blog-menu-container {
+  padding: 0;
+  margin: 0 auto;
+  max-width: var(--wide-page-width);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.blog-nav {
+  display: flex;
+  flex-flow: column;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding-top: 10px;
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-m);
+  width: 100vw;
+  max-width: 1600px;
+}
+
+.blog-nav ul {
+  display: none;
+  position: absolute;
+  top: 120px;
+  text-align: center;
+  width: 100%;
+  padding: 0 10px;
+  background-color: var(--primary-color);
+}
+
+.blog-nav ul.visible {
+  display: block;
+}
+
+.blog-nav.seller-advice,
+.blog-nav.seller-advice ul {
+  background-color: var(--seller-advice);
+}
+
+.blog-nav.home-improvement,
+.blog-nav.home-improvement ul {
+  background-color: var(--home-improvement);
+}
+
+.blog-nav.finance,
+.blog-nav.finance ul {
+  background-color: var(--finance);
+}
+
+.blog-nav.lifestyle,
+.blog-nav.lifestyle ul {
+  background-color: var(--lifestyle);
+}
+
+.blog-nav.general,
+.blog-nav.general ul {
+  background-color: var(--general);
+}
+
+.blog-nav.buyer-advice,
+.blog-nav.buyer-advice ul {
+  background-color: var(--buyer-advice);
+}
+
+.blog-nav a {
+  text-decoration: none;
+  letter-spacing: var(--letter-spacing-m);
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-m);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-m);
+  text-decoration-style: solid;
+  color: var(--white);
+}
+
+.blog-nav h1 a {
+  display: block;
+  font-size: var(--heading-font-size-xl);
+  font-family: var(--font-family-proxima);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+  text-align: center;
+  text-transform: none;
+  letter-spacing: initial;
+}
+
+.blog-nav.seller-advice a {
+  color: var(--primary-color);
+}
+
+.blog-nav.home-improvement a {
+  color: var(--primary-color);
+}
+
+.blog-nav.finance a {
+  color: var(--primary-color);
+}
+
+.blog-nav.lifestyle a {
+  color: var(--primary-color);
+}
+
+.blog-nav.general a {
+  color: var(--primary-color);
+}
+
+.blog-nav.buyer-advice a {
+  color: var(--primary-color);
+}
+
+.blog-nav h1:hover {
+  color: var(--white);
+  opacity: 0.6;
+}
+
+.blog-nav .blog-nav-selected {
+  padding: 16px 0;
+  letter-spacing: var(--letter-spacing-m);
+  line-height: var(--line-height-m);
+  text-align: center;
+}
+
+.blog-nav li {
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  padding: 16px 0;
+  border-top: solid 1px var(--white);
+  text-align: center;
+}
+
+.blog-nav li:hover {
+  border-bottom: 1px solid var(--white);
+  color: var(--white);
+  opacity: 0.6;
+}
+
+
+.blog-nav.seller-advice li:hover {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.blog-nav.home-improvement li:hover {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.blog-nav.finance li:hover {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.blog-nav.lifestyle li:hover {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.blog-nav.general li:hover {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.blog-nav.buyer-advice li:hover {
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.blog-nav .blog-nav-selected span {
+  color: var(--white);
+}
+
+.blog-nav.seller-advice .blog-nav-selected span {
+  color: var(--primary-color);
+}
+
+.blog-nav.home-improvement .blog-nav-selected span {
+  color: var(--primary-color);
+}
+
+.blog-nav.finance .blog-nav-selected span {
+  color: var(--primary-color);
+}
+
+.blog-nav.lifestyle .blog-nav-selected span {
+  color: var(--primary-color);
+}
+
+.blog-nav.general .blog-nav-selected span {
+  color: var(--primary-color);
+}
+
+.blog-nav.buyer-advice .blog-nav-selected span {
+  color: var(--primary-color);
+}
+
+.blog-nav .category-dropdown-icon {
+  width: 10px;
+  height: 8px;
+  vertical-align: middle;
+  filter: brightness(100);
+  padding: 0 0 2px;
+}
+
+.blog-detail-template .category-dropdown-icon {
+  filter: initial;
+}
+
+.blog-nav .selected-cat {
+  font-weight: var(--font-weight-bold);
+  border-bottom: 2px solid var(--white);
+}
+
+.blog-nav.seller-advice .selected-cat {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.blog-nav.home-improvement .selected-cat {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.blog-nav.finance .selected-cat {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.blog-nav.lifestyle .selected-cat {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.blog-nav.general .selected-cat {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.blog-nav.buyer-advice .selected-cat {
+  border-bottom: 2px solid var(--primary-color);
+}
+
+@media (min-width: 900px) {
+  .blog-nav .blog-nav-selected {
+    display: none;
+  }
+
+  .blog-nav ul {
+    padding: 0 66px 25px;
+    position: unset;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .blog-nav li {
+    padding: 0;
+    border-top: none;
+  }
+
+  .blog-nav h1 a {
+    text-align: left;
+    margin: 0 66px
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .blog-nav h1 a {
+    font-size: var(--heading-font-size-xxxl);
+    line-height: var(--line-height-l);
+  }
+}

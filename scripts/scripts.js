@@ -67,6 +67,28 @@ function buildHeroBlock(main) {
   }
 }
 
+function buildBlogNav(main) {
+  const blogTemplates = ['blog-landing-template', 'blog-detail-template'];
+  const template = getMetadata('template');
+  if (blogTemplates.includes(template)) {
+    const h1 = main.querySelector('div:first-of-type > h1');
+    const nav = main.querySelector('div:first-of-type > ul');
+    if (h1 && nav && (nav.compareDocumentPosition(h1) && Node.DOCUMENT_POSITION_PRECEDING)) {
+      const section = document.createElement('div');
+      section.append(buildBlock('blog-menu', { elems: [h1, nav] }));
+      main.prepend(section);
+    }
+  }
+}
+
+function buildBlogDetails(main) {
+  if (getMetadata('template') === 'blog-detail-template') {
+    const section = document.createElement('div');
+    section.append(buildBlock('blog-details', { elems: [] }));
+    main.append(section);
+  }
+}
+
 function buildLiveByMetadata(main) {
   const community = getMetadata('liveby-community');
   if (community) {
@@ -152,6 +174,8 @@ function buildAutoBlocks(main) {
     buildLiveByMetadata(main);
     buildFloatingImages(main);
     buildSeparator(main);
+    buildBlogDetails(main);
+    buildBlogNav(main);
     buildPropertySearchBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
