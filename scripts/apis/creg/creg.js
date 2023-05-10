@@ -51,9 +51,12 @@ export class SearchParameters {
     }
   }
 
-  constructor(type, input) {
+  constructor(type, input, params = {}) {
     this.SearchType = type;
     this.SearchInput = input;
+    Object.keys(params).forEach((p) => {
+      this[p] = params[p];
+    });
   }
 
   /**

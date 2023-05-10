@@ -131,6 +131,18 @@ function buildSeparator(main) {
 }
 
 /**
+ * Build Property Search Block top nav menu
+ * @param main
+ */
+function buildPropertySearchBlock(main) {
+  if (getMetadata('template') === 'property-search-template') {
+    const section = document.createElement('div');
+    section.append(buildBlock('property-search-bar', { elems: [] }));
+    main.prepend(section);
+  }
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
@@ -140,6 +152,7 @@ function buildAutoBlocks(main) {
     buildLiveByMetadata(main);
     buildFloatingImages(main);
     buildSeparator(main);
+    buildPropertySearchBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
