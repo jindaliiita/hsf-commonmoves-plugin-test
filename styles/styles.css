@@ -405,6 +405,17 @@ form button[type="submit"]:hover {
 @font-face {
   font-family: 'ProximaNova Fallback';
   font-style: normal;
+  font-weight: 100;
+  src: local('Arial');
+  ascent-override: 104.56%;
+  descent-override: 38.57%;
+  line-gap-override: 0.00%;
+  size-adjust: 103.19%;
+}
+
+@font-face {
+  font-family: 'ProximaNova Fallback';
+  font-style: normal;
   font-weight: 300;
   src: local('Arial');
   ascent-override: 80.85%;
