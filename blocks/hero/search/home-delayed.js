@@ -8,10 +8,11 @@ import {
   abortSuggestions,
   getSuggestions,
   propertySearch,
-  SearchParameters,
   DOMAIN,
 } from '../../../scripts/apis/creg/creg.js';
 import { getSpinner } from '../../../scripts/util.js';
+import SearchType from '../../../scripts/apis/creg/SearchType.js';
+import SearchParameters from '../../../scripts/apis/creg/SearchParameters.js';
 
 const noOverlayAt = BREAKPOINTS.medium;
 
@@ -162,11 +163,11 @@ const formSubmitted = async (e) => {
   form.prepend(spinner);
 
   const franchisee = getMetadata('office-id');
-  const type = form.querySelector('input[name="type"]').value || 'Empty';
+  const type = SearchType[form.querySelector('input[name="type"]').value];
   const query = form.querySelector('input[name="query"]').value;
   const input = form.querySelector('input[name="keyword"]').value;
-  const params = new SearchParameters(type, input);
-
+  const params = new SearchParameters(type);
+  params.SearchInput = input;
   if (query) {
     params.populate(query);
   }

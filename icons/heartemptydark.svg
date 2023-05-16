@@ -1,0 +1,10 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     class="heart-empty-dark"
+     role="img"
+     aria-hidden="true"
+     tabindex="-1">
+    <use xlink:href="/icons/icons.svg#heart-empty-dark"
+         role="presentation"
+         aria-hidden="true"
+         tabindex="-1"></use>
+</svg>

@@ -8,11 +8,11 @@ import {
 
 import {
   propertySearch,
-  SearchParameters,
 } from '../../scripts/apis/creg/creg.js';
 import { getSpinner } from '../../scripts/util.js';
 
 import { setPropertyDetails as setResults } from '../../scripts/search/results.js';
+import SearchParameters from '../../scripts/apis/creg/SearchParameters.js';
 
 export function searchProperty() {
   const spinner = getSpinner();
@@ -20,12 +20,13 @@ export function searchProperty() {
   toggleOverlay();
   overlay.prepend(spinner);
   const type = getParam('SearchType');
-  const input = '';
   const searchParams = getSearchObject();
   if (Object.prototype.hasOwnProperty.call(searchParams, 'SearchType')) {
     delete searchParams.SearchType;
   }
-  const params = new SearchParameters(type, input, searchParams);
+  const params = new SearchParameters(type);
+  params.populate(searchParams);
+
   propertySearch(params).then((results) => {
     if (!results?.properties) {
       results.properties = [];

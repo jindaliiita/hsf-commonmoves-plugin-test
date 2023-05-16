@@ -1,0 +1,42 @@
+@import url('./cards/cards.css');
+
+.property-listing.block {
+  overflow: hidden;
+  width: 100%;
+}
+
+.property-listing.block a {
+  text-decoration: none;
+}
+
+.property-listing.block .header {
+  display: flex;
+  flex-direction: column;
+}
+
+.property-listing.block .header > div {
+  margin-bottom: 24px;
+}
+
+.property-listing.block .header > div > span {
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  border-bottom: 3px solid var(--primary-color);
+  letter-spacing: initial;
+  line-height: var(--line-height-m);
+}
+
+.property-listing.block .header > div > p {
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .property-listing.block .header {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .property-listing.block .header .button-container {
+    justify-content: flex-end;
+  }
+}

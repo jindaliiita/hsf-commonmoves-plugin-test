@@ -1,0 +1,285 @@
+.property-list-cards {
+  display: flex;
+  height: 400px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  column-gap: 10px;
+}
+
+.property-list-cards::-webkit-scrollbar {
+  display: none;
+}
+
+.property-list-cards .listing-tile {
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 250px;
+  max-width: 90%;
+}
+
+.property-list-cards .listing-tile a {
+  height: 56.25%;
+}
+
+.property-list-cards .listing-tile .property-no-available-image {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: var(--light-grey);
+  font-size: var(--body-font-size-s);
+  text-transform: uppercase;
+  color: var(--body-color);
+  line-height: var(--line-height-xs);
+  font-family: var(--font-family-proxima);
+  font-weight: var(--font-weight-light);
+  align-items: center;
+  justify-content: center;
+}
+
+.property-list-cards .listing-tile hr {
+  display: block;
+  margin: .5em 10px;
+  padding: 0;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--platinum);
+}
+
+.property-list-cards .listing-image-container {
+  position: relative;
+  height: 100%;
+}
+
+.property-list-cards .listing-image-container .property-image {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+}
+
+.property-list-cards .listing-image-container .property-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.property-list-cards .property-labels {
+  display: flex;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.property-list-cards .property-labels .property-label {
+  height: 24px;
+  font-size: var(--body-font-size-xs);
+  padding: 0 7px;
+  line-height: 24px;
+  font-family: var(--font-family-proxima);
+  font-weight: var(--font-weight-semibold);
+  margin: 5px 0 5px 5px;
+  text-align: center;
+}
+
+.property-list-cards .property-labels .property-label .icon {
+  height: 100%;
+}
+
+.property-list-cards .property-labels .property-label.open-house {
+  display: none;
+  background-color: var(--white);
+  color: var(--body-color);
+  align-items: center;
+}
+
+.property-list-cards .listing-tile.has-open-houses .property-label.open-house {
+  display: flex;
+}
+
+.property-list-cards .property-labels .property-label.open-house svg {
+  height: 24px;
+  width: 24px;
+  margin-right: 5px;
+}
+
+.property-list-cards .property-labels .property-label.featured-listing {
+  display: none;
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.property-list-cards .listing-tile.is-featured .property-labels .property-label.featured-listing {
+  display: initial;
+}
+
+.property-list-cards .property-labels .property-label.new-listing {
+  display: none;
+  background-color: var(--white);
+  color: var(--body-color);
+  text-transform: uppercase;
+}
+
+.property-list-cards .listing-tile.is-new .property-labels .property-label.new-listing {
+  display: initial;
+}
+
+.property-list-cards .listing-image-container .image-position-top {
+  position: absolute;
+  top: 0;
+}
+
+.property-list-cards .listing-image-container .image-position-bottom {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+}
+
+.property-list-cards .listing-image-container .property-price {
+  padding-top: 7px;
+  padding-left: 10px;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--body-font-size-l);
+  line-height: var(--line-height-s);
+  max-width: 70%;
+  background-color: var(--white);
+  color: var(--body-color);
+}
+
+.property-list-cards .property-details {
+  display: flex;
+  column-gap: 10px;
+}
+
+.property-list-cards .property-details .property-info-wrapper {
+  margin-left: 10px;
+  background: var(--white);
+  flex-basis: 70%;
+}
+
+.property-list-cards .property-details .property-info-wrapper .address {
+  font-family: var(--font-family-proxima);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--body-font-size-s);
+  color: var(--body-color);
+  letter-spacing: var(--letter-spacing-xxs);
+  line-height: var(--line-height-s);
+  margin: 2px 0;
+  padding-top: 4px;
+}
+
+.property-list-cards .property-details .property-info-wrapper .specs {
+  font-family: var(--font-family-proxima);
+  font-weight: var(--font-weight-light);
+  color: var(--body-color);
+  font-size: var(--body-font-size-xs);
+  letter-spacing: var(--letter-spacing-xxs);
+  line-height: normal;
+  padding-top: 3px;
+}
+
+.property-list-cards .property-details .property-buttons {
+  margin-right: 10px;
+  display: flex;
+  flex-basis: 30%;
+  align-items: flex-end;
+}
+
+.property-list-cards .property-details .property-buttons .buttons-row-flex {
+  justify-content: space-around;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.property-list-cards .property-details .property-buttons .button-property {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  background-color: transparent;
+}
+
+.property-list-cards .property-details .property-buttons .button-property span {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.property-list-cards .property-details .property-buttons .button-property svg {
+  width: 24px;
+  height: 24px;
+}
+
+.property-list-cards .property-details .property-buttons .icon-envelopedark {
+  display: none;
+}
+
+.property-list-cards .property-details .property-buttons .icon-heartemptydark {
+  display: none;
+}
+
+.property-list-cards .property-details .property-buttons .button-property:hover .icon-envelopedark {
+  display: block;
+}
+
+.property-list-cards .property-details .property-buttons .button-property:hover .icon-heartemptydark {
+  display: block;
+}
+
+.property-list-cards .property-details .property-buttons .button-property:hover .icon-envelope {
+  display: none;
+}
+
+.property-list-cards .property-details .property-buttons .button-property:hover .icon-heartempty {
+  display: none;
+}
+
+.property-list-cards .listing-tile .extra-info {
+  display: flex;
+  padding: 0 10px;
+  column-gap: 5px;
+}
+
+.property-list-cards .listing-tile .extra-info div {
+  font-size: var(--body-font-size-xs);
+  font-family: var(--font-family-proxima);
+  color: var(--dark-grey);
+  letter-spacing: 0;
+  line-height: var(--line-height-xs);
+}
+
+.property-list-cards .listing-tile .extra-info .listing-aor {
+  display: none;
+  align-self: flex-end;
+}
+
+.property-list-cards .listing-tile .extra-info .listing-aor.rimls {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .property-list-cards {
+    display: grid;
+    height: 820px;
+    grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .property-list-cards .listing-tile {
+    width: unset;
+    max-width: unset;
+  }
+
+  .property-list-cards .listing-image-container .property-price {
+    font-size: var(--body-font-size-xl);
+  }
+}

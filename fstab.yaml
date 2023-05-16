@@ -4,3 +4,5 @@ mountpoints:
 folders:
   /blog/blog-detail/: /blog/blog-detail
   /drafts/blog/detail/: /drafts/blog/detail
+  /property/detail/: /property/detail
+  /drafts/property/detail/: /drafts/property/detail
