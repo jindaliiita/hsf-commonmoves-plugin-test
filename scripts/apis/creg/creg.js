@@ -78,12 +78,12 @@ export function abortSuggestions() {
  *
  * @param {SearchParameters} params the parameters
  */
-export async function propertySearch(params) {
-  const queryParams = params.asQueryString();
-  const url = `${CREG_API_URL}/CregPropertySearchServlet?${queryParams}&_=${Date.now()}`;
-  const resp = await fetch(url);
-  if (resp.ok) {
-    return resp.json();
-  }
-  return {};
+export function propertySearch(params) {
+  return new Promise((resolve) => {
+    const queryParams = params.asQueryString();
+    const worker = new Worker(`${window.hlx.codeBasePath}/scripts/apis/creg/workers/propertySearch.js`);
+    const url = `${CREG_API_URL}/CregPropertySearchServlet?${queryParams}&_=${Date.now()}`;
+    worker.onmessage = (e) => resolve(e.data);
+    worker.postMessage({ url });
+  });
 }
