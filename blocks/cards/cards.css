@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .cards.block .title {
@@ -17,10 +18,11 @@
 }
 
 .cards.block .cards-list .cards-item {
+  display: flex;
   padding: 0 1em;
   margin-bottom: 30px;
-  display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .cards.block .cards-list .cards-item:only-child {
@@ -30,13 +32,18 @@
 /* Default experience */
 .cards.block .cards-list .cards-item .card-image picture {
   display: block;
-  height: 100%;
+  position: relative;
+  padding-bottom: 66%;
 }
 
 .cards.block .cards-list .cards-item .card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
 .cards.block .cards-list .cards-item .card-image {
