@@ -24,8 +24,7 @@ export default function decorate(block) {
       list.append(row);
     });
   } else {
-    const cols = block.children;
-    block.classList.add(`cards-${cols.length}-cols`);
+    block.classList.add(`cards-${cards.length}-cols`);
     cards.forEach((row) => {
       row.className = 'cards-item';
       [...row.children].forEach((div) => {

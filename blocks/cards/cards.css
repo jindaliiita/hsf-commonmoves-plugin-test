@@ -25,14 +25,24 @@
   width: 100%;
 }
 
-.cards.block .cards-list .cards-item:only-child {
+.cards.block.cards-1-cols .cards-list .cards-item {
   padding: 0;
+}
+
+.cards.block .cards-list .cards-item .card-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* Default experience */
 .cards.block .cards-list .cards-item .card-image picture {
   display: block;
   position: relative;
+  height: 100%;
+  width: 100%;
   padding-bottom: 66%;
 }
 
@@ -46,13 +56,9 @@
   height: 100%;
 }
 
-.cards.block .cards-list .cards-item .card-image {
-  display: block;
-  position: relative;
-}
-
 .cards.block .cards-list .cards-item .card-image p {
   position: absolute;
+  left: 0;
   bottom: 0;
   text-transform: uppercase;
   padding: 1em .5em 0 0;
@@ -93,7 +99,6 @@
   width: 100%;
   border-top: 1px solid var(--grey);
 }
-
 
 .cards.block.icons .cards-list .cards-item .card-icon {
   margin-top: .5em;
@@ -148,8 +153,12 @@
     margin-bottom: 0;
   }
 
-  .cards.block .cards-list .cards-item:only-child .card-image {
+  .cards.block.cards-1-cols .cards-list .cards-item .card-image {
     max-height: 400px;
+  }
+
+  .cards.block.cards-2-cols .cards-list .cards-item .card-image picture {
+    padding-bottom: 45%;
   }
 
   .cards.block.icons .cards-list {
@@ -165,7 +174,7 @@
 
 
 @media (min-width: 900px) {
-  .cards.block .cards-list .cards-item:only-child .card-image {
+  .cards.block.cards-1-cols .cards-list .cards-item .card-image {
     max-height: 500px;
   }
 }
