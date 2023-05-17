@@ -17,7 +17,10 @@ async function getGeometry(id) {
   if (resp.ok) {
     const data = await resp.json();
     /* eslint-disable-next-line no-underscore-dangle */
-    return data.data.geometry;
+    const { geometry } = data.data;
+    geometry.bbox = data.data.properties.bbox;
+    geometry.centroid = data.data.properties.centroid;
+    return geometry;
   }
   /* eslint-disable-next-line no-console */
   console.log('Unable to retrieve LiveBy Community information.');
