@@ -1,46 +1,22 @@
 import {
   addRangeOption, EXTRA_FILTERS, formatInput, TOP_LEVEL_FILTERS,
-  getConfig, processSearchType, getFilterLabel,
-} from './common-function.js';
+  getConfig, buildFilterSearchTypesElement, getFilterLabel,
+} from '../common-function.js';
 
 const SEARCH_TYPES = { ApplicationType: { label: 'Search Types', type: 'search-types' } };
 const FILTERS = { ...SEARCH_TYPES, ...TOP_LEVEL_FILTERS, ...EXTRA_FILTERS };
 
-function buildFilterSearchTypesElement() {
-  const config = getConfig('ApplicationType');
-  const columns = [[config[0], config[1]], [config[2], config[3]]];
-  let el;
-  let output = '<div class="column-2 flex-row">';
-
-  columns.forEach((column) => {
-    output += '<div class="column">';
-    column.forEach((value) => {
-      el = processSearchType(value);
-      el.querySelector('label').classList.add('text-up');
-      output += el.outerHTML;
-    });
-    output += '</div>';
-  });
-  output += '</div>';
-  return output;
-}
-
-export function buildFilterButtons() {
-  const buttons = ['cancel', 'reset'];
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('filter-buttons', 'button-container', 'flex-row', 'vertical-center', 'hide');
-  let output = `
-    <a title="apply" rel="noopener" target="_blank" tabindex="" class="btn btn-primary center" role="button">
-      <span class="text-up btn-primary c-w">apply</span>
-    </a>`;
-  buttons.forEach((button) => {
-    output += `
-      <a title="${button}" rel="noopener" target="_blank" tabindex="" class="btn btn-secondary center" role="button">
-        <span class="text-up">${button}</span>
-      </a>`;
-  });
-  wrapper.innerHTML = output;
-  return wrapper;
+function observeFilters() {
+  const script = document.createElement('script');
+  script.id = crypto.randomUUID();
+  script.type = 'text/partytown';
+  script.innerHTML = `
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = '${window.hlx.codeBasePath}/blocks/property-search-bar/filters/additional-params-delayed.js';
+    document.head.append(script);
+  `;
+  document.head.append(script);
 }
 
 function buildPropertyColumn(labels = {}) {
@@ -70,7 +46,7 @@ function buildCheckBox(ariaLabel, label = '') {
     </div>`;
 }
 
-export function buildPropertyFilterHtml(label) {
+function buildPropertyFilterHtml(label) {
   const firstColumnValues = { 1: 'Condo/Townhouse', 3: 'Commercial', 5: 'Lot/Land' };
   const secondColumnValues = { 2: 'Single Family', 4: 'Multi Family', 6: 'Farm/Ranch' };
   return `
@@ -211,12 +187,19 @@ function buildPlaceholder(filterName) {
   return placeholder.outerHTML;
 }
 
-export function build() {
+async function build() {
   const wrapper = document.createElement('div');
   let output = '';
   Object.keys(FILTERS).forEach((filter) => { output += buildPlaceholder(filter); });
-  wrapper.classList.add('filter-block', 'hide');
+  wrapper.classList.add('filter-block', 'hide', 'input');
   wrapper.innerHTML = ` 
     ${output}`;
+  observeFilters();
   return wrapper;
 }
+
+const additionalFilters = {
+  build,
+};
+
+export default additionalFilters;

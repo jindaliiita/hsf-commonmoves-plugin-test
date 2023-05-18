@@ -132,6 +132,7 @@ main .section .property-search-bar .button-container a {
     text-align: center;
     display: flex;
     height: 50px;
+    width: 100vw;
     background-color: var(--primary-color);
     color: var(--white);
     align-items: center;
@@ -283,7 +284,18 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 
 .property-search-bar.block input:focus {
     background: var(--white);
+    color: var(--body-color);
     outline: none;
+}
+
+.property-search-bar.block .search-bar input:first-of-type {
+    padding: 10px;
+    border: 1px solid var(--grey);
+    letter-spacing: normal;
+    height: 36px;
+    background-color: rgb(241 241 241 / 10%);
+    width: 100%;
+    color: var(--white);
 }
 
 .property-search-bar.block .filter .multiple-inputs .input-dropdown,
@@ -401,8 +413,9 @@ main .section .property-search-bar .btn.btn-secondary:hover {
     position: relative;
 }
 
-.property-search-bar.block .input-container {
+.property-search-bar.block .search-bar {
     flex-grow: 1;
+    position: relative;
 }
 
 .property-search-bar.block .select-item {
@@ -525,10 +538,52 @@ main .section .property-search-bar .btn.btn-secondary:hover {
     justify-content: flex-start;
 }
 
+/* suggestions */
+.property-search-bar.block  .search-bar .suggester-results {
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: scroll;
+    background-color: var(--white);
+    border: 1px solid var(--grey);
+    box-shadow: 0 3px 9px 2px rgba(0 0 0 / 23%);
+    z-index: 10;
+    line-height: 1.5;
+}
+
+.property-search-bar.block .search-bar.show-suggestions .suggester-results {
+    display: block;
+}
+
+.property-search-bar.block .search-bar .suggester-results > li > ul {
+    padding: 0 15px;
+}
+
+.property-search-bar.block .search-bar .suggester-results > li > ul > li {
+    padding: 8px 0;
+    font-size: var(--body-font-size-m);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.property-search-bar.block .search-bar .suggester-results .list-title {
+    padding: 15px 15px 5px;
+    font-family: var(--font-family-proxima);
+    font-size: var(--body-font-size-s);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--black);
+}
+
 .property-search-bar.block [name="Sort"].multiple-inputs .select-item li,
 .property-search-bar.block .filter .multiple-inputs .select-item li {
     border: none;
 }
+
 
 .property-search-bar.block .search-results-dropdown .select-item li:first-child {
     border-top: 1px solid var(--platinum);
@@ -629,7 +684,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
     display: none;
 }
 
-.property-search-bar.block .no-scroll {
+.property-search-template.no-scroll {
     height: 100%;
     overflow: hidden;
 }
@@ -659,6 +714,10 @@ main .section .property-search-bar .btn.btn-secondary:hover {
     letter-spacing: var(--letter-spacing-reg);
     color: var(--body-color);
     cursor: pointer;
+}
+
+.property-search-bar.block .search-bar .suggester-results > li:first-child:not(:only-child){
+    display: none;
 }
 
 .property-search-bar.block [name="Sort"].multiple-inputs .select-item {
@@ -865,7 +924,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
     }
 
     .property-search-bar.block .search-listing-block {
-        width: var(--normal-page-width);
+        max-width: var(--normal-page-width);
         justify-content: space-between;
     }
 
@@ -911,7 +970,8 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 
     .property-search-bar.block .search-listing-container > div:last-of-type {
         display: flex;
-        width: var(--normal-page-width);
+        width: 100vw;
+        max-width: var(--normal-page-width);
     }
 
     .property-search-bar.block .primary-search {

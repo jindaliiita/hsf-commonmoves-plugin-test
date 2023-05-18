@@ -14,6 +14,8 @@ import { getSpinner } from '../../scripts/util.js';
 import { setPropertyDetails as setResults } from '../../scripts/search/results.js';
 import SearchParameters from '../../scripts/apis/creg/SearchParameters.js';
 
+import SearchType from '../../scripts/apis/creg/SearchType.js';
+
 export function searchProperty() {
   const spinner = getSpinner();
   const overlay = document.querySelector('.overlay');
@@ -21,11 +23,8 @@ export function searchProperty() {
   overlay.prepend(spinner);
   const type = getParam('SearchType');
   const searchParams = getSearchObject();
-  if (Object.prototype.hasOwnProperty.call(searchParams, 'SearchType')) {
-    delete searchParams.SearchType;
-  }
-  const params = new SearchParameters(type);
-  params.populate(searchParams);
+  const params = new SearchParameters(SearchType[type], searchParams);
+  params.populate(buildUrl());
 
   propertySearch(params).then((results) => {
     if (!results?.properties) {
@@ -33,6 +32,9 @@ export function searchProperty() {
     }
     const output = JSON.stringify(results.properties);
     setResults(output);
+  }).catch(() => {
+    setResults([]);
+  }).finally(() => {
     spinner.remove();
     toggleOverlay();
   });
@@ -94,7 +96,7 @@ export function formatValue(filterName, value) {
  * @returns {string}
  *
  */
-export function getValueFromStorage(filterName) {
+function getValueFromStorage(filterName) {
   let minValue = '';
   let maxValue = '';
   let value = '';
@@ -125,21 +127,6 @@ export function getValueFromStorage(filterName) {
   return value;
 }
 
-export function removeFilterValue(name, value = '') {
-  let params;
-  let paramsToArray;
-  switch (name) {
-    case 'Features':
-      params = getParam('Features') ?? '';
-      paramsToArray = params.split(',');
-      paramsToArray = paramsToArray.filter((i) => i !== value);
-      params = paramsToArray.join(',');
-      setParam('Features', params);
-      break;
-    default:
-      removeParam(name);
-  }
-}
 /**
  *
  * @param {string} name
@@ -147,7 +134,22 @@ export function removeFilterValue(name, value = '') {
  */
 export function setFilterValue(name, value) {
   let params;
+  let values;
   switch (name) {
+    case 'PropertyType':
+      params = getValueFromStorage('PropertyType');
+      if (value.length === 1) {
+        params.push(value);
+        params = params.join(',');
+        setParam('PropertyType', params);
+      } else if (value.length > 1) {
+        values = value.split(',');
+        values = [...params, ...values];
+        values = [...new Set(values)];
+        values = values.join(',');
+        setParam('PropertyType', values);
+      }
+      break;
     case 'FeaturedCompany':
       // eslint-disable-next-line no-unused-expressions
       value ? setParam('FeaturedCompany', 'BHHS') : removeParam('FeaturedCompany');
@@ -172,6 +174,30 @@ export function setFilterValue(name, value) {
       break;
     default:
       setParam(name, value);
+  }
+}
+export function removeFilterValue(name, value = '') {
+  let params;
+  let paramsToArray;
+  switch (name) {
+    case 'Features':
+      params = getParam('Features') ?? '';
+      paramsToArray = params.split(',');
+      paramsToArray = paramsToArray.filter((i) => i !== value);
+      params = paramsToArray.join(',');
+      setParam('Features', params);
+      break;
+    case 'PropertyType':
+      if (value.length > 0) {
+        params = getValueFromStorage('PropertyType');
+        params = params.filter((i) => i !== value);
+        setParam('PropertyType', params.join(','));
+      } else {
+        removeParam('PropertyType');
+      }
+      break;
+    default:
+      removeParam(name);
   }
 }
 

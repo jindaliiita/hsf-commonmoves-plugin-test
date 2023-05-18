@@ -1,4 +1,5 @@
 /* eslint-disable no-param-reassign, no-plusplus, no-mixed-operators, no-unused-expressions, no-nested-ternary, eqeqeq, max-len */
+
 export const TOP_LEVEL_FILTERS = {
   Price: { label: 'price', type: 'range' },
   MinBedroomsTotal: { label: 'beds', type: 'select' },
@@ -290,4 +291,71 @@ export function buildKeywordEl(keyword, removeItemCallback) {
     },
   );
   keywordInput.value = '';
+}
+
+export function buildFilterSearchTypesElement() {
+  const config = getConfig('ApplicationType');
+  const columns = [[config[0], config[1]], [config[2], config[3]]];
+  let el;
+  let output = '<div class="column-2 flex-row">';
+
+  columns.forEach((column) => {
+    output += '<div class="column">';
+    column.forEach((value) => {
+      el = processSearchType(value);
+      el.querySelector('label').classList.add('text-up');
+      output += el.outerHTML;
+    });
+    output += '</div>';
+  });
+  output += '</div>';
+  return output;
+}
+
+export function hideFilter(element) {
+  element.classList.remove('open');
+  element.querySelector('.search-results-dropdown').classList.add('hide');
+}
+
+export function togglePropertyForm() {
+  const hideClass = 'hide';
+  document.querySelector('.filter-block').classList.toggle(hideClass);
+  toggleOverlay();
+  document.querySelector('.filter-buttons').classList.toggle(hideClass);
+  document.querySelectorAll('.filter-container svg').forEach(
+    (el) => el.classList.toggle(hideClass),
+  );
+}
+
+export function closeTopLevelFilters(all = true) {
+  if (all && document.querySelector('[name="AdditionalFilters"] a >svg:first-of-type').classList.contains('hide')) {
+    togglePropertyForm();
+  }
+  document.querySelectorAll('.container-item .header').forEach((elem) => {
+    if (elem.parentElement.classList.contains('open')) {
+      hideFilter(elem.parentElement);
+    }
+    if (elem.parentElement.querySelectorAll('.select-item').length > 0) {
+      elem.parentElement.querySelectorAll('.select-item').forEach((el) => {
+        el.classList.remove('show');
+      });
+    }
+  });
+  if (document.querySelector('.search-bar').classList.contains('show-suggestions')) {
+    document.querySelector('.search-bar').classList.remove('show-suggestions');
+  }
+  if (document.querySelector('[name="Sort"] .select-item').classList.contains('show')) {
+    document.querySelector('[name="Sort"] .select-item').classList.remove('show');
+  }
+}
+
+export function updateFilters(el) {
+  const filter = el.closest('.filter');
+  const forRentEl = filter.querySelector('.for-rent');
+  const pendingEl = filter.querySelector('.pending');
+  const isForRentChecked = filter.querySelector('.for-rent .checkbox').classList.contains('checked');
+  const isPendingChecked = filter.querySelector('.pending .checkbox').classList.contains('checked');
+
+  forRentEl.classList.toggle('disabled', isPendingChecked);
+  pendingEl.classList.toggle('disabled', isForRentChecked);
 }

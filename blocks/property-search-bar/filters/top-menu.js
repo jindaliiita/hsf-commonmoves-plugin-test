@@ -6,7 +6,20 @@ import {
   getConfig,
   processSearchType,
   getFilterLabel,
-} from './common-function.js';
+} from '../common-function.js';
+
+function observeFilters() {
+  const script = document.createElement('script');
+  script.id = crypto.randomUUID();
+  script.type = 'text/partytown';
+  script.innerHTML = `
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.src = '${window.hlx.codeBasePath}/blocks/property-search-bar/filters/top-delayed.js';
+    document.head.append(script);
+  `;
+  document.head.append(script);
+}
 
 function buildButton(label, primary = false) {
   const button = document.createElement('div');
@@ -20,6 +33,7 @@ function buildButton(label, primary = false) {
 
 function buildFilterToggle() {
   const wrapper = document.createElement('div');
+  wrapper.setAttribute('name', 'AdditionalFilters');
   wrapper.classList.add('filter-container', 'flex-row', 'center', 'bl');
   wrapper.innerHTML = `
             <a role="button" aria-label="Filter">
@@ -71,11 +85,11 @@ function buildTopFilterPlaceholder(filterName) {
   dropdownContainer.innerHTML = `<div class="header">
              <div class="title text-up"><span>${label}</span></div>
              </div>
-       <div class="search-results-dropdown hide shadow">${options}</div>`;
+       <div class="search-results-dropdown input hide shadow">${options}</div>`;
 
   return dropdownContainer;
 }
-export function buildFilterSearchTypesElement() {
+function buildFilterSearchTypesElement() {
   const wrapper = document.createElement('div');
   let el;
   wrapper.classList.add('filter', 'flex-row', 'center');
@@ -89,8 +103,7 @@ export function buildFilterSearchTypesElement() {
   return wrapper;
 }
 
-export function build() {
-  const defaultSuggestionMessage = 'Please enter at least 3 characters.';
+async function build() {
   const wrapper = document.createElement('div');
   const container = document.createElement('div');
   const div = document.createElement('div');
@@ -101,14 +114,16 @@ export function build() {
 
   const primaryFilters = document.createElement('div');
   primaryFilters.classList.add('primary-search', 'flex-row');
-  primaryFilters.innerHTML = ` <div class="input-container">
-                <input type="text" placeholder="${getPlaceholder('US')}" aria-label="${getPlaceholder('US')}" class="search-suggester">
-                <div tabindex="0" class="search-suggester-results hide">
-                    <ul>
-                        <li class="search-suggester-results">${defaultSuggestionMessage}</li>
-                    </ul>
-                </div>
-            </div>`;
+  primaryFilters.innerHTML = `    <div class="search-bar search-bar" role="search">
+      <div class="search-suggester suggester-input">
+          <input type="text" placeholder="${getPlaceholder('US')}" aria-label="${getPlaceholder('US')}" name="keyword">
+          <input type="hidden" name="query">
+          <input type="hidden" name="type">
+          <ul class="suggester-results">
+            <li class="list-title">Please enter at least 3 characters.</li>
+          </ul>
+        </div>
+      </div>`;
   wrapper.prepend(primaryFilters, buildButton('Search', true));
   Object.keys(TOP_LEVEL_FILTERS).forEach((filter) => {
     const filterElement = buildTopFilterPlaceholder(filter);
@@ -118,5 +133,12 @@ export function build() {
   div.append(wrapper);
   bfContainer.append(buildFilterSearchTypesElement(), buildSortByEl());
   container.append(div, bfContainer);
+  observeFilters();
   return container;
 }
+
+const topMenu = {
+  build,
+};
+
+export default topMenu;
