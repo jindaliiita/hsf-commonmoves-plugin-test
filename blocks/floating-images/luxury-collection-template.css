@@ -1,0 +1,72 @@
+.luxury-collection .heading h2 {
+    font-family: var(--font-family-gotham);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--body-font-size-m);
+    line-height: var(--line-height-m);
+    letter-spacing: var(--letter-spacing-l);
+}
+
+.luxury-collection .heading {
+    margin-bottom: 0;
+}
+
+.luxury-collection .block.floating-images p {
+    font-size: 18px;
+    letter-spacing: var(--letter-spacing-s);
+    font-weight: var(--font-weight-light);
+    font-stretch: 100%;
+    margin-bottom: 16px;
+}
+
+.luxury-collection .block.floating-images .button-container a {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--white);
+    padding: 9px 23px;
+    letter-spacing: var(--letter-spacing-l);
+    line-height: 22px;
+}
+
+.luxury-collection .block.floating-images .button-container {
+    margin-top: 50px;
+}
+
+.luxury-collection .block.floating-images .button-container .button.secondary {
+    font-size: var(--body-font-size-xs);
+    padding: 7px 27px;
+}
+
+.luxury-collection .block.floating-images .button-container .button.secondary:hover {
+    background-color: var(--white);
+    color: var(--black);
+    border: 1px solid var(--grey);
+    box-shadow: none;
+    font-size: var(--body-font-size-xs)
+}
+
+.luxury-collection .block.floating-images h2 {
+    font-family: var(--font-family-gotham);
+    font-weight: 300;
+    font-size:50px;
+    line-height: 56px;
+}
+
+.luxury-collection .block.floating-images h3 {
+    font-family: var(--font-family-gotham);
+    font-weight: 200;
+    font-size: var(--heading-font-size-l);
+    line-height: var(--line-height-s);
+    letter-spacing: var(--letter-spacing-s);
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.luxury-collection .block.floating-images .content h4 {
+    font-family: var(--font-family-gotham);
+    font-weight: var(--font-weight-normal);
+    font-size: var(--body-font-size-m);
+    line-height: var(--line-height-m);
+    letter-spacing: var(--letter-spacing-xxl);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}

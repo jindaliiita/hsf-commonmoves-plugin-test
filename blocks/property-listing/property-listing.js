@@ -41,9 +41,10 @@ export default async function decorate(block) {
     `;
     if (config['link-text']) {
       const div = document.createElement('div');
+      const url = config['link-url'] || '';
       div.innerHTML = `
       <p class="button-container">
-        <a href="" aria-label="${config['link-text'] || 'See More'}">${config['link-text'] || 'See More'}</a>
+        <a href="${url}" aria-label="${config['link-text'] || 'See More'}">${config['link-text'] || 'See More'}</a>
       </p>`;
       block.querySelector('.header').append(div);
     }

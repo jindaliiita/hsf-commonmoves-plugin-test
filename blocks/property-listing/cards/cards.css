@@ -1,3 +1,5 @@
+@import url('luxury-collection-template.css');
+
 .property-list-cards {
   display: flex;
   height: 400px;

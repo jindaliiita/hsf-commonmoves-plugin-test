@@ -1,0 +1,11 @@
+.luxury-collection .property-list-cards .listing-image-container .property-image {
+    z-index: 1;
+}
+.luxury-collection .property-list-cards .property-labels {
+    background: initial;
+}
+
+.luxury-collection .property-list-cards .property-price {
+    background: initial;
+    z-index: 2;
+}

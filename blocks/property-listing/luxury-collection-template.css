@@ -1,0 +1,44 @@
+.luxury-collection .property-listing-container {
+    max-width: var(--wide-page-width);
+}
+
+.luxury-collection .property-listing-wrapper {
+    display: flex;
+    justify-content: center;
+
+}
+
+.luxury-collection .property-listing-container * {
+    background: var(--white);
+    color: initial;
+}
+
+.luxury-collection .property-listing.block {
+    max-width: var(--normal-page-width);
+    padding: 60px 15px;
+}
+
+.luxury-collection .property-listing.block .button-container a {
+    font-size: var(--body-font-size-xs);
+    padding: 7px 25px;
+    letter-spacing: var(--letter-spacing-m);
+    line-height: var(--line-height-m);
+}
+
+.luxury-collection .property-listing.block .header {
+   margin-bottom: 48px;
+}
+
+.luxury-collection .property-listing.block .button-container a:hover{
+    border: 1px solid var(--grey);
+}
+
+.luxury-collection .property-listing.block .header > div > span {
+    font-weight: var(--font-weight-light);
+    font-size: var(--heading-font-size-l);
+    line-height: var(--line-height-s);
+    font-family: var(--font-family-gotham);
+    letter-spacing: var(--letter-spacing-xs);
+    border-bottom: 0;
+    text-transform: none;
+}

@@ -1,14 +1,29 @@
+@import url('luxury-collection-template.css');
+
 .columns > div {
   display: flex;
   flex-direction: column;
+  align-items: baseline;
 }
 
-.columns img {
+.columns.float-left img {
   width: 100%;
+  height: auto;
+  float: left;
+  margin-right: 30px;
+  padding: 5px;
 }
 
 .columns > div > div {
   order: 1;
+}
+
+.columns.columns-2-cols > div > div:first-of-type {
+  margin-bottom: 24px;
+}
+
+.columns.columns-2-cols > div > div:last-of-type {
+  position: relative;
 }
 
 .columns > div > .columns-img-col {
@@ -17,6 +32,15 @@
 
 .columns > div > .columns-img-col img {
   display: block;
+}
+
+.columns.block h3 {
+  margin-bottom: 24px;
+
+}
+
+ .columns.block p  {
+  margin-bottom: 20px;
 }
 
 @media (min-width: 900px) {
@@ -31,3 +55,4 @@
     order: unset;
   }
 }
+

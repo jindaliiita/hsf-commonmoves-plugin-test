@@ -1,0 +1,4 @@
+.luxury-collection footer * {
+    background: var(--light-grey);
+    color: initial;
+}

@@ -508,7 +508,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 }
 
 .property-search-bar.block .filter li input[type="radio"]:checked+label {
-    background-color: #f6f6f6;
+    background-color: var(--light-grey);
     text-align: center;
 }
 

@@ -51,6 +51,7 @@
   --font-weight-bold: 700;
 
   /* Headings */
+  --heading-font-size-xxxxl: 50px;
   --heading-font-size-xxxl: 48px;
   --heading-font-size-xxl: 40px;
   --heading-font-size-xl: 36px;
@@ -84,6 +85,7 @@
   --letter-spacing-m  : 0.09em;
   --letter-spacing-l  : 0.13em;
   --letter-spacing-xl : 0.17em;
+  --letter-spacing-xxl: 0.2em;
 
   /* Common dimensions */
   --full-page-width: 100vw;
@@ -462,10 +464,43 @@ form button[type="submit"]:hover {
 @font-face {
   font-family: 'Gotham Fallback';
   font-style: normal;
+  font-weight: 200;
+  src: local('Arial');
+  ascent-override: 82.60%;
+  descent-override: 20.65%;
+  line-gap-override: 0.00%;
+  size-adjust: 116.22%;
+}
+
+@font-face {
+  font-family: 'Gotham Fallback';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Arial');
+  ascent-override: 82.60%;
+  descent-override: 20.65%;
+  line-gap-override: 0.00%;
+  size-adjust: 116.22%;
+}
+
+@font-face {
+  font-family: 'Gotham Fallback';
+  font-style: normal;
   font-weight: 400;
   src: local('Arial');
-  ascent-override: 85.14%;
-  descent-override: 21.29%;
+  ascent-override: 82.60%;
+  descent-override: 20.65%;
   line-gap-override: 0.00%;
-  size-adjust: 112.75%;
+  size-adjust: 116.22%;
+}
+
+@font-face {
+  font-family: 'Gotham Fallback';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Arial Bold');
+  ascent-override: 89.37%;
+  descent-override: 22.34%;
+  line-gap-override: 0.00%;
+  size-adjust: 107.42%;
 }
