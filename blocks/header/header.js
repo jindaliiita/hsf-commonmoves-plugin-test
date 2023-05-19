@@ -2,7 +2,7 @@ import { BREAKPOINTS } from '../../scripts/scripts.js';
 import { getMetadata, decorateIcons, decorateSections } from '../../scripts/lib-franklin.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = BREAKPOINTS.large;
+const isDesktop = BREAKPOINTS.medium;
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -42,9 +42,17 @@ function focusNavSection() {
  * @param {Boolean} expanded Whether the element should be expanded or collapsed
  */
 function toggleAllNavSections(sections, expanded = false) {
-  sections.querySelectorAll('.nav-sections > ul > li').forEach((section) => {
+  sections.querySelectorAll('.nav-sections > ul > li.nav-drop').forEach((section) => {
     section.setAttribute('aria-expanded', expanded);
   });
+}
+
+function openNavDrop(e) {
+  e.currentTarget.setAttribute('aria-expanded', 'true');
+}
+
+function closeNavDrop(e) {
+  e.currentTarget.setAttribute('aria-expanded', 'false');
 }
 
 /**
@@ -66,6 +74,8 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
         drop.setAttribute('role', 'button');
         drop.setAttribute('tabindex', 0);
         drop.addEventListener('focus', focusNavSection);
+        drop.addEventListener('mouseover', openNavDrop);
+        drop.addEventListener('mouseout', closeNavDrop);
       }
     });
   } else {
@@ -73,6 +83,8 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
       drop.removeAttribute('role');
       drop.removeAttribute('tabindex');
       drop.removeEventListener('focus', focusNavSection);
+      drop.removeEventListener('mouseover', openNavDrop);
+      drop.removeEventListener('mouseout', closeNavDrop);
     });
   }
   // enable menu collapse on escape keypress
