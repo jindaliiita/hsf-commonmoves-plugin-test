@@ -1,0 +1,16 @@
+.juicer.block h2 {
+  padding: 1.5em 0;
+  margin-bottom: 1.5em;
+  font-family: var(--font-family-proxima);
+  font-size: var(--heading-font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--white);
+  background-color: var(--primary-color);
+  text-align: center;
+}
+
+.juicer.block .juicer-feed {
+  height: 400px;
+  overflow-y: scroll;
+}
