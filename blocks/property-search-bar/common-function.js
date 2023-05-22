@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign, no-plusplus, no-mixed-operators, no-unused-expressions, no-nested-ternary, eqeqeq, max-len */
 
+import ApplicationType from '../../scripts/apis/creg/ApplicationType.js';
+
 export const TOP_LEVEL_FILTERS = {
   Price: { label: 'price', type: 'range' },
   MinBedroomsTotal: { label: 'beds', type: 'select' },
@@ -21,6 +23,7 @@ export const EXTRA_FILTERS = {
 export const BOTTOM_LEVEL_FILTERS = {
   ApplicationType: { label: 'Search Types', type: 'search-types' },
   Sort: { label: 'Sort By', type: 'select' },
+  Page: { label: '', type: 'child' },
 };
 
 const SQUARE_FEET = [
@@ -102,7 +105,7 @@ export function getConfig(filterName) {
       output = YEAR_BUILT;
       break;
     case 'ApplicationType':
-      output = ['For Sale', 'For Rent', 'Pending', 'Sold'];
+      output = [ApplicationType.FOR_SALE.label, ApplicationType.FOR_RENT.label, ApplicationType.PENDING.label, ApplicationType.RECENTLY_SOLD.label];
       break;
     case 'Sort':
       output = SORT_BY;
@@ -115,7 +118,7 @@ export function getConfig(filterName) {
 
 export function toggleOverlay() {
   const hideClass = 'hide';
-  const overlay = document.querySelector('.overlay');
+  const overlay = document.querySelector('.property-search-bar.block .overlay');
   overlay.classList.toggle(hideClass);
   if (overlay.classList.contains(hideClass)) {
     document.getElementsByTagName('body')[0].classList.remove('no-scroll');
@@ -260,7 +263,7 @@ export function formatPriceLabel(minPrice, maxPrice) {
         : 'Price';
 }
 
-export function processSearchType(value, defaultInput = 'for sale') {
+export function processSearchType(value, defaultInput = ApplicationType.FOR_SALE.type) {
   const name = value.replace(' ', '_').toUpperCase();
   const wrapper = document.createElement('div');
   wrapper.classList.add('filter-toggle', formatInput(value), 'flex-row', 'mb-1');
@@ -285,9 +288,12 @@ export function buildKeywordEl(keyword, removeItemCallback) {
   keywordContainer.append(item);
   closeBtn.addEventListener(
     'click',
-    () => {
-      removeItemCallback('Features', item.textContent.trim());
-      item.remove();
+    (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const itemEl = e.target.closest('.tag');
+      removeItemCallback('Features', itemEl.textContent.trim());
+      itemEl.remove();
     },
   );
   keywordInput.value = '';

@@ -19,7 +19,9 @@ function addEventListeners() {
     populatePreSelectedFilters();
   });
   // apply filters on click apply button
-  block.querySelector('.filter-buttons a[title="apply"]').addEventListener('click', () => {
+  block.querySelector('.filter-buttons a[title="apply"]').addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     togglePropertyForm();
     setFilterValue('MinPrice', document.querySelector('.filter [name="MinPrice"]').value);
     setFilterValue('MaxPrice', document.querySelector('.filter [name="MaxPrice"]').value);

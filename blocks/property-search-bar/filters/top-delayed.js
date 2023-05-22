@@ -7,6 +7,7 @@ import {
 import {
   formatPriceLabel, closeTopLevelFilters, togglePropertyForm, hideFilter,
 } from '../common-function.js';
+import { getPropertiesCount } from '../../../scripts/search/results.js';
 
 const event = new Event('onFilterChange');
 
@@ -109,6 +110,8 @@ const inputChanged = (e, target) => {
 };
 
 const suggestionSelected = (e, block) => {
+  e.stopPropagation();
+  e.preventDefault();
   const searchParameter = e.target.getAttribute('search-parameter');
   const keyword = e.target.getAttribute('search-input');
   if (!searchParameter) {
@@ -117,6 +120,7 @@ const suggestionSelected = (e, block) => {
   setSearchParams(e.target);
   block.querySelector('input[name="keyword"]').value = keyword;
   block.querySelector('.search-bar').classList.remove('show-suggestions');
+
   window.dispatchEvent(event);
 };
 
@@ -188,7 +192,7 @@ function addEventListeners() {
   // open additional filters
   block.querySelector('.filter-container').addEventListener('click', () => {
     togglePropertyForm();
-    const overlay = document.querySelector('.overlay');
+    const overlay = document.querySelector('.property-search-bar.block .overlay');
     const toggledOnClose = overlay.classList.contains('hide');
     closeTopLevelFilters(false);
     if (toggledOnClose) {
@@ -218,6 +222,20 @@ function addEventListeners() {
   });
   suggestionsTarget.addEventListener('click', (e) => {
     suggestionSelected(e, block);
+  });
+  window.addEventListener('onResultUpdated', () => {
+    const count = getPropertiesCount();
+    block.querySelector('.total-results > div').textContent = `Showing ${count} of ${count} Properties`;
+  });
+  block.querySelector('.map-toggle > a').addEventListener('click', (e) => {
+    const span = e.target.closest('span');
+    if (span.innerText === 'GRID VIEW') {
+      span.innerText = 'map view';
+      document.querySelector('body').classList.remove('search-map-active');
+    } else {
+      span.innerText = 'grid view';
+      document.querySelector('body').classList.add('search-map-active');
+    }
   });
 }
 

@@ -15,25 +15,45 @@ import { setPropertyDetails as setResults } from '../../scripts/search/results.j
 import SearchParameters from '../../scripts/apis/creg/SearchParameters.js';
 
 import SearchType from '../../scripts/apis/creg/SearchType.js';
+import ApplicationType from '../../scripts/apis/creg/ApplicationType.js';
 
 export function searchProperty() {
   const spinner = getSpinner();
-  const overlay = document.querySelector('.overlay');
+  const overlay = document.querySelector('.property-search-bar.block .overlay');
   toggleOverlay();
   overlay.prepend(spinner);
   const type = getParam('SearchType');
   const searchParams = getSearchObject();
-  const params = new SearchParameters(SearchType[type], searchParams);
-  params.populate(buildUrl());
+  const params = new SearchParameters(SearchType[type]);
+  const result = {
+    properties: [],
+    cont: 0,
+    disclaimer: {},
+  };
+  // set params from session storage
+  Object.keys(searchParams).forEach((key) => {
+    if (key === 'ApplicationType') {
+      params.applicationTypes = searchParams[key].split(',');
+    } else if (key === 'PropertyType') {
+      params.propertyTypes = searchParams[key].split(',');
+    } else if (key === 'franchiseeCode') {
+      params.franchisee = searchParams[key];
+    } else if (key === 'Sort') {
+      params.sortBy = searchParams[key];
+    } else if (key === 'isFranchisePage') {
+      // do nothing
+    } else {
+      params[key] = searchParams[key];
+    }
+  });
 
   propertySearch(params).then((results) => {
-    if (!results?.properties) {
-      results.properties = [];
-    }
-    const output = JSON.stringify(results.properties);
-    setResults(output);
+    result.properties = results.properties;
+    result.count = results['@odata.count'];
+    result.disclaimer = results.disclaimer;
+    setResults(result);
   }).catch(() => {
-    setResults([]);
+    setResults(result);
   }).finally(() => {
     spinner.remove();
     toggleOverlay();
@@ -96,7 +116,7 @@ export function formatValue(filterName, value) {
  * @returns {string}
  *
  */
-function getValueFromStorage(filterName) {
+export function getValueFromStorage(filterName) {
   let minValue = '';
   let maxValue = '';
   let value = '';
@@ -162,13 +182,33 @@ export function setFilterValue(name, value) {
     case 'Features':
       params = getParam(name) ?? '';
       params = params.length > 0 ? params.concat(',', value) : value;
-      setParam(name, params);
+      values = params.split(',');
+      values = [...new Set(values)];
+      setParam(name, values.join(','));
+      break;
+    case 'ApplicationType':
+      if (value.length > 0) {
+        setParam(name, value);
+        values = value.split(',');
+        params = values.map((val) => {
+          let param;
+          if (val === ApplicationType.FOR_SALE.type
+              || val === ApplicationType.FOR_RENT.type) param = 1;
+          if (val === ApplicationType.PENDING.type) param = 2;
+          if (val === ApplicationType.RECENTLY_SOLD.type) param = 3;
+          return param;
+        });
+        const unique = [...new Set(params)];
+        setParam('ListingStatus', unique.join(','));
+      } else {
+        removeParam(name);
+        removeParam('ListingStatus');
+      }
       break;
     case 'MinPrice':
     case 'MaxPrice':
     case 'MinBedroomsTotal':
     case 'MinBathroomsTotal':
-    case 'ApplicationType':
       // eslint-disable-next-line no-unused-expressions
       value.length > 0 ? setParam(name, value) : removeParam(name);
       break;
@@ -291,9 +331,9 @@ export function populatePreSelectedFilters(topMenu = true) {
           filter = document.querySelector('[name="OpenHouses"]');
           filter.classList.toggle('selected', !!value);
           filter.querySelector('input[type="checkbox"]').checked = !!value;
-          el = value === 7 ? filter.querySelector('[name="openHousesOnlyWeekend"]')
-            : filter.querySelector('[name="openHousesOnlyAnytime"]');
-          el.checked = true;
+          if (value) {
+            filter.querySelector(`[name="OpenHouses"] input[value="${value}"]`).checked = true;
+          }
           break;
         case 'MatchAnyFeatures':
           document.querySelector('[name="matchTagsAll"]').checked = !value;
@@ -305,6 +345,7 @@ export function populatePreSelectedFilters(topMenu = true) {
           });
           break;
         case 'Sort':
+        case 'Page':
           // do nothing
           break;
         default:

@@ -1,15 +1,25 @@
-const event = new Event('onResultChange');
+const event = new Event('onResultUpdated');
 
-export function getPropertyDetails() {
-  const result = sessionStorage.getItem('result') ?? '{}';
-  return JSON.parse(result);
+function getResults() {
+  return sessionStorage.getItem('result') ? JSON.parse(sessionStorage.getItem('result')) : { properties: '[]', count: '0', disclaimer: '' };
 }
 
+export function getPropertyDetails() {
+  return getResults().properties;
+}
+
+export function getPropertiesCount() {
+  return getResults().count;
+}
+
+export function getDisclaimer() {
+  return getResults().disclaimer;
+}
 /**
  *
  * @param value
  */
 export function setPropertyDetails(value) {
-  sessionStorage.setItem('result', value);
+  sessionStorage.setItem('result', JSON.stringify(value));
   window.dispatchEvent(event);
 }

@@ -18,6 +18,7 @@ export const SortDirections = Object.freeze({
 export const SortOptions = Object.freeze({
   DATE: 'DATE',
   PRICE: 'PRICE',
+  DISTANCE: 'DISTANCE',
 });
 
 export default class SearchParameters {

@@ -1,6 +1,3 @@
-import topMenu from './filters/top-menu.js';
-import additionalFilters from './filters/additional-filters.js';
-import layoutButtons from './filters/additional-filter-buttons.js';
 import {
   populatePreSelectedFilters, setInitialValuesFromUrl, searchProperty,
 } from './filter-processor.js';
@@ -8,6 +5,11 @@ import {
 import {
   buildFilterSearchTypesElement, closeTopLevelFilters,
 } from './common-function.js';
+import topMenu from './filters/top-menu.js';
+import additionalFilters from './filters/additional-filters.js';
+import layoutButtons from './filters/additional-filter-buttons.js';
+
+const event = new Event('onFilterChange');
 
 export default async function decorate(block) {
   setInitialValuesFromUrl();
@@ -30,7 +32,10 @@ export default async function decorate(block) {
     }
   });
 
-  window.addEventListener('onFilterChange', () => {
+  window.addEventListener('onFilterChange', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     searchProperty();
   });
+  window.dispatchEvent(event);
 }

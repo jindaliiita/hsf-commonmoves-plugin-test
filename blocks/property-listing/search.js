@@ -1,5 +1,5 @@
 import SearchParameters, { SortDirections, SortOptions } from '../../scripts/apis/creg/SearchParameters.js';
-import renderCards from './cards/cards.js';
+import { render as renderCards } from './cards/cards.js';
 
 // function addMoreButton() {
 // TODO: add this logic if there's supposed to be more results;

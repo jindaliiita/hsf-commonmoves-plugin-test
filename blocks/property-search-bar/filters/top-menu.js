@@ -21,6 +21,24 @@ function observeFilters() {
   document.head.append(script);
 }
 
+function buildTotalResults() {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('total-results');
+  wrapper.innerHTML = '<div role="heading" aria-level="1"/>';
+  return wrapper;
+}
+
+function buildMapToggle() {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('map-toggle', 'flex-row', 'center');
+  wrapper.innerHTML = `
+            <a rel="noopener" target="_blank" tabindex="" class="btn btn-map-toggle" role="button">
+            <span class="text-up">
+            map view
+        </span></a>`;
+  return wrapper;
+}
+
 function buildButton(label, primary = false) {
   const button = document.createElement('div');
   button.classList.add('button-container');
@@ -92,7 +110,7 @@ function buildTopFilterPlaceholder(filterName) {
 function buildFilterSearchTypesElement() {
   const wrapper = document.createElement('div');
   let el;
-  wrapper.classList.add('filter', 'flex-row', 'center');
+  wrapper.classList.add('filter', 'flex-row', 'center', 'top-menu');
   wrapper.setAttribute('name', 'ApplicationType');
   getConfig('ApplicationType').forEach((value) => {
     el = processSearchType(value);
@@ -108,7 +126,11 @@ async function build() {
   const container = document.createElement('div');
   const div = document.createElement('div');
   const bfContainer = document.createElement('div');
-  bfContainer.classList.add('flex-row', 'space-between');
+  const bfRightSection = document.createElement('div');
+  const filterContainer = document.createElement('div');
+  filterContainer.classList.add('result-filters', 'flex-row');
+  bfRightSection.classList.add('flex-row', 'space-between');
+  bfContainer.classList.add('bf-container');
   container.classList.add('search-listing-container', 'flex-row');
   wrapper.classList.add('search-listing-block');
 
@@ -131,8 +153,10 @@ async function build() {
   });
   wrapper.append(buildFilterToggle(), buildButton('save search', true));
   div.append(wrapper);
-  bfContainer.append(buildFilterSearchTypesElement(), buildSortByEl());
-  container.append(div, bfContainer);
+  bfRightSection.append(buildSortByEl(), buildMapToggle());
+  bfContainer.append(buildFilterSearchTypesElement(), bfRightSection);
+  filterContainer.append(buildTotalResults(), bfContainer);
+  container.append(div, filterContainer);
   observeFilters();
   return container;
 }

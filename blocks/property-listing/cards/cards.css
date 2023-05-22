@@ -102,8 +102,24 @@
   align-items: center;
 }
 
+.property-list-cards .property-labels .property-label.luxury {
+  display: none;
+  background: var(--black);
+  text-transform: uppercase;
+  height: 30px;
+  width: 100%;
+  margin: 0;
+  color: var(--white);
+  flex-grow: 1;
+}
+
 .property-list-cards .listing-tile.has-open-houses .property-label.open-house {
   display: flex;
+}
+
+.property-list-cards .listing-tile.is-luxury .property-label.luxury {
+  display: flex;
+  justify-content: center;
 }
 
 .property-list-cards .property-labels .property-label.open-house svg {
@@ -136,6 +152,7 @@
 .property-list-cards .listing-image-container .image-position-top {
   position: absolute;
   top: 0;
+  width: 100%;
 }
 
 .property-list-cards .listing-image-container .image-position-bottom {

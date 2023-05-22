@@ -2,6 +2,8 @@ import {
   addRangeOption, EXTRA_FILTERS, formatInput, TOP_LEVEL_FILTERS,
   getConfig, buildFilterSearchTypesElement, getFilterLabel,
 } from '../common-function.js';
+import PropertyType from '../../../scripts/apis/creg/PropertyType.js';
+import OpenHouses from '../../../scripts/apis/creg/OpenHouses.js';
 
 const SEARCH_TYPES = { ApplicationType: { label: 'Search Types', type: 'search-types' } };
 const FILTERS = { ...SEARCH_TYPES, ...TOP_LEVEL_FILTERS, ...EXTRA_FILTERS };
@@ -19,14 +21,14 @@ function observeFilters() {
   document.head.append(script);
 }
 
-function buildPropertyColumn(labels = {}) {
+function buildPropertyColumn(properties = []) {
   let output = '';
-  Object.keys(labels).forEach((name) => {
-    output += `<button type="button" class="flex-row" value=${name}>
+  [...properties].forEach((property) => {
+    output += `<button type="button" class="flex-row" value=${property.ID}>
                 <svg role="presentation">
-                    <use xlink:href="/icons/icons.svg#${formatInput(labels[name])}"></use>
+                    <use xlink:href="/icons/icons.svg#${formatInput(property.Label)}"></use>
                 </svg>
-                <span class="ml-1">${labels[name]}</span>
+                <span class="ml-1">${property.Label}</span>
             </button>`;
   });
   return output;
@@ -47,8 +49,16 @@ function buildCheckBox(ariaLabel, label = '') {
 }
 
 function buildPropertyFilterHtml(label) {
-  const firstColumnValues = { 1: 'Condo/Townhouse', 3: 'Commercial', 5: 'Lot/Land' };
-  const secondColumnValues = { 2: 'Single Family', 4: 'Multi Family', 6: 'Farm/Ranch' };
+  const firstColumnValues = [
+    PropertyType.CONDO_TOWNHOUSE,
+    PropertyType.COMMERCIAL,
+    PropertyType.LAND,
+  ];
+  const secondColumnValues = [
+    PropertyType.SINGLE_FAMILY,
+    PropertyType.MULTI_FAMILY,
+    PropertyType.FARM,
+  ];
   return `
     <div class="column-2 flex-row">
     <div class="column">${buildPropertyColumn(firstColumnValues)}</div>
@@ -64,16 +74,16 @@ function buildFilterOpenHouses() {
     ${buildCheckBox('Open Houses Only')}
         <div class="ml-1 mr-1">
             <label role="presentation" class="flex-row center">
-                <input type="radio" name="openHousesOnlyWeekend" value="false">
+                <input type="radio" value=${OpenHouses.ONLY_WEEKEND.value}>
             <div class="radio-btn"></div>
-            <span class="">This Weekend</span>
+            <span class="">${OpenHouses.ONLY_WEEKEND.label}</span>
             </label>
         </div>
         <div>
             <label role="presentation" class="flex-row vertical-center">
-            <input type="radio" name="openHousesOnlyAnytime" value="false">
+            <input type="radio" value=${OpenHouses.ANYTIME.value}>
             <div class="radio-btn"></div>
-            <span class="">Anytime</span>
+            <span class="">${OpenHouses.ANYTIME.label}</span>
             </label>
         </div>
     </div>

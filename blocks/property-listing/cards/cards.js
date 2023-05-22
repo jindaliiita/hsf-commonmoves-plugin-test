@@ -8,7 +8,7 @@ function createImage(listing) {
   return '<div class="property-no-available-image"><span>no images available</span></div>';
 }
 
-function createCard(listing) {
+export function createCard(listing) {
   let detailsPath = listing.PdpPath;
   if (listing.PdpPath.includes('commonmoves.com')) {
     const seoName = [listing.StreetName, listing.City, listing.StateOrProvince, listing.PostalCode].map((v) => v.toLowerCase().replaceAll(/[^a-zA-Z0-9-]/g, '-')).join('-');
@@ -38,8 +38,12 @@ function createCard(listing) {
     item.classList.add('is-featured');
   }
 
-  if (listing.newListing) {
+  if (listing.mlsStatus) {
     item.classList.add('is-new');
+  }
+
+  if (listing.PdpPath.includes('LuxuryTheme=true')) {
+    item.classList.add('is-luxury');
   }
 
   item.innerHTML = `
@@ -50,6 +54,11 @@ function createCard(listing) {
         </div>
         <div class="image-position-top">
           <div class="property-labels">
+          <div class="property-label is-luxury">
+              <span class="property-label luxury">
+                luxury collection
+              </span>
+            </div>
             <div class="property-label open-house">
               <span class="icon icon-openhouse"></span>
               Open House
@@ -59,7 +68,7 @@ function createCard(listing) {
         <div class="image-position-bottom"> 
           <div class="property-labels">
             <span class="property-label featured-listing">Featured Listing</span>
-            <span class="property-label new-listing">New Listing</span>
+            <span class="property-label new-listing">${listing.mlsStatus}</span>
           </div>
           <div class="property-price">
               ${listing.ListPriceUS}
@@ -112,7 +121,7 @@ function createCard(listing) {
  * @param {HTMLElement} parent
  * @return {Promise<void>}
  */
-export default async function render(searchParams, parent) {
+export async function render(searchParams, parent) {
   const list = document.createElement('div');
   list.classList.add('property-list-cards');
   parent.append(list);
