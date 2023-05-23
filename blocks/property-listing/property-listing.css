@@ -31,6 +31,11 @@
   margin: 0;
 }
 
+.liveby-community .property-listing.block {
+  max-width: 1150px;
+  margin: auto;
+}
+
 @media (min-width: 600px) {
   .property-listing.block .header {
     flex-direction: row;

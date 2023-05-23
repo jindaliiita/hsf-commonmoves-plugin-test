@@ -2,7 +2,6 @@
 
 import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
 
-/* Unused but working
 function getCenter(coords) {
   // Find bounding box
   const minX = coords.reduce((x1, x2) => Math.min(x1, x2[0]), 10000);
@@ -12,7 +11,6 @@ function getCenter(coords) {
   // Return center of bounding box
   return [(maxX + minX) / 2, (maxY + minY) / 2];
 }
-*/
 
 function convertCoordinates(c) {
   return {
@@ -31,7 +29,7 @@ function initLiveByMap() {
   const map = new google.maps.Map(mapDiv, {
     zoom: 12,
     maxZoom: 18,
-    center: convertCoordinates(window.liveby.geometry.centroid.geometry.coordinates),
+    center: convertCoordinates(getCenter(coordinates)),
     mapTypeId: 'roadmap',
     clickableIcons: true,
     gestureHandling: 'greedy',
