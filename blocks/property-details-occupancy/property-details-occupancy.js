@@ -4,8 +4,8 @@ import { decorateIcons, loadCSS } from '../../scripts/lib-franklin.js';
 const socioEconomicAPI = 'https://www.commonmoves.com/bin/bhhs/pdp/socioEconomicDataServlet?latitude=42.56574249267578&longitude=-70.76632690429688';
 
 function createTableRow(levelData) {
-  const label = levelData.level == 'zipcode' ? `Zip Code: ${levelData.label}` : levelData.label;
-  var rowHTML = `
+  const label = levelData.level === 'zipcode' ? `Zip Code: ${levelData.label}` : levelData.label;
+  const rowHTML = `
     <tr>
       <td>
         <h6>${label}</h6>
@@ -29,10 +29,10 @@ function createTableRow(levelData) {
 export default async function decorate(block) {
   const resp = await fetch(socioEconomicAPI);
   if (resp.ok) {
-    const econData = await resp.json();
-    const data = econData.data;
+    const socioEconJSON = await resp.json();
+    const { data: socioEconData } = socioEconJSON;
     const citation = 'Market data provided by U.S. Census Bureau';
-    var occupancyHTML = `
+    let occupancyHTML = `
       <div class="property-container">
         <div class="property-row">
           <div class="col col-12 col-lg-10 offset-lg-1 col-md-10 offset-md-1">
@@ -45,7 +45,7 @@ export default async function decorate(block) {
               </thead>
               <tbody>
     `;
-    data.forEach((elem) => {
+    socioEconData.forEach((elem) => {
       occupancyHTML += createTableRow(elem);
     });
     occupancyHTML += `
@@ -55,7 +55,7 @@ export default async function decorate(block) {
         </div>
       </div>
     `;
-    var occupancyAccordionItem = createAccordionItem('occupancy', 'Occupancy', occupancyHTML, citation);
+    const occupancyAccordionItem = createAccordionItem('occupancy', 'Occupancy', occupancyHTML, citation);
     block.append(occupancyAccordionItem);
     decorateIcons(block);
     loadCSS(`${window.hlx.codeBasePath}/styles/templates/accordion/accordion.css`);
