@@ -1,8 +1,6 @@
 import { createAccordionItem } from '../../scripts/accordion.js';
 import { decorateIcons, loadCSS } from '../../scripts/lib-franklin.js';
 
-const socioEconomicAPI = 'https://www.bhhs.com/bin/bhhs/pdp/socioEconomicDataServlet?latitude=42.56574249267578&longitude=-70.76632690429688';
-
 function createTableRow(levelData) {
   const label = levelData.level === 'zipcode' ? `Zip Code: ${levelData.label}` : levelData.label;
   const rowHTML = `
@@ -21,10 +19,8 @@ function createTableRow(levelData) {
 }
 
 export default async function decorate(block) {
-  const resp = await fetch(socioEconomicAPI);
-  if (resp.ok) {
-    const socioEconJSON = await resp.json();
-    const { data: socioEconData } = socioEconJSON;
+  if (window.socioEconomicData && window.socioEconomicData.data) {
+    const socioEconData = window.socioEconomicData.data;
     const citation = 'Market data provided by U.S. Census Bureau';
     let housingTableHTML = `
       <div class="property-container">

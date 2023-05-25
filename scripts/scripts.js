@@ -105,7 +105,7 @@ function buildLiveByMetadata(main) {
 }
 
 function buildPropertyDetailsMetadata(main) {
-  if(getMetadata('template') === 'property-details-template') {
+  if (getMetadata('template') === 'property-details-template') {
     const section = document.createElement('div');
     section.append(buildBlock('property-details-metadata', { elems: [] }));
     main.prepend(section);
