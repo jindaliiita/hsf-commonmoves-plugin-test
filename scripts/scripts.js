@@ -104,6 +104,14 @@ function buildLiveByMetadata(main) {
   }
 }
 
+function buildPropertyDetailsMetadata(main) {
+  if(getMetadata('template') === 'property-details-template') {
+    const section = document.createElement('div');
+    section.append(buildBlock('property-details-metadata', { elems: [] }));
+    main.prepend(section);
+  }
+}
+
 /**
  * Build Floating image block
  * @param {Element} main The container element
@@ -180,6 +188,7 @@ function buildLuxuryTheme() {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
+    buildPropertyDetailsMetadata(main);
     buildLiveByMetadata(main);
     buildFloatingImages(main);
     buildSeparator(main);
