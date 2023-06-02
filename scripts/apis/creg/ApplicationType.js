@@ -9,7 +9,6 @@ ApplicationType.FOR_SALE = new ApplicationType('FOR_SALE', 'For Sale');
 ApplicationType.FOR_RENT = new ApplicationType('FOR_RENT', 'For Rent');
 ApplicationType.PENDING = new ApplicationType('PENDING', 'Pending');
 ApplicationType.RECENTLY_SOLD = new ApplicationType('RECENTLY_SOLD', 'Recently Sold');
-ApplicationType.SOLD = new ApplicationType('SOLD', 'Sold');
 
 /**
 * Returns the ApplicationType for the specified string.

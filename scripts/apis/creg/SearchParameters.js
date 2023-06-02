@@ -30,6 +30,8 @@ export default class SearchParameters {
 
   NewListing = false;
 
+  OpenHouses;
+
   Page = 1;
 
   PageSize = 32;
@@ -38,7 +40,7 @@ export default class SearchParameters {
 
   SearchType = '';
 
-  #ApplicationType = ApplicationType.FOR_RENT.type;
+  #ApplicationType = ApplicationType.FOR_SALE.type;
 
   #PropertyType = [PropertyType.CONDO_TOWNHOUSE, PropertyType.SINGLE_FAMILY].join(',');
 
@@ -139,6 +141,7 @@ export default class SearchParameters {
    */
   asQueryString() {
     let query = Object.keys(this).filter((k) => this[k]).map((k) => `${k}=${encodeURIComponent(this[k])}`).join('&');
+    query += `&PropertyType=${this.#PropertyType}&ApplicationType=${this.#ApplicationType}`;
     query += `&Sort=${this.#sort}&isFranchisePage=${this.#isFranchisePage}`;
     if (this.#params) {
       query += `&${this.#params}`;

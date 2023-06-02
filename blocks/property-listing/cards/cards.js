@@ -3,7 +3,7 @@ import { decorateIcons } from '../../../scripts/lib-franklin.js';
 
 function createImage(listing) {
   if (listing.SmallMedia?.length > 0) {
-    return `<img src="${listing.SmallMedia[0].mediaUrl} alt="property-image" loading="lazy" class="property-thumbnail">`;
+    return `<img src="${listing.SmallMedia[0].mediaUrl}" alt="Property Image" loading="lazy" class="property-thumbnail">`;
   }
   return '<div class="property-no-available-image"><span>no images available</span></div>';
 }
@@ -38,12 +38,13 @@ export function createCard(listing) {
     item.classList.add('is-featured');
   }
 
-  if (listing.mlsStatus) {
-    item.classList.add('is-new');
-  }
-
   if (listing.PdpPath.includes('LuxuryTheme=true')) {
     item.classList.add('is-luxury');
+  }
+
+  if (listing.ClosedDate !== '01/01/0001') {
+    item.classList.add('is-sold');
+    listing.mlsStatus = 'Closed';
   }
 
   item.innerHTML = `
@@ -54,11 +55,7 @@ export function createCard(listing) {
         </div>
         <div class="image-position-top">
           <div class="property-labels">
-          <div class="property-label is-luxury">
-              <span class="property-label luxury">
-                luxury collection
-              </span>
-            </div>
+            <div class="property-label luxury">Luxury Collection</div>
             <div class="property-label open-house">
               <span class="icon icon-openhouse"></span>
               Open House
@@ -67,8 +64,8 @@ export function createCard(listing) {
         </div>
         <div class="image-position-bottom"> 
           <div class="property-labels">
-            <span class="property-label featured-listing">Featured Listing</span>
-            <span class="property-label new-listing">${listing.mlsStatus}</span>
+            <span class="property-label featured">Featured Listing</span>
+            <span class="property-label">${listing.mlsStatus}</span>
           </div>
           <div class="property-price">
               ${listing.ListPriceUS}
@@ -79,6 +76,7 @@ export function createCard(listing) {
     <div class="property-details">
       <div class="property-info-wrapper"> 
         <div class="property-info"> 
+          <div class="sold-date">Closed: ${listing.ClosedDate}</div>
           <div class="address"> 
             ${listing.StreetName}
             <br> 

@@ -1,5 +1,8 @@
 /* Wrapper for all Creg API endpoints */
 
+// eslint-disable-next-line no-unused-vars
+import SearchParameters from './SearchParameters.js';
+
 const urlParams = new URLSearchParams(window.location.search);
 export const DOMAIN = urlParams.get('env') === 'stage' ? 'ignite-staging.bhhs.com' : 'www.bhhs.com';
 const CREG_API_URL = `https://${DOMAIN}/bin/bhhs`;

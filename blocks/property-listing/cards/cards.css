@@ -66,6 +66,25 @@
   object-fit: cover;
 }
 
+.property-list-cards .is-sold .listing-image-container .property-image {
+  filter: brightness(0.25);
+}
+
+.property-list-cards .is-sold .listing-image-container::before {
+  display: flex;
+  content: "SOLD";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: var(--body-font-size-l);
+  font-weight: var(--font-weight-semibold);
+}
+
 .property-list-cards .listing-image-container .property-image img {
   height: 100%;
   width: 100%;
@@ -78,6 +97,7 @@
   width: 100%;
   position: relative;
   z-index: 1;
+  flex-wrap: wrap;
 }
 
 .property-list-cards .property-labels .property-label {
@@ -88,7 +108,8 @@
   font-family: var(--font-family-proxima);
   font-weight: var(--font-weight-semibold);
   margin: 5px 0 5px 5px;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .property-list-cards .property-labels .property-label .icon {
@@ -128,25 +149,20 @@
   margin-right: 5px;
 }
 
-.property-list-cards .property-labels .property-label.featured-listing {
+.property-list-cards .property-labels .property-label.featured {
   display: none;
   background-color: var(--primary-color);
   color: var(--white);
 }
 
-.property-list-cards .listing-tile.is-featured .property-labels .property-label.featured-listing {
+.property-list-cards .listing-tile.is-featured .property-labels .property-label.featured {
   display: initial;
 }
 
-.property-list-cards .property-labels .property-label.new-listing {
-  display: none;
+.property-list-cards .property-labels .property-label {
+  display: initial;
   background-color: var(--white);
   color: var(--body-color);
-  text-transform: uppercase;
-}
-
-.property-list-cards .listing-tile.is-new .property-labels .property-label.new-listing {
-  display: initial;
 }
 
 .property-list-cards .listing-image-container .image-position-top {
@@ -183,6 +199,17 @@
   margin-left: 10px;
   background: var(--white);
   flex-basis: 70%;
+}
+
+.property-list-cards .property-details .property-info-wrapper .sold-date {
+  display: none;
+  font-size: var(--body-font-size-s);
+  letter-spacing: var(--letter-spacing-xxs);
+  color: var(--error);
+}
+
+.property-list-cards .listing-tile.is-sold .property-details .property-info-wrapper .sold-date {
+  display: block;
 }
 
 .property-list-cards .property-details .property-info-wrapper .address {

@@ -31,6 +31,7 @@ export default class SearchType {
 
 SearchType.Address = new SearchType('Address', defaultParameterBuilder);
 SearchType.City = new SearchType('City', defaultParameterBuilder);
+SearchType.Community = new SearchType('Community', mapParameterBuilder);
 SearchType.Empty = new SearchType('Empty', () => '');
 SearchType.Map = new SearchType('Map', mapParameterBuilder);
 SearchType.Neighborhood = new SearchType('Neighborhood', defaultParameterBuilder);

@@ -25,6 +25,10 @@
   --black: #000;
   --white: #fff;
   --grey-blue: #36758d;
+  --success: #28a745;
+  --error: #d3636a;
+  --error-highlight: #f9e1e2;
+
 
   /* Blog Colors (only?) */
   --seller-advice: rgb(240 240 224);

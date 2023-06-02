@@ -1,34 +1,67 @@
-import { readBlockConfig } from '../../scripts/lib-franklin.js';
-import ApplicationType, { applicationTypeFor } from '../../scripts/apis/creg/ApplicationType.js';
+import { getMetadata, readBlockConfig } from '../../scripts/lib-franklin.js';
+import ApplicationType from '../../scripts/apis/creg/ApplicationType.js';
 import SearchType, { searchTypeFor } from '../../scripts/apis/creg/SearchType.js';
 import PropertyType from '../../scripts/apis/creg/PropertyType.js';
 import MapSearch from './map-search.js';
 import RadiusSearch from './radius-search.js';
 
+/* eslint-disable no-param-reassign */
+const buildListingTypes = (configEntry) => {
+  const types = [];
+  if (!configEntry) {
+    types.push(ApplicationType.FOR_SALE);
+    return types;
+  }
+
+  const [, configStr] = configEntry;
+  if (configStr.match(/sale/i)) {
+    types.push(ApplicationType.FOR_SALE);
+  }
+  if (configStr.match(/rent/gi)) {
+    types.push(ApplicationType.FOR_RENT);
+  }
+  if (configStr.match(/pending/gi)) {
+    types.push(ApplicationType.PENDING);
+  }
+  if (configStr.match(/sold/gi)) {
+    types.push(ApplicationType.RECENTLY_SOLD);
+  }
+  return types;
+};
+/* eslint-enable no-param-reassign */
+
+const buildPropertyTypes = (configEntry) => {
+  const types = [];
+  if (!configEntry) {
+    types.push(PropertyType.CONDO_TOWNHOUSE);
+    types.push(PropertyType.SINGLE_FAMILY);
+    return types;
+  }
+
+  const [, configStr] = configEntry;
+  if (configStr.match(/(condo|townhouse)/i)) {
+    types.push(PropertyType.CONDO_TOWNHOUSE);
+  }
+  if (configStr.match(/single\sfamily/gi)) {
+    types.push(PropertyType.SINGLE_FAMILY);
+  }
+  if (configStr.match(/commercial/gi)) {
+    types.push(PropertyType.COMMERCIAL);
+  }
+  if (configStr.match(/multi\s+family/gi)) {
+    types.push(PropertyType.MULTI_FAMILY);
+  }
+  if (configStr.match(/(lot|land)/gi)) {
+    types.push(PropertyType.LAND);
+  }
+  if (configStr.match(/(farm|ranch)/gi)) {
+    types.push(PropertyType.FARM);
+  }
+  return types;
+};
+
 export default async function decorate(block) {
   // Find and process list type configurations.
-  const listingTypes = [];
-  [...block.children].forEach((child) => {
-    if (/listing.?type/.test(child.children[0].textContent.toLowerCase())) {
-      // Check for a list
-      const items = child.querySelectorAll('div > ul > li');
-      if (items) {
-        items.forEach((item) => {
-          const type = applicationTypeFor(item.textContent.toUpperCase().replaceAll(/[^A-Z_]/g, '_'));
-          if (type) {
-            listingTypes.push(type);
-          }
-        });
-      } else { // Otherwise treat as single entry.
-        const type = applicationTypeFor(child.children[1].textContent.toUpperCase().replaceAll(/[^A-Z_]/g, '_'));
-        if (type) {
-          listingTypes.push(type);
-        }
-      }
-      // eslint-disable-next-line no-unused-expressions
-      listingTypes.length === 0 && listingTypes.push(ApplicationType.FOR_SALE);
-    }
-  });
   const config = readBlockConfig(block);
 
   if (config.title) {
@@ -54,19 +87,19 @@ export default async function decorate(block) {
 
   let search;
 
-  const keys = Object.keys(config);
-  const [type] = keys.filter((k) => /search.*type/.test(k)).map((k) => searchTypeFor(config[k]));
+  const entries = Object.entries(config);
+  const type = searchTypeFor(entries.find(([k]) => k.match(/search.*type/i))[1]);
 
   if (type === SearchType.Map) {
-    const [minLat] = keys.filter((k) => k.includes('min') && k.includes('lat')).map((k) => config[k]);
-    const [maxLat] = keys.filter((k) => k.includes('max') && k.includes('lat')).map((k) => config[k]);
-    const [minLon] = keys.filter((k) => k.includes('min') && k.includes('lon')).map((k) => config[k]);
-    const [maxLon] = keys.filter((k) => k.includes('max') && k.includes('lon')).map((k) => config[k]);
+    const minLat = entries.find(([k]) => k.includes('min') && k.includes('lat'))[1];
+    const maxLat = entries.find(([k]) => k.includes('max') && k.includes('lat'))[1];
+    const minLon = entries.find(([k]) => k.includes('min') && k.includes('lon'))[1];
+    const maxLon = entries.find(([k]) => k.includes('max') && k.includes('lon'))[1];
     search = new MapSearch(minLat, minLon, maxLat, maxLon);
   } else if (type === SearchType.Radius) {
-    let [lat] = keys.filter((k) => k.includes('lat')).map((k) => config[k]);
-    let [lon] = keys.filter((k) => k.includes('lat')).map((k) => config[k]);
-    const [radius] = keys.filter((k) => k.includes('distance')).map((k) => config[k]);
+    let lat = entries.find(([k]) => k.includes('lat'))[1];
+    let lon = entries.find(([k]) => k.includes('lon'))[1];
+    const radius = entries.find(([k]) => k.includes('distance'))[1];
 
     // Go looking for the search parameters.
     if (!lat) {
@@ -85,17 +118,19 @@ export default async function decorate(block) {
     search = new MapSearch(minLat, minLon, maxLat, maxLon);
   }
 
-  search.minPrice = config.minprice;
-  search.pageSize = config.pagesize;
+  search.listingTypes = buildListingTypes(entries.find(([k]) => k.match(/listing.*type/i)));
+  search.propertyTypes = buildPropertyTypes(entries.find(([k]) => k.match(/property.*type/i)));
+
+  search.isNew = !!entries.find(([k]) => k.match(/new/i));
+  search.isOpenHouse = !!entries.find(([k]) => k.match(/open.*house/i));
+
+  [, search.minPrice] = entries.find(([k]) => k.match(/min.*price/i)) || [];
+  [, search.maxPrice] = entries.find(([k]) => k.match(/max.*price/i)) || [];
+
+  [, search.pageSize] = entries.find(([k]) => k.match(/page.*size/i)) || [];
   search.sortBy = config['sort-by'];
   search.sortDirection = config['sort-direction'];
-  search.propertyTypes = [
-    PropertyType.CONDO_TOWNHOUSE,
-    PropertyType.SINGLE_FAMILY,
-    PropertyType.MULTI_FAMILY,
-  ];
+  search.officeId = getMetadata('office-id');
 
-  search.listingTypes = listingTypes;
-  search.isNew = config.newlisting;
   await search.render(block, false);
 }
