@@ -1,5 +1,46 @@
 @import url('../property-listing/cards/cards.css');
 @import url('../property-search-bar/search-results-dropdown.css');
+@import url('../property-result-map/map.css');
+
+.property-result-listing.block {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.property-result-listing.block .search-results-loader {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.property-result-listing.block .search-results-loader-image.enter {
+  opacity: 1;
+}
+
+.property-result-listing.block .search-results-loader-image.exit {
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.property-result-listing.block .search-results-loader-image {
+  text-align: center;
+  margin: 0 !important;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: var(--white);
+  transition: all 1s ease-in;
+}
+
+.property-search-template.search-map-active .property-result-listing.block > div {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 0 15px;
+}
 
 .property-result-listing.block .button-container {
   display: flex;
@@ -263,13 +304,10 @@ text-align: center;
   }
 }
 
-.search-map-active .property-result-listing.block {
-  width: 50%;
-}
-
 @media (max-width: 899px) {
   .property-result-listing.block {
     width: 100%;
+    flex-direction: column-reverse;
   }
 
   .property-result-listing.block .property-list-cards {
@@ -284,14 +322,22 @@ text-align: center;
 
   .search-map-active .property-result-listing.block {
     width: 100%;
+    min-height: 800px;
   }
 
   .search-map-active .property-result-listing.block .property-list-cards,
-  .search-map-active .property-result-listing.block [name="Page"]
-  {
+  .search-map-active .property-result-listing.block [name="Page"],
+  .search-map-active .property-result-listing.block .property-list-cards .property-result-content .disclaimer {
     display: none;
   }
+
+  .property-search-template.search-map-active .property-result-listing.block > div {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 15px;
+  }
 }
+
 
 @media (min-width: 1200px) {
   .property-result-listing.block .property-info-wrapper {

@@ -9,7 +9,7 @@ import topMenu from './filters/top-menu.js';
 import additionalFilters from './filters/additional-filters.js';
 import layoutButtons from './filters/additional-filter-buttons.js';
 
-const event = new Event('onFilterChange');
+// const event = new Event('onFilterChange');
 
 export default async function decorate(block) {
   setInitialValuesFromUrl();
@@ -37,5 +37,4 @@ export default async function decorate(block) {
     e.stopPropagation();
     searchProperty();
   });
-  window.dispatchEvent(event);
 }

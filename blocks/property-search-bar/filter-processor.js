@@ -3,13 +3,12 @@ import {
 } from '../../scripts/search.js';
 import {
   buildKeywordEl, formatPriceLabel,
-  TOP_LEVEL_FILTERS, EXTRA_FILTERS, BOTTOM_LEVEL_FILTERS, getConfig, toggleOverlay,
+  TOP_LEVEL_FILTERS, EXTRA_FILTERS, BOTTOM_LEVEL_FILTERS, getConfig,
 } from './common-function.js';
 
 import {
   propertySearch,
 } from '../../scripts/apis/creg/creg.js';
-import { getSpinner } from '../../scripts/util.js';
 
 import { setPropertyDetails as setResults } from '../../scripts/search/results.js';
 import SearchParameters from '../../scripts/apis/creg/SearchParameters.js';
@@ -18,10 +17,16 @@ import SearchType from '../../scripts/apis/creg/SearchType.js';
 import ApplicationType from '../../scripts/apis/creg/ApplicationType.js';
 
 export function searchProperty() {
-  const spinner = getSpinner();
-  const overlay = document.querySelector('.property-search-bar.block .overlay');
-  toggleOverlay();
-  overlay.prepend(spinner);
+  if (document.querySelector('.property-result-content')) {
+    document.querySelector('.property-result-content').remove();
+  }
+  if (document.querySelector('.property-result-map-container .disclaimer')) {
+    document.querySelector('.property-result-map-container .disclaimer').remove();
+  }
+  document.querySelector('.search-results-loader').style.display = 'block';
+  const overlay = document.querySelector('.search-results-loader-image');
+  overlay.classList.remove('exit');
+  overlay.classList.add('enter');
   const type = getParam('SearchType');
   const searchParams = getSearchObject();
   const params = new SearchParameters(SearchType[type]);
@@ -29,11 +34,13 @@ export function searchProperty() {
     properties: [],
     cont: 0,
     disclaimer: {},
+    listingClusters: [],
+    result: {},
   };
   // set params from session storage
   Object.keys(searchParams).forEach((key) => {
     if (key === 'ApplicationType') {
-      params.applicationTypes = searchParams[key].split(',');
+      params.applicationTypes = searchParams[key].split(',').map((propertyType) => ApplicationType[propertyType]);
     } else if (key === 'PropertyType') {
       params.propertyTypes = searchParams[key].split(',');
     } else if (key === 'franchiseeCode') {
@@ -51,12 +58,15 @@ export function searchProperty() {
     result.properties = results.properties;
     result.count = results['@odata.count'];
     result.disclaimer = results.disclaimer;
+    result.listingClusters = results.listingClusters;
+    result.result = results;
     setResults(result);
   }).catch(() => {
     setResults(result);
   }).finally(() => {
-    spinner.remove();
-    toggleOverlay();
+    document.querySelector('.search-results-loader').style.display = 'none';
+    overlay.classList.remove('enter');
+    overlay.classList.add('exit');
   });
 
   // update url

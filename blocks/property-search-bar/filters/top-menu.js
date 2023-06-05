@@ -34,7 +34,7 @@ function buildMapToggle() {
   wrapper.innerHTML = `
             <a rel="noopener" target="_blank" tabindex="" class="btn btn-map-toggle" role="button">
             <span class="text-up">
-            map view
+            grid view
         </span></a>`;
   return wrapper;
 }

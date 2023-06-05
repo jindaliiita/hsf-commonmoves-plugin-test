@@ -227,16 +227,6 @@ function addEventListeners() {
     const count = getPropertiesCount();
     block.querySelector('.total-results > div').textContent = `Showing ${count} of ${count} Properties`;
   });
-  block.querySelector('.map-toggle > a').addEventListener('click', (e) => {
-    const span = e.target.closest('span');
-    if (span.innerText === 'GRID VIEW') {
-      span.innerText = 'map view';
-      document.querySelector('body').classList.remove('search-map-active');
-    } else {
-      span.innerText = 'grid view';
-      document.querySelector('body').classList.add('search-map-active');
-    }
-  });
 }
 
 addEventListeners();

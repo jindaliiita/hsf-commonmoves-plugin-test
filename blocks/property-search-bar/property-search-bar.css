@@ -1,5 +1,35 @@
 @import url('./search-results-dropdown.css');
 
+main .section.property-search-bar-container {
+    max-width: 100vw;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.property-search-template .section.property-search-bar-container {
+    margin-bottom: 0;
+    position: sticky;
+    top: 65px;
+    z-index: 10;
+    background: white;
+}
+
+.property-search-template header {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 11;
+}
+
+.property-search-template footer {
+    background-color: var(--light-grey);
+    border-top: 1px solid var(--platinum);
+    position: relative;
+    z-index: 4;
+}
+
 .property-search-bar.block {
     width: 100vw;
 }
@@ -81,8 +111,9 @@ main .section .property-search-bar .overlay {
     position: absolute;
     overflow-y: auto;
     left: 0;
+    top: 50px;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     background-color: #212529;
     opacity: .5;
     z-index: 998;
@@ -90,14 +121,6 @@ main .section .property-search-bar .overlay {
 
 main .section .property-search-bar .hide {
     display: none;
-}
-
-main .section.property-search-bar-container {
-    max-width: 100vw;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 main .section .property-search-bar .button-container {
@@ -673,12 +696,13 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 }
 
 .property-search-bar.block .filter-block {
+    top: 115px;
     letter-spacing: 0.5px;
-    position: absolute;
+    position: fixed;
     overflow-y: auto;
     left: 0;
     width: 100vw;
-    height: calc(100% - var(--nav-height) - 210px);
+    height: calc(100% - var(--nav-height) - 115px);
     background-color:  var(--white);
     z-index: 999;
 }
@@ -904,6 +928,14 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 }
 
 @media (min-width: 900px) {
+    .property-search-template .section.property-search-bar-container {
+        margin-bottom: 0;
+        position: sticky;
+        top: 140px;
+        z-index: 10;
+        background: white;
+    }
+
     .property-search-bar.block .overlay {
         top: calc(var(--nav-height) + 50px);
     }

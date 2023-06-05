@@ -41,6 +41,7 @@ export function createCard(listing) {
   if (listing.PdpPath.includes('LuxuryTheme=true')) {
     item.classList.add('is-luxury');
   }
+  const applicationType = listing.ApplicationType && listing.ApplicationType === 'For Rent' ? `<span class="property-label new-listing">${listing.ApplicationType}</span>` : '';
 
   if (listing.ClosedDate !== '01/01/0001') {
     item.classList.add('is-sold');
@@ -65,6 +66,7 @@ export function createCard(listing) {
         <div class="image-position-bottom"> 
           <div class="property-labels">
             <span class="property-label featured">Featured Listing</span>
+            ${applicationType}
             <span class="property-label">${listing.mlsStatus}</span>
           </div>
           <div class="property-price">
