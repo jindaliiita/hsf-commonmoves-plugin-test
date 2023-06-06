@@ -1,0 +1,15 @@
+.table.block table,
+.table.block tbody,
+.table.block td,
+.table.block th
+{
+    border: 1px solid var(--grey);
+}
+
+.table.block th {
+    height: 48px;
+}
+
+.table.block td {
+    vertical-align: middle;
+}

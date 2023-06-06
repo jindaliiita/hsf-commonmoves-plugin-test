@@ -188,6 +188,49 @@ main .section.wide {
   max-width: var(--wide-page-width);
 }
 
+main .section.formatted-text * {
+  letter-spacing: normal;
+  line-height: var(--line-height-m);
+  color: var(--body-color);
+}
+
+main .section.formatted-text h3 {
+  letter-spacing: 0.5px;
+  font-weight: var(--font-weight-bold);
+}
+
+main .section.page-width-two-thirds {
+  max-width: 100%;
+}
+
+main .section.numeric-list ol {
+  display: block;
+  list-style-type: decimal;
+  padding-left: 0;
+  margin-left: 1em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+main .section.numeric-list li {
+  padding-left: 1em;
+  margin-bottom: 1.5em;
+}
+
+main .section.disc-list ul {
+  display: block;
+  list-style-type: disc;
+  padding-left: 0;
+  margin-left: 1em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+main .section.disc-list li {
+  padding-left: 1em;
+  margin-bottom: 1.5em;
+}
+
 main .section.full-width {
   max-width: var(--full-page-width);
 }
@@ -222,6 +265,7 @@ main .section.two-columns > div {
 
 
 /* Center rules for a section, but don't apply it to blocks! */
+/* stylelint-disable-next-line no-descending-specificity */
 main div[data-align="center"] h1,
 main div[data-align="center"] h2,
 main div[data-align="center"] h3,
@@ -369,6 +413,7 @@ form button[type="submit"]:hover {
   .section .block.hide-on-mobile {
     display: none;
   }
+
 }
 
 @media screen and (min-width: 600px) {
@@ -380,6 +425,10 @@ form button[type="submit"]:hover {
   main .section.narrow > div {
     max-width: 75%;
     margin: 0 auto;
+  }
+
+  main .section.page-width-two-thirds {
+    max-width: 67%;
   }
 }
 
