@@ -337,6 +337,18 @@ main .section .default-content-wrapper h4 {
   cursor: pointer;
 }
 
+main .section.button-primary-color .button-container a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+main .section.button-primary-color .button-container a:hover {
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+  color: var(--black);
+  box-shadow: none;
+}
+
 .text-up {
   text-transform: uppercase;
 }
@@ -380,6 +392,7 @@ main .section .default-content-wrapper h4 {
   text-align: center;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .modal .modal-content a {
   display: inline-block;
   margin-top: 1em;

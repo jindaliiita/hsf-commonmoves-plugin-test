@@ -13,6 +13,10 @@ main .section.hero-container {
   align-items: center;
 }
 
+main .section.full-width > .hero-wrapper {
+  max-width: var(--full-page-width);
+}
+
 .hero.block.under-nav {
   margin-top: calc(var(--nav-height) * -1);
   background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 50%) 50px, transparent 100px, transparent 100%);
