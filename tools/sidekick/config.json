@@ -1,0 +1,13 @@
+{
+  "project": "HSF Common Moves",
+  "host": "www.commonmoves.com",
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Library",
+      "environments": ["edit"],
+      "url": "/tools/sidekick/library.html",
+      "includePaths": ["**.docx**"]
+    }
+  ]
+}
