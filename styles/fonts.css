@@ -1,0 +1,98 @@
+/* below the fold CSS goes here */
+
+@font-face {
+  font-family: GeorgiaPro;
+  src: url('fonts/woff2/GeorgiaPro-SemiBold.woff2') format('woff2'), url('./fonts/woff/GeorgiaPro-SemiBold.woff') format('woff'), url('./fonts/ttf/GeorgiaPro-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: GeorgiaPro;
+  src: url('./fonts/woff2/GeorgiaPro-Bold.woff2') format('woff2'), url('./fonts/woff/GeorgiaPro-Bold.woff') format('woff'), url('./fonts/ttf/GeorgiaPro-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url('./fonts/woff2/ProximaNova-Thin.woff2') format('woff2'), url('./fonts/woff/ProximaNova-Thin.woff') format('woff')  ;
+  font-display: swap;
+  font-style: normal;
+  font-weight: 100;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url('./fonts/woff2/ProximaNova-Light.woff2') format('woff2'), url('./fonts/woff/ProximaNova-Light.woff') format('woff'), url('./fonts/ttf/ProximaNova-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url('./fonts/woff2/ProximaNova-Regular.woff2') format('woff2'), url('./fonts/woff/ProximaNova-Regular.woff') format('woff'), url('./fonts/ttf/ProximaNova-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url('./fonts/woff2/ProximaNova-Semibold.woff2') format('woff2'), url('./fonts/woff/ProximaNova-Semibold.woff') format('woff'), url('./fonts/ttf/ProximaNova-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: ProximaNova;
+  src: url('./fonts/woff2/ProximaNova-Bold.woff2') format('woff2'), url('./fonts/woff/ProximaNova-Bold.woff') format('woff'), url('./fonts/ttf/ProximaNova-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: FontAwesome;
+  src: url("./fonts/woff2/fontawesome-webfont.woff2") format("woff2"), url("./fonts/woff/fontawesome-webfont.woff") format("woff"), url("./fonts/ttf/fontawesome-webfont.ttf") format("truetype"), url("./fonts/svg/fontawesome-webfont.svg?#fontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* below the fold CSS goes here */
+@font-face{
+  font-family:Gotham;
+  src:url("fonts/woff2/Gotham-Extra-Light.woff2") format("woff2"),
+  url("fonts/woff/Gotham-Extra-Light.woff") format("woff");
+  font-weight:200;
+  font-style:normal
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url("fonts/woff2/Gotham-Light.woff2") format("woff2"),url("fonts/woff/Gotham-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal
+}
+
+@font-face {
+  font-family: Gotham;
+  src: url("fonts/woff2/Gotham-Regular.woff2") format("woff2"),
+  url("fonts/woff/Gotham-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal
+}
+
+@font-face{
+  font-family:Gotham;
+  src:url("./fonts/woff2/Gotham-Bold_Web.woff2") format("woff2"),
+  url("./fonts/woff/Gotham-Bold_Web.woff") format("woff");
+  font-weight:700;
+  font-style:normal
+}

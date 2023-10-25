@@ -1,6 +1,6 @@
 /* global google */
 
-import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 
 function getCenter(coords) {
   // Find bounding box

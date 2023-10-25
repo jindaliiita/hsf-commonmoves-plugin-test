@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from '../../../scripts/lib-franklin.js';
+import { fetchPlaceholders } from '../../../scripts/aem.js';
 import Sort, { sortFor } from '../../../scripts/apis/agent/sort.js';
 import { PAGE_PARAM } from './pagination.js';
 

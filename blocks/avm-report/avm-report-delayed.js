@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 
 async function initGooglePlacesAPI() {
   const placeholders = await fetchPlaceholders();

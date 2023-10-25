@@ -1,5 +1,5 @@
 import { LIVEBY_API } from '../../scripts/scripts.js';
-import { decorateIcons } from '../../scripts/lib-franklin.js';
+import { decorateIcons } from '../../scripts/aem.js';
 
 const dollarFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 });
 const percFormatter = new Intl.NumberFormat('en-US', { style: 'percent' });

@@ -1,4 +1,4 @@
-import { getMetadata } from '../../../scripts/lib-franklin.js';
+import { getMetadata } from '../../../scripts/aem.js';
 import { BREAKPOINTS } from '../../../scripts/scripts.js';
 import {
   close as closeCountrySelect,

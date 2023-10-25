@@ -1,7 +1,7 @@
 /* global google */
 /* eslint-disable no-param-reassign,  no-shadow,  prefer-rest-params */
 
-import { fetchPlaceholders } from '../../scripts/lib-franklin.js';
+import { fetchPlaceholders } from '../../scripts/aem.js';
 import { removeFilterValue, searchProperty, setFilterValue } from '../property-search-bar/filter-processor.js';
 import Template from './Template.js';
 import SearchParameters from '../../scripts/apis/creg/SearchParameters.js';

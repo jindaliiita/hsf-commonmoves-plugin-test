@@ -1,6 +1,6 @@
 import {
   loadCSS,
-} from '../../../scripts/lib-franklin.js';
+} from '../../../scripts/aem.js';
 
 const imgHTML = (country) => `<img src="/icons/flags/${country}.png" alt="${country}" class="label-image" role="presentation" aria-hidden="true" tabIndex="-1" height="25" width="25"/>${country}`;
 
@@ -64,9 +64,7 @@ export async function build(...callbacks) {
     return undefined;
   }
 
-  await new Promise((resolve) => {
-    loadCSS(`${window.hlx.codeBasePath}/blocks/shared/search-countries/search-countries.css`, resolve);
-  });
+  await loadCSS(`${window.hlx.codeBasePath}/blocks/shared/search-countries/search-countries.css`);
 
   const tmp = document.createElement('div');
   tmp.innerHTML = await resp.text();

@@ -1,4 +1,4 @@
-import { getMetadata, readBlockConfig } from '../../scripts/lib-franklin.js';
+import { getMetadata, readBlockConfig } from '../../scripts/aem.js';
 import ApplicationType from '../../scripts/apis/creg/ApplicationType.js';
 import SearchType, { searchTypeFor } from '../../scripts/apis/creg/SearchType.js';
 import PropertyType from '../../scripts/apis/creg/PropertyType.js';

@@ -1,5 +1,5 @@
 import { propertySearch } from '../../../scripts/apis/creg/creg.js';
-import { decorateIcons } from '../../../scripts/lib-franklin.js';
+import { decorateIcons } from '../../../scripts/aem.js';
 
 function createImage(listing) {
   if (listing.SmallMedia?.length > 0) {

@@ -1,4 +1,4 @@
-import { decorateIcons } from '../../../scripts/lib-franklin.js';
+import { decorateIcons } from '../../../scripts/aem.js';
 import {
   build as buildCountrySelect,
 } from '../../shared/search-countries/search-countries.js';

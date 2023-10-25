@@ -1,4 +1,4 @@
-import { decorateIcons } from '../../scripts/lib-franklin.js';
+import { decorateIcons } from '../../scripts/aem.js';
 import { LIVEBY_API } from '../../scripts/scripts.js';
 
 const ES_GRADES = ['PK', 'KG', '01', '02', '03', '04', '05', '06'];

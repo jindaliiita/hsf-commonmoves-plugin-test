@@ -114,6 +114,11 @@
 body {
   max-width: var(--full-page-width);
   background-color: var(--white);
+  display: none;
+}
+
+body.appear {
+  display: block;
 }
 
 h2 {
@@ -188,6 +193,7 @@ main .section.wide {
   max-width: var(--wide-page-width);
 }
 
+/* TODO: Do we need this? */
 main .section.formatted-text * {
   letter-spacing: normal;
   line-height: var(--line-height-m);
@@ -231,6 +237,8 @@ main .section.disc-list li {
   margin-bottom: 1.5em;
 }
 
+/* End to do check */
+
 main .section.full-width {
   max-width: var(--full-page-width);
 }
@@ -262,7 +270,6 @@ main .section.two-columns {
 main .section.two-columns > div {
   flex: 0 1 40%;
 }
-
 
 /* Center rules for a section, but don't apply it to blocks! */
 /* stylelint-disable-next-line no-descending-specificity */

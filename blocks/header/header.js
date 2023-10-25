@@ -1,5 +1,5 @@
 import { BREAKPOINTS } from '../../scripts/scripts.js';
-import { getMetadata, decorateIcons, decorateSections } from '../../scripts/lib-franklin.js';
+import { getMetadata, decorateIcons, decorateSections } from '../../scripts/aem.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = BREAKPOINTS.medium;
