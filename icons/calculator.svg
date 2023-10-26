@@ -1,10 +1,18 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"
      class="calculator"
      role="img"
      aria-hidden="true"
-     tabindex="-1">
-    <use xlink:href="/icons/icons.svg#calculator"
-         role="presentation"
-         aria-hidden="true"
-         tabindex="-1"></use>
+     tabindex="-1"
+     viewBox="0 0 25 33">
+    <g transform="translate(-339 -2102)" id="Page-1">
+        <g id="And-we-know-how-to-sell-them" transform="translate(90 1720)">
+            <g id="Point" transform="translate(235 372.334)">
+                <g id="icon-estimate" transform="translate(14 10)">
+                    <path class="st0" d="M25 32.4H0V0h25v32.4zm-24-1h23V1H1v30.4z" id="Rectangle"/>
+                    <path class="st0"
+                          d="M21.3 10.2H3.7V3.7h17.6v6.5zm-16.6-1h15.6V4.7H4.7v4.5zM8.3 16.7H3.7V12h4.6v4.7zm-3.6-1h2.6V13H4.7v2.7zM8.3 23.1H3.7v-4.6h4.6v4.6zm-3.6-1h2.6v-2.6H4.7v2.6zM8.3 29.6H3.7V25h4.6v4.6zm-3.6-1h2.6V26H4.7v2.6zM14.8 16.7h-4.6V12h4.6v4.7zm-3.6-1h2.6V13h-2.6v2.7zM14.8 23.1h-4.6v-4.6h4.6v4.6zm-3.6-1h2.6v-2.6h-2.6v2.6zM14.8 29.6h-4.6V25h4.6v4.6zm-3.6-1h2.6V26h-2.6v2.6zM21.3 16.7h-4.6V12h4.6v4.7zm-3.6-1h2.6V13h-2.6v2.7zM21.3 29.6h-4.6V18.5h4.6v11.1zm-3.6-1h2.6v-9.1h-2.6v9.1z"/>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg>

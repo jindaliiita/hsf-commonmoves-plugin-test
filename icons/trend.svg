@@ -1,10 +1,14 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"
      class="trend"
      role="img"
      aria-hidden="true"
-     tabindex="-1">
-    <use xlink:href="/icons/icons.svg#trend"
-         role="presentation"
-         aria-hidden="true"
-         tabindex="-1"></use>
+     tabindex="-1"
+     viewBox="0 0 60 24">
+    <g transform="translate(1 1)" stroke="#3A3A3A" fill="none" fill-rule="evenodd">
+        <path d="M.935 20.113l18.71-18.71 18.71 18.71 18.71-18.71"/>
+        <circle fill="#F6F6F6" cx="19.645" cy="2.806" r="2.806"/>
+        <circle fill="#F6F6F6" cx="55.194" cy="2.806" r="2.806"/>
+        <circle fill="#F6F6F6" cx="38.355" cy="18.71" r="2.806"/>
+        <circle fill="#F6F6F6" cx="2.806" cy="18.71" r="2.806"/>
+    </g>
 </svg>

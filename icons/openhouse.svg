@@ -2,9 +2,10 @@
      class="open-house"
      role="img"
      aria-hidden="true"
-     tabindex="-1">
-    <use xlink:href="/icons/icons.svg#open-house"
-         role="presentation"
-         aria-hidden="true"
-         tabindex="-1"></use>
+     tabindex="-1"
+viewBox="0 0 24 24">
+    <g fill="none" fill-rule="evenodd">
+        <path stroke="currentColor" stroke-linecap="round"
+              d="M18.414 11v8.75H6.355V11M3.858 9.793l8.527-5.672 8.527 5.671M3.5 14.713h9M10.73 11.906l2.892 2.806M13.622 14.674l-2.892 2.805"/>
+    </g>
 </svg>
