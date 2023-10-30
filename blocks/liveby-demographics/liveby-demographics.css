@@ -55,7 +55,7 @@
   font-size: var(--body-font-size-xxl);
 }
 
-.liveby-demographics.block > div .census-item .icon-bubble span.icon svg {
+.liveby-demographics.block > div .census-item .icon-bubble span.icon img {
   font-size: var(--body-font-size-xxl);
   color: var(--primary-color);
   height: 1em;

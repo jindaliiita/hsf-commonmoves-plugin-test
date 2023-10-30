@@ -1,4 +1,3 @@
-import { decorateIcons } from '../../scripts/aem.js';
 import { LIVEBY_API } from '../../scripts/scripts.js';
 
 const ES_GRADES = ['PK', 'KG', '01', '02', '03', '04', '05', '06'];
@@ -50,7 +49,8 @@ const sortMap = {
   rating: ratingSort,
 };
 
-function buildSchoolList(type, schools, sort = ratingSort) {
+async function buildSchoolList(type, schools, sort = ratingSort) {
+  const star = await fetch('/icons/liveby_rating.svg').then((resp) => (resp.ok ? resp.text() : ''));
   const sorted = schools.sort(sort);
 
   const section = document.createElement('section');
@@ -86,6 +86,7 @@ function buildSchoolList(type, schools, sort = ratingSort) {
         if (s.rating >= i) {
           span.classList.add('filled');
         }
+        span.innerHTML = star;
         rating.append(span);
       }
     } else {
@@ -95,8 +96,6 @@ function buildSchoolList(type, schools, sort = ratingSort) {
     item.append(rating);
     section.append(item);
   });
-
-  decorateIcons(section);
   return section;
 }
 
@@ -152,9 +151,9 @@ export default async function decorate(block) {
       sections.classList.add('school-lists');
 
       sections.append(
-        buildSchoolList('Elementary', elementary),
-        buildSchoolList('Middle', middle),
-        buildSchoolList('High', high),
+        await buildSchoolList('Elementary', elementary),
+        await buildSchoolList('Middle', middle),
+        await buildSchoolList('High', high),
       );
       block.append(sections);
 
@@ -173,14 +172,14 @@ export default async function decorate(block) {
       });
       block.append(more);
 
-      block.querySelector('.sort select').addEventListener('change', (e) => {
+      block.querySelector('.sort select').addEventListener('change', async (e) => {
         e.preventDefault();
         e.stopPropagation();
         const resort = sortMap[e.target.value || 'name'];
         sections.replaceChildren(
-          buildSchoolList('Elementary', elementary, resort),
-          buildSchoolList('Middle', middle, resort),
-          buildSchoolList('High', high, resort),
+          await buildSchoolList('Elementary', elementary, resort),
+          await buildSchoolList('Middle', middle, resort),
+          await buildSchoolList('High', high, resort),
         );
       });
     }

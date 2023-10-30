@@ -4,17 +4,6 @@
   margin-left: 4px;
 }
 
-
-.info-mouseover.block span.icon {
-  display: block;
-}
-
-.info-mouseover.block span.icon svg {
-  display: block;
-  height: 13px;
-  width: 13px;
-}
-
 .info-mouseover.block .info-content-wrapper {
   display: block;
   position: absolute;
@@ -91,6 +80,16 @@
 .info-mouseover .info-content-wrapper .info-content img {
   object-fit: contain;
   width: 100%;
+}
+
+.info-mouseover.block span.icon {
+  display: block;
+}
+
+.info-mouseover.block span.icon img {
+  display: block;
+  height: 13px;
+  width: 13px;
 }
 
 @media  screen and (min-width: 900px) {
