@@ -32,14 +32,18 @@ body.light-nav {
   height: 100vh;
 }
 
-.header.block nav svg {
+.header.block nav .nav-primary-wrapper {
+  display: contents;
+}
+
+.header.block nav span.icon {
+  display: block;
+}
+
+.header.block nav span.icon img {
   display: inline-block;
   height: 100%;
   width: 100%;
-}
-
-.header.block nav .nav-primary-wrapper {
-  display: contents;
 }
 
 .header.block nav .nav-logo {
@@ -64,6 +68,7 @@ body.light-nav {
   margin: auto 0;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .header.block nav .nav-logo img {
   display: block;
   max-height: calc(var(--nav-height) - 30px);
