@@ -56,8 +56,15 @@ export default async function decorate(block) {
     }
   }
 
+  const headline = block.querySelectorAll('div.hero > div');
+  if (headline.length) {
+    const headlineWrapper = document.createElement('div');
+    headlineWrapper.classList.add('headline');
+
+  }
+
   const wrapper = document.createElement('div');
-  wrapper.append(images, contentWrapper);
+  wrapper.append(images, contentWrapper, headlineWrapper);
   block.replaceChildren(wrapper);
 
   if (pictures.length > 1) {
