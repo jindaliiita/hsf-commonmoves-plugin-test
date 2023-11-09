@@ -66,8 +66,9 @@ export default async function decorate(block) {
     headlineWrapper.classList.add('headline');
     filteredList.forEach((div) => {
       const nextElement = div.nextElementSibling;
-      if (div.innerHTML === 'Headline' || div.innerHTML === 'Description') nextElement.classList.add('title', 'desc');
-      if (div.innerHTML === 'CTA') {
+      if (div.innerHTML.toLowerCase() === 'headline') nextElement.classList.add('title');
+      else if (div.innerHTML.toLowerCase() === 'description') nextElement.classList.add('desc');
+      else if (div.innerHTML.toLowerCase() === 'cta') {
         const button = document.createElement('p');
         button.innerHTML = nextElement.innerHTML;
         button.classList.add('button-container');
