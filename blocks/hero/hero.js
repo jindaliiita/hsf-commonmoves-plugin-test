@@ -57,24 +57,24 @@ export default async function decorate(block) {
   }
 
   const headline = block.querySelectorAll('div.hero > div > div');
-  const filteredList = Array.from(headline).filter(node => {
-    const innerHTML = node.innerHTML.trim().toLowerCase();
-    return innerHTML === 'headline' || innerHTML === 'description' || innerHTML === 'cta';
-  });
+  const validInnerHtml = new Set(['headline', 'description', 'cta']);
+  const filteredList = Array.from(headline).filter(node => validInnerHtml.has(node.innerHTML.trim().toLowerCase()));
+
   const headlineWrapper = document.createElement('div');
   if (filteredList.length) {
-    headlineWrapper.classList.add('headline');
-    filteredList.forEach((div) => {
-      if (div.innerHTML === 'Headline') div.nextElementSibling.classList.add('title');
-      if (div.innerHTML === 'Description') div.nextElementSibling.classList.add('desc');
-      if (div.innerHTML === 'CTA') {
-        const button = document.createElement('p');
-        button.innerHTML = div.nextElementSibling.innerHTML;
-        button.classList.add('button-container');
-        div.parentNode.replaceChild(button, div.nextElementSibling);
-      }
-      headlineWrapper.append(div.nextElementSibling);
-    });
+      headlineWrapper.classList.add('headline');
+      filteredList.forEach((div) => {
+          const nextElement = div.nextElementSibling;
+          const innerHTML = div.innerHTML;
+          if (innerHTML === 'Headline' || innerHTML === 'Description') nextElement.classList.add('title', 'desc');
+          if (innerHTML === 'CTA') {
+            const button = document.createElement('p');
+            button.innerHTML = nextElement.innerHTML;
+            button.classList.add('button-container');
+            div.parentNode.replaceChild(button, nextElement);
+          }
+          headlineWrapper.append(nextElement);
+      });
   }
 
   const wrapper = document.createElement('div');
