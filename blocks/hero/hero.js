@@ -56,15 +56,33 @@ export default async function decorate(block) {
     }
   }
 
-  const headline = block.querySelectorAll('div.hero > div');
-  if (headline.length) {
-    const headlineWrapper = document.createElement('div');
+  const headline = block.querySelectorAll('div.hero > div > div');
+  const filteredList = Array.from(headline).filter(node => {
+    const innerHTML = node.innerHTML.trim().toLowerCase();
+    return innerHTML === 'headline' || innerHTML === 'description' || innerHTML === 'cta';
+  });
+  const headlineWrapper = document.createElement('div');
+  if (filteredList.length) {
     headlineWrapper.classList.add('headline');
-
+    filteredList.forEach((div) => {
+      if (div.innerHTML === 'Headline') div.nextElementSibling.classList.add('title');
+      if (div.innerHTML === 'Description') div.nextElementSibling.classList.add('desc');
+      if (div.innerHTML === 'CTA') {
+        const button = document.createElement('p');
+        button.innerHTML = div.nextElementSibling.innerHTML;
+        button.classList.add('button-container');
+        div.parentNode.replaceChild(button, div.nextElementSibling);
+      }
+      headlineWrapper.append(div.nextElementSibling);
+    });
   }
 
   const wrapper = document.createElement('div');
-  wrapper.append(images, contentWrapper, headlineWrapper);
+  wrapper.append(images, contentWrapper);
+  if (headlineWrapper.hasChildNodes()) {
+    wrapper.classList.add('row');
+    wrapper.append(headlineWrapper);
+  }
   block.replaceChildren(wrapper);
 
   if (pictures.length > 1) {
