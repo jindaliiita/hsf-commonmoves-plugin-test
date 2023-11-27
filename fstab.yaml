@@ -1,5 +1,5 @@
 mountpoints:
-  /: https://hsoa.sharepoint.com/:f:/r/sites/Franklin/Shared%20Documents/Website/Common%20Moves
+  /: https://hsoa.sharepoint.com/:f:/r/sites/Franklin/Shared%20Documents/Website
 
 folders:
   /blog/blog-detail/: /blog/blog-detail
