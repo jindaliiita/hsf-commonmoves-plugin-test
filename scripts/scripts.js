@@ -279,7 +279,7 @@ async function loadLazy(doc) {
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
-  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
+  addFavIcon(`${window.hlx.codeBasePath}/styles/bhhs_seal_favicon.ico`);
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
