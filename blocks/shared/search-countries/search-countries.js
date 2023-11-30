@@ -108,7 +108,7 @@ export async function build(...callbacks) {
   selected.classList.add('selected');
   selected.setAttribute('aria-haspopup', 'listbox');
   selected.setAttribute('aria-expanded', 'false');
-  selected.setAttribute('aria-label', 'Select Country');
+  selected.setAttribute('aria-label', `${first.value} - Select Country`);
   selected.setAttribute('role', 'button');
   selected.setAttribute('tabIndex', '0');
   selected.innerHTML = imgHTML(first.value);
