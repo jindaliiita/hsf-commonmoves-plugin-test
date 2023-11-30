@@ -43,6 +43,9 @@
   width: 67px;
 }
 
+.avm-report.block form button[type="submit"] {
+  transition: all .3s ease-in;
+}
 
 @media screen and (min-width: 600px) {
   .avm-report.block {
