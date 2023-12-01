@@ -11,6 +11,7 @@ import {
   waitForLCP,
   loadBlocks,
   loadCSS,
+  loadScript,
   getMetadata,
 } from './aem.js';
 
@@ -111,6 +112,42 @@ function buildLiveByMetadata(main) {
     attribution.append(buildBlock('liveby-attribution', { elems: [] }));
     main.append(attribution);
   }
+}
+
+export function getYoutubeVideoId(url) {
+  if (url.includes('youtube.com/watch?v=')) {
+    return new URL(url).searchParams.get('v');
+  }
+  if (url.includes('youtube.com/embed/') || url.includes('youtu.be/')) {
+    return new URL(url).pathname.split('/').pop();
+  }
+  return null;
+}
+
+function decorateVideoLinks(main) {
+  [...main.querySelectorAll('a')]
+    .filter(({ href }) => !!href)
+  // only convert plain links
+    .filter((a) => a.textContent?.trim()?.toLowerCase().startsWith('http'))
+  // don't decorate if already in a block. unless it's `columns`.
+    .filter((a) => {
+      const block = a.closest('div.block');
+      if (!block) return true;
+      return block.classList.contains('columns');
+    })
+    .forEach((link) => {
+      const youtubeVideoId = getYoutubeVideoId(link.href);
+
+      if (youtubeVideoId) {
+        loadCSS('/blocks/embed/lite-yt-embed.css');
+        loadScript('/blocks/embed/lite-yt-embed.js');
+        const video = document.createElement('lite-youtube');
+        video.setAttribute('videoid', youtubeVideoId);
+        video.setAttribute('params', 'rel=0');
+        video.classList.add('youtube-video');
+        link.replaceWith(video);
+      }
+    });
 }
 
 /**
@@ -214,6 +251,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateVideoLinks(main);
 }
 
 /**
