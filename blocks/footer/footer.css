@@ -105,6 +105,10 @@ footer {
   padding-top: 40px;
 }
 
+.footer-container-flex p {
+  margin-bottom: unset;
+}
+
 .footer-container-flex p:nth-of-type(3) {
   padding-top: 15px;
 }
