@@ -5,12 +5,7 @@ import {
 function observeForm() {
   const script = document.createElement('script');
   script.type = 'module';
-  script.innerHTML = `
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = '${window.hlx.codeBasePath}/blocks/hero/search/home-delayed.js';
-    document.head.append(script);
-  `;
+  script.src = `${window.hlx.codeBasePath}/blocks/hero/search/home-delayed.js`;
   document.head.append(script);
 }
 

@@ -1,6 +1,5 @@
 /* global google */
-
-import { fetchPlaceholders } from '../../scripts/aem.js';
+import loadMaps from '../../scripts/google-maps/index.js';
 
 function getCenter(coords) {
   // Find bounding box
@@ -53,28 +52,6 @@ function initLiveByMap() {
   const poly = new google.maps.Polygon(polyOptions);
 }
 
-function loadJS(src) {
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.defer = true;
-  script.innerHTML = `
-    (()=>{
-      let script = document.createElement('script');
-      script.src = '${src}';
-      document.head.append(script);
-    })();
-  `;
-  document.head.append(script);
-}
-
-async function initGoogleMapsAPI() {
-  const placeholders = await fetchPlaceholders();
-  const CALLBACK_FN = 'initLiveByMap';
-  window[CALLBACK_FN] = initLiveByMap;
-  const { mapsApiKey } = placeholders;
-  const src = `https://maps.googleapis.com/maps/api/js?key=${mapsApiKey}&libraries=maps&callback=${CALLBACK_FN}`;
-  loadJS(src);
-}
-
-initGoogleMapsAPI();
+loadMaps();
+await window.google.maps.importLibrary('maps');
+initLiveByMap();
