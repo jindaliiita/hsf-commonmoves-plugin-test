@@ -62,6 +62,25 @@ main .section.full-width > .hero-wrapper {
   padding: 0 16px;
 }
 
+.hero.block.keep-scale {
+  display: block;
+  height: auto;
+}
+
+.hero.block.keep-scale > div{
+  padding: 0;
+}
+
+.hero.block.keep-scale .images {
+  position: relative;
+  height: auto;
+}
+
+.hero.block.keep-scale .images picture {
+  position: relative;
+  height: auto;
+}
+
 .hero.block > div .content {
   display: flex;
   height: 100%;
@@ -112,6 +131,10 @@ main .section.full-width > .hero-wrapper {
 
   .hero.block > div {
     margin-top: 100px;
+  }
+
+  .hero.block.keep-scale > div {
+    margin-top: unset;
   }
 }
 

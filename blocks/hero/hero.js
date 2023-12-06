@@ -57,7 +57,10 @@ export default async function decorate(block) {
   }
 
   const wrapper = document.createElement('div');
-  wrapper.append(images, contentWrapper);
+  wrapper.append(images);
+  // don't add contentWrapper if it's empty
+  if (contentWrapper.innerHTML != '')
+    wrapper.append(contentWrapper);
   block.replaceChildren(wrapper);
 
   if (pictures.length > 1) {
