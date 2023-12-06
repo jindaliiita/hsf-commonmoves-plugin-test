@@ -256,6 +256,10 @@ main .section.white-background {
   background: var(--white);
 }
 
+main .section.top-border {
+  border-top: 1px solid var(--body-color);
+}
+
 main .section.padding {
   padding-top: 3em;
   padding-bottom: 3em;
