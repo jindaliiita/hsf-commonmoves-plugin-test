@@ -1,0 +1,133 @@
+.section.hero-slides-container {
+  padding: 0;
+}
+
+.section > .hero-slides-wrapper {
+  max-width: unset;
+  margin: unset;
+}
+
+.hero-slides {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 600/686;
+}
+
+@media (min-width: 600px) {
+  .hero-slides {
+    height: 580px;
+  }
+}
+
+.hero-slides .slide {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  background-color: #394c5a;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.hero-slides .slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+@media (min-width: 600px) {
+  .hero-slides .slide {
+    flex-direction: row;
+  }
+}
+
+.hero-slides .slide .image {
+  flex: 0 0 66%;
+  height: 100%;
+}
+
+.hero-slides .slide .image img {
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+  height: 100%;
+}
+
+
+.hero-slides .slide .text {
+  color: var(--text-color-on-black-background);
+  align-self: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+
+  /* font size is relative to screen width, but limited in min and max size.
+     the actual texts then use `em` to scale with this font size.
+   */
+  font-size: clamp(11px, 1.5vw, 16px);
+}
+
+@media (min-width: 600px) {
+  .hero-slides .slide .text {
+    height: 100%;
+    padding: 0 40px;
+  }
+}
+
+.hero-slides .slide .text .price {
+  text-transform: uppercase;
+  color: var(--text-color-secondary-on-black-background);
+}
+
+.hero-slides .slide .text .city {
+  margin: 0;
+  font-size: 1.5em;
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 600px) {
+  .hero-slides .slide .text .city {
+    font-size: 2.5em;
+    line-height: 1;
+  }
+}
+
+.hero-slides .slide .text .link {
+  text-transform: uppercase;
+  color: var(--text-color-secondary-on-black-background);
+}
+
+
+@media (min-width: 600px) {
+  .hero-slides .slideshow-buttons {
+    position: absolute;
+    bottom: 4rem;
+    right: 7%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 0.7vw;
+    z-index: 3;
+  }
+
+  .hero-slides .slideshow-buttons button {
+    height: 1.1vw;
+    aspect-ratio: 1/1;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    border: none;
+    background-color: #bbb;
+    transition: background-color 0.3s ease;
+  }
+
+  .hero-slides .slideshow-buttons button.active {
+    background-color: white;
+  }
+}
+
