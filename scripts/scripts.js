@@ -150,6 +150,14 @@ function decorateVideoLinks(main) {
     });
 }
 
+function decorateImages(main) {
+  main.querySelectorAll('.section .default-content-wrapper picture').forEach((picture) => {
+    const img = picture.querySelector('img');
+    const ratio = (parseInt(img.height, 10) / parseInt(img.width, 10)) * 100;
+    picture.style.paddingBottom = `${ratio}%`;
+  });
+}
+
 /**
  * Build Floating image block
  * @param {Element} main The container element
@@ -252,6 +260,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateVideoLinks(main);
+  decorateImages(main);
 }
 
 /**
