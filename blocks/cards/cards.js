@@ -2,7 +2,7 @@ export default function decorate(block) {
   const cards = [...block.children];
 
   // Check for a title row
-  if (block.children[0].children.length === 1) {
+  if (!block.classList.contains('shade-icon') && block.children[0].children.length === 1) {
     const wrapper = cards.shift();
     const title = wrapper.children[0];
     title.classList.add('title');
