@@ -1,5 +1,7 @@
+import { readBlockConfig } from '../../scripts/aem.js';
+
 let queryIndex;
-export async function getQueryIndex() {
+async function getQueryIndex() {
   if (!queryIndex) {
     const resp = await fetch('/communities/query-index.json');
     if (resp.ok) {
@@ -26,9 +28,9 @@ function filterFunction() {
 }
 
 // Show/hide the dropdown when clicking on the input field
-document.getElementById("myInput").addEventListener("click", function() {
+function dropClick() {
   document.getElementById("myDropdown").style.display = "block";
-});
+}
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
@@ -44,21 +46,32 @@ window.onclick = function(event) {
 }
 
 export default async function decorate(block) {
+  const config = readBlockConfig(block);
+  block.innerHTML = '';
   const index = await getQueryIndex();
-/* <!-- Dropdown container -->
-<div class="dropdown">
-  <!-- Input field for lookahead filter -->
-  <input type="text" id="myInput" oninput="filterFunction()" placeholder="Search for names">
 
-  <!-- Dropdown content -->
-  <div class="dropdown-content" id="myDropdown">
-    <!-- Dropdown options -->
-    <a href="#">John Doe</a>
-    <a href="#">Jane Doe</a>
-  </div>
-</div> */
+  const list = document.createElement('div');
+  list.classList.add('dropdown');
+
+  const txtInput = document.createElement('input');
+  txtInput.type = 'text';
+  txtInput.placeholder = config.placeholder;
+  txtInput.id = 'myInput';
+  txtInput.addEventListener('input', filterFunction);
+  txtInput.addEventListener('click', dropClick);
+  list.append(txtInput);
+
+  const dropContent = document.createElement('div');
+  dropContent.classList.add('dropdown-content');
+  dropContent.id = 'myDropdown';
+
   index.data.forEach((community) => {
     const communityName = community['liveby-community'];
-    block.append(list);
+    const listItem = document.createElement('a');
+    listItem.href = community.path;
+    listItem.innerText = communityName;
+    dropContent.append(listItem);
   });
+  list.append(dropContent);
+  block.append(list);
 }
