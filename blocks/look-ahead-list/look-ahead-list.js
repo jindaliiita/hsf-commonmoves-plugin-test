@@ -14,11 +14,11 @@ async function getQueryIndex() {
 
 // Filter communties based on input control
 function filterFunction() {
-  let input, filter, div, txtValue, a, i;
-  input = document.getElementById('myInput');
-  filter = input.value.toUpperCase();
-  div = document.getElementById('myDropdown');
-  a = div.getElementsByTagName('a');
+  let i;
+  const input = document.getElementById('myInput');
+  const filter = input.value.toUpperCase();
+  const div = document.getElementById('myDropdown');
+  const a = div.getElementsByTagName('a');
   for (i = 0; i < a.length;) {
     txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -39,14 +39,15 @@ function dropClick() {
 
 // Close the dropdown if the user clicks outside of it
 function closeDropdown(event) {
+  let i;
   if (!event.target.matches('#myInput')) {
-    let dropdowns = document.getElementsByClassName('dropdown-content');
-    for (let i = 0; i < dropdowns.length;) {
-      let openDropdown = dropdowns[i];
+    const dropdowns = document.getElementsByClassName('dropdown-content');
+    for (i = 0; i < dropdowns.length;) {
+      const openDropdown = dropdowns[i];
       if (openDropdown.style.display === 'block') {
         openDropdown.style.display = 'none';
       }
-      i = i + 1
+      i = i + 1;
     }
   }
 }
