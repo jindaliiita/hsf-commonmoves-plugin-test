@@ -1,5 +1,6 @@
 import { readBlockConfig } from '../../scripts/aem.js';
 
+// Get the communities from the community index
 let queryIndex;
 async function getQueryIndex() {
   if (!queryIndex) {
@@ -11,31 +12,34 @@ async function getQueryIndex() {
   return queryIndex;
 }
 
+// Filter communties based on input control
 function filterFunction() {
-  var input, filter, ul, li, a, i;
-  input = document.getElementById("myInput");
+  var input, filter, div, txtValue, a, i;
+  input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
-  div = document.getElementById("myDropdown");
-  a = div.getElementsByTagName("a");
+  div = document.getElementById('myDropdown');
+  a = div.getElementsByTagName('a');
   for (i = 0; i < a.length; i++) {
     txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
+      a[i].style.display = '';
     } else {
-      a[i].style.display = "none";
+      a[i].style.display = 'none';
     }
   }
 }
 
 // Show/hide the dropdown when clicking on the input field
 function dropClick() {
-  document.getElementById("myDropdown").style.display = "block";
+  if (event.target.closest('.dropdown') !== null) {
+    document.getElementById('myDropdown').style.display = 'block';
+  }
 }
 
 // Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('#myInput')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var dropdowns = document.getElementsByClassName('dropdown-content');
     for (var i = 0; i < dropdowns.length; i++) {
       var openDropdown = dropdowns[i];
       if (openDropdown.style.display === 'block') {
@@ -58,7 +62,7 @@ export default async function decorate(block) {
   txtInput.placeholder = config.placeholder;
   txtInput.id = 'myInput';
   txtInput.addEventListener('input', filterFunction);
-  txtInput.addEventListener('click', dropClick);
+  block.addEventListener('click', dropClick);
   list.append(txtInput);
 
   const dropContent = document.createElement('div');
@@ -69,7 +73,7 @@ export default async function decorate(block) {
     const communityName = community['liveby-community'];
     const listItem = document.createElement('a');
     listItem.href = community.path;
-    listItem.innerText = communityName;
+    listItem.innerText = `${communityName.split(',')[0]} (${communityName})`;
     dropContent.append(listItem);
   });
   list.append(dropContent);

@@ -17,6 +17,7 @@
   --primary-color: #552448;
   --primary-color-lighten: rgba(98 98 121 / 12.5%);
   --primary-color-svg-filter: invert(18%) sepia(17%) saturate(1944%) hue-rotate(264deg) brightness(93%) contrast(95%);
+  --color-tertiary: #eae3d4;
   --body-color: #3a3a3a;
   --platinum: #e7e7e7;
   --light-grey: #f6f6f6;
