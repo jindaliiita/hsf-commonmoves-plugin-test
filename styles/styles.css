@@ -305,6 +305,23 @@ main .section .default-content-wrapper h4 {
   margin-bottom: 1.25em;
 }
 
+main .section .default-content-wrapper picture {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+main .section .default-content-wrapper picture img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
 /* common styles */
 @keyframes spinner-spin {
   0% { transform: rotate(0deg); }
