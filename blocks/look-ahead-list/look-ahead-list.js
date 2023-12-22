@@ -14,18 +14,19 @@ async function getQueryIndex() {
 
 // Filter communties based on input control
 function filterFunction() {
-  var input, filter, div, txtValue, a, i;
+  let input, filter, div, txtValue, a, i;
   input = document.getElementById('myInput');
   filter = input.value.toUpperCase();
   div = document.getElementById('myDropdown');
   a = div.getElementsByTagName('a');
-  for (i = 0; i < a.length; i++) {
+  for (i = 0; i < a.length;) {
     txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       a[i].style.display = '';
     } else {
       a[i].style.display = 'none';
     }
+    i = i + 1;
   }
 }
 
@@ -37,14 +38,15 @@ function dropClick() {
 }
 
 // Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
+function closeDropdown(event) {
   if (!event.target.matches('#myInput')) {
-    var dropdowns = document.getElementsByClassName('dropdown-content');
-    for (var i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
+    let dropdowns = document.getElementsByClassName('dropdown-content');
+    for (let i = 0; i < dropdowns.length;) {
+      let openDropdown = dropdowns[i];
       if (openDropdown.style.display === 'block') {
         openDropdown.style.display = 'none';
       }
+      i = i + 1
     }
   }
 }
@@ -79,3 +81,5 @@ export default async function decorate(block) {
   list.append(dropContent);
   block.append(list);
 }
+
+window.addEventListener('click', closeDropdown);
