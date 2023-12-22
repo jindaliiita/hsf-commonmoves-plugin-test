@@ -19,7 +19,7 @@
 }
 
 .look-ahead-list .dropdown:focus-within {
-  box-shadow: 0 0 0 1px rgb(38, 132, 255);
+  box-shadow: 0 0 0 1px rgb(38 132 255);
 }
 
 .look-ahead-list {
