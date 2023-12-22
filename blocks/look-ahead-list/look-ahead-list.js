@@ -20,18 +20,18 @@ function filterFunction() {
   const div = document.getElementById('myDropdown');
   const a = div.getElementsByTagName('a');
   for (i = 0; i < a.length;) {
-    txtValue = a[i].textContent || a[i].innerText;
+    const txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       a[i].style.display = '';
     } else {
       a[i].style.display = 'none';
     }
-    i = i + 1;
+    i += 1;
   }
 }
 
 // Show/hide the dropdown when clicking on the input field
-function dropClick() {
+function dropClick(event) {
   if (event.target.closest('.dropdown') !== null) {
     document.getElementById('myDropdown').style.display = 'block';
   }
@@ -47,7 +47,7 @@ function closeDropdown(event) {
       if (openDropdown.style.display === 'block') {
         openDropdown.style.display = 'none';
       }
-      i = i + 1;
+      i += 1;
     }
   }
 }
