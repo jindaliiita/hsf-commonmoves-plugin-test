@@ -90,4 +90,17 @@
   .section.look-ahead-list-container {
     width: 36%;
   }
+
+  .section.look-ahead-list-container.community-directory-container .look-ahead-list {
+    max-width: 228px;
+  }
+
+  .section.look-ahead-list-container.community-directory-container {
+    width: 100%;
+  }
+
+  .section .look-ahead-list-wrapper {
+    text-align: left;
+    padding-left: 10px;
+  }
 }
