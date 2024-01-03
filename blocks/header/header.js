@@ -2,7 +2,7 @@ import { BREAKPOINTS } from '../../scripts/scripts.js';
 import { getMetadata, decorateIcons, decorateSections } from '../../scripts/aem.js';
 
 // media query match that indicates mobile/tablet width
-const isDesktop = BREAKPOINTS.medium;
+const isDesktop = BREAKPOINTS.large;
 
 function closeOnEscape(e) {
   if (e.code === 'Escape') {
@@ -230,7 +230,9 @@ export default async function decorate(block) {
     nav.setAttribute('aria-expanded', 'false');
     // prevent mobile nav behavior on window resize
     toggleMenu(nav, navSections, isDesktop.matches);
-    isDesktop.addEventListener('change', () => toggleMenu(nav, navSections, isDesktop.matches));
+    isDesktop.addEventListener('change', () => {
+      toggleMenu(nav, navSections, isDesktop.matches);
+    });
 
     decorateIcons(nav);
     const navWrapper = document.createElement('div');

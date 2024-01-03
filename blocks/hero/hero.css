@@ -19,11 +19,11 @@ main .section.full-width > .hero-wrapper {
 
 .hero.block.under-nav {
   margin-top: calc(var(--nav-height) * -1);
-  background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 50%) 50px, transparent 100px, transparent 100%);
+  background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 15%) 50px, transparent 100px, transparent 100%);
 }
 
 .hero.block.has-content.under-nav {
-  background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 30%) 100px, rgba(0 0 0 / 30%) 100%);
+  background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 15%) 100px, rgba(0 0 0 / 15%) 100%);
 }
 
 .hero.block .images {

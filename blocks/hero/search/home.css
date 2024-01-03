@@ -18,6 +18,11 @@
   display: none;
 }
 
+.hero.block .content .homes .search-bar .search-country-select-parent {
+  position: relative;
+  width: 80px;
+}
+
 .hero.block .content .homes .search-bar .suggester-input {
   flex: 1;
 }
@@ -45,7 +50,7 @@
   justify-content: center;
 }
 
-.hero.block .content .homes .search-bar .filter span.icon svg {
+.hero.block .content .homes .search-bar .filter span.icon img {
   height: 22px;
   width: 22px;
   color: var(--black);

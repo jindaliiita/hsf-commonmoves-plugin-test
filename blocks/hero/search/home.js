@@ -1,17 +1,11 @@
-import { decorateIcons } from '../../../scripts/aem.js';
 import {
   build as buildCountrySelect,
 } from '../../shared/search-countries/search-countries.js';
 
 function observeForm() {
   const script = document.createElement('script');
-  script.type = 'text/partytown';
-  script.innerHTML = `
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = '${window.hlx.codeBasePath}/blocks/hero/search/home-delayed.js';
-    document.head.append(script);
-  `;
+  script.type = 'module';
+  script.src = `${window.hlx.codeBasePath}/blocks/hero/search/home-delayed.js`;
   document.head.append(script);
 }
 
@@ -76,6 +70,7 @@ async function buildForm() {
     </div>
     <div class="search-bar" role="search">
       <div class="search-suggester">
+        <div class="search-country-select-parent"></div>
         <div class="suggester-input">
           <input type="text" placeholder="${getPlaceholder()}" aria-label="${getPlaceholder()}" name="keyword">
           <input type="hidden" name="query">
@@ -113,12 +108,12 @@ async function buildForm() {
     input.setAttribute('aria-label', placeholder);
   };
 
-  const countrySelect = await buildCountrySelect(changeCountry);
-  if (countrySelect) {
-    form.querySelector('.search-suggester').prepend(countrySelect);
-  }
-  decorateIcons(form);
-  observeForm();
+  buildCountrySelect(changeCountry).then((select) => {
+    if (select) {
+      form.querySelector('.search-country-select-parent').append(select);
+    }
+  });
+  window.setTimeout(observeForm, 3000);
   return form;
 }
 

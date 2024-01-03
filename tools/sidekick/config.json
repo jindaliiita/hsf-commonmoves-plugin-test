@@ -1,6 +1,6 @@
 {
   "project": "HSF Common Moves",
-  "host": "www.commonmoves.com",
+  "host": "https://main--hsf-commonmoves--hlxsites.hlx.live/",
   "plugins": [
     {
       "id": "library",

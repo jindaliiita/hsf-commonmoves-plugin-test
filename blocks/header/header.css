@@ -97,7 +97,7 @@ body.light-nav {
   font-family: var(--font-family-proxima);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-s);
-  letter-spacing:var(--letter-spacing-reg);
+  letter-spacing: var(--letter-spacing-reg);
   line-height: var(--body-font-size-s);
   text-decoration: none;
   cursor: pointer;
@@ -197,6 +197,7 @@ body.light-nav {
 }
 
 .header.block nav .nav-hamburger .nav-hamburger-icon {
+  position: relative;
   height: 24px;
   width: 24px;
 }
@@ -208,9 +209,19 @@ body.light-nav {
 
 .header.block nav .nav-hamburger .close {
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .header.block nav .nav-hamburger .open {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   filter: var(--hamburger-filter);
 }
 
@@ -239,7 +250,7 @@ body.light-nav {
     height: var(--nav-height);
     background: transparent;
   }
-  
+
   body.light-nav .header.block nav[aria-expanded="true"] {
     --logo-filter: invert(1);
   }

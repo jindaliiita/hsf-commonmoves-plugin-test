@@ -29,16 +29,10 @@ function observeCarousel() {
   if (alreadyDeferred) {
     return;
   }
-
   alreadyDeferred = true;
   const script = document.createElement('script');
-  script.type = 'text/partytown';
-  script.innerHTML = `
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = '${window.hlx.codeBasePath}/blocks/quote-carousel/quote-carousel-delayed.js';
-    document.head.append(script);
-  `;
+  script.type = 'module';
+  script.src = `${window.hlx.codeBasePath}/blocks/quote-carousel/quote-carousel-delayed.js`;
   document.head.append(script);
 }
 
@@ -94,6 +88,6 @@ export default async function decorate(block) {
       </div>
       <button name="next" aria-label="Next" class="control-button"><svg><use xlink:href="/icons/icons.svg#carrot"/></svg></button>
     `;
-    observeCarousel();
+    window.setTimeout(observeCarousel, 3000);
   }
 }

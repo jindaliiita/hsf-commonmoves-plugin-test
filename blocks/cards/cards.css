@@ -29,6 +29,11 @@
   padding: 0;
 }
 
+.cards.block.cards-1-cols .cards-list .card-image {
+  margin-bottom: 25px;
+}
+
+
 .cards.block .cards-list .cards-item .card-image {
   position: relative;
   display: flex;
@@ -43,12 +48,11 @@
   position: relative;
   height: 100%;
   width: 100%;
-  padding-bottom: 66%;
 }
 
 .cards.block .cards-list .cards-item .card-image img {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   object-fit: cover;
   object-position: center;
@@ -127,8 +131,48 @@
   letter-spacing: var(--letter-spacing-xs);
 }
 
+.cards.block.shade-icon .cards-list .cards-item .card-body p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .section.grey-background .cards.block .cards-list .cards-item .card-image p {
   background-color: var(--light-grey);
+}
+
+.cards.block.shade-icon .cards-list .cards-item {
+  background-color: var(--light-grey);
+  padding: 0;
+  border-top: 1px solid #000;
+  min-height: 274px;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards.block.shade-icon .cards-list .cards-item .card-body h4 {
+  padding: 8px 30px;
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-l);
+  letter-spacing: var(--letter-spacing-m);
+}
+
+.cards.block.shade-icon .cards-list .cards-item .card-body p:not(:first-of-type) {
+  margin-bottom: 20px;
+  padding: 0 31px 34px;
+  font-size: var(--body-font-size-s);
+}
+
+.cards.block.shade-icon .cards-list .cards-item .card-body .icon {
+  display: block;
+  margin-top: 61px;
+}
+
+.cards.block.shade-icon .cards-list .cards-item .card-body .icon img {
+  margin: 0 auto;
+  display: block;
+  height: 45px;
+  width: 62px;
 }
 
 @media screen and (min-width: 600px) {
@@ -137,9 +181,21 @@
     max-width: 83.333%;
   }
 
+  .cards.block.shade-icon .cards-list {
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: stretch;
+    margin-bottom: 50px;
+  }
+
   .cards.block .cards-list .cards-item .card-body h3 {
     font-size: var(--heading-font-size-m);
   }
+
+  .cards.block.shade-icon .cards-list .cards-item .card-body p:not(:first-of-type) {
+    padding: 0 20px;
+  }
+
 }
 
 @media (min-width: 900px) {
@@ -179,5 +235,20 @@
     align-items: stretch;
     column-gap: 20px;
   }
+
+  .cards.block.shade-icon .cards-list .cards-item .card-body p:not(:first-of-type) {
+    padding: 0 25px 54px;
+  }
+
 }
 
+@media (min-width: 1200px) {
+  .cards.block.shade-icon .cards-list {
+    justify-content: space-around;
+    column-gap: unset;
+  }
+
+  .cards.block.shade-icon .cards-list .cards-item {
+    flex: 0 1 28%;
+  }
+}
