@@ -5,3 +5,7 @@
   border: none;
   background: var(--platinum);
 }
+
+.separator.block.padded {
+  margin: 30px 0;
+}
