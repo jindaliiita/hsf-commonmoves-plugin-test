@@ -248,6 +248,20 @@ main .section.full-width > div {
   margin: 0 auto;
 }
 
+main .section.full-bleed {
+  padding: 0;
+  max-width: var(--full-page-width);
+}
+
+main .section.full-bleed div {
+  max-width: var(--full-page-width);
+}
+
+main .section.full-bleed picture img {
+  width: 100%;
+  height: auto;
+}
+
 main .section.grey-background {
   background: var(--light-grey);
 }
