@@ -17,7 +17,7 @@ export default async function decorate(block) {
   listings.forEach((listing, index) => {
     const slide = document.createElement('a');
     slide.classList.add('slide');
-    slide.href = listing.path;
+    slide.href = listing.PdpPath;
 
     const imageSizes = [
       // desktop
@@ -27,22 +27,22 @@ export default async function decorate(block) {
       { width: '400' },
     ];
     const picture = listing.picture || createOptimizedPicture(
-      listing.image,
-      listing.city,
+      config[listing.ListingId],
+      listing.City,
       index === 0,
       imageSizes,
     );
     slide.innerHTML = `
       <div class="image">${picture.outerHTML}</div>
       <div class="text">
-      <p class="city">${plainText(listing.city)}</p>
-      <p class="price">${plainText(listing.price)}</p>
-      <a class="link" href='${listing.path}'>LEARN MORE</a>
+      <p class="city">${plainText(listing.City)}</p>
+      <p class="price">${plainText(listing.ListPriceUS)}</p>
+      <a class="link" href='${listing.PdpPath}'>LEARN MORE</a>
       </div> `;
     block.append(slide);
 
     const button = document.createElement('button');
-    button.ariaLabel = `go to listing in ${listing.city}`;
+    button.ariaLabel = `go to listing in ${listing.City}`;
     button.addEventListener('click', () => goToSlide(index));
     slideshowButtons.append(button);
 
@@ -56,7 +56,7 @@ export default async function decorate(block) {
 }
 
 async function fetchListings(config) {
-  const resp = await fetch(`${window.hlx.codeBasePath}/listings.json}`);
+  const resp = await fetch(`${window.hlx.codeBasePath}/drafts/rrusher/listings.json`);
   // eslint-disable-next-line no-return-await
   return (await resp.json()).data;
 }
