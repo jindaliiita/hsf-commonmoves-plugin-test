@@ -1,5 +1,6 @@
 .section.hero-slides-container {
   padding: 0;
+  max-width: var(--wide-page-width);
 }
 
 .section > .hero-slides-wrapper {
@@ -10,13 +11,16 @@
 .hero-slides {
   width: 100%;
   position: relative;
-  aspect-ratio: 600/686;
+  height: 600px;
 }
 
-@media (min-width: 600px) {
-  .hero-slides {
-    height: 580px;
-  }
+.hero-slides.block.under-nav {
+  margin-top: calc(var(--nav-height) * -1);
+  background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 15%) 50px, transparent 100px, transparent 100%);
+}
+
+.hero-slides.block.has-content.under-nav {
+  background: linear-gradient(180deg, rgba(0 0 0 / 50%) 0, rgba(0 0 0 / 15%) 100px, rgba(0 0 0 / 15%) 100%);
 }
 
 .hero-slides .slide {
@@ -27,7 +31,6 @@
   top: 0;
   left: 0;
   flex-direction: column;
-  background-color: #394c5a;
   opacity: 0;
   transition: opacity 0.9s ease;
 }
@@ -37,97 +40,138 @@
   z-index: 2;
 }
 
-@media (min-width: 600px) {
-  .hero-slides .slide {
-    flex-direction: row;
-  }
-}
-
 .hero-slides .slide .image {
-  flex: 0 0 66%;
   height: 100%;
+  width: 100%;
 }
 
 .hero-slides .slide .image img {
   object-fit: cover;
-  object-position: top;
   width: 100%;
   height: 100%;
 }
 
+.hero-slides .slide .row {
+  width: 100%;
+  height: 120px;
+  flex-flow: column wrap;
+  align-content: space-between;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  position: absolute;
+  top: auto;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+}
+.hero-slides .slide .row .logo {
+  width: 33.33%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.hero-slides .slide .row .logo img {
+  filter: invert();
+  height: 100%;
+}
 
 .hero-slides .slide .text {
   color: var(--text-color-on-black-background);
   align-self: center;
-  padding: 10px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100%;
-
+  background-color: black;
+  width: 66.67%;
   /* font size is relative to screen width, but limited in min and max size.
      the actual texts then use `em` to scale with this font size.
    */
   font-size: clamp(11px, 1.5vw, 16px);
 }
 
-@media (min-width: 600px) {
-  .hero-slides .slide .text {
-    height: 100%;
-    padding: 0 40px;
-  }
+.hero-slides .slide .text * {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--text-color-secondary-on-black-background);
 }
 
 .hero-slides .slide .text .price {
-  text-transform: uppercase;
-  color: var(--text-color-secondary-on-black-background);
-}
-
-.hero-slides .slide .text .city {
-  margin: 0;
-  font-size: 1.5em;
-  line-height: 1.2;
-  font-weight: bold;
-}
-
-@media screen and (min-width: 600px) {
-  .hero-slides .slide .text .city {
-    font-size: 2.5em;
-    line-height: 1;
-  }
+  font-weight: var(--font-weight-bold);
 }
 
 .hero-slides .slide .text .link {
-  text-transform: uppercase;
-  color: var(--text-color-secondary-on-black-background);
+  font-size: var(--body-font-size-s);
 }
 
+.hero-slides .slideshow-buttons {
+  position: absolute;
+  bottom: 4rem;
+  right: 7%;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 1.5vw;
+  z-index: 3;
+}
+.hero-slides .slideshow-buttons div {
+  padding-top: 5px;
+  font-size: var(--body-font-size-xs);
+}
 
-@media (min-width: 600px) {
-  .hero-slides .slideshow-buttons {
-    position: absolute;
-    bottom: 4rem;
-    right: 7%;
-    height: 20px;
-    display: flex;
+.hero-slides .slideshow-buttons img {
+  cursor: pointer;
+}
+
+.hero-slides .slideshow-buttons .prev {
+  transform: rotateY(180deg);
+}
+
+@media (min-width: 992px) {
+  .hero-slides .slide {
+    flex-direction: row;
+  }
+
+  .hero-slides .slide .row {
+    width: 33.33%;
+    height: 340px;
+    flex: 0 auto;
     justify-content: center;
-    gap: 0.7vw;
-    z-index: 3;
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    left: auto;
+    right: 0%;
+    flex-direction: column;
   }
 
-  .hero-slides .slideshow-buttons button {
-    height: 1.1vw;
-    aspect-ratio: 1/1;
+  .hero-slides .slide .row .logo {
+    height: 200px;
     padding: 0;
-    margin: 0;
-    border-radius: 50%;
-    border: none;
-    background-color: #bbb;
-    transition: background-color 0.3s ease;
+    width: 100%;
   }
 
-  .hero-slides .slideshow-buttons button.active {
-    background-color: white;
+  .hero-slides .slide .row .logo img {
+    height: 60%;
+  }
+
+  .hero-slides .slide .text {
+    height: 140px;
+    padding: 0 30px;
+    width: 100%;
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .hero.block.under-nav {
+    margin-top: -100px;
+  }
+}
