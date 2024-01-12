@@ -123,8 +123,7 @@
   z-index: 3;
 }
 .hero-slides .slideshow-buttons div {
-  padding-top: 5px;
-  font-size: var(--body-font-size-xs);
+  display: none;
 }
 
 .hero-slides .slideshow-buttons img {
@@ -173,5 +172,11 @@
 @media screen and (min-width: 1200px) {
   .hero.block.under-nav {
     margin-top: -100px;
+  }
+
+  .hero-slides .slideshow-buttons div {
+    display: block;
+    padding-top: 5px;
+    font-size: var(--body-font-size-xs);
   }
 }
