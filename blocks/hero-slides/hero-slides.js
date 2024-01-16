@@ -1,5 +1,6 @@
 import { createOptimizedPicture, readBlockConfig } from '../../scripts/aem.js';
 
+// eslint-disable-next-line no-unused-vars
 async function fetchListings(config) {
   const resp = await fetch(`${window.hlx.codeBasePath}/drafts/rrusher/listings.json`);
   // eslint-disable-next-line no-return-await
@@ -13,12 +14,14 @@ function setupSlideControls(block) {
     const paging = block.querySelector('.slideshow-buttons div');
     paging.innerText = paging.innerText.replace(/\d+/, index + 1);
     // automatically advance slides. Reset timer when user interacts with the slideshow
+    // eslint-disable-next-line no-use-before-define
     autoplaySlides();
   }
 
   let autoSlideInterval = null;
   function autoplaySlides() {
     clearInterval(autoSlideInterval);
+    // eslint-disable-next-line no-use-before-define
     autoSlideInterval = setInterval(() => advanceSlides(+1), 3000);
   }
 
@@ -74,7 +77,7 @@ function plainText(text) {
  */
 export default async function decorate(block) {
   const config = readBlockConfig(block);
-  const  listings = await fetchListings(config);
+  const listings = await fetchListings(config);
   block.textContent = '';
   const { advanceSlides } = setupSlideControls(block);
 
