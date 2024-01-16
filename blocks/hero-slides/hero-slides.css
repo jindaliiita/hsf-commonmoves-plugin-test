@@ -45,6 +45,14 @@
   width: 100%;
 }
 
+.hero-slides .slideshow-buttons div {
+  display: none;
+}
+
+.hero-slides .slideshow-buttons img {
+  cursor: pointer;
+}
+
 .hero-slides .slide .image img {
   object-fit: cover;
   width: 100%;
@@ -67,6 +75,7 @@
   left: 0%;
   right: 0%;
 }
+
 .hero-slides .slide .row .logo {
   width: 33.33%;
   height: inherit;
@@ -91,6 +100,7 @@
   height: 100%;
   background-color: black;
   width: 66.67%;
+
   /* font size is relative to screen width, but limited in min and max size.
      the actual texts then use `em` to scale with this font size.
    */
@@ -121,13 +131,6 @@
   justify-content: center;
   gap: 1.5vw;
   z-index: 3;
-}
-.hero-slides .slideshow-buttons div {
-  display: none;
-}
-
-.hero-slides .slideshow-buttons img {
-  cursor: pointer;
 }
 
 .hero-slides .slideshow-buttons .prev {
