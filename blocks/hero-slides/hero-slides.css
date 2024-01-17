@@ -74,6 +74,7 @@
   bottom: 0%;
   left: 0%;
   right: 0%;
+  background: transparent;
 }
 
 .hero-slides .slide .row .logo {
@@ -83,15 +84,17 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  background: transparent;
 }
 
 .hero-slides .slide .row .logo img {
   filter: invert();
   height: 100%;
+  background: transparent;
 }
 
 .hero-slides .slide .text {
-  color: var(--text-color-on-black-background);
+  color: var(--white);
   align-self: center;
   padding: 30px;
   display: flex;
@@ -111,7 +114,7 @@
   margin: 0;
   font-size: var(--body-font-size-m);
   line-height: var(--line-height-m);
-  color: var(--text-color-secondary-on-black-background);
+  color: var(--white);
 }
 
 .hero-slides .slide .text .price {
