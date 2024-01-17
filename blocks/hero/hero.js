@@ -56,8 +56,36 @@ export default async function decorate(block) {
     }
   }
 
+  const headline = block.querySelectorAll('div.hero > div > div');
+  const validInnerHtml = new Set(['headline', 'description', 'cta']);
+  const filteredList = Array.from(headline)
+    .filter((node) => validInnerHtml.has(node.innerHTML.trim().toLowerCase()));
+
+  const headlineWrapper = document.createElement('div');
+  if (filteredList.length) {
+    headlineWrapper.classList.add('headline');
+    filteredList.forEach((div) => {
+      const nextElement = div.nextElementSibling;
+      if (div.innerHTML.toLowerCase() === 'headline') nextElement.classList.add('title');
+      else if (div.innerHTML.toLowerCase() === 'description') nextElement.classList.add('desc');
+      else if (div.innerHTML.toLowerCase() === 'cta') {
+        const button = document.createElement('p');
+        button.innerHTML = nextElement.innerHTML;
+        button.classList.add('button-container');
+        div.parentNode.replaceChild(button, nextElement);
+      }
+      headlineWrapper.append(nextElement);
+    });
+  }
+
   const wrapper = document.createElement('div');
-  wrapper.append(images, contentWrapper);
+  wrapper.append(images);
+  // don't add contentWrapper if it's empty
+  if (contentWrapper.innerHTML !== '') wrapper.append(contentWrapper);
+  if (headlineWrapper.hasChildNodes()) {
+    wrapper.classList.add('row');
+    wrapper.append(headlineWrapper);
+  }
   block.replaceChildren(wrapper);
 
   if (pictures.length > 1) {

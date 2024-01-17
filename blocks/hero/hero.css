@@ -62,6 +62,25 @@ main .section.full-width > .hero-wrapper {
   padding: 0 16px;
 }
 
+.hero.block.keep-scale {
+  display: block;
+  height: auto;
+}
+
+.hero.block.keep-scale > div{
+  padding: 0;
+}
+
+.hero.block.keep-scale .images {
+  position: relative;
+  height: auto;
+}
+
+.hero.block.keep-scale .images picture {
+  position: relative;
+  height: auto;
+}
+
 .hero.block > div .content {
   display: flex;
   height: 100%;
@@ -79,6 +98,30 @@ main .section.full-width > .hero-wrapper {
 .hero.block > div .content h1,
 .hero.block > div .content h2,
 .hero.block > div .content p {
+  color: var(--white);
+}
+
+.hero.block > .row > .headline {
+  color: var(--white);
+  font-size: var(--body-font-size-m);
+  line-height: 23px;
+  padding-left: 16px;
+}
+
+.hero.block > .row > .headline > .title {
+  letter-spacing: 1.38px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.hero.block > .row > .headline > .desc {
+  letter-spacing: 1.38px;
+  margin-bottom: 5px;
+}
+
+.hero.block > .row > .headline a {
+  background-color: transparent;
+  border: 1px solid var(--white);
   color: var(--white);
 }
 
@@ -113,5 +156,22 @@ main .section.full-width > .hero-wrapper {
   .hero.block > div {
     margin-top: 100px;
   }
-}
 
+  .hero.block.keep-scale > div {
+    margin-top: unset;
+  }
+
+  .hero.block > .row {
+    display: flex;
+  }
+
+  .hero.block > .row > .content {
+    flex: 2;
+  }
+
+  .hero.block > .row > .headline {
+    flex: 1;
+    margin-top: 150px;
+    margin-left: 20px;
+  }
+}

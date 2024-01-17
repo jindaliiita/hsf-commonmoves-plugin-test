@@ -17,6 +17,7 @@
   --primary-color: #552448;
   --primary-color-lighten: rgba(98 98 121 / 12.5%);
   --primary-color-svg-filter: invert(18%) sepia(17%) saturate(1944%) hue-rotate(264deg) brightness(93%) contrast(95%);
+  --color-tertiary: #eae3d4;
   --body-color: #3a3a3a;
   --platinum: #e7e7e7;
   --light-grey: #f6f6f6;
@@ -94,7 +95,7 @@
 
   /* Common dimensions */
   --full-page-width: 100vw;
-  --wide-page-width: 1600px;
+  --wide-page-width: 1500px;
   --normal-page-width: 1350px;
 
   /* nav height */
@@ -246,6 +247,20 @@ main .section.full-width {
 main .section.full-width > div {
   max-width: var(--normal-page-width);
   margin: 0 auto;
+}
+
+main .section.full-bleed {
+  padding: 0;
+  max-width: var(--full-page-width);
+}
+
+main .section.full-bleed div {
+  max-width: var(--full-page-width);
+}
+
+main .section.full-bleed picture img {
+  width: 100%;
+  height: auto;
 }
 
 main .section.grey-background {
