@@ -15,7 +15,7 @@ export default async function decorate(block) {
   const list = document.createElement('div');
   list.classList.add('cards-list');
   index.data.forEach((community) => {
-    const communityName = community['LiveBy Community'];
+    const communityName = community['liveby-community'];
 
     const card = document.createElement('div');
     card.classList.add('cards-item');
