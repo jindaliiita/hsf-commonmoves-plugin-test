@@ -3,6 +3,10 @@
     color: initial;
 }
 
+.light-nav.luxury-collection header * {
+    background: transparent;
+}
+
 .luxury-collection .header.block nav .nav-sections {
     background-color: var(--primary-color);
 }
