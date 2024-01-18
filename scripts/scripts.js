@@ -6,9 +6,11 @@ import {
   decorateButtons,
   decorateIcons,
   decorateSections,
+  decorateBlock,
   decorateBlocks,
   decorateTemplateAndTheme,
   waitForLCP,
+  loadBlock,
   loadBlocks,
   loadCSS,
   loadScript,
@@ -304,6 +306,18 @@ export function addFavIcon(href) {
 }
 
 /**
+ * Load the login block to the main body.
+ * @param main main element
+ * @returns {Promise}
+ */
+export function loadLogin(main) {
+  const loginBlock = buildBlock('login', '');
+  main.append(loginBlock);
+  decorateBlock(loginBlock);
+  return loadBlock(loginBlock);
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
@@ -316,6 +330,7 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+  loadLogin(doc.querySelector('main'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();

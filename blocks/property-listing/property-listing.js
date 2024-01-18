@@ -116,6 +116,8 @@ export default async function decorate(block) {
     const minLat = Math.min(...bbox.map((e) => e[1]));
     const maxLat = Math.max(...bbox.map((e) => e[1]));
     search = new MapSearch(minLat, minLon, maxLat, maxLon);
+  } else {
+    search = new MapSearch(0, 0, 0, 0);
   }
 
   search.listingTypes = buildListingTypes(entries.find(([k]) => k.match(/listing.*type/i)));

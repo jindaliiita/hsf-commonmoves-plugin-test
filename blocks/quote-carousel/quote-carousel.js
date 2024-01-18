@@ -37,7 +37,7 @@ function observeCarousel() {
 }
 
 export default async function decorate(block) {
-  const blockId = crypto.randomUUID();
+  const blockId = crypto && crypto.randomUUID ? crypto.randomUUID() : 'UUID-CRYPTO-NEEDS-HTTPS';
   const dataUrl = block.querySelector('div > div > div:nth-child(2) > a').href;
   const title = getTitle(block);
   // generate carousel content from loaded data
