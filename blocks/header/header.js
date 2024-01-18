@@ -1,5 +1,7 @@
 import { BREAKPOINTS } from '../../scripts/scripts.js';
 import { getMetadata, decorateIcons, decorateSections } from '../../scripts/aem.js';
+import { open as openSignIn, close as closeSignIn } from '../login/login.js';
+import { logout } from '../../scripts/apis/user.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = BREAKPOINTS.large;
@@ -63,6 +65,10 @@ function closeNavDrop(e) {
  */
 function toggleMenu(nav, navSections, forceExpanded = null) {
   const expanded = forceExpanded !== null ? !forceExpanded : nav.getAttribute('aria-expanded') === 'true';
+  const closing = (expanded || isDesktop.matches);
+  if (closing) {
+    closeSignIn();
+  }
   document.body.style.overflowY = (expanded || isDesktop.matches) ? '' : 'hidden';
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   toggleAllNavSections(navSections, expanded || isDesktop.matches ? 'false' : 'true');
@@ -112,6 +118,12 @@ function buildLogo() {
   return logo;
 }
 
+function doLogout() {
+  const userDetailsLink = document.body.querySelector('.username a');
+  userDetailsLink.textContent = 'Sign In';
+  logout();
+}
+
 /**
  * Adds the Profile submenu to the Nav.
  * @param {HTMLDivElement} nav
@@ -137,6 +149,8 @@ function addProfileLogin(nav) {
     </li>
   `;
   profileList.prepend(...profileMenu.childNodes);
+  profileList.querySelector('.login a').addEventListener('click', openSignIn);
+  profileList.querySelector('.user-menu .logout a').addEventListener('click', doLogout);
 }
 
 /**
