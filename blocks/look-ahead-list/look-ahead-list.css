@@ -4,10 +4,6 @@
   align-items: center;
 }
 
-.section.look-ahead-list-container.community-directory-container .look-ahead-list {
-  margin-bottom: 15px;
-}
-
 .look-ahead-list-container > .default-content-wrapper {
   text-align: center;
 }
@@ -30,6 +26,10 @@
   position: relative;
   display: inline-block;
   width: 100%;
+}
+
+.section.look-ahead-list-container.community-directory-container .look-ahead-list {
+  margin-bottom: 15px;
 }
 
 .look-ahead-list input {
