@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.section.look-ahead-list-container.community-directory-container .look-ahead-list {
+  margin-bottom: 15px;
+}
+
 .look-ahead-list-container > .default-content-wrapper {
   text-align: center;
 }
@@ -69,7 +73,7 @@
   width: 100%;
   overflow-y: auto;
   top: 39px;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Style for the dropdown options */
