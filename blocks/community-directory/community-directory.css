@@ -1,10 +1,14 @@
+main .hero.block img {
+  filter: brightness(0.8);
+}
+
 /* Cards in community block to show in 4 columns using a flex layout.  */
 .community-directory.block .cards-list {
   --anim-speed: 0.2s;
   --zoom: 10px;
   --columns: 1;
 
-  display: flex;  
+  display: flex;
   flex-wrap: wrap;
 }
 
