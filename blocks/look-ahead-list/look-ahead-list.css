@@ -28,6 +28,10 @@
   width: 100%;
 }
 
+.section.look-ahead-list-container.community-directory-container .look-ahead-list {
+  margin-bottom: 15px;
+}
+
 .look-ahead-list input {
   width: 97%;
   padding: 5px 0 5px 20px;
@@ -69,7 +73,7 @@
   width: 100%;
   overflow-y: auto;
   top: 39px;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Style for the dropdown options */
