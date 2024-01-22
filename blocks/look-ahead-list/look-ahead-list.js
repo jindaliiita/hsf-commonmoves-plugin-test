@@ -77,6 +77,9 @@ export default async function decorate(block) {
     const listItem = document.createElement('a');
     listItem.href = community.path;
     listItem.innerText = `${communityName.split(',')[0]} (${communityName})`;
+    if (config.text && config.text.toUpperCase() === 'CITY') {
+      listItem.innerText = `${communityName.split(',')[0]}`;
+    }
     dropContent.append(listItem);
   });
   list.append(dropContent);
