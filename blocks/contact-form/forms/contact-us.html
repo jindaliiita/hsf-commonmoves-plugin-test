@@ -1,0 +1,65 @@
+<form autocomplete="unset">
+  <div
+    class="error text-md-center pt-3 pb-3 pl-3 pt-md-2 pb-md-2 align-items-center justify-content-left flex-wrap d-none">
+    <svg class="icon-msg error-icon mr-2">
+      <use xlink:href="/icons/error.svg"></use>
+    </svg> <span class="text-left"></span></div>
+  <div
+    class="success text-left pl-3 pt-3 pb-3 pt-md-2 pb-md-2  align-items-center justify-content-left d-none">
+    <svg class="icon-msg error-icon mr-2">
+      <use xlink:href="/icons/success.svg"></use>
+    </svg> <span></span></div>
+  <div class="mt-2">
+    <div class="d-none"><input type="text" name="firstname" autocomplete="off"
+        data-ddg-inputtype="identities.firstName"></div>
+    <div class="d-block d-md-flex"><input name="first_name" type="text" placeholder="first name*"
+        class="mb-3 mr-md-3 col-12 col-md-6 " autocomplete="off"
+        data-ddg-inputtype="identities.firstName"> <input name="last_name" type="text"
+        placeholder="last name*" class="mb-3 col-12 col-md-6 flex-shrink-1" autocomplete="off"
+        data-ddg-inputtype="identities.lastName"></div>
+    <div class="d-block d-md-flex"><input name="email" type="email" placeholder="email address*"
+        class="mb-3 mr-md-3 col-12 col-md-6 " autocomplete="off"
+        data-ddg-inputtype="identities.emailAddress" data-ddg-autofill="true"
+        style="background-size: auto 24px !important; background-position: right center !important; background-repeat: no-repeat !important; background-origin: content-box !important; background-image: url(&quot;chrome-extension://bkdgflcldnnnapblkhphbgpggdiikppg/img/logo-small.svg&quot;) !important; transition: background 0s ease 0s !important;">
+      <input name="phone" type="text" placeholder="phone number*"
+        class="mb-3 col-12 col-md-4 col-lg-3" autocomplete="off"
+        data-ddg-inputtype="identities.phone"></div>
+  </div> <textarea name="message"
+    placeholder="Leave a comment or question and we'll get back to you shortly."
+    autocomplete="off"></textarea>
+  <div>
+    <div class="mt-2 mb-2 label-check">are you currently working with an agent?</div>
+    <div class="d-inline-flex label-check">
+      <div class="cmp-checkbox mr-3"><label><input type="checkbox" aria-label="checkbox"
+            tabindex="-1" value="" autocomplete="off">
+          <div class="checkbox"><svg class="empty">
+              <use xlink:href="/icons/checkmark.svg"></use>
+            </svg></div> <span class="label">yes</span>
+        </label></div>
+      <div class="cmp-checkbox"><label><input type="checkbox" aria-label="checkbox" tabindex="-1"
+            value="" autocomplete="off">
+          <div class="checkbox"><svg class="empty">
+              <use xlink:href="/icons/checkmark.svg"></use>
+            </svg></div> <span class="label">no</span>
+        </label></div>
+    </div>
+  </div>
+  <div id="captcha-20285" class="g-recaptcha mt-5 mb-2 contact-form-franchisee-captcha"
+    captcha-render="1">
+    <div style="width: 304px; height: 78px;">
+      <div><iframe title="reCAPTCHA" width="304" height="78" role="presentation"
+          name="a-duze5gwmci0x" frameborder="0" scrolling="no"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
+          src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LebYaYUAAAAAC9SqASljwaF57MpKSvEkwDOzk6l&amp;co=aHR0cHM6Ly93d3cuY29tbW9ubW92ZXMuY29tOjQ0Mw..&amp;hl=en&amp;v=Ya-Cd6PbRI5ktAHEhm9JuKEu&amp;size=normal&amp;cb=sa2502jzdt91"></iframe>
+      </div><textarea id="g-recaptcha-response-3" name="g-recaptcha-response"
+        class="g-recaptcha-response"
+        style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+    </div><iframe style="display: none;"></iframe>
+  </div>
+  <div class="d-flex pt-4 align-items-center mt-4 mb-3">
+    <section class="cmp-cta"><a rel="noopener noreferrer" href="" target="_blank" tabindex=""
+        class="btn btn-primary"><span class="cmp-cta__btn-text">
+          submit
+        </span></a></section>
+  </div>
+</form>
