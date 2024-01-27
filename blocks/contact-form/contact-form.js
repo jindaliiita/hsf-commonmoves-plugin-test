@@ -1,4 +1,5 @@
-export default async function decorate(block) {
+// eslint-disable no-console
+const addForm = async (block) => {
   const displayValue = block.style.display;
   block.style.display = 'none';
 
@@ -13,4 +14,17 @@ export default async function decorate(block) {
   }
 
   block.innerHTML = await data.text();
+  block.style.display = displayValue;
+};
+
+export default async function decorate(block) {
+  const observer = new IntersectionObserver((entries) => {
+    if (entries.some((e) => e.isIntersecting)) {
+      observer.disconnect();
+      addForm(block);
+    }
+  }, {
+    rootMargin: '300px',
+  });
+  observer.observe(block);
 }

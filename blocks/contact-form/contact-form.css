@@ -1,0 +1,167 @@
+.contact-form.block .contact-form form .message {
+  display: none;
+  padding: 10px 4px;
+  margin-bottom: 1em;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid;
+  column-gap: 4px;
+}
+
+.contact-form.block .contact-form form .message.error {
+  display: flex;
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.contact-form.block .contact-form form .message.success {
+  display: flex;
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.contact-form.block .contact-form form .message .icon {
+  display: none;
+  align-self: flex-start;
+  width: 20px;
+  height: 20px;
+}
+
+.contact-form.block .contact-form form .message.error .icon.error {
+  display: block;
+}
+
+.contact-form.block .contact-form form .message.success .icon.success {
+  display: block;
+}
+
+.contact-form.block .contact-form form .message .details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form.block .contact-form form .message span {
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-xs);
+  line-height: var(--line-height-s);
+}
+
+.contact-form.block .contact-form form .inputs .name,
+.contact-form.block .contact-form form .inputs .contact-info {
+  display: block;
+}
+
+.contact-form.block .contact-form form .inputs input[type="text"],
+.contact-form.block .contact-form form .inputs input[type="email"],
+.contact-form.block .contact-form form .inputs textarea {
+  height: 50px;
+  width: 100%;
+  padding-left: 15px;
+  margin-bottom: 1em;
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-s);
+  line-height: 50px;
+  color: var(--body-color);
+  border: 1px solid var(--dark-grey);
+}
+
+.contact-form.block .contact-form form .inputs textarea {
+  width: 100%;
+  height: 110px;
+}
+
+.contact-form.block .contact-form form .agent > div:first-child {
+  margin-bottom: .5rem;
+}
+
+.contact-form.block .contact-form form .agent .label-check {
+  display: inline-flex;
+  gap: 10px;
+}
+.contact-form.block .contact-form form .agent label {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--body-color);
+  letter-spacing: .5px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.contact-form.block .contact-form form .agent input[type="checkbox"] {
+  height: 24px;
+  min-width: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--body-color);
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.contact-form.block .contact-form form .agent .checkbox {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  border: 1px solid #aaa;
+  margin-right: 8px;
+  position: relative;
+}
+
+.contact-form.block .contact-form form .agent .checkbox svg {
+  display: none;
+  height: 10px;
+  width: 12px;
+  top: -webkit-calc(50% - 5px);
+  top: calc(50% - 5px);
+  position: absolute;
+  left: 5px;
+}
+
+.contact-form.block .contact-form form .agent input[type="checkbox"]:checked+.checkbox svg {
+  display: block;
+}
+
+.contact-form.block .contact-form form .inputs input[type="text"].error,
+.contact-form.block .contact-form form .inputs input[type="email"].error {
+  color: var(--error);
+  background-color: var(--error-highlight);
+  border: 2px solid var(--error);
+}
+
+.contact-form.block .contact-form .g-recaptcha {
+  padding: 3rem 0;
+}
+
+.contact-form.block .contact-form form .cta {
+  padding-bottom: 2rem;
+}
+
+.contact-form.block .contact-form form .cta .button-container a.button.primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.contact-form.block .contact-form form .cta .button-container a.button.primary:hover {
+  background-color: var(--white);
+  color: var(--body-color);
+  border-color: var(--grey);
+}
+
+@media (min-width: 600px) {
+  .contact-form.block .contact-form form .inputs .name,
+  .contact-form.block .contact-form form .inputs .contact-info {
+    display: flex;
+    gap: 10px;
+
+  }
+
+  .contact-form.block .contact-form form .inputs input[type="text"],
+  .contact-form.block .contact-form form .inputs input[type="email"] {
+    width: 50%;
+  }
+}
