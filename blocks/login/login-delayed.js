@@ -1,20 +1,22 @@
 import { close, displayError, reset } from './login.js';
-import { login, isLoggedIn, getUserDetails } from '../../scripts/apis/user.js';
+import { login } from '../../scripts/apis/user.js';
+import { i18nLookup } from '../../scripts/util.js';
 
+const i18n = await i18nLookup();
 const block = document.querySelector('.login.block');
 
 function isValid(form) {
   const errors = [];
   const user = form.querySelector('input[name="username"]');
   if (!user.value || user.value.trim().length === 0) {
-    errors.push('Email address is required.');
+    errors.push(i18n('Email address is required.'));
     block.querySelector('input[name="username"]').classList.add('error');
   }
 
   const password = form.querySelector('input[name="password"]');
   if (!password.value || password.value.trim().length === 0) {
     block.querySelector('input[name="password"]').classList.add('error');
-    errors.push('Password is required.');
+    errors.push(i18n('Password is required.'));
   }
 
   if (errors.length > 0) {
@@ -24,24 +26,15 @@ function isValid(form) {
   return true;
 }
 
-function loginError(response) {
-  if (response.status === 401) {
-    displayError(['Invalid username or password.']);
+async function loginError(response) {
+  if (response.status) {
+    if (response.status === 401) {
+      displayError([i18n('Invalid username or password.')]);
+    } else {
+      displayError([`${i18n('There was an error logging in')}: (${i18n(await response.text())})`]);
+    }
   } else {
-    displayError([`There was an error logging in (${response.body})`]);
-  }
-}
-
-/**
- * Checks if the user is logged in and updates the header accordingly.
- */
-function checkForLoggedInUser() {
-  if (isLoggedIn()) {
-    const userDetailsLink = document.body.querySelector('.nav-profile .username a');
-    document.body.querySelector('.nav-profile .login').style.display = 'none';
-    document.body.querySelector('.nav-profile .username').style.display = 'block';
-    const userDetails = getUserDetails();
-    userDetailsLink.textContent = userDetails?.profile?.firstName || 'Valued Customer';
+    displayError([`${i18n('There was an error logging in')}: ${i18n(response)}`]);
   }
 }
 
@@ -61,7 +54,6 @@ async function submit(form) {
     const userDetails = await login(credentials, loginError);
     if (userDetails) {
       close();
-      checkForLoggedInUser();
     }
   }
 }
@@ -119,5 +111,3 @@ block.querySelector('.cta a.cancel').addEventListener('click', (e) => {
   e.stopPropagation();
   close();
 });
-
-checkForLoggedInUser();
