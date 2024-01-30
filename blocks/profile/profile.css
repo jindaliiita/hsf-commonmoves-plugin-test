@@ -1,0 +1,156 @@
+/* Styles for tabs and form fields used in profile page */
+.profile {
+    max-width: 45em;
+}
+
+.profile h4 {
+    line-height: var(--line-height-m);
+    padding-bottom: 0.5em;
+    font-family: var(--font-family-georgia);
+}
+
+.profile nav button {
+    border: none;
+    line-height: var(--line-height-m);
+    font-size: var(--body-font-size-m);
+    margin: 2em 2em 2em 0;
+    padding: 0;
+    background-color: unset;
+    text-transform: uppercase;
+}
+
+.profile nav button.active {
+    font-weight: bold;
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.profile .tab {
+    display: none;
+}
+
+.profile .tab.active {
+    display: block;
+}
+
+.profile .tab > p {
+    margin-top: 1em;
+}
+
+.profile .tab button {
+    background-color : var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.7em 2em;
+    margin-top: 2em;
+    text-transform: uppercase;
+    font-size: var(--body-font-size-s);
+    display: block;
+}
+
+.profile .help {
+    font-size: var(--body-font-size-xs);
+    line-height: var(--line-height-m);
+    color: var(--dark-grey);
+
+}
+
+.profile input, .profile select {
+    line-height: var(--line-height-xl);
+    margin-bottom: 1em;
+    padding-left: 1em;
+    width: 22em;
+    margin-right: 0.5em;
+}
+
+.profile input:required:placeholder-shown {
+    border: 2px solid var(--error);
+    background-color: var(--error-highlight);
+}
+
+.profile input:required::placeholder {
+    color: var(--error);
+}
+
+.profile select {
+    height: var(--line-height-xxl);
+}
+
+.profile input[name='lastName'] {
+    margin-right: 0;
+}
+
+.profile select[name='country'], .profile input[name='address1'], .profile input[name='address2'], .profile input[name='city']  {
+    width: 27em;
+    display: block;
+}
+
+.profile input[name='stateOrProvince'] {
+    width: 18em;
+}
+
+.profile input[name='postalCode'] {
+    width: 8.25em;
+}
+
+.profile input[name='email'] {
+    width: calc(100% - 0.25em);
+}
+
+.profile .error.notification {
+    --background-color: var(--error-highlight);
+    --foreground-color: var(--error);
+}
+
+.profile .success.notification {
+    --background-color: var(--white);
+    --foreground-color: var(--success);
+}
+
+.profile .notification {
+    width: 500px;
+    border: 2px solid var(--foreground-color);
+    padding: 0;
+    margin: 0 1em 1em 0;
+    color: var(--foreground-color);
+}
+
+.profile .notification > p, .profile .error > ul {
+    padding: 1em 1em 0;
+    margin-bottom: 1em;
+}
+
+.profile .notification > p:first-of-type {
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0.25em 1em;
+    line-height: var(--line-height-xl);
+    font-weight: bold;
+}
+
+.profile .notification > p:first-of-type:not(:only-child) {
+    border-bottom: 1px solid var(--foreground-color);
+}
+
+.profile .notification .info-circle {
+    width: 24px;
+    height: 24px;
+    float: left;
+    margin: 0.5em 0.25em 0 0;
+    filter: brightness(4) brightness(0.5) sepia(1) saturate(2) hue-rotate(310deg)
+}
+
+.profile .notification ul {
+    list-style: unset;
+    margin-left: 2em;
+    margin-top: 1em;
+    padding: 0;
+}
+
+.profile .notification .success-circle {
+    width: 24px;
+    height: 24px;
+    float: left;
+    margin: 0.5em 0.25em 0 0;
+    color: var(--success);
+}
+

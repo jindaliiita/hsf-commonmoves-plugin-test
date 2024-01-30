@@ -1,3 +1,5 @@
+import { fetchPlaceholders } from './aem.js';
+
 /**
  * Creates the standard Spinner Div.
  *
@@ -47,9 +49,41 @@ export function showModal(content) {
   document.body.append(modal);
 }
 
+function createTextKey(text) {
+  // create a key that can be used to look up the text in the placeholders
+  const words = text.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
+  if (words.length > 5) {
+    words.splice(5);
+  }
+  words.forEach((word, i) => {
+    if (i > 0) {
+      words[i] = word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  });
+  return words.join('');
+}
+
+export async function i18nLookup(prefix) {
+  const placeholders = await fetchPlaceholders(prefix);
+  return (msg) => {
+    if (placeholders[msg]) {
+      return placeholders[msg];
+    }
+    if (placeholders[msg.toLowerCase()]) {
+      return placeholders[msg.toLowerCase()];
+    }
+    const key = createTextKey(msg);
+    if (placeholders[key]) {
+      return placeholders[key];
+    }
+    return msg;
+  };
+}
+
 const Util = {
   getSpinner,
   showModal,
+  i18nLookup,
 };
 
 export default Util;
