@@ -152,6 +152,21 @@ function decorateVideoLinks(main) {
     });
 }
 
+function decorateFormLinks(main) {
+  async function openSideModal(event) {
+    event.preventDefault();
+    const module = await import(`${window.hlx.codeBasePath}/blocks/side-modal/side-modal.js`);
+    if (module.showSideModal) {
+      await module.showSideModal(event.target);
+    }
+  }
+  main.querySelectorAll('a[href*="form"]').forEach((a) => {
+    if (a.href.endsWith('-form')) {
+      a.addEventListener('click', openSideModal);
+    }
+  });
+}
+
 function decorateImages(main) {
   main.querySelectorAll('.section .default-content-wrapper picture').forEach((picture) => {
     const img = picture.querySelector('img');
@@ -262,6 +277,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateVideoLinks(main);
+  decorateFormLinks(main);
   decorateImages(main);
 }
 

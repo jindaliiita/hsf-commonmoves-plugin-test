@@ -1,5 +1,9 @@
 <div class="contact-form">
-  <form id="contactForm" class="form-elements" method="post" action="" onsubmit="submitContactForm(event)">
+  <h1 id="contact-us">Contact Us</h1>
+  <div class="company-name"></div>
+  <div class="company-email"></div>
+  <div class="company-phone">Direct: </div>
+  <form id="contactForm" class="form-elements" method="post" action="https://www.commonmoves.com/bin/bhhs/websiteTopicServlet" onsubmit="return submitContactForm(this)">
     <div class="message">
       <svg class="icon error" role="presentation">
         <use xlink:href="/icons/icons.svg#error"></use>
@@ -29,10 +33,10 @@
         autocomplete="off"></textarea>
     </div>
     <div class="agent">
-      <div>Are you currently working with an agent?</div>
+      <div class="question">Are you currently working with an agent?</div>
       <div class="agent-check">
         <div>
-          <input type="checkbox" aria-label="checkbox" tabindex="-1" value="" autocomplete="off" checked>
+          <input name="agentY" type="checkbox" aria-label="checkbox" tabindex="-1" value="" autocomplete="off" checked>
           <div class="checkbox">
             <svg class="empty">
               <use xlink:href="/icons/icons.svg#checkmark"></use>
@@ -41,7 +45,7 @@
           <span class="label">yes</span>
         </div>
         <div>
-          <input type="checkbox" aria-label="checkbox" tabindex="-1" value="" autocomplete="off">
+          <input name="agentN" type="checkbox" aria-label="checkbox" tabindex="-1" value="" autocomplete="off">
           <div class="checkbox">
             <svg class="empty">
               <use xlink:href="/icons/icons.svg#checkmark"></use>
@@ -50,6 +54,7 @@
           <span class="label">no</span>
         </div>
       </div>
+      <div class="disclaimer"></div>
     </div>
     <div id="captcha-20285" class="g-recaptcha contact-form-captcha" captcha-render="1">
       <div style="width: 304px; height: 78px;">
@@ -65,7 +70,8 @@
     </div>
     <div class="cta">
       <div class="button-container">
-        <a href="" class="button primary submit">Submit</a>
+        <a href="" class="button primary submit">Send</a>
+        <a href="" class="button cancel">Cancel</a>
       </div>
     </div>
   </form>

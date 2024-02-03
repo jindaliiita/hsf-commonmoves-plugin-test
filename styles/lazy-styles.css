@@ -1,1 +1,4 @@
 /* add global styles that can be loaded post LCP here */
+body.disable-scroll, body.disable-scroll main {
+  overflow: hidden;
+}

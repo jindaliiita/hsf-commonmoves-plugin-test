@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from './aem.js';
+import { fetchPlaceholders, loadCSS } from './aem.js';
 
 /**
  * Creates the standard Spinner Div.
@@ -47,6 +47,42 @@ export function showModal(content) {
   });
   document.body.style.overflowY = 'hidden';
   document.body.append(modal);
+}
+
+let sideModal;
+let focusElement;
+
+export function hideSideModal() {
+  if (!sideModal) return;
+  sideModal.ariaExpanded = false;
+  document.body.classList.remove('disable-scroll');
+  if (focusElement) focusElement.focus();
+}
+
+export async function showSideModal(content, decorateContent) {
+  if (!sideModal) {
+    const fragment = document.createRange().createContextualFragment(`
+            <div>
+                <aside class="side-modal">
+                    <div></div>
+                </aside>
+            </div>
+        `);
+    sideModal = fragment.querySelector('.side-modal');
+    document.body.append(...fragment.children);
+  }
+  const container = sideModal.querySelector('div');
+  container.replaceChildren(...content);
+
+  if (decorateContent) await decorateContent(container);
+
+  // required delay for animation to work
+  setTimeout(() => {
+    document.body.classList.add('disable-scroll');
+    sideModal.ariaExpanded = true;
+  });
+
+  focusElement = document.activeElement;
 }
 
 function createTextKey(text) {

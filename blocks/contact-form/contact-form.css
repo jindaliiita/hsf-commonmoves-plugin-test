@@ -1,3 +1,9 @@
+.contact-form.block form,
+.contact-form.block .company-email,
+.contact-form.block .company-phone {
+  font-family: var(--font-family-proxima);
+}
+
 .contact-form.block .contact-form form .message {
   display: none;
   padding: 10px 4px;
@@ -41,7 +47,6 @@
 }
 
 .contact-form.block .contact-form form .message span {
-  font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-xs);
   line-height: var(--line-height-s);
 }
@@ -58,9 +63,8 @@
   width: 100%;
   padding-left: 15px;
   margin-bottom: 1em;
-  font-family: var(--font-family-proxima);
   font-size: var(--body-font-size-s);
-  line-height: 50px;
+  line-height: var(--line-height-xs);
   color: var(--body-color);
   border: 1px solid var(--dark-grey);
 }
@@ -68,24 +72,24 @@
 .contact-form.block .contact-form form .inputs textarea {
   width: 100%;
   height: 110px;
+  padding: 15px;
 }
 
 .contact-form.block .contact-form form .agent > div:first-child {
   margin-bottom: .5rem;
 }
 
-.contact-form.block .contact-form form .agent .label-check {
+.contact-form.block .contact-form form .agent .agent-check {
   display: inline-flex;
   gap: 10px;
 }
-.contact-form.block .contact-form form .agent label {
+.contact-form.block .contact-form form .agent div {
   font-weight: 400;
   font-size: 14px;
   color: var(--body-color);
   letter-spacing: .5px;
   line-height: 1;
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   margin-bottom: 15px;
   cursor: pointer;
@@ -144,6 +148,8 @@
 .contact-form.block .contact-form form .cta .button-container a.button.primary {
   background-color: var(--primary-color);
   color: var(--white);
+  text-transform: uppercase;
+  margin-right: 12px;
 }
 
 .contact-form.block .contact-form form .cta .button-container a.button.primary:hover {
