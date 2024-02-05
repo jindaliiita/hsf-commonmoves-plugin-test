@@ -22,9 +22,9 @@ function getEnvType(hostname = window.location.hostname) {
 
 async function loadAdobeLaunch() {
   const adobedtmSrc = {
-    dev: 'https://assets.adobedtm.com/launch-EN8919423a46da4e859aad8cef6f514471.min.js',
-    preview: 'https://assets.adobedtm.com/launch-EN8919423a46da4e859aad8cef6f514471.min.js',
-    live: 'https://assets.adobedtm.com/launch-EN8919423a46da4e859aad8cef6f514471.min.js',
+    dev: 'https://assets.adobedtm.com/launch-.min.js',
+    preview: 'https://assets.adobedtm.com/launch-.min.js',
+    live: 'https://assets.adobedtm.com/launch-.min.js',
   };
   await loadScript(adobedtmSrc[getEnvType()], {
     type: 'text/javascript',
