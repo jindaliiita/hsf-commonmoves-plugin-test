@@ -1,4 +1,4 @@
-import { fetchPlaceholders, loadCSS } from './aem.js';
+import { fetchPlaceholders } from './aem.js';
 
 /**
  * Creates the standard Spinner Div.

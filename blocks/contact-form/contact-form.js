@@ -37,7 +37,7 @@ function isValid(form) {
     errors.push(i18n('Email address is required.'));
     email.classList.add('error');
   }
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(email.value)) {
     errors.push(i18n('Please enter an email address in the format: email@domain.com.'));
     email.classList.add('error');
   }
@@ -47,7 +47,7 @@ function isValid(form) {
     errors.push(i18n('Email address is required.'));
     phone.classList.add('error');
   }
-  if (!phoneRegex.test(phone)) {
+  if (!phoneRegex.test(phone.value)) {
     errors.push(i18n('Please enter a 10 digit phone number.'));
     phone.classList.add('error');
   }
@@ -140,9 +140,9 @@ const addForm = async (block) => {
     const oldSubmit = form.onsubmit;
     thankYou.classList.add('form-thank-you');
     form.onsubmit = function handleSubmit() {
-      if (oldSubmit.call(this)) {
-        const body = new FormData(this);
-        const { action, method } = this;
+      if (oldSubmit.call(form)) {
+        const body = new FormData(form);
+        const { action, method } = form;
         fetch(action, { method, body, redirect: 'manual' }).then((resp) => {
           /* eslint-disable-next-line no-console */
           if (!resp.ok) console.error(`Form submission failed: ${resp.status} / ${resp.statusText}`);
