@@ -75,14 +75,6 @@
   padding: 15px;
 }
 
-.contact-form.block .contact-form form .agent > div:first-child {
-  margin-bottom: .5rem;
-}
-
-.contact-form.block .contact-form form .agent .agent-check {
-  display: inline-flex;
-  gap: 10px;
-}
 .contact-form.block .contact-form form .agent div {
   font-weight: 400;
   font-size: 14px;
@@ -93,6 +85,15 @@
   justify-content: flex-start;
   margin-bottom: 15px;
   cursor: pointer;
+}
+
+.contact-form.block .contact-form form .agent > div:first-child {
+  margin-bottom: .5rem;
+}
+
+.contact-form.block .contact-form form .agent .agent-check {
+  display: inline-flex;
+  gap: 10px;
 }
 
 .contact-form.block .contact-form form .agent input[type="checkbox"] {
@@ -120,7 +121,6 @@
   display: none;
   height: 10px;
   width: 12px;
-  top: -webkit-calc(50% - 5px);
   top: calc(50% - 5px);
   position: absolute;
   left: 5px;

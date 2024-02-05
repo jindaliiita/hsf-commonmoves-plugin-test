@@ -10,7 +10,7 @@ aside.side-modal {
     z-index: 1090;
 }
 
-aside.side-modal[aria-expanded=true] {
+aside.side-modal[aria-expanded="true"] {
     right: 0;
 }
 
