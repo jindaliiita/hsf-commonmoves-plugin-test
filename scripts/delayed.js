@@ -33,7 +33,7 @@ async function loadAdobeLaunch() {
 }
 
 // OneTrust Cookies Consent Notice start
-if (!window.location.host.includes('hlx.page') && !window.location.host.includes('localhost')) {
+/* if (!window.location.host.includes('hlx.page') && !window.location.host.includes('localhost')) {
   const otId = placeholders.onetrustid;
   if (otId) {
     loadScript('https://cdn.cookielaw.org/scripttemplates/otSDKStub.js', {
@@ -56,6 +56,6 @@ if (!window.location.host.includes('hlx.page') && !window.location.host.includes
       });
     }
   });
-}
+} */
 
 if (!window.location.host.includes('localhost')) await loadAdobeLaunch();
