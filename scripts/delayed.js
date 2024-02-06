@@ -1,21 +1,9 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, loadScript } from './aem.js';
+import { getEnvType } from './util.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
-
-/*
-  * Returns the environment type based on the hostname.
-*/
-function getEnvType(hostname = window.location.hostname) {
-  const fqdnToEnvType = {
-    'commonmoves.com': 'preview',
-    'www.commonmoves.com': 'preview',
-    'main--hsf-commonmoves--hlxsites.hlx.page': 'dev',
-    'main--hsf-commonmoves--hlxsites.hlx.live': 'dev',
-  };
-  return fqdnToEnvType[hostname] || 'dev';
-}
 
 async function loadAdobeLaunch() {
   const adobedtmSrc = {
