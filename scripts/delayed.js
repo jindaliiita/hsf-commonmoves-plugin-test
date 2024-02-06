@@ -12,8 +12,8 @@ const placeholders = await fetchPlaceholders();
 */
 function getEnvType(hostname = window.location.hostname) {
   const fqdnToEnvType = {
-    'commonmoves.com': 'live',
-    'www.commonmoves.com': 'live',
+    'commonmoves.com': 'preview',
+    'www.commonmoves.com': 'preview',
     'main--hsf-commonmoves--hlxsites.hlx.page': 'dev',
     'main--hsf-commonmoves--hlxsites.hlx.live': 'dev',
   };
@@ -22,9 +22,9 @@ function getEnvType(hostname = window.location.hostname) {
 
 async function loadAdobeLaunch() {
   const adobedtmSrc = {
-    dev: 'https://assets.adobedtm.com/launch-.min.js',
-    preview: 'https://assets.adobedtm.com/launch-.min.js',
-    live: 'https://assets.adobedtm.com/launch-.min.js',
+    dev: 'https://assets.adobedtm.com/2079c5a4620d/addee6043c9b/launch-EN41458ac9f88145ac942b876e3362c32f-development.min.j',
+    preview: 'https://assets.adobedtm.com/2079c5a4620d/addee6043c9b/launch-EN367ab3c0970e43a0afba6d1110494ef4-staging.min.js',
+    live: 'https://assets.adobedtm.com/2079c5a4620d/addee6043c9b/launch-EN8919423a46da4e859aad8cef6f514471.min.js',
   };
   await loadScript(adobedtmSrc[getEnvType()], {
     type: 'text/javascript',
