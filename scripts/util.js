@@ -116,10 +116,26 @@ export async function i18nLookup(prefix) {
   };
 }
 
+/*
+  * Returns the environment type based on the hostname.
+*/
+export function getEnvType(hostname = window.location.hostname) {
+  const fqdnToEnvType = {
+    'commonmoves.com': 'live',
+    'www.commonmoves.com': 'live',
+    'stage.commonmoves.com': 'preview',
+    'preview.commonmoves.com': 'preview',
+    'main--hsf-commonmoves--hlxsites.hlx.page': 'dev',
+    'main--hsf-commonmoves--hlxsites.hlx.live': 'dev',
+  };
+  return fqdnToEnvType[hostname] || 'dev';
+}
+
 const Util = {
   getSpinner,
   showModal,
   i18nLookup,
+  getEnvType,
 };
 
 export default Util;
