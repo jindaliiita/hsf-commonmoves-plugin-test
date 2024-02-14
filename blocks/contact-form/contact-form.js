@@ -1,9 +1,34 @@
-import { hideSideModal, i18nLookup } from '../../scripts/util.js';
+import { hideSideModal, i18nLookup, getCookieValue } from '../../scripts/util.js';
 
 const LOGIN_ERROR = 'There was a problem processing your request.';
 const i18n = await i18nLookup();
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^\d{10}$/;
+const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+
+/**
+ * Adds customID and recipientID cookie values to the request body based on the form name.
+ *
+ * @param {FormData} form - The FormData object representing the form data.
+ */
+function addFranchiseData(form) {
+  console.log('add data to form');
+  const formName = form.body.id;
+  const customID = getCookieValue('customerID');
+
+  form.append('customID', customID);
+  if (formName === 'contactForm') {
+    form.append('recipientId', 'https://ma312.bhhs.hsfaffiliates.com/profile/card#me');
+    form.append('recipientName', 'Commonwealth Real Estate');
+    form.append('recipientType', 'organization');
+    form.append('text', `Name: ${form.get('first_name')} ${form.get('last_name')}\n
+    Email: ${form.get('email')}\n
+    Phone: ${form.get('phone')}\n\n
+    ${form.get('comments')}`);
+  }
+  if (formName === 'makeOffer') {
+    form.append('recipientID', 'recipientID');
+  }
+}
 
 function displayError(errors) {
   const message = document.body.querySelector('.contact-form.block').querySelector('.message');
@@ -18,7 +43,7 @@ function displayError(errors) {
   message.classList.add('error');
 }
 
-function isValid(form) {
+function validateFormInputs(form) {
   const errors = [];
   const firstName = form.querySelector('input[name="first_name"]');
   if (!firstName.value || firstName.value.trim().length === 0) {
@@ -44,7 +69,7 @@ function isValid(form) {
 
   const phone = form.querySelector('input[name="phone"]');
   if (!phone.value || phone.value.trim().length === 0) {
-    errors.push(i18n('Email address is required.'));
+    errors.push(i18n('Phone number is required.'));
     phone.classList.add('error');
   }
   if (!phoneRegex.test(phone.value)) {
@@ -56,12 +81,8 @@ function isValid(form) {
     displayError(errors);
     return false;
   }
+  console.log('validation passed');
   return true;
-}
-
-function submitContactForm(form) {
-  console.log('submitted');
-  return isValid(form);
 }
 
 // eslint-disable no-console
@@ -81,16 +102,70 @@ const addForm = async (block) => {
 
   block.innerHTML = await data.text();
 
-  const submitBtn = block.querySelector('.cta a.submit');
+  const form = block.querySelector('form#contactForm');
+
+  if (thankYou) {
+    const oldSubmit = form.onsubmit;
+    thankYou.classList.add('form-thank-you');
+    form.onsubmit = function handleSubmit() {
+      console.log('Handle submit'); // Check if this log appears
+      if (oldSubmit.call(this)) {
+        console.log('Form submitted'); // Check if this log appears
+        const body = new FormData(this);
+        addFranchiseData(body);
+        const { action, method } = this;
+        fetch(action, { method, body, redirect: 'manual' }).then((resp) => {
+          /* eslint-disable-next-line no-console */
+          if (!resp.ok) console.error(`Form submission failed: ${resp.status} / ${resp.statusText}`);
+          const firstContent = thankYou.firstElementChild;
+          if (firstContent.tagName === 'A') {
+            // redirect to thank you page
+            window.location.href = firstContent.href;
+          } else {
+            // show thank you content
+            const btn = thankYou.querySelector('a');
+            const sideModal = document.querySelector('.side-modal-form');
+            if (btn && sideModal) {
+              btn.setAttribute('href', '#');
+              btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                hideSideModal();
+              });
+              sideModal?.replaceChildren(thankYou);
+            } else {
+              block.replaceChildren(thankYou);
+            }
+          }
+        });
+      }
+      return false;
+    };
+  }
+
+  const inputs = block.querySelectorAll('input');
+  inputs.forEach((formEl) => {
+    formEl.placeholder = i18n(formEl.placeholder);
+    formEl.ariaLabel = i18n(formEl.ariaLabel);
+  });
+
+  const taEl = block.querySelector('textarea');
+  if (taEl && taEl.placeholder) taEl.placeholder = i18n(taEl.placeholder);
+
+  block.style.display = displayValue;
+
+  const submitBtn = block.querySelector('.contact-form.block .cta a.submit');
   if (submitBtn) {
     submitBtn.addEventListener('click', (e) => {
+      console.log('button clicked');
       e.preventDefault();
       e.stopPropagation();
-      submitContactForm(block.querySelector('form'));
+      if (validateFormInputs(form)) {
+        form.submit();
+      }
     });
   }
 
-  const cancelBtn = block.querySelector('.cta a.cancel');
+  const cancelBtn = block.querySelector('.contact-form.block .cta a.cancel');
   if (cancelBtn) {
     cancelBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -121,6 +196,11 @@ const addForm = async (block) => {
           e.currentTarget.classList.remove('error');
         }
       });
+      // create input mask
+      el.addEventListener('input', (e) => {
+        const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+        e.target.value = !x[2] ? x[1] : `(${x[1]}) ${x[2]}${x[3] ? `-${x[3]}` : ''}`;
+      });
     });
 
   [...block.querySelectorAll('input[name="email"]')]
@@ -134,108 +214,6 @@ const addForm = async (block) => {
         }
       });
     });
-
-  if (thankYou) {
-    const form = block.querySelector('#contactForm');
-    const oldSubmit = form.onsubmit;
-    thankYou.classList.add('form-thank-you');
-    form.onsubmit = function handleSubmit() {
-      if (oldSubmit.call(form)) {
-        const body = new FormData(form);
-        const { action, method } = form;
-        fetch(action, { method, body, redirect: 'manual' }).then((resp) => {
-          /* eslint-disable-next-line no-console */
-          if (!resp.ok) console.error(`Form submission failed: ${resp.status} / ${resp.statusText}`);
-          const firstContent = thankYou.firstElementChild;
-          if (firstContent.tagName === 'A') {
-            // redirect to thank you page
-            window.location.href = firstContent.href;
-          } else {
-            // show thank you content
-            const btn = thankYou.querySelector('a');
-            const sideModal = document.querySelector('.side-modal-form');
-            if (btn && sideModal) {
-              btn.setAttribute('href', '#');
-              btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                hideSideModal();
-              });
-              sideModal?.replaceChildren(thankYou);
-            } else {
-              block.replaceChildren(thankYou);
-            }
-          }
-        });
-      }
-      return false;
-    };
-  }
-
-  // If the form has it's own styles, add them.
-  const styles = block.querySelectorAll('style');
-  styles.forEach((styleSheet) => {
-    document.head.appendChild(styleSheet);
-  });
-
-  // If the form has it's own scripts, load them one by one to maintain execution order.
-  // eslint-disable-next-line no-restricted-syntax
-  for (const script of [...block.querySelectorAll('script')]) {
-    let waitForLoad = Promise.resolve();
-    // The script element added by innerHTML is NOT executed.
-    // The workaround is to create the new script tag, copy attibutes and content.
-    const newScript = document.createElement('script');
-    newScript.setAttribute('type', 'text/javascript');
-    // Copy script attributes to the new element.
-    script.getAttributeNames().forEach((attrName) => {
-      const attrValue = script.getAttribute(attrName);
-      newScript.setAttribute(attrName, attrValue);
-
-      if (attrName === 'src') {
-        waitForLoad = new Promise((resolve) => {
-          newScript.addEventListener('load', resolve);
-        });
-      }
-    });
-    newScript.innerHTML = script.innerHTML;
-    script.remove();
-    document.body.append(newScript);
-
-    // eslint-disable-next-line no-await-in-loop
-    await waitForLoad;
-  }
-
-  const inputs = block.querySelectorAll('input');
-  inputs.forEach((formEl) => {
-    formEl.placeholder = i18n(formEl.placeholder);
-    formEl.ariaLabel = i18n(formEl.ariaLabel);
-  });
-
-  const taEl = block.querySelector('textarea');
-  if (taEl && taEl.placeholder) taEl.placeholder = i18n(taEl.placeholder);
-
-  // Get all checkboxes with class 'checkbox'
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-  // Define a function declaration to handle the change event
-  function handleChange() {
-    // Store the clicked checkbox in a variable
-    const clickedCheckbox = this;
-
-    // Uncheck all checkboxes that are not the clicked checkbox
-    checkboxes.forEach((cb) => {
-      if (cb !== clickedCheckbox) {
-        cb.checked = false;
-      }
-    });
-  }
-
-  // Add the change event listener to each checkbox using the function declaration
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', handleChange);
-    checkbox.nextElementSibling.addEventListener('change', handleChange);
-  });
-
-  block.style.display = displayValue;
 };
 
 export default async function decorate(block) {

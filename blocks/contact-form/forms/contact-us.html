@@ -1,5 +1,7 @@
 <div class="contact-form">
-  <form id="contactForm" class="form-elements" method="post" action="" onsubmit="submitContactForm(event)">
+  <form id="contactForm" class="form-elements" method="post"
+  action="https://www.commonmoves.com/bin/bhhs/websiteTopicServlet"
+  onsubmit="return validateFormInputs(this)">
     <div class="message">
       <svg class="icon error" role="presentation">
         <use xlink:href="/icons/icons.svg#error"></use>
@@ -21,7 +23,7 @@
       <div class="contact-info">
         <input name="email" type="email" placeholder="Email Address*" aria-label="email address"
           aria-required="true" autocomplete="email">
-        <input name="phone" type="text" placeholder="Phone Number*" aria-label="phone number"
+        <input type="text" name="phone" placeholder="Phone Number*" inputmode="tel" aria-label="phone number"
           aria-required="true" autocomplete="tel-national">
       </div>
       <textarea name="comments"
@@ -32,7 +34,7 @@
       <div>Are you currently working with an agent?</div>
       <div class="agent-check">
         <div>
-          <input type="checkbox" aria-label="checkbox" tabindex="-1" value="" autocomplete="off" checked>
+          <input type="radio" name="hasAgent" aria-label="radio" tabindex="-1" value="yes" autocomplete="off" checked>
           <div class="checkbox">
             <svg class="empty">
               <use xlink:href="/icons/icons.svg#checkmark"></use>
@@ -41,7 +43,7 @@
           <span class="label">yes</span>
         </div>
         <div>
-          <input type="checkbox" aria-label="checkbox" tabindex="-1" value="" autocomplete="off">
+          <input type="radio" name="hasAgent" aria-label="radio" tabindex="-1" value="no" autocomplete="off">
           <div class="checkbox">
             <svg class="empty">
               <use xlink:href="/icons/icons.svg#checkmark"></use>
@@ -51,7 +53,7 @@
         </div>
       </div>
     </div>
-    <div id="captcha-20285" class="g-recaptcha contact-form-captcha" captcha-render="1">
+    <!-- <div id="captcha-20285" class="g-recaptcha contact-form-captcha" captcha-render="1">
       <div style="width: 304px; height: 78px;">
         <iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-duze5gwmci0x"
           frameborder="0" scrolling="no"
@@ -62,7 +64,7 @@
           style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
       </div>
       <iframe style="display: none;"></iframe>
-    </div>
+    </div> -->
     <div class="cta">
       <div class="button-container">
         <a href="" class="button primary submit">Submit</a>

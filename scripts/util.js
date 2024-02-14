@@ -116,9 +116,12 @@ export async function i18nLookup(prefix) {
   };
 }
 
-/*
-  * Returns the environment type based on the hostname.
-*/
+/**
+ * Retrieves the environment type based on the provided hostname.
+ *
+ * @param {string} [hostname=window.location.hostname] - The hostname to determine the environment.
+ * @returns {string} The environment type ('live', 'preview', or 'dev').
+ */
 export function getEnvType(hostname = window.location.hostname) {
   const fqdnToEnvType = {
     'commonmoves.com': 'live',
@@ -131,11 +134,30 @@ export function getEnvType(hostname = window.location.hostname) {
   return fqdnToEnvType[hostname] || 'dev';
 }
 
+/**
+ * Retrieves the value of a cookie by its name.
+ *
+ * @param {string} cookieName - The name of the cookie to retrieve.
+ * @returns {string|null} The value of the cookie, or null if not found.
+ */
+export function getCookieValue(cookieName) {
+  const cookies = document.cookie.split(';');
+  const foundCookie = cookies.find((cookie) => {
+    const trimmedCookie = cookie.trim();
+    return trimmedCookie.includes(cookieName);
+  });
+  if (foundCookie) {
+    return foundCookie.split('=', 2)[1];
+  }
+  return null;
+}
+
 const Util = {
   getSpinner,
   showModal,
   i18nLookup,
   getEnvType,
+  getCookieValue,
 };
 
 export default Util;
