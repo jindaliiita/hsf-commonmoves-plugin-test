@@ -169,7 +169,7 @@ const addForm = async (block) => {
               sideModal?.replaceChildren(thankYou);
             } else {
               block.replaceChildren(thankYou);
-              const temp = block.parent.nextSibling;
+              block.parentNode.nextSibling.remove();
             }
           }
         });
