@@ -11,23 +11,48 @@ const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
  * @param {FormData} form - The FormData object representing the form data.
  */
 function addFranchiseData(form) {
-  console.log('add data to form');
-  const formName = form.body.id;
-  const customID = getCookieValue('customerID');
+  const jsonObj = {};
+  jsonObj.form = form.id;
 
-  form.append('customID', customID);
-  if (formName === 'contactForm') {
-    form.append('recipientId', 'https://ma312.bhhs.hsfaffiliates.com/profile/card#me');
-    form.append('recipientName', 'Commonwealth Real Estate');
-    form.append('recipientType', 'organization');
-    form.append('text', `Name: ${form.get('first_name')} ${form.get('last_name')}\n
-    Email: ${form.get('email')}\n
-    Phone: ${form.get('phone')}\n\n
-    ${form.get('comments')}`);
+  const firstName = form.elements.first_name.value;
+  const lastName = form.elements.last_name.value;
+  const email = form.elements.email.value;
+  const phone = form.elements.phone.value;
+  const comments = form.elements.comments.value;
+  const hasAgentRadio = form.elements.hasAgent;
+  const hasAgentValue = Array.from(hasAgentRadio).find((radio) => radio.checked)?.value === 'yes';
+  const officeIdMeta = document.querySelector('meta[name="office-id"]');
+
+  try {
+    const consumerID = getCookieValue('customerID');
+    if (consumerID !== null) {
+      jsonObj.data.consumerID = consumerID;
+    } else {
+      /* eslint-disable-next-line no-console */
+      console.warn('Cookie not found: customerID');
+    }
+  } catch (error) {
+    /* eslint-disable-next-line no-console */
+    console.error('Error getting cookie value:', error);
   }
-  if (formName === 'makeOffer') {
-    form.append('recipientID', 'recipientID');
+  jsonObj.data = {};
+  jsonObj.data.email = email;
+  jsonObj.data.name = `${firstName} ${lastName}`;
+  jsonObj.data.recipientId = `https://${officeIdMeta}.bhhs.hsfaffiliates.com/profile/card#me`;
+  jsonObj.data.recipientName = 'Commonwealth Real Estate';
+  jsonObj.data.recipientType = 'organization';
+  jsonObj.data.source = `https://${officeIdMeta}.bhhs.hsfaffiliates.com/profile/card#me`;
+  jsonObj.data.telephone = phone;
+  jsonObj.data.text = `Name: ${firstName} ${lastName}\n
+  Email: ${email}\n
+  Phone: ${phone}\n\n
+  ${comments}`;
+  jsonObj.data.url = `${window.location.href} | ${document.title}`;
+  jsonObj.data.workingWithAgent = hasAgentValue;
+  if (form.id === 'makeOffer') {
+    jsonObj.data.prixe = form.elements.price;
   }
+  return JSON.stringify(jsonObj);
 }
 
 function displayError(errors) {
@@ -102,19 +127,29 @@ const addForm = async (block) => {
 
   block.innerHTML = await data.text();
 
-  const form = block.querySelector('form#contactForm');
+  const form = block.querySelector('form.contact-form');
 
+  // if there is a thank you, highjack the submission
+  // otherwise submit form normally.
   if (thankYou) {
-    const oldSubmit = form.onsubmit;
+    const oldSubmit = validateFormInputs;
     thankYou.classList.add('form-thank-you');
-    form.onsubmit = function handleSubmit() {
+    form.onsubmit = function handleSubmit(e) {
       console.log('Handle submit'); // Check if this log appears
-      if (oldSubmit.call(this)) {
-        console.log('Form submitted'); // Check if this log appears
-        const body = new FormData(this);
-        addFranchiseData(body);
+      e.preventDefault();
+      if (oldSubmit(this)) {
+        console.log('OnSubmit called'); // Check if this log appears
+        const jsonData = addFranchiseData(this);
         const { action, method } = this;
-        fetch(action, { method, body, redirect: 'manual' }).then((resp) => {
+        console.log('Call fetch'); // Check if this log appears
+        fetch(action, {
+          method,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: jsonData,
+          mode: 'no-cors',
+        }).then((resp) => {
           /* eslint-disable-next-line no-console */
           if (!resp.ok) console.error(`Form submission failed: ${resp.status} / ${resp.statusText}`);
           const firstContent = thankYou.firstElementChild;
@@ -134,6 +169,7 @@ const addForm = async (block) => {
               sideModal?.replaceChildren(thankYou);
             } else {
               block.replaceChildren(thankYou);
+              const temp = block.parent.nextSibling;
             }
           }
         });
@@ -152,18 +188,6 @@ const addForm = async (block) => {
   if (taEl && taEl.placeholder) taEl.placeholder = i18n(taEl.placeholder);
 
   block.style.display = displayValue;
-
-  const submitBtn = block.querySelector('.contact-form.block .cta a.submit');
-  if (submitBtn) {
-    submitBtn.addEventListener('click', (e) => {
-      console.log('button clicked');
-      e.preventDefault();
-      e.stopPropagation();
-      if (validateFormInputs(form)) {
-        form.submit();
-      }
-    });
-  }
 
   const cancelBtn = block.querySelector('.contact-form.block .cta a.cancel');
   if (cancelBtn) {
@@ -199,7 +223,7 @@ const addForm = async (block) => {
       // create input mask
       el.addEventListener('input', (e) => {
         const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-        e.target.value = !x[2] ? x[1] : `(${x[1]}) ${x[2]}${x[3] ? `-${x[3]}` : ''}`;
+        e.target.value = !x[2] ? x[1] : `${x[1]}-${x[2]}${x[3] ? `-${x[3]}` : ''}`;
       });
     });
 
