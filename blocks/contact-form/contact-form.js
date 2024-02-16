@@ -6,14 +6,11 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 
 /**
- * Adds customID and recipientID cookie values to the request body based on the form name.
+ * Adds form and cookie values to a JSON object.
  *
  * @param {FormData} form - The FormData object representing the form data.
  */
 function addFranchiseData(form) {
-  const jsonObj = {};
-  jsonObj.form = form.id;
-
   const firstName = form.elements.first_name.value;
   const lastName = form.elements.last_name.value;
   const email = form.elements.email.value;
@@ -21,21 +18,24 @@ function addFranchiseData(form) {
   const comments = form.elements.comments.value;
   const hasAgentRadio = form.elements.hasAgent;
   const hasAgentValue = Array.from(hasAgentRadio).find((radio) => radio.checked)?.value === 'yes';
-  const officeIdMeta = document.querySelector('meta[name="office-id"]');
+  const officeIdMeta = document.querySelector('meta[name="office-id"]').getAttribute('content');
+  const jsonObj = {};
+  jsonObj.data = {};
+  jsonObj.form = form.id;
 
   try {
-    const consumerID = getCookieValue('customerID');
-    if (consumerID !== null) {
-      jsonObj.data.consumerID = consumerID;
+    const consumerCookie = getCookieValue('consumerID');
+    if (consumerCookie !== null) {
+      jsonObj.data.consumerID = consumerCookie;
     } else {
       /* eslint-disable-next-line no-console */
-      console.warn('Cookie not found: customerID');
+      console.warn('Cookie not found: consumerID');
     }
   } catch (error) {
     /* eslint-disable-next-line no-console */
     console.error('Error getting cookie value:', error);
   }
-  jsonObj.data = {};
+
   jsonObj.data.email = email;
   jsonObj.data.name = `${firstName} ${lastName}`;
   jsonObj.data.recipientId = `https://${officeIdMeta}.bhhs.hsfaffiliates.com/profile/card#me`;
@@ -148,7 +148,7 @@ const addForm = async (block) => {
             'Content-Type': 'application/json',
           },
           body: jsonData,
-          mode: 'no-cors',
+          credentials: 'include',
         }).then((resp) => {
           /* eslint-disable-next-line no-console */
           if (!resp.ok) console.error(`Form submission failed: ${resp.status} / ${resp.statusText}`);
