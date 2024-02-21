@@ -49,8 +49,22 @@ function addFranchiseData(form) {
   ${comments}`;
   jsonObj.data.url = `${window.location.href} | ${document.title}`;
   jsonObj.data.workingWithAgent = hasAgentValue;
-  if (form.id === 'makeOffer') {
-    jsonObj.data.prixe = form.elements.price;
+  if (form.id === 'property-contact') {
+    jsonObj.data.addressLocality = 'Boston';
+    jsonObj.data.addressRegion = 'Boston';
+    jsonObj.data.agentType = 'Boston';
+    jsonObj.data.coListing = 'Boston';
+    jsonObj.data.postalCode = 'Boston';
+    jsonObj.data.price = 'Boston';
+    jsonObj.data.priceCurrency = 'Boston';
+    jsonObj.data.streetAddress = 'Boston';
+  }
+  if (form.id === 'make-offer' || form.id === 'see-property') {
+    jsonObj.listAor = 'mamlspin';
+    jsonObj.mlsId = '234234';
+    jsonObj.mlsKey = '234234';
+    jsonObj.mlsName = 'MLSPIN - MLS Property Information Network';
+    jsonObj.pid = '234234';
   }
   return JSON.stringify(jsonObj);
 }
@@ -162,8 +176,8 @@ const addForm = async (block) => {
             const sideModal = document.querySelector('.side-modal-form');
             if (btn && sideModal) {
               btn.setAttribute('href', '#');
-              btn.addEventListener('click', (e) => {
-                e.preventDefault();
+              btn.addEventListener('click', (event) => {
+                event.preventDefault();
                 hideSideModal();
               });
               sideModal?.replaceChildren(thankYou);
@@ -189,7 +203,7 @@ const addForm = async (block) => {
 
   block.style.display = displayValue;
 
-  const cancelBtn = block.querySelector('.contact-form.block .cta a.cancel');
+  const cancelBtn = block.querySelector('.contact-form.block .cta button.cancel');
   if (cancelBtn) {
     cancelBtn.addEventListener('click', (e) => {
       e.preventDefault();

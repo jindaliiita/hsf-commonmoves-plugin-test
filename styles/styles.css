@@ -381,7 +381,7 @@ main .section .default-content-wrapper picture img {
   animation: spinner-spin 2s linear infinite;
 }
 
-.button-container a {
+.button-container a, .button-container button.cancel {
   display: inline-block;
   padding: .75em 1.5em;
   font-family: var(--font-family-proxima);
@@ -463,7 +463,7 @@ main .section.button-primary-color .button-container a:hover {
   background-color: var(--primary-color);
 }
 
-form button[type="submit"] {
+form button[type="submit"], .button-container button {
   display: inline-block;
   padding: 13px 16px;
   margin: 16px 0;

@@ -3,7 +3,7 @@
   <div class="company-name"></div>
   <div class="company-email"></div>
   <div class="company-phone">Direct: </div>
-  <form id="contactForm" class="form-elements" method="post" action="https://www.commonmoves.com/bin/bhhs/websiteTopicServlet" onsubmit="return submitContactForm(this)">
+  <form id="property-contact" class="contact-form form-elements" method="post" action="https://www.commonmoves.com/bin/bhhs/websiteTopicServlet">
     <div class="message">
       <svg class="icon error" role="presentation">
         <use xlink:href="/icons/icons.svg#error"></use>
@@ -33,10 +33,10 @@
         autocomplete="off"></textarea>
     </div>
     <div class="agent">
-      <div class="question">Are you currently working with an agent?</div>
+      <div>Are you currently working with an agent?</div>
       <div class="agent-check">
         <div>
-          <input name="agentY" type="checkbox" aria-label="checkbox" tabindex="-1" value="" autocomplete="off" checked>
+          <input type="radio" name="hasAgent" aria-label="radio" tabindex="-1" value="yes" autocomplete="off" checked>
           <div class="checkbox">
             <svg class="empty">
               <use xlink:href="/icons/icons.svg#checkmark"></use>
@@ -45,7 +45,7 @@
           <span class="label">yes</span>
         </div>
         <div>
-          <input name="agentN" type="checkbox" aria-label="checkbox" tabindex="-1" value="" autocomplete="off">
+          <input type="radio" name="hasAgent" aria-label="radio" tabindex="-1" value="no" autocomplete="off">
           <div class="checkbox">
             <svg class="empty">
               <use xlink:href="/icons/icons.svg#checkmark"></use>
@@ -53,7 +53,6 @@
           </div>
           <span class="label">no</span>
         </div>
-      </div>
       <div class="disclaimer"></div>
     </div>
     <div id="captcha-20285" class="g-recaptcha contact-form-captcha" captcha-render="1">
@@ -70,8 +69,8 @@
     </div>
     <div class="cta">
       <div class="button-container">
-        <a href="" class="button primary submit">Send</a>
-        <a href="" class="button cancel">Cancel</a>
+        <button type="submit" class="primary submit" aria-label="Submit contact form">Send</button>
+        <button class="button cancel" aria-label="Close modal">Cancel</button>
       </div>
     </div>
   </form>
