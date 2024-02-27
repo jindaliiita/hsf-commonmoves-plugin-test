@@ -16,57 +16,89 @@ function addFranchiseData(form) {
   const email = form.elements.email.value;
   const phone = form.elements.phone.value;
   const comments = form.elements.comments.value;
-  const hasAgentRadio = form.elements.hasAgent;
-  const hasAgentValue = Array.from(hasAgentRadio).find((radio) => radio.checked)?.value === 'yes';
-  const officeIdMeta = document.querySelector('meta[name="office-id"]').getAttribute('content');
-  const jsonObj = {};
-  jsonObj.data = {};
-  jsonObj.form = form.id;
 
-  try {
-    const consumerCookie = getCookieValue('consumerID');
-    if (consumerCookie !== null) {
-      jsonObj.data.consumerID = consumerCookie;
-    } else {
+  if (form.id !== 'team-inquiry') {
+    const hasAgentRadio = form.elements.hasAgent;
+    const hasAgentValue = Array.from(hasAgentRadio).find((radio) => radio.checked)?.value === 'yes';
+    const officeIdMeta = document.querySelector('meta[name="office-id"]').getAttribute('content');
+    const jsonObj = {};
+    jsonObj.data = {};
+    jsonObj.form = form.id;
+
+    try {
+      const consumerCookie = getCookieValue('consumerID');
+      if (consumerCookie !== null) {
+        jsonObj.data.consumerID = consumerCookie;
+      } else {
+        /* eslint-disable-next-line no-console */
+        console.warn('Cookie not found: consumerID');
+      }
+    } catch (error) {
       /* eslint-disable-next-line no-console */
-      console.warn('Cookie not found: consumerID');
+      console.error('Error getting cookie value:', error);
     }
-  } catch (error) {
-    /* eslint-disable-next-line no-console */
-    console.error('Error getting cookie value:', error);
-  }
 
-  jsonObj.data.email = email;
-  jsonObj.data.name = `${firstName} ${lastName}`;
-  jsonObj.data.recipientId = `https://${officeIdMeta}.bhhs.hsfaffiliates.com/profile/card#me`;
-  jsonObj.data.recipientName = 'Commonwealth Real Estate';
-  jsonObj.data.recipientType = 'organization';
-  jsonObj.data.source = `https://${officeIdMeta}.bhhs.hsfaffiliates.com/profile/card#me`;
-  jsonObj.data.telephone = phone;
-  jsonObj.data.text = `Name: ${firstName} ${lastName}\n
-  Email: ${email}\n
-  Phone: ${phone}\n\n
-  ${comments}`;
-  jsonObj.data.url = `${window.location.href} | ${document.title}`;
-  jsonObj.data.workingWithAgent = hasAgentValue;
-  if (form.id === 'property-contact') {
-    jsonObj.data.addressLocality = 'Boston';
-    jsonObj.data.addressRegion = 'Boston';
-    jsonObj.data.agentType = 'Boston';
-    jsonObj.data.coListing = 'Boston';
-    jsonObj.data.postalCode = 'Boston';
-    jsonObj.data.price = 'Boston';
-    jsonObj.data.priceCurrency = 'Boston';
-    jsonObj.data.streetAddress = 'Boston';
+    jsonObj.data.email = email;
+    jsonObj.data.name = `${firstName} ${lastName}`;
+    jsonObj.data.recipientId = `https://${officeIdMeta}.bhhs.hsfaffiliates.com/profile/card#me`;
+    jsonObj.data.recipientName = 'Commonwealth Real Estate';
+    jsonObj.data.recipientType = 'organization';
+    jsonObj.data.source = `https://${officeIdMeta}.bhhs.hsfaffiliates.com/profile/card#me`;
+    jsonObj.data.telephone = phone;
+    jsonObj.data.text = `Name: ${firstName} ${lastName}\n
+    Email: ${email}\n
+    Phone: ${phone}\n\n
+    ${comments}`;
+    jsonObj.data.url = `${window.location.href} | ${document.title}`;
+    jsonObj.data.workingWithAgent = hasAgentValue;
+    if (form.id === 'property-contact') {
+      jsonObj.data.addressLocality = 'Boston';
+      jsonObj.data.addressRegion = 'Boston';
+      jsonObj.data.agentType = 'Boston';
+      jsonObj.data.coListing = 'Boston';
+      jsonObj.data.postalCode = 'Boston';
+      jsonObj.data.price = 'Boston';
+      jsonObj.data.priceCurrency = 'Boston';
+      jsonObj.data.streetAddress = 'Boston';
+    }
+    if (form.id === 'make-offer' || form.id === 'see-property') {
+      jsonObj.listAor = 'mamlspin';
+      jsonObj.mlsId = '234234';
+      jsonObj.mlsKey = '234234';
+      jsonObj.mlsName = 'MLSPIN - MLS Property Information Network';
+      jsonObj.pid = '234234';
+    }
+    return JSON.stringify(jsonObj);
   }
-  if (form.id === 'make-offer' || form.id === 'see-property') {
-    jsonObj.listAor = 'mamlspin';
-    jsonObj.mlsId = '234234';
-    jsonObj.mlsKey = '234234';
-    jsonObj.mlsName = 'MLSPIN - MLS Property Information Network';
-    jsonObj.pid = '234234';
-  }
-  return JSON.stringify(jsonObj);
+  const title = form.elements.title.value;
+  const zip = form.elements.title.value;
+  const country = form.elements.title.value;
+  const state = form.elements.title.value;
+  const city = form.elements.title.value;
+  const address1 = form.elements.title.value;
+  const address2 = form.elements.title.value;
+  const numAgents = form.elements.title.value;
+  const gci = form.elements.title.value;
+
+  const formData = new FormData();
+  formData.append('FirstName', firstName);
+  formData.append('LastName', lastName);
+  formData.append('Phone', phone);
+  formData.append('Email', email);
+  formData.append('Title', title);
+  formData.append('Message', comments);
+  formData.append('ZipCode', zip);
+  formData.append('Country', country);
+  formData.append('State', state);
+  formData.append('City', city);
+  formData.append('AddressOne', address1);
+  formData.append('AddressTwo', address2);
+  formData.append('NumOfAgents', numAgents);
+  formData.append('GCI', gci);
+  formData.append('Subject', 'Join our Team Website Inquiry');
+  formData.append('SendEmail', true);
+  formData.append('To', 'marketing@commonmoves.com');
+  return formData;
 }
 
 function displayError(errors) {
@@ -154,13 +186,17 @@ const addForm = async (block) => {
       if (oldSubmit(this)) {
         console.log('OnSubmit called'); // Check if this log appears
         const jsonData = addFranchiseData(this);
+        const headers = new Headers();
+        if (this.id === 'team-inquiry') {
+          headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        } else {
+          headers.append('Content-Type', 'application/json; charset=UTF-8');
+        }
         const { action, method } = this;
         console.log('Call fetch'); // Check if this log appears
         fetch(action, {
           method,
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers,
           body: jsonData,
           credentials: 'include',
         }).then((resp) => {

@@ -52,13 +52,16 @@
 }
 
 .contact-form.block form.contact-form .inputs .name,
-.contact-form.block form.contact-form .inputs .contact-info {
+.contact-form.block form.contact-form .inputs .contact-info,
+.contact-form.block form.contact-form .inputs .size {
   display: block;
 }
 
 .contact-form.block form.contact-form .inputs input[type="text"],
 .contact-form.block form.contact-form .inputs input[type="email"],
-.contact-form.block form.contact-form .inputs textarea {
+.contact-form.block form.contact-form .inputs textarea,
+.contact-form.block form.contact-form .inputs select,
+.contact-form.block form.contact-form .inputs select option {
   height: 50px;
   width: 100%;
   padding-left: 15px;
@@ -159,15 +162,30 @@
 }
 
 @media (min-width: 600px) {
-  .contact-form.block form.contact-form .inputs .name,
-  .contact-form.block form.contact-form .inputs .contact-info {
-    display: flex;
+  .contact-form.block form.contact-form .inputs div {
+    display: flex !important;
     gap: 10px;
-
   }
 
   .contact-form.block form.contact-form .inputs input[type="text"],
   .contact-form.block form.contact-form .inputs input[type="email"] {
     width: 50%;
+  }
+
+  .contact-form.block form.contact-form .inputs input[name="title"] {
+    width: calc(50% - 6px);
+  }
+
+  .contact-form.block form.contact-form .inputs input[name="city"] {
+    flex: 0 0 41.667%;
+  }
+
+  .contact-form.block form.contact-form .inputs input[name="state"] {
+    flex: 0 0 33.333%;
+  }
+
+  .contact-form.block form.contact-form .inputs input[name="postalCode"] {
+    flex: 0 0 25%;
+    flex-shrink: 1;
   }
 }
