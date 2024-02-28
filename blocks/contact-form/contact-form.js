@@ -6,17 +6,19 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 
 /**
- * Adds form and cookie values to a JSON object.
+ * Adds form and cookie values to payload.
  *
  * @param {FormData} form - The FormData object representing the form data.
  */
 function addFranchiseData(form) {
+  // Common form elements
   const firstName = form.elements.first_name.value;
   const lastName = form.elements.last_name.value;
   const email = form.elements.email.value;
   const phone = form.elements.phone.value;
   const comments = form.elements.comments.value;
 
+  // All forms except team inquiry
   if (form.id !== 'team-inquiry') {
     const hasAgentRadio = form.elements.hasAgent;
     const hasAgentValue = Array.from(hasAgentRadio).find((radio) => radio.checked)?.value === 'yes';
@@ -68,17 +70,20 @@ function addFranchiseData(form) {
       jsonObj.mlsName = 'MLSPIN - MLS Property Information Network';
       jsonObj.pid = '234234';
     }
+    // Data format to JSON
     return JSON.stringify(jsonObj);
   }
+
+  // Remaining Team Inquiry form elements
   const title = form.elements.title.value;
-  const zip = form.elements.title.value;
-  const country = form.elements.title.value;
-  const state = form.elements.title.value;
-  const city = form.elements.title.value;
-  const address1 = form.elements.title.value;
-  const address2 = form.elements.title.value;
-  const numAgents = form.elements.title.value;
-  const gci = form.elements.title.value;
+  const zip = form.elements.postalCode.value;
+  const country = form.elements.country.value;
+  const state = form.elements.state.value;
+  const city = form.elements.city.value;
+  const address1 = form.elements.addressOne.value;
+  const address2 = form.elements.addressTwo.value;
+  const numAgents = form.elements.numOfAgents.value;
+  const gci = form.elements.gci.value;
 
   const formData = new FormData();
   formData.append('FirstName', firstName);
@@ -98,7 +103,8 @@ function addFranchiseData(form) {
   formData.append('Subject', 'Join our Team Website Inquiry');
   formData.append('SendEmail', true);
   formData.append('To', 'marketing@commonmoves.com');
-  return formData;
+  // Data format to URL Params
+  return new URLSearchParams(formData).toString();
 }
 
 function displayError(errors) {
@@ -181,10 +187,8 @@ const addForm = async (block) => {
     const oldSubmit = validateFormInputs;
     thankYou.classList.add('form-thank-you');
     form.onsubmit = function handleSubmit(e) {
-      console.log('Handle submit'); // Check if this log appears
       e.preventDefault();
       if (oldSubmit(this)) {
-        console.log('OnSubmit called'); // Check if this log appears
         const jsonData = addFranchiseData(this);
         const headers = new Headers();
         if (this.id === 'team-inquiry') {
@@ -193,7 +197,6 @@ const addForm = async (block) => {
           headers.append('Content-Type', 'application/json; charset=UTF-8');
         }
         const { action, method } = this;
-        console.log('Call fetch'); // Check if this log appears
         fetch(action, {
           method,
           headers,

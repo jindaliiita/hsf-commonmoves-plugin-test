@@ -33,7 +33,7 @@
         <input name="gci" type="text" placeholder="CGI US Dollars*" aria-label="GCI US dollars" aria-required="true" autocomplete="off">
       </div>
       <div class="country">
-        <select class="country-dropdown" aria-labelledby="app">
+        <select name="country" class="country-dropdown" aria-labelledby="app">
           <option>Country</option>
           <option>
             Afghanistan
@@ -776,18 +776,7 @@
         placeholder="Leave a comment or question and we'll get back to you shortly."
         autocomplete="off"></textarea>
     </div>
-    <div id="captcha-20285" class="g-recaptcha contact-form-captcha" captcha-render="1">
-      <div style="width: 304px; height: 78px;">
-        <iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-duze5gwmci0x"
-          frameborder="0" scrolling="no"
-          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation"
-          src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LebYaYUAAAAAC9SqASljwaF57MpKSvEkwDOzk6l&amp;co=aHR0cHM6Ly93d3cuY29tbW9ubW92ZXMuY29tOjQ0Mw..&amp;hl=en&amp;v=Ya-Cd6PbRI5ktAHEhm9JuKEu&amp;size=normal&amp;cb=sa2502jzdt91"></iframe>
-        <textarea id="g-recaptcha-response-3" name="g-recaptcha-response"
-          class="g-recaptcha-response"
-          style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
-      </div>
-      <iframe style="display: none;"></iframe>
-    </div>
+    <div id="captcha-20285" class="g-recaptcha" captcha-render="1"></div>
     <div class="cta">
       <div class="button-container">
         <button type="submit" class="primary submit" aria-label="Submit team form">Submit</button>
