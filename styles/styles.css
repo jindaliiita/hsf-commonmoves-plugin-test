@@ -14,7 +14,9 @@
 
 :root {
   /* Colors */
-  --primary-color: #552448;
+  --primary-color: #670038;
+  --secondary-color: #aa979c;
+  --tertiary-color: #f5f1f2;
   --primary-color-lighten: rgba(98 98 121 / 12.5%);
   --primary-color-svg-filter: invert(18%) sepia(17%) saturate(1944%) hue-rotate(264deg) brightness(93%) contrast(95%);
   --color-tertiary: #eae3d4;
