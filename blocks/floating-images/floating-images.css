@@ -15,7 +15,6 @@
 
 .block.floating-images .image {
   position: relative;
-  padding-bottom: 1.5em 0;
 }
 
 .block.floating-images .image img {
@@ -26,7 +25,7 @@
 }
 
 .block.floating-images .content {
-  margin-top: 30px;
+  margin: 30px 0;
 }
 
 .block.floating-images .content h2 {
@@ -41,6 +40,7 @@
 .block.floating-images .content p {
   color: var(--primary-color);
   padding: 0 16px;
+  margin-bottom: 13px;
 }
 
 .block.floating-images .content ul {
@@ -59,7 +59,11 @@
   background-color: transparent;
   border: 1px solid var(--primary-color);
   color: var(--primary-color);
-  font-size: var(--body-fon-size-m);
+  font-size: var(--heading-font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-m);
+  line-height: 1;
+  padding: 7px 25px;
 }
 
 .block.floating-images p .button:hover {
