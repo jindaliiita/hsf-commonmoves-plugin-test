@@ -370,20 +370,32 @@ main .section .default-content-wrapper picture img {
 }
 
 .button-container a {
-  display: inline-block;
-  padding: .75em 1.5em;
-  font-family: var(--font-family-proxima);
-  font-size: var(--body-font-size-s);
-  font-weight: var(--font-weight-normal);
-  letter-spacing:var(--letter-spacing-s);
-  line-height: var(--line-height-s);
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
-  color: var(--body-color);
-  border: 1px solid var(--body-color);
-  background-color: var(--white);
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-family-proxima);
+  font-size: var(--heading-font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-m);
+  line-height: 1;
+  padding: 7px 25px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.button-container a:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.button-container a:focus {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  outline: var(--primary-color) solid 2px;
+  outline-offset: 3px;
 }
 
 main .section.button-primary-color .button-container a {

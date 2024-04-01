@@ -55,29 +55,6 @@
   line-height: var(--line-height-m);
 }
 
-.block.floating-images p .button {
-  background-color: transparent;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-  font-size: var(--heading-font-size-xs);
-  font-weight: var(--font-weight-bold);
-  letter-spacing: var(--letter-spacing-m);
-  line-height: 1;
-  padding: 7px 25px;
-}
-
-.block.floating-images p .button:hover {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-}
-
-.block.floating-images p .button:focus {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  outline: var(--primary-color) solid 2px;
-  outline-offset: 3px;
-}
-
 @media screen and (min-width: 900px) {
   .block.floating-images > div {
     flex-direction: row;
