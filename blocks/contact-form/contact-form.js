@@ -4,6 +4,7 @@ const LOGIN_ERROR = 'There was a problem processing your request.';
 const i18n = await i18nLookup();
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+let recaptchaToken = null;
 
 /**
  * Adds form and cookie values to payload.
@@ -120,7 +121,7 @@ function displayError(errors) {
   message.classList.add('error');
 }
 
-function validateFormInputs(form) {
+async function validateFormInputs(form) {
   const errors = [];
   const firstName = form.querySelector('input[name="first_name"]');
   if (!firstName.value || firstName.value.trim().length === 0) {
@@ -152,6 +153,35 @@ function validateFormInputs(form) {
   if (!phoneRegex.test(phone.value)) {
     errors.push(i18n('Please enter a 10 digit phone number.'));
     phone.classList.add('error');
+  }
+
+  if (!errors.length) {
+    const payload = `user_response=${encodeURIComponent(recaptchaToken)}`;
+    const options = {
+      method: 'POST',
+      body: payload,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+      },
+    };
+    const url = 'https://www.commonmoves.com/bin/bhhs/googleRecaptchaServlet';
+
+    fetch(url, options)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Handle the response based on the success property
+        if (!data.success) {
+          errors.push(i18n('Captcha verification is required.'));
+        }
+      })
+      .catch(() => {
+        errors.push(i18n('Captcha verification failed.'));
+      });
   }
 
   if (errors.length > 0) {
@@ -229,6 +259,33 @@ const addForm = async (block) => {
       }
       return false;
     };
+  }
+
+  // eslint-disable-next-line no-restricted-syntax
+  for (const script of [...block.querySelectorAll('script')]) {
+    let waitForLoad = Promise.resolve();
+    // the script element added by innerHTML is NOT executed
+    // the workaround is to create the new script tag, copy attibutes and content
+    const newScript = document.createElement('script');
+
+    newScript.setAttribute('type', 'text/javascript');
+    // coping all script attribute to the new one
+    script.getAttributeNames().forEach((attrName) => {
+      const attrValue = script.getAttribute(attrName);
+      newScript.setAttribute(attrName, attrValue);
+
+      if (attrName === 'src') {
+        waitForLoad = new Promise((resolve) => {
+          newScript.addEventListener('load', resolve);
+        });
+      }
+    });
+    newScript.innerHTML = script.innerHTML;
+    script.remove();
+    document.body.append(newScript);
+
+    // eslint-disable-next-line no-await-in-loop
+    await waitForLoad;
   }
 
   const inputs = block.querySelectorAll('input');

@@ -18,3 +18,5 @@ async function loadAdobeLaunch() {
 }
 
 if (!window.location.host.includes('localhost')) await loadAdobeLaunch();
+
+loadScript('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', { async: true, defer: true });
