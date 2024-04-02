@@ -38,7 +38,7 @@
   text-transform: uppercase;
   color: var(--body-color);
   line-height: var(--line-height-xs);
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-light);
   align-items: center;
   justify-content: center;
@@ -108,7 +108,7 @@
   font-size: var(--body-font-size-xs);
   padding: 0 7px;
   line-height: 24px;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-semibold);
   margin: 5px 0 5px 5px;
   align-items: center;
@@ -212,7 +212,7 @@
 }
 
 .property-list-cards .property-details .property-info-wrapper .address {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-s);
   color: var(--body-color);
@@ -223,7 +223,7 @@
 }
 
 .property-list-cards .property-details .property-info-wrapper .specs {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-light);
   color: var(--body-color);
   font-size: var(--body-font-size-xs);
@@ -296,7 +296,7 @@
 
 .property-list-cards .listing-tile .extra-info div {
   font-size: var(--body-font-size-xs);
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   color: var(--dark-grey);
   letter-spacing: 0;
   line-height: var(--line-height-xs);

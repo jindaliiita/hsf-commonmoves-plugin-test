@@ -35,7 +35,7 @@
 }
 
 .quote-carousel.block .carousel-content .item .quote {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-xl);
   font-weight: var(--font-weight-thin);
   line-height: var(--line-height-s);
@@ -43,7 +43,7 @@
 }
 
 .quote-carousel.block .carousel-content .item .author {
-  font-family: var(--font-family-georgia);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-semibold);
   font-size: var(--body-font-size-l);
   line-height: var(--line-height-s);
@@ -51,7 +51,7 @@
 }
 
 .quote-carousel.block .carousel-content .item .position {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-s);
   line-height: var(--line-height-m);
 }

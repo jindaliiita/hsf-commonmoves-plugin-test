@@ -3,8 +3,8 @@
 }
 
 .luxury-collection .columns.block h2 {
-    font-family: var(--font-family-gotham);
-    font-weight: var(--font-weight-light);
+    font-family: var(--font-family-luxury);
+    font-weight: var(--font-weight-normal);
     font-size:var(--heading-font-size-xxxxl);
     line-height: var(--line-height-xs);
     letter-spacing: 0;
@@ -12,7 +12,7 @@
 }
 
 .luxury-collection .columns.block h3 {
-    font-family: var(--font-family-gotham);
+    font-family: var(--font-family-luxury);
     font-weight: var(--font-weight-bold);
     font-size: var(--body-font-size-m);
     line-height: var(--line-height-m);
