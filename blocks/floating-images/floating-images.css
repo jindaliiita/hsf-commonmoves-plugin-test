@@ -6,16 +6,15 @@
 }
 
 .block.floating-images > div {
+  background-color: var(--secondary-color);
   display: flex;
   flex-direction: column-reverse;
-  padding-top: 1em;
   min-height: 530px;
 }
 
 
 .block.floating-images .image {
   position: relative;
-  padding: 1.5em 0;
 }
 
 .block.floating-images .image img {
@@ -25,10 +24,23 @@
   max-width: 100%;
 }
 
+.block.floating-images .content {
+  margin: 30px 0;
+}
+
 .block.floating-images .content h2 {
+  color: var(--primary-color);
   letter-spacing: normal;
   margin-bottom: 0.5em;
+  padding: 0 16px;
   text-align: left;
+  text-transform: uppercase;
+}
+
+.block.floating-images .content p {
+  color: var(--primary-color);
+  padding: 0 16px;
+  margin-bottom: 13px;
 }
 
 .block.floating-images .content ul {
@@ -43,14 +55,9 @@
   line-height: var(--line-height-m);
 }
 
-.block.floating-images p.button-container {
-  text-align: center;
-}
-
 @media screen and (min-width: 900px) {
   .block.floating-images > div {
     flex-direction: row;
-    column-gap: 15px;
     align-items: center;
   }
 
@@ -102,7 +109,11 @@
 
 
 @media screen and (min-width: 1200px) {
-  .block.floating-images > div {
-    column-gap: 30px;
+  .block.floating-images .content h2 {
+    padding: 0 80px;
+  }
+
+  .block.floating-images .content p {
+    padding: 0 80px;
   }
 }
