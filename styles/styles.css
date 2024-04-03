@@ -47,9 +47,9 @@
   --transparent: #FFFFFFE6;
 
   /* Fonts */
-  --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Times New Roman', serif;
-  --font-family-proxima: 'ProximaNova', 'ProximaNova Fallback', 'Arial', sans-serif;
-  --font-family-gotham: 'Gotham', 'Gotham Fallback', 'Arial', sans-serif;
+  --font-family-primary: 'Manrope', 'Manrope Fallback', 'Arial', sans-serif;
+  --font-family-secondary: 'Marcellus', 'Marcellus Fallback', 'Times New Roman', serif;
+  --font-family-luxury: 'Montserrat', 'Montserrat Fallback', 'Arial', sans-serif;
   --font-family-fontawesome: 'FontAwesome';
   --font-weight-thin: 100;
   --font-weight-light: 300;
@@ -58,24 +58,24 @@
   --font-weight-bold: 700;
 
   /* Headings */
-  --heading-font-size-xxxxl: 50px;
-  --heading-font-size-xxxl: 48px;
-  --heading-font-size-xxl: 40px;
-  --heading-font-size-xl: 36px;
-  --heading-font-size-l: 30px;
-  --heading-font-size-m: 24px;
-  --heading-font-size-s: 20px;
-  --heading-font-size-xs: 16px;
+  --heading-font-size-xxxxl: 76px;
+  --heading-font-size-xxxl: 57px;
+  --heading-font-size-xxl: 43px;
+  --heading-font-size-xl: 32px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 16px;
+  --heading-font-size-xs: 12px;
 
   /* Body */
   --body-font-size-xxxl: 40px;
-  --body-font-size-xxl: 32px;
-  --body-font-size-xl: 26px;
+  --body-font-size-xxl: 36px;
+  --body-font-size-xl: 24px;
   --body-font-size-l: 20px;
-  --body-font-size-m: 16px;
-  --body-font-size-s: 14px;
-  --body-font-size-xs: 12px;
-  --body-font-size-xxs: 10px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
+  --body-font-size-xxs: 12px;
 
   /* Line heights */
   --line-height-xs : 1.15em;
@@ -108,7 +108,7 @@
 *, *::before, *::after {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: 400;
   font-size: var(--body-font-size-m);
   text-align: left;
@@ -129,27 +129,27 @@ body.appear {
 }
 
 h2 {
-  font-family: var(--font-family-georgia);
+  font-family: var(--font-family-secondary);
   font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-m);
 }
 
 h3 {
-  font-family: var(--font-family-georgia);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-m);
 }
 
 h4 {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-xs);
   font-weight: var(--font-weight-semibold);
 }
 
 h5 {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-xs);
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-xs);
@@ -157,7 +157,7 @@ h5 {
 }
 
 p, span, input {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-reg);
@@ -375,7 +375,7 @@ main .section .default-content-wrapper picture img {
   color: var(--primary-color);
   cursor: pointer;
   display: inline-block;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-xs);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-m);
@@ -513,122 +513,144 @@ form button[type="submit"]:hover {
 }
 
 @font-face {
-  font-family: 'GeorgiaPro Fallback';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Times New Roman Bold');
-  ascent-override: 82.81%;
-  descent-override: 19.80%;
-  line-gap-override: 0.00%;
-  size-adjust: 110.73%;
-}
-
-@font-face {
-  font-family: 'GeorgiaPro Fallback';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Times New Roman Bold');
-  ascent-override: 76.85%;
-  descent-override: 18.37%;
-  line-gap-override: 0.00%;
-  size-adjust: 119.32%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Arial');
-  ascent-override: 104.56%;
-  descent-override: 38.57%;
-  line-gap-override: 0.00%;
-  size-adjust: 103.19%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Arial');
-  ascent-override: 80.85%;
-  descent-override: 21.49%;
-  line-gap-override: 0.00%;
-  size-adjust: 97.72%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Arial');
-  ascent-override: 79.64%;
-  descent-override: 21.17%;
-  line-gap-override: 0.00%;
-  size-adjust: 99.19%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Arial Bold');
-  ascent-override: 84.49%;
-  descent-override: 22.46%;
-  line-gap-override: 0.00%;
-  size-adjust: 93.50%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Arial Bold');
-  ascent-override: 83.31%;
-  descent-override: 22.15%;
-  line-gap-override: 0.00%;
-  size-adjust: 94.82%;
-}
-
-@font-face {
-  font-family: 'Gotham Fallback';
+  font-family: 'Manrope Fallback';
   font-style: normal;
   font-weight: 200;
   src: local('Arial');
-  ascent-override: 82.60%;
-  descent-override: 20.65%;
+  ascent-override: 106.45%;
+  descent-override: 29.96%;
   line-gap-override: 0.00%;
-  size-adjust: 116.22%;
+  size-adjust: 100.14%;
 }
 
 @font-face {
-  font-family: 'Gotham Fallback';
+  font-family: 'Manrope Fallback';
   font-style: normal;
   font-weight: 300;
   src: local('Arial');
-  ascent-override: 82.60%;
-  descent-override: 20.65%;
+  ascent-override: 104.55%;
+  descent-override: 29.42%;
   line-gap-override: 0.00%;
-  size-adjust: 116.22%;
+  size-adjust: 101.96%;
 }
 
 @font-face {
-  font-family: 'Gotham Fallback';
+  font-family: 'Manrope Fallback';
   font-style: normal;
   font-weight: 400;
   src: local('Arial');
-  ascent-override: 82.60%;
-  descent-override: 20.65%;
+  ascent-override: 102.74%;
+  descent-override: 28.91%;
   line-gap-override: 0.00%;
-  size-adjust: 116.22%;
+  size-adjust: 103.76%;
 }
 
 @font-face {
-  font-family: 'Gotham Fallback';
+  font-family: 'Manrope Fallback';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Arial');
+  ascent-override: 100.97%;
+  descent-override: 28.41%;
+  line-gap-override: 0.00%;
+  size-adjust: 105.58%;
+}
+
+@font-face {
+  font-family: 'Manrope Fallback';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Arial');
+  ascent-override: 99.26%;
+  descent-override: 27.93%;
+  line-gap-override: 0.00%;
+  size-adjust: 107.40%;
+}
+
+@font-face {
+  font-family: 'Manrope Fallback';
   font-style: normal;
   font-weight: 700;
-  src: local('Arial Bold');
-  ascent-override: 89.37%;
-  descent-override: 22.34%;
+  src: local('Arial');
+  ascent-override: 97.62%;
+  descent-override: 27.47%;
   line-gap-override: 0.00%;
-  size-adjust: 107.42%;
+  size-adjust: 109.20%;
+}
+
+@font-face {
+  font-family: 'Manrope Fallback';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Arial');
+  ascent-override: 96.02%;
+  descent-override: 27.02%;
+  line-gap-override: 0.00%;
+  size-adjust: 111.02%;
+}
+
+@font-face {
+  font-family: 'Marcellus Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 95.27%;
+  descent-override: 27.36%;
+  line-gap-override: 0.00%;
+  size-adjust: 102.25%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Arial');
+  ascent-override: 87.08%;
+  descent-override: 22.58%;
+  line-gap-override: 0.00%;
+  size-adjust: 111.17%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Arial');
+  ascent-override: 86.13%;
+  descent-override: 22.33%;
+  line-gap-override: 0.00%;
+  size-adjust: 112.39%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 84.97%;
+  descent-override: 22.03%;
+  line-gap-override: 0.00%;
+  size-adjust: 113.92%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Arial');
+  ascent-override: 83.59%;
+  descent-override: 21.67%;
+  line-gap-override: 0.00%;
+  size-adjust: 115.80%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Arial');
+  ascent-override: 80.59%;
+  descent-override: 20.90%;
+  line-gap-override: 0.00%;
+  size-adjust: 120.11%;
 }

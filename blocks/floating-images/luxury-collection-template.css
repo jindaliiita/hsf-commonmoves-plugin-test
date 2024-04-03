@@ -1,5 +1,5 @@
 .luxury-collection .heading h2 {
-    font-family: var(--font-family-gotham);
+    font-family: var(--font-family-luxury);
     font-weight: var(--font-weight-bold);
     font-size: var(--body-font-size-m);
     line-height: var(--line-height-m);
@@ -45,14 +45,14 @@
 }
 
 .luxury-collection .block.floating-images h2 {
-    font-family: var(--font-family-gotham);
+    font-family: var(--font-family-luxury);
     font-weight: 300;
     font-size:50px;
     line-height: 56px;
 }
 
 .luxury-collection .block.floating-images h3 {
-    font-family: var(--font-family-gotham);
+    font-family: var(--font-family-luxury);
     font-weight: 200;
     font-size: var(--heading-font-size-l);
     line-height: var(--line-height-s);
@@ -62,7 +62,7 @@
 }
 
 .luxury-collection .block.floating-images .content h4 {
-    font-family: var(--font-family-gotham);
+    font-family: var(--font-family-luxury);
     font-weight: var(--font-weight-normal);
     font-size: var(--body-font-size-m);
     line-height: var(--line-height-m);

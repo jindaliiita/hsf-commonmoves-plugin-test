@@ -14,7 +14,7 @@
 }
 
 .blog-details.block .title {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   font-size: var(--heading-font-size-m);
   line-height: var(--line-height-m);
@@ -237,7 +237,7 @@
 .blog-details.block .article-share-page h3 {
   padding-top: 32px;
   margin-bottom: 32px;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
 }
 

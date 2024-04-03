@@ -36,7 +36,7 @@
 .blog-item .title {
   font-size: var(--body-font-size-l);
   margin-bottom: 16px;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-xs);
 }
