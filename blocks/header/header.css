@@ -94,7 +94,7 @@ body.light-nav {
 .header.block nav .nav-profile a {
   padding: 15px 0;
   color: var(--body-color);
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-s);
   letter-spacing: var(--letter-spacing-reg);
@@ -198,7 +198,7 @@ body.light-nav {
 .header.block nav .nav-sections > ul > li > a {
   display: flex;
   padding: 15px 0;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-xl);
   line-height: var(--line-height-s);
@@ -216,7 +216,7 @@ body.light-nav {
 /* stylelint-disable-next-line no-descending-specificity */
 .header.block nav .nav-sections > ul > li > ul > li > a {
   display: block;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-m);
   line-height: var(--line-height-l);

@@ -66,7 +66,7 @@
 
 .property-result-listing.block .button-container a {
   cursor:pointer;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
@@ -191,7 +191,7 @@
 }
 
 .property-result-listing.block .disclaimer {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-xs);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-s);
@@ -283,7 +283,7 @@ text-align: center;
   }
 
   .property-result-listing.block [class*="disclaimer"] * {
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-size: var(--body-font-size-xs);
     color: var(--dark-grey);
     line-height: var(--line-height-s);
@@ -292,7 +292,7 @@ text-align: center;
   }
 
   .property-result-listing.block [class*="disclaimer"] * p {
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-size: var(--body-font-size-xs);
     color: var(--dark-grey);
     line-height: var(--line-height-s);

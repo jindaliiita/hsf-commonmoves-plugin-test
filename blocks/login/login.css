@@ -43,7 +43,7 @@
   .login.block .login-form form h2 {
     margin-top: 30px;
     margin-bottom: 40px;
-    font-family: var(--font-family-georgia);
+    font-family: var(--font-family-primary);
     font-weight: var(--font-weight-bold);
     font-size: var(--heading-font-size-m);
     line-height: var(--line-height-m);
@@ -94,7 +94,7 @@
   }
   
   .login.block .login-form form .message span {
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-size: var(--body-font-size-xs);
     line-height: var(--line-height-s);
   }
@@ -105,7 +105,7 @@
     width: 100%;
     padding-left: 15px;
     margin-bottom: 1em;
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-size: var(--body-font-size-s);
     line-height: 50px;
     color: var(--body-color);

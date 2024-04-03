@@ -120,7 +120,7 @@
 
 .cards.block.icons .cards-list .cards-item .card-body h4 {
   text-transform: uppercase;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-m);
   line-height: var(--line-height-m);
