@@ -166,7 +166,7 @@ function addProfileLogin(nav) {
       </ul>
     </li>
   `;
-  profileList.append(...profileMenu.childNodes);
+  profileList.prepend(...profileMenu.childNodes);
   profileList.querySelector('.login a').addEventListener('click', openSignIn);
   profileList.querySelector('.username .logout a').addEventListener('click', doLogout);
   onProfileUpdate(showHideNavProfile);
