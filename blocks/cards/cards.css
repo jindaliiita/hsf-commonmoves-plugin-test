@@ -184,6 +184,11 @@
     max-width: 83.333%;
   }
 
+  .cards.block.narrow {
+    margin: 30px auto 0;
+    max-width: 750px;
+  }
+
   .cards.block.shade-icon .cards-list {
     flex-direction: row;
     column-gap: 20px;

@@ -1,8 +1,3 @@
-main .avm-report-container.section {
-  background-color: var(--tertiary-color);
-  border-top: 1px solid var(--secondary-accent);
-}
-
 .avm-report.block {
   max-width: 600px;
 }
@@ -97,13 +92,4 @@ main .avm-report-container.section {
     flex: unset;
     margin: 0;
   }
-
-  .avm-report-container .cards-wrapper {
-    margin: 30px auto 0;
-    max-width: 750px;
-  }
-
-    .avm-report-container .cards-wrapper .cards.block.icons {
-      max-width: none;
-    }
 }

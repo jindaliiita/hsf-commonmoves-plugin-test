@@ -280,12 +280,20 @@ main .section.grey-background {
   background: var(--light-grey);
 }
 
+main .section.tertiary-background {
+  background: var(--tertiary-color);
+}
+
 main .section.white-background {
   background: var(--white);
 }
 
 main .section.top-border {
   border-top: 1px solid var(--body-color);
+}
+
+main .section.tertiary-background.top-border {
+  border-top: 1px solid var(--secondary-accent);
 }
 
 main .section.padding {
