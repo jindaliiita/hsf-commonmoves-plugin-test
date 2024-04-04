@@ -1,20 +1,29 @@
+main .avm-report-container.section {
+  background-color: var(--tertiary-color);
+  border-top: 1px solid var(--secondary-accent);
+}
+
 .avm-report.block {
-  padding: 2em 0;
   max-width: 600px;
 }
 
 .avm-report.block h2 {
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: var(--font-weight-normal);
   margin-bottom: .5em;
 }
 
 .avm-report.block p {
-  letter-spacing: var(--letter-spacing-s);
+  color: var(--primary-color);
+  font-size: var(--body-font-size-s);
+  letter-spacing: normal;
+  margin-bottom: 13px;
 }
 
 .avm-report.block form {
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
   justify-content: center;
   align-items: center;
 }
@@ -26,11 +35,12 @@
 }
 
 .avm-report.block form .avm-input input {
-  display: block;
-  padding-left: 10px;
-  margin-right: 16px;
-  height: 50px;
   border: 1px solid var(--grey);
+  display: block;
+  height: 50px;
+  letter-spacing: normal;
+  margin-right: 16px;
+  padding-left: 10px;
 }
 
 .avm-report.block form .avm-input input[name="avmaddress"] {
@@ -39,24 +49,40 @@
 }
 
 .avm-report.block form .avm-input input[name="avmunit"] {
-  padding-left: 10px;
+  font-size: var(--body-font-size-s);
+  margin-right: 0;
+  padding: 1px 2px 1px 10px;
   width: 67px;
 }
 
 .avm-report.block form button[type="submit"] {
+  border: 1px solid var(--secondary-grey);
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-l);
+  text-transform: uppercase;
   transition: all .3s ease-in;
 }
 
 @media screen and (min-width: 600px) {
   .avm-report.block {
-    width: 85%;
     margin: 0 auto;
+    max-width: 720px;
+    width: 85%;
   }
 }
 
 @media screen and (min-width: 900px) {
+  main .avm-report-container.section {
+    padding: 62px 0;
+  }
+
   .avm-report.block form {
     flex-direction: row;
+  }
+
+  .avm-report.block h2 {
+    font-size: var(--heading-font-size-xxl);
   }
 
   .avm-report.block form .avm-input input[name="avmaddress"] {
@@ -71,4 +97,13 @@
     flex: unset;
     margin: 0;
   }
+
+  .avm-report-container .cards-wrapper {
+    margin: 30px auto 0;
+    max-width: 750px;
+  }
+
+    .avm-report-container .cards-wrapper .cards.block.icons {
+      max-width: none;
+    }
 }

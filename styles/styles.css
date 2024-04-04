@@ -15,8 +15,13 @@
 :root {
   /* Colors */
   --primary-color: #670038;
-  --secondary-color: #aa979c;
-  --secondary-accent: #c299af;
+  --primary-light: #c299af;
+  --primary-accent: #ece3e5;
+  --secondary-color: #72595e;
+  --secondary-light: #aa979c;
+  --secondary-accent: #c7bdbf;
+  --secondary-medium-grey: #e3dedf;
+  --secondary-light-grey: #f7f5f5;
   --tertiary-color: #f5f1f2;
   --primary-color-lighten: rgba(98 98 121 / 12.5%);
   --primary-color-svg-filter: invert(18%) sepia(17%) saturate(1944%) hue-rotate(264deg) brightness(93%) contrast(95%);
@@ -132,7 +137,7 @@ body.appear {
 
 h2 {
   font-family: var(--font-family-secondary);
-  font-size: var(--heading-font-size-m);
+  font-size: var(--heading-font-size-l);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-m);
 }
@@ -378,7 +383,7 @@ main .section .default-content-wrapper picture img {
   cursor: pointer;
   display: inline-block;
   font-family: var(--font-family-primary);
-  font-size: var(--heading-font-size-xs);
+  font-size: var(--heading-font-size-s);
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-m);
   line-height: 1;
