@@ -80,6 +80,11 @@
         <path d="M9.438 9.9L.77 1.602A.75.75 0 0 1 1.808.52l9.795 9.377L1.581 19.56a.75.75 0 0 1-1.041-1.08L9.438 9.9z"
               fill="#3A3A3A" fill-rule="nonzero"/>
     </symbol>
+    <symbol id="carrot-white" viewBox="0 0 12 20">
+        <title>path-1</title>
+        <path d="M9.438 9.9L.77 1.602A.75.75 0 0 1 1.808.52l9.795 9.377L1.581 19.56a.75.75 0 0 1-1.041-1.08L9.438 9.9z"
+              fill="#FFFFFF" fill-rule="nonzero"/>
+    </symbol>
     <symbol id="checkmark" viewBox="0 0 14 10">
         <title>Path 9</title>
         <path d="M1 5.233L5.314 10l7.637-10" fill-rule="nonzero" stroke="#979797" fill="none"/>
