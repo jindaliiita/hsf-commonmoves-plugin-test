@@ -36,12 +36,8 @@ body.light-nav {
   display: contents;
 }
 
-.header.block nav span.icon {
-  display: block;
-}
-
 .header.block nav span.icon img {
-  display: inline-block;
+  display: flex;
   height: 100%;
   width: 100%;
 }
@@ -96,9 +92,9 @@ body.light-nav {
   color: var(--body-color);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
-  font-size: var(--body-font-size-s);
-  letter-spacing: var(--letter-spacing-reg);
-  line-height: var(--body-font-size-s);
+  font-size: var(--body-font-size-xs);
+  letter-spacing: var(--letter-spacing-m);
+  line-height: normal;
   text-decoration: none;
   cursor: pointer;
   display: flex;
@@ -115,11 +111,15 @@ body.light-nav {
 }
 
 .header.block nav .nav-profile .login a {
-  padding: 10px;
-  margin: 20px 0 10px;
-  width: 100px;
+  background-color: var(--primary-color);
   border: 1px solid var(--body-color);
+  color: var(--tertiary-color);
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-bold);
   justify-content: center;
+  margin: 20px 0 10px;
+  padding: 10px;
+  width: 100px;
 }
 
 .header.block nav .nav-profile .username,
@@ -171,7 +171,7 @@ body.light-nav {
 
 
 .header.block nav .nav-sections > ul > li {
-  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid var(--secondary-accent);
 }
 
 .header.block nav .nav-profile .level-2 li {
@@ -200,7 +200,8 @@ body.light-nav {
   padding: 15px 0;
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
-  font-size: var(--body-font-size-xl);
+  font-size: 26px;
+  letter-spacing: var(--letter-spacing-xxxs);
   line-height: var(--line-height-s);
   text-decoration: none;
   text-transform: uppercase;
@@ -219,9 +220,10 @@ body.light-nav {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-m);
+  letter-spacing: var(--letter-spacing-xxxs);
   line-height: var(--line-height-l);
   text-decoration: none;
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: var(--white);
 }
 
@@ -314,7 +316,7 @@ body.light-nav {
     display: flex;
     height: 100%;
     width: 100%;
-    max-width: var(--normal-page-width);
+    max-width: var(--wide-page-width);
     margin: 0 auto;
     align-items: center;
     justify-content: flex-end;
@@ -326,6 +328,7 @@ body.light-nav {
 
   .header.block nav .nav-profile ul > li,
   .header.block nav .nav-profile ul > li > a {
+    font-size: var(--body-font-size-xxs);
     height: 100%;
   }
 
@@ -336,9 +339,15 @@ body.light-nav {
     margin: unset;
     width: unset;
     padding: 0 10px;
-    font-size: var(--body-font-size-xs);
+    font-size: var(--body-font-size-xxs);
     letter-spacing: var(--letter-spacing-reg);
     line-height: unset;
+  }
+
+  .header.block nav .nav-profile .login a {
+    background-color: transparent;
+    color: var(--body-color);
+    font-weight: var(--font-weight-normal);
   }
 
   .header.block nav .nav-profile a span.icon {
@@ -392,9 +401,9 @@ body.light-nav {
     display: flex;
     height: 100%;
     padding: 10px 15px;
-    font-size: var(--body-font-size-m);
+    font-size: 15px;
     text-align: center;
-    letter-spacing: var(--letter-spacing-reg);
+    letter-spacing: var(--letter-spacing-xxs);
     line-height: var(--line-height-m);
     color: var(--nav-color);
     column-gap: 2px;
@@ -411,7 +420,7 @@ body.light-nav {
     background: none;
     font-family: var(--font-family-fontawesome);
     height: unset;
-    width: 20px;
+    width: 13px;
     color: var(--nav-color);
   }
 
@@ -457,9 +466,9 @@ body.light-nav {
 
   .header.block nav[aria-expanded="true"] .nav-sections > ul > li.nav-drop > ul > li > a {
     padding: 10px 15px;
-    font-size: var(--body-font-size-s);
+    font-size: var(--body-font-size-xs);
     line-height: var(--body-font-size-s);
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
 
   .header.block nav[aria-expanded="true"] .nav-hamburger {
