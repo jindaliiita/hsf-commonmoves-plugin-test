@@ -101,7 +101,7 @@
   padding: 15px 0 25px;
   margin-bottom: 0;
   width: 100%;
-  border-top: 1px solid var(--grey);
+  border-bottom: 1px solid var(--secondary-medium-grey);
 }
 
 .cards.block.icons .cards-list .cards-item .card-icon {
@@ -119,16 +119,19 @@
 }
 
 .cards.block.icons .cards-list .cards-item .card-body h4 {
-  text-transform: uppercase;
+  color: var(--secondary-color);
   font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-m);
   line-height: var(--line-height-m);
+  text-transform: uppercase;
 }
 
 .cards.block.icons .cards-list .cards-item .card-body p {
-  margin-bottom: 0;
+  color: var(--body-color);
+  font-size: var(--body-font-size-s);
   letter-spacing: var(--letter-spacing-xs);
+  margin-bottom: 0;
 }
 
 .cards.block.shade-icon .cards-list .cards-item .card-body p {
@@ -179,6 +182,11 @@
   .cards.block.icons {
     margin: 0 auto;
     max-width: 83.333%;
+  }
+
+  .cards.block.narrow {
+    margin: 30px auto 0;
+    max-width: 750px;
   }
 
   .cards.block.shade-icon .cards-list {
