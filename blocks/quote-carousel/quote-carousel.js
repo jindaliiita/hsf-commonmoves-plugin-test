@@ -80,13 +80,13 @@ export default async function decorate(block) {
 
     // generate container for carousel controls
     controlsContainer.innerHTML = `
-      <button name="prev" aria-label="Previous" class="control-button" disabled><svg><use xlink:href="/icons/icons.svg#carrot"/></svg></button>
       <div class="pagination">
           <span class="index">1</span>
           <span class="of">of</span>
           <span class="total">${content.total}</span>
       </div>
-      <button name="next" aria-label="Next" class="control-button"><svg><use xlink:href="/icons/icons.svg#carrot"/></svg></button>
+      <button name="prev" aria-label="Previous" class="control-button" disabled><svg><use xlink:href="/icons/icons.svg#carrot-white"/></svg></button>
+      <button name="next" aria-label="Next" class="control-button"><svg><use xlink:href="/icons/icons.svg#carrot-white"/></svg></button>
     `;
     window.setTimeout(observeCarousel, 3000);
   }

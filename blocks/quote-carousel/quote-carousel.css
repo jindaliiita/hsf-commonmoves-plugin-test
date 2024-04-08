@@ -1,15 +1,21 @@
+.quote-carousel-wrapper {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
 .quote-carousel.block {
-  display: flex;
-  padding: 2em 0;
-  flex-direction: column;
-  overflow: hidden;
   border-bottom: 1px solid var(--body-color);;
   border-top: 1px solid var(--body-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 2em 0;
+  position: relative;
 }
 
 .quote-carousel.block .title {
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-xs);
   letter-spacing: var(--letter-spacing-m);
@@ -17,9 +23,10 @@
 }
 
 .quote-carousel.block .carousel-content {
+  align-items: baseline;
   display: flex;
-  transition: transform 200ms;
   flex-wrap: nowrap;
+  transition: transform 200ms;
 }
 
 .quote-carousel.block .carousel-content .item {
@@ -45,47 +52,56 @@
 .quote-carousel.block .carousel-content .item .author {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-semibold);
-  font-size: var(--body-font-size-l);
+  font-size: var(--body-font-size-m);
   line-height: var(--line-height-s);
   margin: 30px 0 0;
 }
 
 .quote-carousel.block .carousel-content .item .position {
   font-family: var(--font-family-primary);
-  font-size: var(--body-font-size-s);
+  font-size: var(--body-font-size-xxs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-m);
   line-height: var(--line-height-m);
+  text-transform: uppercase;
 }
 
 .quote-carousel.block .controls-container {
-  margin-top: 2em;
-  display: flex;
+  align-items: baseline;
   align-self: center;
-  align-items: center;
+  bottom: 30px;
+  display: flex;
+  margin-top: 2em;
+  position: absolute;
+  right: 15px;
 }
 
 .quote-carousel.block .controls-container .pagination {
   display: flex;
-  min-width: 100px;
-  padding: 0 16px;
-  justify-content: center;
-  font-size: var(--body-font-size-xs);
+  font-size: var(--body-font-size-xxs);
+  justify-content: flex-end;
+  margin-right: 16px;
+  min-width: 70px;
 }
 
 .quote-carousel.block .controls-container .pagination > span {
-  flex-basis: 33%;
+  flex-basis: 25%;
+  font-size: var(--body-font-size-xxs);
   text-align: center;
 }
 
 .quote-carousel.block .controls-container button {
-  background-color: var(--white);
+  background-color: transparent;
   border: none;
-  padding: 0;
   height: var(--body-font-size-m);
+  padding: 0;
+  transform: translateY(2px);
 }
 
 .quote-carousel.block .controls-container svg {
-  width: var(--body-font-size-m);
+  color: var(--white);
   height: var(--body-font-size-m);
+  width: var(--body-font-size-m);
 }
 
 .quote-carousel.block .controls-container [name="prev"] svg {
@@ -93,6 +109,10 @@
 }
 
 @media (min-width: 600px) {
+  .quote-carousel.block {
+    padding-top: 130px;
+  }
+
   .quote-carousel.block .title {
     margin-bottom: 2em;
   }
@@ -106,6 +126,7 @@
 
 @media (min-width: 900px) {
   .quote-carousel.block .carousel-content .item .quote {
+    margin-bottom: 30px;
     padding: 0;
     text-align: center;
     width: 66.66%;
