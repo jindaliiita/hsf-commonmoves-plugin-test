@@ -105,7 +105,7 @@
 .property-list-cards .property-labels .property-label {
   display: initial;
   height: 24px;
-  font-size: var(--heading-font-size-xs);
+  font-size: var(--body-font-size-xxs);
   padding: 0 7px;
   line-height: 24px;
   font-family: var(--font-family-primary);
