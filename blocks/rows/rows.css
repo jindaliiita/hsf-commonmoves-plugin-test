@@ -17,16 +17,16 @@
   padding: 0 15px;
 }
 
-.rows.block.white-gray > div:nth-child(even) {
-  background: var(--light-grey);
-}
-
 .rows.block.white-tertiary > div {
   padding: 15px;
 }
 
 .rows.block.white-tertiary > div:nth-child(even) {
   background: var(--tertiary-color);
+}
+
+.rows.block.white-gray > div:nth-child(even) {
+  background: var(--light-grey);
 }
 
 @media (max-width: 600px) {

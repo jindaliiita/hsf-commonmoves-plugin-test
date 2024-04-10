@@ -332,7 +332,7 @@ main .section.center .default-content-wrapper p {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-content-wrapper h2 {main .section .default-
+content-wrapper h2 {
   margin-bottom: .5em;
 }
 
@@ -424,10 +424,6 @@ main .section.button-primary-color .button-container a:hover {
   border: 1px solid var(--grey);
   color: var(--black);
   box-shadow: none;
-}
-
-main .section.no-margin {
- margin-bottom: 0; 
 }
 
 main .section.banner {
