@@ -22,6 +22,7 @@
   object-position: center;
   height: 100%;
   max-width: 100%;
+  width: 100%;
 }
 
 .block.floating-images .content {
@@ -62,7 +63,12 @@
 @media screen and (min-width: 900px) {
   .block.floating-images > div {
     flex-direction: row;
-    align-items: center;
+  }
+
+  .block.floating-images .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .block.floating-images > div > div {

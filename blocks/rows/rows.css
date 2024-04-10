@@ -21,6 +21,14 @@
   background: var(--light-grey);
 }
 
+.rows.block.white-tertiary > div {
+  padding: 15px;
+}
+
+.rows.block.white-tertiary > div:nth-child(even) {
+  background: var(--tertiary-color);
+}
+
 @media (max-width: 600px) {
   .rows.block .row-content {
     display: flex;
