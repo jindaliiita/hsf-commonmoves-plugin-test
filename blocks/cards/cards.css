@@ -108,12 +108,6 @@
   display: flex;
 }
 
-.cards.block .cards-list .cards-item .card-body .button-container a {
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-  padding: 10px 24px;
-}
-
 /* Icons variation */
 .cards.block.icons .cards-list .cards-item {
   flex-direction: row;
