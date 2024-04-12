@@ -5,7 +5,7 @@
 .luxury-collection .columns.block h2 {
     font-family: var(--font-family-luxury);
     font-weight: var(--font-weight-normal);
-    font-size:var(--heading-font-size-xxxxl);
+    font-size:var(--heading-font-size-xl);
     line-height: var(--line-height-xs);
     letter-spacing: 0;
     margin-bottom: 25px;
@@ -60,5 +60,9 @@
     .luxury-collection .columns.block.columns-2-cols > div > div:last-of-type::before {
         width: 100%;
         left: 0;
+    }
+
+    .luxury-collection .columns.block h2 {
+        font-size:var(--heading-font-size-xxxxl);
     }
 }

@@ -1,4 +1,8 @@
 .luxury-collection footer * {
-    background: var(--light-grey);
-    color: initial;
+    background: var(--black);
+    color: var(--white);
+}
+
+.luxury-collection footer .link-menu-col li a {
+    color: var(--white);
 }
