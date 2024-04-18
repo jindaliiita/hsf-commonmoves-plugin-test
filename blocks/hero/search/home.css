@@ -19,6 +19,7 @@
 }
 
 .hero.block .content .homes .search-bar .search-country-select-parent {
+  display: none; /* hiding as it isn't present in current designs */
   position: relative;
   width: 80px;
 }
@@ -40,6 +41,11 @@
 .hero.block .content .homes.show-filters .search-bar .filter {
   display: none;
 }
+
+.hero.block .content .homes.show-filters {
+  border-bottom: 6px solid var(--primary-color);
+}
+
 
 .hero.block .content .homes .search-bar .filter span.icon {
   position: relative;
@@ -64,11 +70,21 @@
 .hero.block .content .homes .filters .select-wrapper {
   position: relative;
   height: 40px;
+  color: var(--input-placeholder);
+  font-size: var(--body-font-size-xs);
   width: calc(50% - 5px);
   margin: 8px 0;
   padding: 0 15px;
-  border: 1px solid var(--grey);
+  border: 1px solid var(--primary-color);
   text-overflow: ellipsis;
+}
+
+.hero.block .content .homes .filters .select-wrapper {
+  cursor: pointer;
+}
+
+.hero.block .content .homes .filters input {
+  font-size: var(--body-font-size-xs);
 }
 
 .hero.block .content .homes .filters .select-wrapper select {
@@ -83,12 +99,13 @@
 }
 
 .hero.block .content .homes .filters .select-wrapper .selected::after {
-  display: inline;
-  position: absolute;
-  right: 0;
+  color: var(--primary-color);
   content: '\f0d7';
+  display: inline;
   font-family: var(--font-family-fontawesome);
   height: unset;
+  position: absolute;
+  right: 0;
 }
 
 .hero.block .content .homes .filters .select-wrapper.open .selected::after {
@@ -128,15 +145,15 @@
 
 @media screen and (max-width: 899px) {
   .hero.block .content .homes.show-filters {
+    background-color: var(--white);
     display: flex;
+    flex-direction: column;
+    height: 100vh;
+    left: 0;
+    padding: 15px;
     position: fixed;
     top: 0;
-    left: 0;
-    height: 100vh;
     width: 100vw;
-    padding: 15px;
-    flex-direction: column;
-    background-color: var(--white);
     z-index: 1000;
   }
 
@@ -189,34 +206,37 @@
   }
 
   .hero.block .content .homes.show-filters .submit {
-    display: block;
-    margin: 50px auto 0;
-    height: 40px;
-    min-width: 140px;
-    text-align: center;
-    color: var(--white);
     background-color: var(--primary-color);
     border: 1px solid var(--primary-color);
+    color: var(--white);
+    display: block;
+    height: 40px;
+    margin: 50px auto 0;
+    max-height: 40px;
+    min-width: 140px;
+    padding: 0;
+    text-align: center;
   }
 
 }
 
 @media screen and (min-width: 900px) {
   .hero.block .content .homes.show-filters .filters {
-    display: flex;
-    position: absolute;
-    top: 57px;
-    left: 0;
-    right: 0;
-    padding: 5px 10px;
-    flex-wrap: nowrap;
-    column-gap: 10px;
-    border: 1px solid var(--grey);
     background-color: var(--white);
+    border-bottom: 6px solid var(--primary-color);
+    border-radius: 0 0 6px 6px;
+    column-gap: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    left: 0;
+    padding: 5px 10px;
+    position: absolute;
+    right: 0;
+    top: 57px;
   }
 
   .hero.block .content .homes .filters .close {
-    display: flex;
+    display: none; /* hiding as it is not in current design */
     border: none;
     background-color: transparent;
     align-items: center;
