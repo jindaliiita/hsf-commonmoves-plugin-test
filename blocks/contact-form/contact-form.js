@@ -155,6 +155,11 @@ async function validateFormInputs(form) {
     phone.classList.add('error');
   }
 
+  if (errors.length > 0) {
+    displayError(errors);
+    return false;
+  }
+
   if (!errors.length) {
     const payload = `user_response=${encodeURIComponent(recaptchaToken)}`;
     const options = {
@@ -183,12 +188,6 @@ async function validateFormInputs(form) {
         errors.push(i18n('Captcha verification failed.'));
       });
   }
-
-  if (errors.length > 0) {
-    displayError(errors);
-    return false;
-  }
-  console.log('validation passed');
   return true;
 }
 
@@ -218,45 +217,48 @@ const addForm = async (block) => {
     thankYou.classList.add('form-thank-you');
     form.onsubmit = function handleSubmit(e) {
       e.preventDefault();
-      if (oldSubmit(this)) {
-        const jsonData = addFranchiseData(this);
-        const headers = new Headers();
-        if (this.id === 'team-inquiry') {
-          headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-        } else {
-          headers.append('Content-Type', 'application/json; charset=UTF-8');
-        }
-        const { action, method } = this;
-        fetch(action, {
-          method,
-          headers,
-          body: jsonData,
-          credentials: 'include',
-        }).then((resp) => {
-          /* eslint-disable-next-line no-console */
-          if (!resp.ok) console.error(`Form submission failed: ${resp.status} / ${resp.statusText}`);
-          const firstContent = thankYou.firstElementChild;
-          if (firstContent.tagName === 'A') {
-            // redirect to thank you page
-            window.location.href = firstContent.href;
-          } else {
-            // show thank you content
-            const btn = thankYou.querySelector('a');
-            const sideModal = document.querySelector('.side-modal-form');
-            if (btn && sideModal) {
-              btn.setAttribute('href', '#');
-              btn.addEventListener('click', (event) => {
-                event.preventDefault();
-                hideSideModal();
-              });
-              sideModal?.replaceChildren(thankYou);
+      oldSubmit(this)
+        .then((result) => {
+          if (result) {
+            const jsonData = addFranchiseData(this);
+            const headers = new Headers();
+            if (this.id === 'team-inquiry') {
+              headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
             } else {
-              block.replaceChildren(thankYou);
-              block.parentNode.nextSibling.remove();
+              headers.append('Content-Type', 'application/json; charset=UTF-8');
             }
+            const { action, method } = this;
+            fetch(action, {
+              method,
+              headers,
+              body: jsonData,
+              credentials: 'include',
+            }).then((resp) => {
+              /* eslint-disable-next-line no-console */
+              if (!resp.ok) console.error(`Form submission failed: ${resp.status} / ${resp.statusText}`);
+              const firstContent = thankYou.firstElementChild;
+              if (firstContent.tagName === 'A') {
+                // redirect to thank you page
+                window.location.href = firstContent.href;
+              } else {
+                // show thank you content
+                const btn = thankYou.querySelector('a');
+                const sideModal = document.querySelector('.side-modal-form');
+                if (btn && sideModal) {
+                  btn.setAttribute('href', '#');
+                  btn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    hideSideModal();
+                  });
+                  sideModal?.replaceChildren(thankYou);
+                } else {
+                  block.replaceChildren(thankYou);
+                  block.parentNode.nextSibling.remove();
+                }
+              }
+            });
           }
         });
-      }
       return false;
     };
   }
@@ -359,5 +361,5 @@ export default async function decorate(block) {
   }, {
     rootMargin: '300px',
   });
-  observer.observe(block);
+  await observer.observe(block);
 }
