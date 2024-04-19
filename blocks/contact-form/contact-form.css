@@ -142,6 +142,7 @@
 
 .contact-form.block .contact-form .g-recaptcha {
   padding: 3rem 0;
+  height: 174px;
 }
 
 .contact-form.block form.contact-form .cta {
