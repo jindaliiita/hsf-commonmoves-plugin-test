@@ -11,3 +11,10 @@
 .fragment-wrapper > .section:last-of-type {
   padding-bottom: 0;
 }
+
+.fragment-wrapper .disclaimer div p {
+  font-family: var(--font-family-primary);
+  font-size: var(--body-font-size-xxs);
+  line-height: var(--line-height-s);
+  color: var(--dark-grey);
+}
