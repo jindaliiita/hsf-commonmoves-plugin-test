@@ -10,7 +10,7 @@
   padding: 5px 0;
   margin-bottom: 1.5em;
   flex: 1;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: 400;
   font-size: var(--body-font-size-m);
   text-align: center;
@@ -86,7 +86,7 @@
 
 .hero.block .content .search-bar .suggester-results .list-title {
   padding: 15px 15px 5px;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-s);
   font-weight: 700;
   text-transform: uppercase;

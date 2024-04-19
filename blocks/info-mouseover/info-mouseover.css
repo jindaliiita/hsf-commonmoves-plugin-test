@@ -12,7 +12,7 @@
   left: -180px;
   width: max-content;
   max-width: 200px;
-  font-family: var(--font-family-georgia);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-xs);
   line-height: var(--line-height-s);

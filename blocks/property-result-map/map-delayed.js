@@ -391,7 +391,7 @@ function vj(a, c) {
       map: a,
       anchor: new google.maps.Point(0, 0),
       label: {
-        fontFamily: 'var(--font-family-proxima)',
+        fontFamily: 'var(--font-family-primary)',
         fontWeight: 'var(--font-weight-semibold:)',
         fontSize: '12px',
         text: p || '',

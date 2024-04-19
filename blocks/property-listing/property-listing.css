@@ -20,11 +20,12 @@
 }
 
 .property-listing.block .header > div > span {
-  font-weight: var(--font-weight-bold);
-  text-transform: uppercase;
-  border-bottom: 3px solid var(--primary-color);
+  color: var(--primary-color);
+  font-size: var(--heading-font-size-l);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: initial;
   line-height: var(--line-height-m);
+  text-transform: capitalize;
 }
 
 .property-listing.block .header > div > p {

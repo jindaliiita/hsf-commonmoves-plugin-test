@@ -7,7 +7,7 @@
   display: block;
   width: 100%;
   padding: 6px 15px;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-s);
   letter-spacing: var(--letter-spacing-m);
@@ -34,7 +34,7 @@
 .toc.block.tabs > nav > ul > li > a {
   display: block;
   padding: 11px 15px 10px;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-s);
   letter-spacing: var(--letter-spacing-m);

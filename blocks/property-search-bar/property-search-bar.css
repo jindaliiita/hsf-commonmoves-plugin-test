@@ -600,7 +600,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 
 .property-search-bar.block .search-bar .suggester-results .list-title {
     padding: 15px 15px 5px;
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-size: var(--body-font-size-s);
     font-weight: 700;
     text-transform: uppercase;
@@ -673,7 +673,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
     text-align: left;
     font-size: var(--body-font-size-s);
     height: 45px;
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     line-height: 45px;
     border: 1px solid var(--platinum);
     padding: 0 15px;
@@ -757,7 +757,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 }
 
 .property-search-bar.block .filter-block button {
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
 }
 
 .property-search-bar.block .filter-block [name="Features"] {
@@ -844,7 +844,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 }
 
 .property-search-bar.block .section-label {
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-weight: 700;
     font-size: var(--body-font-size-s);
     color: var(--body-color);

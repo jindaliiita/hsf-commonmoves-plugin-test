@@ -1,3 +1,13 @@
+.cards.block {
+  padding-bottom: 32px;
+}
+
+.cards.wide.block {
+  margin: 0 auto;
+  max-width: var(--wide-page-width);
+  border-bottom: 1px solid var(--secondary-accent);
+}
+
 .cards.block,
 .cards.block .cards-list {
   display: flex;
@@ -11,10 +21,12 @@
 }
 
 .cards.block .title h4 {
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: var(--letter-spacing-l);
+  color: var(--primary-color);
+  font-size: var(--heading-font-size-s);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-m);
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .cards.block .cards-list .cards-item {
@@ -61,15 +73,17 @@
 }
 
 .cards.block .cards-list .cards-item .card-image p {
-  position: absolute;
-  left: 0;
+  background-color: var(--white);
   bottom: 0;
-  text-transform: uppercase;
-  padding: 1em .5em 0 0;
+  font-size: var(--heading-font-size-xxs);
+  font-weight: var(--font-weight-bold);
+  left: 0;
+  letter-spacing: var(--letter-spacing-m);
   margin: 0;
   min-width: calc((2 / 3) * 100%);
-  letter-spacing: var(--letter-spacing-l);
-  background-color: var(--white);
+  padding: 16px 16px 0 0;
+  position: absolute;
+  text-transform: uppercase;
 }
 
 .cards.block .cards-list .cards-item .card-body h3 {
@@ -79,8 +93,13 @@
 }
 
 .cards.block .cards-list .cards-item .card-body p {
-  margin: 8px 0 24px;
+  font-size: var(--body-font-size-xs);
   letter-spacing: var(--letter-spacing-xs);
+  margin: 8px 0 24px;
+}
+
+.tertiary-background .cards.block .cards-list .cards-item .card-image p {
+  background-color: var(--tertiary-color);
 }
 
 .cards.block .cards-list .cards-item .card-body .button-container {
@@ -89,19 +108,13 @@
   display: flex;
 }
 
-.cards.block .cards-list .cards-item .card-body .button-container a {
-  padding: 10px 24px;
-  border: 1px solid var(--black);
-  color: var(--black);
-}
-
 /* Icons variation */
 .cards.block.icons .cards-list .cards-item {
   flex-direction: row;
   padding: 15px 0 25px;
   margin-bottom: 0;
   width: 100%;
-  border-top: 1px solid var(--grey);
+  border-bottom: 1px solid var(--secondary-medium-grey);
 }
 
 .cards.block.icons .cards-list .cards-item .card-icon {
@@ -119,25 +132,19 @@
 }
 
 .cards.block.icons .cards-list .cards-item .card-body h4 {
-  text-transform: uppercase;
-  font-family: var(--font-family-proxima);
-  font-weight: var(--font-weight-semibold);
+  color: var(--secondary-color);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-m);
   line-height: var(--line-height-m);
+  text-transform: uppercase;
 }
 
 .cards.block.icons .cards-list .cards-item .card-body p {
-  margin-bottom: 0;
+  color: var(--body-color);
+  font-size: var(--body-font-size-s);
   letter-spacing: var(--letter-spacing-xs);
-}
-
-.cards.block.shade-icon .cards-list .cards-item .card-body p {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.section.grey-background .cards.block .cards-list .cards-item .card-image p {
-  background-color: var(--light-grey);
+  margin-bottom: 0;
 }
 
 .cards.block.shade-icon .cards-list .cards-item {
@@ -147,6 +154,20 @@
   min-height: 274px;
   align-items: center;
   justify-content: center;
+}
+
+.cards.block.tertiary-background.border-top .cards-list .cards-item {
+  background-color: var(--tertiary-color);
+  border-top: 1px solid var(--secondary-light);
+}
+
+.cards.block.shade-icon .cards-list .cards-item .card-body p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.section.grey-background .cards.block .cards-list .cards-item .card-image p {
+  background-color: var(--light-grey);
 }
 
 .cards.block.shade-icon .cards-list .cards-item .card-body h4 {
@@ -181,6 +202,11 @@
     max-width: 83.333%;
   }
 
+  .cards.block.narrow {
+    margin: 30px auto 0;
+    max-width: 750px;
+  }
+
   .cards.block.shade-icon .cards-list {
     flex-direction: row;
     column-gap: 20px;
@@ -199,6 +225,10 @@
 }
 
 @media (min-width: 900px) {
+  .cards.block .title h4 {
+    font-size: var(--heading-font-size-m);
+  }
+
   .cards.block .cards-list {
     flex-direction: row;
     align-items: stretch;
@@ -226,14 +256,27 @@
     max-height: 500px;
   }
 
+  .cards.block .cards-list .cards-item .card-image p {
+    font-size: var(--heading-font-size-xs);
+  }
+
   .cards.block.cards-2-cols .cards-list .cards-item .card-image picture {
     padding-bottom: 45%;
+  }
+
+  .cards.block .cards-list .cards-item .card-body h3 {
+    font-size: var(--heading-font-size-xl);
+    font-weight: var(--font-weight-semibold);
   }
 
   .cards.block.icons .cards-list {
     flex-flow: row wrap;
     align-items: stretch;
     column-gap: 20px;
+  }
+
+  .cards.block .cards-list .cards-item .card-body p {
+    font-size: var(--body-font-size-s);
   }
 
   .cards.block.shade-icon .cards-list .cards-item .card-body p:not(:first-of-type) {

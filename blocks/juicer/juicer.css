@@ -1,7 +1,7 @@
 .juicer.block h2 {
   padding: 1.5em 0;
   margin-bottom: 1.5em;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-s);
   line-height: var(--line-height-s);
   letter-spacing: var(--letter-spacing-m);
