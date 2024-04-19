@@ -6,7 +6,7 @@
 .profile h4 {
     line-height: var(--line-height-m);
     padding-bottom: 0.5em;
-    font-family: var(--font-family-georgia);
+    font-family: var(--font-family-primary);
 }
 
 .profile nav button {

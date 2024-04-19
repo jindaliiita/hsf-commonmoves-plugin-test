@@ -29,7 +29,7 @@
 
 .property-search-template.search-map-active .info-window .info .price {
     font-size: var(--body-font-size-m);
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-weight: var(--font-weight-bold);
 }
 
@@ -63,7 +63,7 @@
 /* stylelint-disable selector-class-pattern */
 .property-search-template.search-map-active .info-window .info .altPrice {
     font-size: var(--body-font-size-s);
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-weight: var(--font-weight-light);
 }
 
@@ -75,7 +75,7 @@
 .property-search-template.search-map-active .cmp-property-tile__extra-info {
     display: block;
     font-size: var(--body-font-size-xs);
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     font-weight: var(--font-weight-light);
     padding-left: 10px;
     opacity: 1;
@@ -335,7 +335,7 @@
     background: var(--light-grey);
     text-align: center;
     color: var(--body-color);
-    font-family: var(--font-family-proxima);
+    font-family: var(--font-family-primary);
     z-index: 1;
 }
 

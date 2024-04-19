@@ -6,16 +6,15 @@
 }
 
 .block.floating-images > div {
+  background-color: var(--secondary-light);
   display: flex;
   flex-direction: column-reverse;
-  padding-top: 1em;
   min-height: 530px;
 }
 
 
 .block.floating-images .image {
   position: relative;
-  padding: 1.5em 0;
 }
 
 .block.floating-images .image img {
@@ -23,12 +22,30 @@
   object-position: center;
   height: 100%;
   max-width: 100%;
+  width: 100%;
+}
+
+.block.floating-images .content {
+  margin: 30px 0;
 }
 
 .block.floating-images .content h2 {
+  color: var(--primary-color);
+  font-size: 28px;
+  font-weight: var(--font-weight-normal);
   letter-spacing: normal;
   margin-bottom: 0.5em;
+  padding: 0 16px;
   text-align: left;
+  text-transform: capitalize;
+}
+
+.block.floating-images .content p {
+  color: var(--primary-color);
+  font-size: var(--body-font-size-s);
+  line-height: 25px;
+  padding: 0 16px;
+  margin-bottom: 13px;
 }
 
 .block.floating-images .content ul {
@@ -43,15 +60,15 @@
   line-height: var(--line-height-m);
 }
 
-.block.floating-images p.button-container {
-  text-align: center;
-}
-
 @media screen and (min-width: 900px) {
   .block.floating-images > div {
     flex-direction: row;
-    column-gap: 15px;
-    align-items: center;
+  }
+
+  .block.floating-images .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .block.floating-images > div > div {
@@ -102,7 +119,12 @@
 
 
 @media screen and (min-width: 1200px) {
-  .block.floating-images > div {
-    column-gap: 30px;
+  .block.floating-images .content h2 {
+    font-size: var(--heading-font-size-xxl);
+    padding: 0 80px;
+  }
+
+  .block.floating-images .content p {
+    padding: 0 80px;
   }
 }

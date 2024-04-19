@@ -4,7 +4,7 @@
 
 const urlParams = new URLSearchParams(window.location.search);
 export const DOMAIN = urlParams.get('env') === 'stage' ? 'ignite-staging.bhhs.com' : 'www.bhhs.com';
-const API_URL = `https://${DOMAIN}/bin/bhhs`;
+const API_URL = '/bin/bhhs';
 
 /**
  * Confirms if user is logged in or not
