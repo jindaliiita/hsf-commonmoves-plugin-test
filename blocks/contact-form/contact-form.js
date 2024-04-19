@@ -268,6 +268,9 @@ const addForm = async (block) => {
                   block.replaceChildren(thankYou);
                   block.parentNode.nextSibling.remove();
                 }
+                if (window.grecaptcha) {
+                  recaptchaToken = null;
+                }
               }
             });
           }
