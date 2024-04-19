@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 let recaptchaToken = null;
 
 function verifyCallback(resp) {

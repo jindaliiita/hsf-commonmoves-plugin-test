@@ -171,6 +171,7 @@ async function validateFormInputs(form) {
     }
   }
 
+  /* eslint-disable no-undef */
   if (!errors.length) {
     if (recaptchaToken) {
       const payload = `user_response=${encodeURIComponent(recaptchaToken)}`;
