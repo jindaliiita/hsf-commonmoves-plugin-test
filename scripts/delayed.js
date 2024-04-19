@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
 import { sampleRUM, loadScript } from './aem.js';
-import { getEnvType } from './util.js';
+import { getCookieValue, getEnvType } from './util.js';
 
 // Core Web Vitals RUM collection
 sampleRUM('cwv');
@@ -17,6 +17,27 @@ async function loadAdobeLaunch() {
   });
 }
 
+async function loadIDServlet() {
+  const sessionID = getCookieValue('XSESSIONID');
+  const options = {
+    method: 'POST',
+    body: `sameAs=%7B%22cregcontactid%22%3A%22${sessionID}`,
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+  };
+  const url = '/bin/bhhs/graphIdServlet';
+  const resp = await fetch(url, options);
+  if (resp.ok) {
+    const id = await resp.json();
+    const idString = JSON.stringify(id);
+    document.cookie = `consumerID=${idString}`;
+  }
+}
+
 if (!window.location.host.includes('localhost')) await loadAdobeLaunch();
+if (!getCookieValue('consumerID')) {
+  loadIDServlet();
+}
 
 loadScript('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', { async: true, defer: true });

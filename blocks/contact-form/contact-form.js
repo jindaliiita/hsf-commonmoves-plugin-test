@@ -1,10 +1,13 @@
+import { loadScript } from '../../scripts/aem.js';
 import { hideSideModal, i18nLookup, getCookieValue } from '../../scripts/util.js';
 
 const LOGIN_ERROR = 'There was a problem processing your request.';
 const i18n = await i18nLookup();
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
-let recaptchaToken = null;
+
+// Load reCaptcha script used on all forms.
+loadScript('./blocks/contact-form/forms/callback.js');
 
 /**
  * Adds form and cookie values to payload.
@@ -155,38 +158,48 @@ async function validateFormInputs(form) {
     phone.classList.add('error');
   }
 
-  if (errors.length > 0) {
-    displayError(errors);
-    return false;
+  if (form.id === 'team-inquiry') {
+    const numAgentsEl = form.querySelector('input[name="numOfAgents"]');
+    if (!numAgentsEl.value || numAgentsEl.value.trim().length === 0) {
+      errors.push(i18n('Number of agents is required.'));
+      numAgentsEl.classList.add('error');
+    }
+    const cgiEl = form.querySelector('input[name="CGI"]');
+    if (!cgiEl.value || cgiEl.value.trim().length === 0) {
+      errors.push(i18n('CGI in USD is required.'));
+      cgiEl.classList.add('error');
+    }
   }
 
   if (!errors.length) {
-    const payload = `user_response=${encodeURIComponent(recaptchaToken)}`;
-    const options = {
-      method: 'POST',
-      body: payload,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-      },
-    };
-    const url = 'https://www.commonmoves.com/bin/bhhs/googleRecaptchaServlet';
+    if (recaptchaToken) {
+      const payload = `user_response=${encodeURIComponent(recaptchaToken)}`;
+      const options = {
+        method: 'POST',
+        body: payload,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        },
+      };
+      const url = '/bin/bhhs/googleRecaptchaServlet';
+      await fetch(url, options)
+        .then((data) => {
+          // Handle the response based on the success property
+          if (!data.ok) {
+            errors.push(i18n('Captcha verification is required.'));
+          }
+        })
+        .catch(() => {
+          errors.push(i18n('Captcha verification failed.'));
+        });
+    } else {
+      errors.push(i18n('Captcha verification is required.'));
+    }
+  }
 
-    fetch(url, options)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Handle the response based on the success property
-        if (!data.success) {
-          errors.push(i18n('Captcha verification is required.'));
-        }
-      })
-      .catch(() => {
-        errors.push(i18n('Captcha verification failed.'));
-      });
+  if (errors.length > 0) {
+    displayError(errors);
+    return false;
   }
   return true;
 }

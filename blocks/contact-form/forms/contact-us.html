@@ -1,18 +1,6 @@
-<script type="text/javascript">
-  var verifyCallback = function(response) {
-    recaptchaToken = response;
-  };
-
-  var onloadCallback = function() {
-    grecaptcha.render('captcha-20285', {
-      'sitekey' : '6LebYaYUAAAAAC9SqASljwaF57MpKSvEkwDOzk6l',
-      'callback' : verifyCallback,
-    });
-  };
-</script>
 <div class="contact-us">
   <form id="office-contact" class="contact-form form-elements" method="POST"
-  action="https://www.commonmoves.com/bin/bhhs/websiteTopicServlet">
+  action="/bin/bhhs/websiteTopicServlet">
     <div class="message">
       <svg class="icon error" role="presentation">
         <use xlink:href="/icons/icons.svg#error"></use>
