@@ -67,7 +67,7 @@ main.liveby-community .hero-container .hero.block .content {
 main.liveby-community .hero-container .hero.block .content h1 {
   margin-left: 0;
   margin-right: 0;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-xxl);
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-l);

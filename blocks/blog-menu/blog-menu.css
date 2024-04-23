@@ -1,28 +1,28 @@
 .section.blog-menu-container {
   padding: 0;
   margin: 0 auto;
-  max-width: var(--wide-page-width);
+  max-width: none;
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
 .blog-nav {
+  color: var(--white);
+  background-color: var(--primary-color);
   display: flex;
   flex-flow: column;
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding-top: 10px;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-m);
-  width: 100vw;
-  max-width: 1600px;
+  max-width: var(--wide-page-width);
+  margin: 0 auto;
+  width: 100%;
 }
 
 .blog-nav ul {
   display: none;
   position: absolute;
-  top: 120px;
+  top: 115px;
   text-align: center;
   width: 100%;
   padding: 0 10px;
@@ -64,25 +64,30 @@
 }
 
 .blog-nav a {
-  text-decoration: none;
-  letter-spacing: var(--letter-spacing-m);
-  font-family: var(--font-family-proxima);
-  font-size: var(--body-font-size-m);
-  font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-m);
-  text-decoration-style: solid;
   color: var(--white);
+  font-family: var(--font-family-primary);
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-m);
+  line-height: var(--line-height-m);
+  padding: 5px 10px;
+  text-decoration: none;
 }
 
 .blog-nav h1 a {
-  display: block;
+  display: inline-block;
   font-size: var(--heading-font-size-xl);
-  font-family: var(--font-family-proxima);
-  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-secondary);
+  font-weight: var(--font-weight-normal);
   line-height: var(--line-height-m);
   text-align: center;
   text-transform: none;
   letter-spacing: initial;
+}
+
+.blog-nav a:hover {
+  background-color: var(--white);
+  color: var(--primary-color);
 }
 
 .blog-nav.seller-advice a {
@@ -109,7 +114,8 @@
   color: var(--primary-color);
 }
 
-.blog-nav h1:hover {
+.blog-nav h1 a:hover {
+  background-color: transparent;
   color: var(--white);
   opacity: 0.6;
 }
@@ -122,7 +128,7 @@
 }
 
 .blog-nav li {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-m);
   line-height: var(--line-height-m);
   letter-spacing: var(--letter-spacing-m);
@@ -130,13 +136,6 @@
   border-top: solid 1px var(--white);
   text-align: center;
 }
-
-.blog-nav li:hover {
-  border-bottom: 1px solid var(--white);
-  color: var(--white);
-  opacity: 0.6;
-}
-
 
 .blog-nav.seller-advice li:hover {
   border-bottom: 1px solid var(--primary-color);
@@ -237,18 +236,19 @@
   }
 
   .blog-nav ul {
+    display: flex;
     padding: 0 66px 25px;
     position: unset;
-    display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .blog-nav li {
-    padding: 0;
     border-top: none;
+    padding: 0 0 0 16px;
   }
 
   .blog-nav h1 a {
+    font-size: var(--heading-font-size-xxl);
     text-align: left;
     margin: 0 66px
   }
@@ -257,7 +257,6 @@
 
 @media (min-width: 1200px) {
   .blog-nav h1 a {
-    font-size: var(--heading-font-size-xxxl);
-    line-height: var(--line-height-l);
+    font-size: var(--heading-font-size-xxl);
   }
 }
