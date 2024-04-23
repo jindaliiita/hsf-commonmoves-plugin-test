@@ -42,3 +42,44 @@ indices:
       liveby-community:
         select: head > meta[name="liveby-community"]
         value: attribute(el, "content")
+  offices:
+    include:
+      - /offices/*
+    target: /offices.json
+    properties:
+      lastModified:
+        select: none
+        value: parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+      location:
+        select: head > meta[name="location"]
+        value: attribute(el, "content")
+      type:
+        select: head > meta[name="type"]
+        value: attribute(el, "content")
+      address:
+        select: head > meta[name="address"]
+        value: attribute(el, "content")
+      cityStateZip:
+        select: head > meta[name="city-state-zip"]
+        value: attribute(el, "content")
+      phone:
+        select: head > meta[name="phone"]
+        value: attribute(el, "content")
+      fax:
+        select: head > meta[name="fax"]
+        value: attribute(el, "content")
+      contactName:
+        select: head > meta[name="contact-name"]
+        value: attribute(el, "content")
+      contactTitle:
+        select: head > meta[name="contact-title"]
+        value: attribute(el, "content")
+      contactPhone:
+        select: head > meta[name="contact-phone"]
+        value: attribute(el, "content")
+      contactEmail:
+        select: head > meta[name="contact-email"]
+        value: attribute(el, "content")
+      image:
+        select: head > meta[property="og:image"]
+        value: match(attribute(el, "content"), "https:\/\/[^/]+(/.*)")
