@@ -98,14 +98,54 @@
   margin: 8px 0 24px;
 }
 
+.cards.block .cards-list .cards-item .card-body a.name {
+  text-decoration: none;
+  font-family: var(--font-family-secondary);
+  font-size: var(--body-font-size-l);
+  line-height: var(--line-height-s);
+  color: var(--body-color);
+}
+
+.cards.block .cards-list .cards-item .card-body div.title,
+.cards.block .cards-list .cards-item .card-body div.teamname,
+.cards.block .cards-list .cards-item .card-body div.phone,
+.cards.block .cards-list .cards-item .card-body div.license {
+  font-size: var(--body-font-size-xxs);
+  font-weight: 600;
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  text-transform: uppercase;
+  color: var(--body-color);
+  padding: 1em 0;
+}
+
+.cards.block .cards-list .cards-item .card-body div.teamname {
+  font-weight: 700;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.cards.block .cards-list .cards-item .card-body div.phone,
+.cards.block .cards-list .cards-item .card-body div.license {
+  font-weight: var(--font-weight-normal);
+  text-transform: none;
+  letter-spacing: normal;
+  padding: 0;
+}
+
 .tertiary-background .cards.block .cards-list .cards-item .card-image p {
   background-color: var(--tertiary-color);
 }
 
+.cards.block .cards-list .cards-item .card-body {
+  flex-grow: 1;
+}
+
 .cards.block .cards-list .cards-item .card-body .button-container {
-  margin: 16px 0 0 ;
+  margin-top: auto;
   height: 40px;
   display: flex;
+  align-self: flex-end;
 }
 
 /* Icons variation */
@@ -250,6 +290,16 @@
   .cards.block.three-cols .cards-list .cards-item {
     flex: 0 0 33.33%;
     margin-bottom: 20px;
+  }
+
+  .cards.block.agents .cards-list {
+    flex-flow: row wrap;
+  }
+
+  .cards.block.agents .cards-list .cards-item {
+    flex: 0 0 20%;
+    margin-bottom: 20px;
+    min-width: 220px;
   }
 
   .cards.block.cards-1-cols .cards-list .cards-item .card-image {
