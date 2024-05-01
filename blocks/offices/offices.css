@@ -74,6 +74,7 @@
   letter-spacing: var(--letter-spacing-reg);
   text-transform: uppercase;
 }
+
 .offices.block.agents .cards-list .cards-item .card-body .teamname {
   font-family: var(--font-family-primary);
   font-size: var(--body-font-size-xxs);
