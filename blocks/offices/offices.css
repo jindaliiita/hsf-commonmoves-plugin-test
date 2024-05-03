@@ -2,8 +2,14 @@
   padding-bottom: 32px;
 }
 
-.offices.block .title {
+.offices.block .title h4 {
   padding: 2em 0;
+  font-size: var(--heading-font-size-m);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--primary-color);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
 }
 
 .offices.block .cards-list .cards-item {
@@ -26,10 +32,21 @@
 
 .offices.block .cards-list .cards-item .card-image {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+}
+
+.offices.block .cards-list .cards-item .card-image p {
+  position: absolute;
+  bottom: 0;
+  background-color: var(--white);
+  padding: 8px 0;
+  margin: 0;
+  width: 66.67%;
+  color: var(--body-color);
+  font-size: var(--body-font-size-xxs);
+  line-height: var(--line-height-xs);
+  letter-spacing: var(--letter-spacing-m);
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bold);
 }
 
 .offices.block.agents .cards-list .cards-item .card-image {
