@@ -11,7 +11,6 @@ function buildOfficeCards(list, data) {
     const cardImage = document.createElement('div');
     cardImage.className = 'card-image';
     const image = createOptimizedPicture(item.image, item.location, true);
-    image.style = 'padding-bottom: 75%';
     const type = document.createElement('p');
     type.innerText = item.type;
     cardImage.append(image, type);
@@ -43,7 +42,7 @@ function buildAgentCards(list, data) {
   const { pathname } = window.location;
   const parts = pathname.split('/');
   const pageName = parts[parts.length - 1];
-  const filteredData = data.filter((item) => item.office.toLowerCase() === pageName);
+  const filteredData = data.filter((item) => toClassName(item.office) === toClassName(pageName));
   filteredData.forEach((item) => {
     const cardsItem = document.createElement('div');
     cardsItem.className = 'cards-item';
@@ -53,7 +52,6 @@ function buildAgentCards(list, data) {
     const pic = document.createElement('picture');
     const image = document.createElement('img');
     pic.append(image);
-    // pic.style = 'padding-bottom: 75%';
     image.src = tmpImage;
     image.loading = 'eager';
     cardImage.append(pic);
