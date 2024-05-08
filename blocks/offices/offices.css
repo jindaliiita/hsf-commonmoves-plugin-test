@@ -20,7 +20,7 @@
 }
 
 .offices.block.agents .cards-list .cards-item {
-  display: inline-block;
+  flex-direction: row;
   width: 100%;
   border-bottom: 1px solid var(--grey);
   padding: 16px 0;
@@ -60,6 +60,11 @@
   position: relative;
   height: 100%;
   width: 100%;
+  padding-bottom: 75%;
+}
+
+.offices.block.agents .cards-list .cards-item .card-image picture {
+  padding-bottom: unset;
 }
 
 .offices.block .cards-list .cards-item .card-image img {
@@ -69,13 +74,18 @@
   object-position: center;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+}
+
+.offices.block.agents .cards-list .cards-item .card-image img {
   object-fit: contain;
+  position: relative;
 }
 
 .offices.block.agents .cards-list .cards-item .card-body {
   display: inline-block;
   width: 66%;
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .offices.block.agents .cards-list .cards-item .card-body .name {
@@ -115,13 +125,46 @@
 
 .offices.block .cards-list .cards-item .card-body .button-container {
   margin-top: auto;
-  height: 40px;
+  text-align: center;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 576px) {
+  .offices.block.agents .cards-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   .offices.block.agents .cards-list .cards-item,
   .offices.block.agents .cards-list .cards-item:first-of-type {
     border: none;
+    display: flex;
+    flex-direction: column;
+    width: 16.66%;
+    min-width: 200px;
+    flex-grow: 1;
+    padding: 10px;
+  }
+
+  .offices.block.agents .cards-list .cards-item .card-image {
+    padding-bottom: 15px;
+    width: 100%;
+  }
+
+  .offices.block.agents .cards-list .cards-item .card-image picture {
+    height: auto;
+    width: 100%;
+    min-width: 180px;
+    min-height: 225px;
+  }
+
+  .offices.block.agents .cards-list .cards-item .card-body {
+    width: 100%;
+    padding-left: unset;
+  }
+
+  .offices.block .cards-list .cards-item .card-body .button-container {
+    text-align: left;
   }
 }
 

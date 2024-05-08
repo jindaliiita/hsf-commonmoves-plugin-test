@@ -49,11 +49,11 @@ function buildAgentCards(list, data) {
     cardsItem.className = 'cards-item';
     const cardImage = document.createElement('div');
     cardImage.className = 'card-image';
-    const tmpImage = item.image ? item.image : 'https://main--hsf-commonmoves--hlxsites.hlx.page/media/images/no-profile-image.png';
+    const tmpImage = item.image ? item.image : '/media/images/no-profile-image.png';
     const pic = document.createElement('picture');
     const image = document.createElement('img');
     pic.append(image);
-    pic.style = 'padding-bottom: 75%';
+    // pic.style = 'padding-bottom: 75%';
     image.src = tmpImage;
     image.loading = 'eager';
     cardImage.append(pic);
