@@ -131,8 +131,7 @@
 @media (min-width: 576px) {
   .offices.block.agents .cards-list {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     gap: 20px
   }
 

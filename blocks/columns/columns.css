@@ -38,6 +38,7 @@
   font-size: var(--body-font-size-s);
   margin: 16px 0;
 }
+
 .columns.block.office > div > div:nth-child(2) > p:not(.button-container) {
   line-height: var(--line-height-xs);
   margin: 8px 0;
