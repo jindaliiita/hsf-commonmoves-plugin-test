@@ -35,9 +35,11 @@ async function loadIDServlet() {
   }
 }
 
-if (!window.location.host.includes('localhost')) await loadAdobeLaunch();
+if (!window.location.host.includes('localhost')) loadAdobeLaunch();
 if (!getCookieValue('consumerID')) {
   loadIDServlet();
 }
 
-loadScript('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', { async: true, defer: true });
+if (window.location.pathname.startsWith('/contact-us') || window.location.pathname.startsWith('/search')) {
+  loadScript('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', { async: true, defer: true });
+}

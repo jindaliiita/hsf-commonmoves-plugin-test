@@ -8,7 +8,7 @@ function verifyCallback(resp) {
 
 function onloadCallback() {
   grecaptcha.render('captcha-20285', {
-    sitekey: '6LebYaYUAAAAAC9SqASljwaF57MpKSvEkwDOzk6l',
+    sitekey: window.placeholders.default.recaptchaSitekey,
     callback: verifyCallback,
   });
 }

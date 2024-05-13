@@ -134,7 +134,6 @@ export function getEnvType(hostname = window.location.hostname) {
   return fqdnToEnvType[hostname] || 'dev';
 }
 
-
 /**
  * Retrieves the value of a cookie by its name.
  *
