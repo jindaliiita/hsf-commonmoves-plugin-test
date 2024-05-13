@@ -134,6 +134,7 @@ export function getEnvType(hostname = window.location.hostname) {
   return fqdnToEnvType[hostname] || 'dev';
 }
 
+
 /**
  * Retrieves the value of a cookie by its name.
  *
@@ -150,6 +151,17 @@ export function getCookieValue(cookieName) {
     return foundCookie.split('=', 2)[1];
   }
   return null;
+}
+
+export function phoneFormat(num) {
+  // Remove any non-digit characters from the string
+  let phoneNum = num.replace(/\D/g, '');
+  if (!phoneNum) {
+    return '';
+  }
+  // Format the phoneNumber according to (XXX) XXX-XXXX
+  phoneNum = phoneNum.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+  return phoneNum;
 }
 
 const Util = {

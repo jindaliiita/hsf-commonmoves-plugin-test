@@ -81,7 +81,14 @@ async function buildForm() {
         </div>
       </div>
       <button class="filter" type="button" aria-label="More Filters" aria-haspopup="true">
-        <span class="icon icon-filter"></span>
+        <svg>
+          <use xlink:href="/icons/icons.svg#search-filter"></use>
+        </svg>
+      </button>
+      <button class="close" aria-label="Close" type="button">
+        <svg role="presentation" aria-hidden="true">
+          <use xlink:href="/icons/icons.svg#close-x"></use>
+        </svg>
       </button>
       <button class="search-submit" aria-label="Search Homes" type="submit">
         <span>Search</span>
@@ -92,11 +99,6 @@ async function buildForm() {
       <input type="text" placeholder="$ Maximum Price" name="MaxPrice" aria-label="maximum price">
       ${buildSelect('MinBedroomsTotal', 'Bedrooms', 12).outerHTML}
       ${buildSelect('MinBathroomsTotal', 'Bathrooms', 8).outerHTML}
-       <button class="close" aria-label="Close" type="button">
-         <svg role="presentation" aria-hidden="true">
-          <use xlink:href="/icons/icons.svg#close-x"></use>
-        </svg>
-      </button>
     </div>
     <button class="submit" type="submit">Search</button>
 `;

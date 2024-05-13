@@ -2,6 +2,7 @@
 
 main .section.hero-container {
   padding: 0;
+  max-width: none;
 }
 
 .hero.block {
@@ -60,6 +61,7 @@ main .section.full-width > .hero-wrapper {
 
 .hero.block > div {
   padding: 0 16px;
+  width: 100%;
 }
 
 .hero.block.keep-scale {
@@ -140,6 +142,7 @@ main .section.full-width > .hero-wrapper {
 @media screen and (min-width: 900px) {
   .hero.block > div {
     padding: 0 130px;
+    width: auto;
   }
 }
 

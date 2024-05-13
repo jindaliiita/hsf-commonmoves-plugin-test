@@ -344,7 +344,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 .property-search-bar.block .filter-block .select-selected {
     font-weight: 300;
     font-size: var(--body-font-size-m);
-    color: var(--body-color);
+    color: var(--input-placeholder);
     letter-spacing: normal;
 }
 
@@ -647,7 +647,7 @@ main .section .property-search-bar .btn.btn-secondary:hover {
 }
 
 .property-search-bar.block .input-dropdown input::placeholder {
-    color: var(--black);
+    color: var(--input-placeholder);
     opacity: 1; /* Firefox */
 }
 
