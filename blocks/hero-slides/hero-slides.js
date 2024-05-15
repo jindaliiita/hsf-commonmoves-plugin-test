@@ -2,7 +2,7 @@ import { createOptimizedPicture, readBlockConfig } from '../../scripts/aem.js';
 
 // eslint-disable-next-line no-unused-vars
 async function fetchListings(config) {
-  const resp = await fetch(`${window.hlx.codeBasePath}/drafts/rrusher/listings.json`);
+  const resp = await fetch(`${window.hlx.codeBasePath}/luxury-listings.json`);
   // eslint-disable-next-line no-return-await
   return (await resp.json()).data;
 }

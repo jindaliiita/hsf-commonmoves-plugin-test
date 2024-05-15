@@ -40,6 +40,9 @@ if (!getCookieValue('consumerID')) {
   loadIDServlet();
 }
 
-if (window.location.pathname.startsWith('/contact-us') || window.location.pathname.startsWith('/search')) {
+// Load reCAPTCHA script on specific pages that have forms (including sidebar forms)
+const paths = ['/contact-us', '/search', '/careers', '/luxury-collection'];
+
+if (paths.some((path) => window.location.pathname.startsWith(path))) {
   loadScript('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', { async: true, defer: true });
 }

@@ -7,7 +7,7 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 
 // Load reCaptcha script used on all forms.
-loadScript('./blocks/contact-form/forms/callback.js');
+loadScript('/blocks/contact-form/forms/callback.js');
 
 /**
  * Adds form and cookie values to payload.
