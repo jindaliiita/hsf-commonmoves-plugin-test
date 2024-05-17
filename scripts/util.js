@@ -52,9 +52,10 @@ export function showModal(content) {
 let sideModal;
 let focusElement;
 
-export function hideSideModal() {
+export function removeSideModal() {
   if (!sideModal) return;
-  sideModal.ariaExpanded = false;
+  sideModal.parentNode.remove();
+  sideModal = null;
   document.body.classList.remove('disable-scroll');
   if (focusElement) focusElement.focus();
 }

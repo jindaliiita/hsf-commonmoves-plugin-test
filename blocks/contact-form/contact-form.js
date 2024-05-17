@@ -1,5 +1,5 @@
 import { loadScript } from '../../scripts/aem.js';
-import { hideSideModal, i18nLookup, getCookieValue } from '../../scripts/util.js';
+import { removeSideModal, i18nLookup, getCookieValue } from '../../scripts/util.js';
 
 const LOGIN_ERROR = 'There was a problem processing your request.';
 const i18n = await i18nLookup();
@@ -262,7 +262,7 @@ const addForm = async (block) => {
                   btn.setAttribute('href', '#');
                   btn.addEventListener('click', (event) => {
                     event.preventDefault();
-                    hideSideModal();
+                    removeSideModal();
                   });
                   sideModal?.replaceChildren(thankYou);
                 } else {
@@ -323,7 +323,7 @@ const addForm = async (block) => {
     cancelBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      hideSideModal();
+      removeSideModal();
     });
   }
 
@@ -367,6 +367,13 @@ const addForm = async (block) => {
         }
       });
     });
+
+  if (window.grecaptcha) {
+    recaptchaToken = null;
+    renderRecaptcha();
+  } else {
+    loadScript('https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit', { async: true, defer: true });
+  }
 };
 
 export default async function decorate(block) {

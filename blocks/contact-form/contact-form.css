@@ -1,7 +1,35 @@
-.contact-form.block form,
+.contact-form.block,
+.contact-form.block form {
+  font-family: var(--font-family-primary);
+}
+
+.contact-form.block .form-title {
+  font-size: var(--heading-font-size-l);
+  line-height: var(--line-height-xs);
+  font-weight: 700;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-bottom: 3em;
+}
+
+.contact-form.block .company-name {
+  font-size: var(--heading-font-size-m);
+  line-height: var(--line-height-xs);
+  font-weight: 800;
+  margin-bottom: .5em;
+}
+
 .contact-form.block .company-email,
 .contact-form.block .company-phone {
-  font-family: var(--font-family-proxima);
+  padding-bottom: .5em;
+}
+
+.contact-form.block a {
+  color: var(--body-color);
+}
+
+.contact-form.block form#property-contact {
+  margin-top: 3rem;
 }
 
 .contact-form.block form.contact-form .message {

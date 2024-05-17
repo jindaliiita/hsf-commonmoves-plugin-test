@@ -12,3 +12,12 @@ function onloadCallback() {
     callback: verifyCallback,
   });
 }
+
+function renderRecaptcha() {
+  if (document.getElementById('captcha-20285')) {
+    grecaptcha.render('captcha-20285', {
+      sitekey: window.placeholders.default.recaptchaSitekey,
+      callback: verifyCallback,
+    });
+  }
+}

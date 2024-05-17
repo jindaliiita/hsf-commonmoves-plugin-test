@@ -1,5 +1,6 @@
 import { propertySearch } from '../../../scripts/apis/creg/creg.js';
 import { decorateIcons } from '../../../scripts/aem.js';
+import { decorateFormLinks } from '../../../scripts/scripts.js';
 
 function createImage(listing) {
   if (listing.SmallMedia?.length > 0) {
@@ -50,9 +51,9 @@ export function createCard(listing) {
 
   item.innerHTML = `
     <a href="${detailsPath}" rel="noopener" aria-label="${listing.StreetName}">
-      <div class="listing-image-container"> 
-        <div class="property-image"> 
-          ${createImage(listing)} 
+      <div class="listing-image-container">
+        <div class="property-image">
+          ${createImage(listing)}
         </div>
         <div class="image-position-top">
           <div class="property-labels">
@@ -63,7 +64,7 @@ export function createCard(listing) {
             </div>
           </div>
         </div>
-        <div class="image-position-bottom"> 
+        <div class="image-position-bottom">
           <div class="property-labels">
             <span class="property-label featured">Featured Listing</span>
             ${applicationType}
@@ -71,38 +72,38 @@ export function createCard(listing) {
           </div>
           <div class="property-price">
               ${listing.ListPriceUS}
-          </div> 
-        </div> 
+          </div>
+        </div>
       </div>
     </a>
     <div class="property-details">
-      <div class="property-info-wrapper"> 
-        <div class="property-info"> 
+      <div class="property-info-wrapper">
+        <div class="property-info">
           <div class="sold-date">Closed: ${listing.ClosedDate}</div>
-          <div class="address"> 
+          <div class="address">
             ${listing.StreetName}
-            <br> 
-            ${listing.City}, ${listing.StateOrProvince} ${listing.PostalCode} 
-          </div> 
-          <div class="specs">${specs.join(' / ')}</div> 
-        </div> 
-      </div> 
-      <div class="property-buttons"> 
-        <div class="buttons-row-flex"> 
-          <a aria-label="Contact Form" href="#" class="button-property"> 
+            <br>
+            ${listing.City}, ${listing.StateOrProvince} ${listing.PostalCode}
+          </div>
+          <div class="specs">${specs.join(' / ')}</div>
+        </div>
+      </div>
+      <div class="property-buttons">
+        <div class="buttons-row-flex">
+          <a aria-label="Contact Form" href="/fragments/contact-property-form" class="button-property">
             <span class="icon icon-envelope"></span>
             <span class="icon icon-envelopedark"></span>
-          </a> 
-          <a aria-label="Save" href="#" class="button-property"> 
+          </a>
+          <a aria-label="Save" href="#" class="button-property">
             <span class="icon icon-heartempty"></span>
             <span class="icon icon-heartemptydark"></span>
           </a>
         </div>
       </div>
     </div>
-    <hr> 
+    <hr>
     <div class="extra-info">
-      <div> 
+      <div>
         <div class="courtesy-info">Listing courtesy of: ${listing.CourtesyOf}</div>
         <div class="courtesy-provided">Listing provided by: ${listing.listAor}</div>
       </div>
@@ -132,6 +133,7 @@ export async function render(searchParams, parent) {
         list.append(createCard(listing));
       });
       decorateIcons(parent);
+      decorateFormLinks(parent);
     }
   });
 }
