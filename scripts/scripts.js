@@ -6,13 +6,16 @@ import {
   decorateButtons,
   decorateIcons,
   decorateSections,
+  decorateBlock,
   decorateBlocks,
   decorateTemplateAndTheme,
   waitForLCP,
+  loadBlock,
   loadBlocks,
   loadCSS,
+  loadScript,
   getMetadata,
-} from './lib-franklin.js';
+} from './aem.js';
 
 export const LIVEBY_API = 'https://api.liveby.com/v1/';
 
@@ -23,7 +26,6 @@ export const BREAKPOINTS = {
 };
 
 const LCP_BLOCKS = ['hero']; // add your LCP blocks to the list
-window.hlx.RUM_GENERATION = 'bhhs-commonmoves'; // add your RUM generation information here
 
 export function preloadHeroImage(picture) {
   const src = [...picture.querySelectorAll('source')]
@@ -40,6 +42,27 @@ export function preloadHeroImage(picture) {
   link.setAttribute('href', src.getAttribute('srcset'));
   link.setAttribute('type', src.getAttribute('type'));
   document.head.append(link);
+}
+
+/**
+ * load fonts.css and set a session storage flag
+ */
+async function loadFonts() {
+  await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
+  try {
+    if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
+  } catch (e) {
+    // do nothing
+  }
+}
+
+function buildSearchBar(main) {
+  const metadata = getMetadata('header');
+  if (metadata.match(/search bar/i)) {
+    const section = document.createElement('div');
+    section.append(buildBlock('property-search-bar', { elems: [] }));
+    main.prepend(section);
+  }
 }
 
 /**
@@ -110,6 +133,49 @@ function buildPropertyDetailsMetadata(main) {
     section.append(buildBlock('property-details-metadata', { elems: [] }));
     main.prepend(section);
   }
+
+export function getYoutubeVideoId(url) {
+  if (url.includes('youtube.com/watch?v=')) {
+    return new URL(url).searchParams.get('v');
+  }
+  if (url.includes('youtube.com/embed/') || url.includes('youtu.be/')) {
+    return new URL(url).pathname.split('/').pop();
+  }
+  return null;
+}
+
+function decorateVideoLinks(main) {
+  [...main.querySelectorAll('a')]
+    .filter(({ href }) => !!href)
+  // only convert plain links
+    .filter((a) => a.textContent?.trim()?.toLowerCase().startsWith('http'))
+  // don't decorate if already in a block. unless it's `columns`.
+    .filter((a) => {
+      const block = a.closest('div.block');
+      if (!block) return true;
+      return block.classList.contains('columns');
+    })
+    .forEach((link) => {
+      const youtubeVideoId = getYoutubeVideoId(link.href);
+
+      if (youtubeVideoId) {
+        loadCSS('/blocks/embed/lite-yt-embed.css');
+        loadScript('/blocks/embed/lite-yt-embed.js');
+        const video = document.createElement('lite-youtube');
+        video.setAttribute('videoid', youtubeVideoId);
+        video.setAttribute('params', 'rel=0');
+        video.classList.add('youtube-video');
+        link.replaceWith(video);
+      }
+    });
+}
+
+function decorateImages(main) {
+  main.querySelectorAll('.section .default-content-wrapper picture').forEach((picture) => {
+    const img = picture.querySelector('img');
+    const ratio = (parseInt(img.height, 10) / parseInt(img.width, 10)) * 100;
+    picture.style.paddingBottom = `${ratio}%`;
+  });
 }
 
 /**
@@ -161,18 +227,6 @@ function buildSeparator(main) {
 }
 
 /**
- * Build Property Search Block top nav menu
- * @param main
- */
-function buildPropertySearchBlock(main) {
-  if (getMetadata('template') === 'property-search-template') {
-    const section = document.createElement('div');
-    section.append(buildBlock('property-search-bar', { elems: [] }));
-    main.prepend(section);
-  }
-}
-
-/**
  * Add luxury collection css for page with template
  */
 function buildLuxuryTheme() {
@@ -189,12 +243,12 @@ function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
     buildPropertyDetailsMetadata(main);
+    buildSearchBar(main);
     buildLiveByMetadata(main);
     buildFloatingImages(main);
     buildSeparator(main);
     buildBlogDetails(main);
     buildBlogNav(main);
-    buildPropertySearchBlock(main);
     buildLuxuryTheme();
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -214,6 +268,8 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateVideoLinks(main);
+  decorateImages(main);
 }
 
 /**
@@ -226,7 +282,16 @@ async function loadEager(doc) {
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
+  }
+  try {
+    /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
+    if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
+      loadFonts();
+    }
+  } catch (e) {
+    // do nothing
   }
 }
 
@@ -247,11 +312,16 @@ export function addFavIcon(href) {
   }
 }
 
-function initPartytown() {
-  window.partytown = {
-    lib: '/scripts/partytown/',
-  };
-  import('./partytown/partytown.js');
+/**
+ * Load the login block to the main body.
+ * @param main main element
+ * @returns {Promise}
+ */
+export function loadLogin(main) {
+  const loginBlock = buildBlock('login', '');
+  main.append(loginBlock);
+  decorateBlock(loginBlock);
+  return loadBlock(loginBlock);
 }
 
 /**
@@ -267,13 +337,14 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));
+  loadLogin(doc.querySelector('main'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
+  loadFonts();
+  addFavIcon(`${window.hlx.codeBasePath}/styles/bhhs_seal_favicon.ico`);
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
-  initPartytown();
 }
 
 /**
@@ -282,7 +353,7 @@ async function loadLazy(doc) {
  */
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
+  window.setTimeout(() => import('./delayed.js'), 4000);
   // load anything that can be postponed to the latest here
 }
 

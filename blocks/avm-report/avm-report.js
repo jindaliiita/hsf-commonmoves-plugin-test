@@ -1,23 +1,8 @@
-import {
-  showModal,
-} from '../../scripts/util.js';
+import { showModal } from '../../scripts/util.js';
 
-let alreadyDeferred = false;
-function initGooglePlacesAPI() {
-  if (alreadyDeferred) {
-    return;
-  }
-  alreadyDeferred = true;
-  const script = document.createElement('script');
-  script.type = 'text/partytown';
-  script.innerHTML = `
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = '${window.hlx.codeBasePath}/blocks/avm-report/avm-report-delayed.js';
-    document.head.append(script);
-  `;
-  document.head.append(script);
-}
+import loadMaps from '../../scripts/google-maps/index.js';
+
+let autocompleteAttached = false;
 
 export default async function decorate(block) {
   const form = document.createElement('form');
@@ -31,6 +16,19 @@ export default async function decorate(block) {
   `;
 
   const addressField = form.querySelector('input[name="avmaddress"]');
+
+  addressField.addEventListener('focus', async () => {
+    if (!autocompleteAttached) {
+      loadMaps();
+      await window.google.maps.importLibrary('places');
+      // eslint-disable-next-line no-unused-vars
+      const autocomplete = new window.google.maps.places.Autocomplete(addressField, {
+        fields: ['formatted_address'],
+        types: ['address'],
+      });
+      autocompleteAttached = true;
+    }
+  });
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -49,5 +47,4 @@ export default async function decorate(block) {
     window.location = redirect;
   });
   block.append(form);
-  initGooglePlacesAPI();
 }

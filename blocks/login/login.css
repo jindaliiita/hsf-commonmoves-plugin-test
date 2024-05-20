@@ -1,0 +1,327 @@
+.login.block {
+    display: none;
+  }
+  
+  .login.block.open {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .login.block .login-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: .5;
+    z-index: 1001;
+    background-color: var(--dark-grey);
+  }
+  
+  .login.block .login-form {
+    display: block;
+    position: absolute;
+    padding-top: 15px;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    background-color: var(--white);
+    overflow-y: scroll;
+  }
+  
+  .login.block .login-form form {
+    display: flex;
+    padding: 5%;
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .login.block .login-form form h2 {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-family: var(--font-family-primary);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--heading-font-size-m);
+    line-height: var(--line-height-m);
+    text-align: center;
+    text-transform: capitalize;
+  }
+  
+  .login.block .login-form form .message {
+    display: none;
+    padding: 10px 4px;
+    margin-bottom: 1em;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid;
+    column-gap: 4px;
+  }
+  
+  .login.block .login-form form .message.error {
+    display: flex;
+    color: var(--error);
+    border-color: var(--error);
+  }
+  
+  .login.block .login-form form .message.success {
+    display: flex;
+    color: var(--success);
+    border-color: var(--success);
+  }
+  
+  .login.block .login-form form .message .icon {
+    display: none;
+    align-self: flex-start;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .login.block .login-form form .message.error .icon.error {
+    display: block;
+  }
+  
+  .login.block .login-form form .message.success .icon.success {
+    display: block;
+  }
+  
+  .login.block .login-form form .message .details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login.block .login-form form .message span {
+    font-family: var(--font-family-primary);
+    font-size: var(--body-font-size-xs);
+    line-height: var(--line-height-s);
+  }
+  
+  .login.block .login-form form .inputs input[type="text"],
+  .login.block .login-form form .inputs input[type="password"] {
+    height: 50px;
+    width: 100%;
+    padding-left: 15px;
+    margin-bottom: 1em;
+    font-family: var(--font-family-primary);
+    font-size: var(--body-font-size-s);
+    line-height: 50px;
+    color: var(--body-color);
+    border: 1px solid var(--dark-grey);
+  }
+  
+  .login.block .login-form form .inputs input[type="text"].error,
+  .login.block .login-form form .inputs input[type="password"].error {
+    color: var(--error);
+    background-color: var(--error-highlight);
+    border: 2px solid var(--error);
+  }
+  
+  
+  .login.block .login-form form .help {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--body-font-size-xs)
+  }
+  
+  .login.block .login-form form .help .remember {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex: 0 1 auto;
+  }
+  
+  .login.block .login-form form .help .remember .checkbox {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    border: 1px solid #aaa;
+    margin-right: 5px;
+    position: relative;
+    border-radius: 50%;
+    background: white;
+  }
+  
+  .login.block .login-form form .help .remember .checkbox::after {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: 0;
+    content: '';
+    border-radius: 50%;
+    border: 1px solid white;
+  }
+  
+  .login.block .login-form form .help .remember .checkbox.checked::after {
+    background-color: var(--black);
+  }
+  
+  .login.block .login-form form .help .forgot-password {
+    flex: 0 1 auto;
+  }
+  
+  .login.block .login-form form .help .warning {
+    display: block;
+    padding-top: 10px;
+    visibility: hidden;
+    margin-top: 4px;
+    flex: 2 2 auto;
+    color: var(--error);
+    min-height: 46px;
+  }
+  
+  .login.block .login-form form .help .warning.visible {
+    visibility: visible;
+  }
+  
+  .login.block .login-form form .help .remember input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+  }
+  
+  .login.block .login-form form .cta {
+    display: flex;
+    padding-top: 16px;
+    width: 100%;
+    justify-content: center;
+    column-gap: 8px;
+  }
+  
+  .login.block .login-form form .cta .button-container a.button.primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+  }
+  
+  .login.block .login-form form .cta .button-container a.button.primary:hover {
+    background-color: var(--white);
+    color: var(--body-color);
+    border-color: var(--grey);
+  }
+  
+  .login.block .login-form form .divider {
+    display: flex;
+    line-height: 23px;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0 8px;
+  }
+  
+  .login.block .login-form form .social-sign-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+  
+  .login.block .login-form form .social-sign-in a {
+    display: inline-flex;
+    height: 50px;
+    margin: 5px 0;
+    padding: 12px 11px;
+    width: 83%;
+    align-items: center;
+    border-radius: 4px;
+    color: var(--white);
+    column-gap: 15px;
+    line-height: var(--line-height-xs);
+    letter-spacing: var(--letter-spacing-l);
+  }
+  
+  .login.block .login-form form .social-sign-in a.fb {
+    background-color: #1877f2;
+  }
+  
+  .login.block .login-form form .social-sign-in a.fb img {
+    height: 24px;
+    width: 24px;
+  }
+  
+  .login.block .login-form form .social-sign-in a.google {
+    border: 1px solid var(--dark-grey);
+    background-color: var(--white);
+    color: var(--body-color)
+  }
+  
+  .login.block .login-form form .social-sign-in a.google img {
+    height: 24px;
+    width: 24px;
+  }
+  
+  .login.block .login-form form .social-sign-in a.apple {
+    border: 1px solid var(--dark-grey);
+    background-color: var(--black);
+  }
+  
+  .login.block .login-form form .social-sign-in a.apple::before {
+    display: block;
+    content: '\f179';
+    font-size: 24px;
+    width: 24px;
+    font-family: var(--font-family-fontawesome);
+    text-align: center;
+  }
+  
+  .login.block .login-form form .terms,
+  .login.block .login-form form .terms a {
+    padding: 28px 0 5px;
+    max-width: 400px;
+    margin: 0 auto;
+    font-size: var(--body-font-size-xs);
+    letter-spacing: var(--letter-spacing-xs);
+    line-height: var(--line-height-xs);
+    color: var(--body-color);
+  }
+  
+  .login.block .login-form .create-account {
+    padding: 16px 0;
+    background-color: var(--platinum);
+  }
+  
+  .login.block .login-form .create-account .container {
+    font-size: var(--body-font-size-s);
+    text-align: center;
+    color: var(--body-color);
+  }
+  
+  .login.block .login-form .create-account .container .create-button {
+    padding-top: 12px;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-m);
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--body-color);
+    cursor: pointer;
+  }
+  
+  @media screen and (min-width: 600px) {
+    .login.block .login-form {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1001;
+      width: 500px;
+      height: auto;
+      max-height: 100vh;
+    }
+  
+    .login.block .login-form form .message {
+      display: none;
+      padding: 10px 4px;
+      margin-bottom: 1em;
+      flex-direction: row;
+      align-items: center;
+      border: 1px solid;
+      column-gap: 15px;
+      justify-content: center;
+    }
+  }
+  

@@ -1,5 +1,5 @@
 mountpoints:
-  /: https://adobe.sharepoint.com/:f:/r/sites/HelixProjects/Shared%20Documents/sites/hsf/commonmoves
+  /: https://hsoa.sharepoint.com/:f:/r/sites/Franklin/Shared%20Documents/Website/Common%20Moves
 
 folders:
   /blog/blog-detail/: /blog/blog-detail

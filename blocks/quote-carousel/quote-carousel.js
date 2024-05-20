@@ -29,21 +29,15 @@ function observeCarousel() {
   if (alreadyDeferred) {
     return;
   }
-
   alreadyDeferred = true;
   const script = document.createElement('script');
-  script.type = 'text/partytown';
-  script.innerHTML = `
-    const script = document.createElement('script');
-    script.type = 'module';
-    script.src = '${window.hlx.codeBasePath}/blocks/quote-carousel/quote-carousel-delayed.js';
-    document.head.append(script);
-  `;
+  script.type = 'module';
+  script.src = `${window.hlx.codeBasePath}/blocks/quote-carousel/quote-carousel-delayed.js`;
   document.head.append(script);
 }
 
 export default async function decorate(block) {
-  const blockId = crypto.randomUUID();
+  const blockId = crypto && crypto.randomUUID ? crypto.randomUUID() : 'UUID-CRYPTO-NEEDS-HTTPS';
   const dataUrl = block.querySelector('div > div > div:nth-child(2) > a').href;
   const title = getTitle(block);
   // generate carousel content from loaded data
@@ -86,14 +80,14 @@ export default async function decorate(block) {
 
     // generate container for carousel controls
     controlsContainer.innerHTML = `
-      <button name="prev" aria-label="Previous" class="control-button" disabled><svg><use xlink:href="/icons/icons.svg#carrot"/></svg></button>
       <div class="pagination">
           <span class="index">1</span>
           <span class="of">of</span>
           <span class="total">${content.total}</span>
       </div>
-      <button name="next" aria-label="Next" class="control-button"><svg><use xlink:href="/icons/icons.svg#carrot"/></svg></button>
+      <button name="prev" aria-label="Previous" class="control-button" disabled><svg><use xlink:href="/icons/icons.svg#carrot-white"/></svg></button>
+      <button name="next" aria-label="Next" class="control-button"><svg><use xlink:href="/icons/icons.svg#carrot-white"/></svg></button>
     `;
-    observeCarousel();
+    window.setTimeout(observeCarousel, 3000);
   }
 }

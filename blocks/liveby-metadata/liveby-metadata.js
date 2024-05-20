@@ -1,4 +1,4 @@
-import { getMetadata } from '../../scripts/lib-franklin.js';
+import { getMetadata } from '../../scripts/aem.js';
 
 async function getCommunityId(id, ref, name) {
   const resp = await fetch(`https://api.liveby.com/v1/pages?id=${id}&ref=/${ref}/communities/${name}`);

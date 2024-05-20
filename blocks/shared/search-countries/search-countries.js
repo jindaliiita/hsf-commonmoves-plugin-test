@@ -1,6 +1,6 @@
 import {
   loadCSS,
-} from '../../../scripts/lib-franklin.js';
+} from '../../../scripts/aem.js';
 
 const imgHTML = (country) => `<img src="/icons/flags/${country}.png" alt="${country}" class="label-image" role="presentation" aria-hidden="true" tabIndex="-1" height="25" width="25"/>${country}`;
 
@@ -21,7 +21,7 @@ function addListeners(wrapper, cbs) {
       wrapper.querySelector('.select-items .item.selected')?.classList.remove('selected');
       e.currentTarget.classList.add('selected');
 
-      wrapper.querySelector('select option[selected="selected"]')?.removeAttribute('selected');
+      wrapper.querySelectorAll('select option').forEach((o) => { o.selected = false; });
       wrapper.querySelector(`select option[value="${selected}"]`).setAttribute('selected', 'selected');
       wrapper.classList.toggle('open');
       if (cbs) {
@@ -64,9 +64,7 @@ export async function build(...callbacks) {
     return undefined;
   }
 
-  await new Promise((resolve) => {
-    loadCSS(`${window.hlx.codeBasePath}/blocks/shared/search-countries/search-countries.css`, resolve);
-  });
+  await loadCSS(`${window.hlx.codeBasePath}/blocks/shared/search-countries/search-countries.css`);
 
   const tmp = document.createElement('div');
   tmp.innerHTML = await resp.text();
@@ -110,7 +108,7 @@ export async function build(...callbacks) {
   selected.classList.add('selected');
   selected.setAttribute('aria-haspopup', 'listbox');
   selected.setAttribute('aria-expanded', 'false');
-  selected.setAttribute('aria-label', 'Select Country');
+  selected.setAttribute('aria-label', `${first.value} - Select Country`);
   selected.setAttribute('role', 'button');
   selected.setAttribute('tabIndex', '0');
   selected.innerHTML = imgHTML(first.value);

@@ -1,0 +1,13 @@
+{
+  "project": "HSF Common Moves",
+  "host": "https://main--hsf-commonmoves--hlxsites.hlx.live/",
+  "plugins": [
+    {
+      "id": "library",
+      "title": "Library",
+      "environments": ["edit"],
+      "url": "/tools/sidekick/library.html",
+      "includePaths": ["**.docx**"]
+    }
+  ]
+}

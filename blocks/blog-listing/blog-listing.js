@@ -1,6 +1,6 @@
 import {
   readBlockConfig,
-} from '../../scripts/lib-franklin.js';
+} from '../../scripts/aem.js';
 
 const urlParams = new URLSearchParams(window.location.search);
 export const API_HOST = urlParams.get('env') === 'stage' ? 'https://ignite-staging.bhhs.com' : 'https://www.bhhs.com';

@@ -1,4 +1,4 @@
-import { readBlockConfig } from '../../scripts/lib-franklin.js';
+import { readBlockConfig } from '../../scripts/aem.js';
 
 function loadEmbeds() {
   const style = document.createElement('link');
@@ -31,10 +31,7 @@ export default async function decorate(block) {
   block.innerHTML = `
     <h2>${config.title}</h2>
     <ul class="juicer-feed" 
-      data-feed-id="${config['feed-id']}"
-      data-pages="1"
-      data-per="${config.show || ''}"
-      data-columns="${config.columns || 4}"></ul>
+      data-feed-id="${config['feed-id']}"></ul>
   `;
   io.observe(block);
 }

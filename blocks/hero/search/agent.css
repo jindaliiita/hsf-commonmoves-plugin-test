@@ -1,5 +1,7 @@
 /* Agent Search form specific CSS */
 
+@import url('../../agent-search/selection-tags.css');
+
 .hero.block .content .agents {
   display: none;
   position: relative;
@@ -9,47 +11,26 @@
   display: block;
 }
 
-.hero.block .content .agents .selection-tags {
+.hero.block .agent-search .selection-tags {
   position: absolute;
-  width: 100%;
+  padding: 0;
 }
 
-.hero.block .content .agents .selection-tags .selection-tags-list {
-  display: flex;
-  flex-wrap: wrap;
-  cursor: default;
+.agent-search .selection-tags .selection-tags-list {
+  padding: 0;
 }
 
-.hero.block .content .agents .selection-tags .selection-tags-list .selection-tags-item {
-  display: flex;
+.hero.block .agent-search .selection-tags .selection-tags-list .selection-tags-item {
   padding: 5px 8px;
-  margin: 3px 6px;
-  border-radius: 4px;
   background-color: rgba(20 20 20 / 50%);
   border: 1px solid rgba(170 170 170 / 80%);
-  align-items: center;
-  justify-content: space-between;
 }
 
-.hero.block .content .agents .selection-tags .selection-tags-list .selection-tags-item span {
-  font-size: var(--body-font-size-s);
-  color: var(--white);
-  font-weight: 600;
+.hero.block .agent-search .selection-tags .selection-tags-list .selection-tags-item span {
+  font-weight: var(--font-weight-semibold);
 }
 
-.hero.block .content .agents .selection-tags .selection-tags-list .selection-tags-item span.selection {
-  margin: 0 8px;
-  text-transform: capitalize;
-}
-
-.hero.block .content .agents .selection-tags .selection-tags-list .selection-tags-item span.close {
-  display: flex;
-  height: 19px;
-  width: 19px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+.hero.block .agent-search .selection-tags .selection-tags-list .selection-tags-item span.close {
   background-color: rgba(20 20 20 / 50%);
   border: 1px solid rgba(170 170 170);
-  cursor: pointer;
 }

@@ -1,10 +1,18 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"
      class="filter"
      role="img"
      aria-hidden="true"
-     tabindex="-1">
-    <use xlink:href="/icons/icons.svg#filter"
-         role="presentation"
-         aria-hidden="true"
-         tabindex="-1"></use>
+     tabindex="-1"
+     viewBox="0 0 23 22">
+    <g fill="none" fill-rule="evenodd">
+        <rect fill="#3A3A3A" x="3" width="1.25" height="2.993" rx=".625"/>
+        <rect fill="#3A3A3A" x="11" width="1.25" height="13" rx=".625"/>
+        <rect fill="#3A3A3A" x="19" width="1.25" height="6" rx=".625"/>
+        <rect fill="#3A3A3A" x="3" y="8" width="1.25" height="14" rx=".625"/>
+        <rect fill="#3A3A3A" x="11" y="18.067" width="1.25" height="3.933" rx=".625"/>
+        <rect fill="#3A3A3A" x="19" y="11" width="1.25" height="11" rx=".625"/>
+        <circle stroke="#3A3A3A" stroke-width="1.25" cx="3.5" cy="5.5" r="2.5"/>
+        <circle stroke="#3A3A3A" stroke-width="1.25" cx="11.5" cy="15.5" r="2.5"/>
+        <circle stroke="#3A3A3A" stroke-width="1.25" cx="19.5" cy="8.5" r="2.5"/>
+    </g>
 </svg>

@@ -1,10 +1,10 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"
      class="line-graph-arrow"
      role="img"
      aria-hidden="true"
-     tabindex="-1">
-    <use xlink:href="/icons/icons.svg#line-graph-arrow"
-         role="presentation"
-         aria-hidden="true"
-         tabindex="-1"></use>
+     tabindex="-1"
+     viewBox="0 0 34 31">
+    <path class="st0" fill="#3A3A3A"
+          d="M13.9 11.1l7.2 8.8 8-8.7 2.6 2.2 2-8.3-7.8 3.4 2.5 2.1-7.2 7.8-7.3-9-9.7 13.5.8.6 8.9-12.4zm18.3-4.2l-1.1 4.8-3.4-2.8 4.5-2z"/>
+    <path class="st0" fill="#3A3A3A" d="M1.5.5h-1V31H33v-1H1.5z"/>
 </svg>

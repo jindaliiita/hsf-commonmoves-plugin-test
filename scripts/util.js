@@ -1,3 +1,5 @@
+import { fetchPlaceholders } from './aem.js';
+
 /**
  * Creates the standard Spinner Div.
  *
@@ -47,9 +49,94 @@ export function showModal(content) {
   document.body.append(modal);
 }
 
+function createTextKey(text) {
+  // create a key that can be used to look up the text in the placeholders
+  const words = text.toLowerCase().replace(/[^a-z0-9\s]/g, '').split(/\s+/);
+  if (words.length > 5) {
+    words.splice(5);
+  }
+  words.forEach((word, i) => {
+    if (i > 0) {
+      words[i] = word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  });
+  return words.join('');
+}
+
+export async function i18nLookup(prefix) {
+  const placeholders = await fetchPlaceholders(prefix);
+  return (msg) => {
+    if (placeholders[msg]) {
+      return placeholders[msg];
+    }
+    if (placeholders[msg.toLowerCase()]) {
+      return placeholders[msg.toLowerCase()];
+    }
+    const key = createTextKey(msg);
+    if (placeholders[key]) {
+      return placeholders[key];
+    }
+    return msg;
+  };
+}
+
+/*
+  * Returns the environment type based on the hostname.
+*/
+export function getEnvType(hostname = window.location.hostname) {
+  const fqdnToEnvType = {
+    'commonmoves.com': 'live',
+    'www.commonmoves.com': 'live',
+    'stage.commonmoves.com': 'preview',
+    'preview.commonmoves.com': 'preview',
+    'main--hsf-commonmoves--hlxsites.hlx.page': 'dev',
+    'main--hsf-commonmoves--hlxsites.hlx.live': 'dev',
+  };
+  return fqdnToEnvType[hostname] || 'dev';
+}
+
+/**
+ * Format a provided value to a shorthand number.
+ * From: https://reacthustle.com/blog/how-to-convert-number-to-kmb-format-in-javascript
+ * @param {String|Number} num the number to format
+ * @param {Number} precision
+ */
+export function formatPrice(num, precision = 1) {
+  if (Number.isNaN(Number.parseFloat(num))) {
+    // eslint-disable-next-line no-param-reassign
+    num = Number.parseFloat(num.replaceAll(/,/g, '').replace('$', ''));
+  }
+  const map = [
+    { suffix: 'T', threshold: 1e12 },
+    { suffix: 'B', threshold: 1e9 },
+    { suffix: 'M', threshold: 1e6 },
+    { suffix: 'k', threshold: 1e3 },
+    { suffix: '', threshold: 1 },
+  ];
+
+  const found = map.find((x) => Math.abs(num) >= x.threshold);
+  if (found) {
+    return (num / found.threshold).toFixed(precision) + found.suffix;
+  }
+  return num;
+}
+
+export function phoneFormat(num) {
+  // Remove any non-digit characters from the string
+  let phoneNum = num.replace(/\D/g, '');
+  if (!phoneNum) {
+    return '';
+  }
+  // Format the phoneNumber according to (XXX) XXX-XXXX
+  phoneNum = phoneNum.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+  return phoneNum;
+}
+
 const Util = {
   getSpinner,
   showModal,
+  i18nLookup,
+  getEnvType,
 };
 
 export default Util;

@@ -14,9 +14,20 @@
 
 :root {
   /* Colors */
-  --primary-color: #552448;
+  --primary-color: #670038;
+  --primary-light: #c299af;
+  --primary-accent: #ece3e5;
+  --secondary-color: #72595e;
+  --secondary-light: #aa979c;
+  --secondary-accent: #c7bdbf;
+  --secondary-medium-grey: #e3dedf;
+  --secondary-light-grey: #f7f5f5;
+  --tertiary-color: #f5f1f2;
+  --luxury-grey: #a7a9b4;
+  --luxury-dark-grey: #63666f;
   --primary-color-lighten: rgba(98 98 121 / 12.5%);
   --primary-color-svg-filter: invert(18%) sepia(17%) saturate(1944%) hue-rotate(264deg) brightness(93%) contrast(95%);
+  --color-tertiary: #eae3d4;
   --body-color: #3a3a3a;
   --platinum: #e7e7e7;
   --light-grey: #f6f6f6;
@@ -25,6 +36,11 @@
   --black: #000;
   --white: #fff;
   --grey-blue: #36758d;
+  --success: #28a745;
+  --error: #d3636a;
+  --error-highlight: #f9e1e2;
+  --input-placeholder: #7f7a7a;
+
 
   /* Blog Colors (only?) */
   --seller-advice: rgb(240 240 224);
@@ -40,9 +56,9 @@
   --transparent: #FFFFFFE6;
 
   /* Fonts */
-  --font-family-georgia: 'GeorgiaPro', 'GeorgiaPro Fallback', 'Times New Roman', serif;
-  --font-family-proxima: 'ProximaNova', 'ProximaNova Fallback', 'Arial', sans-serif;
-  --font-family-gotham: 'Gotham', 'Gotham Fallback', 'Arial', sans-serif;
+  --font-family-primary: 'Manrope', 'Manrope Fallback', 'Arial', sans-serif;
+  --font-family-secondary: 'Marcellus', 'Marcellus Fallback', 'Times New Roman', serif;
+  --font-family-luxury: 'Montserrat', 'Montserrat Fallback', 'Arial', sans-serif;
   --font-family-fontawesome: 'FontAwesome';
   --font-weight-thin: 100;
   --font-weight-light: 300;
@@ -51,24 +67,25 @@
   --font-weight-bold: 700;
 
   /* Headings */
-  --heading-font-size-xxxxl: 50px;
-  --heading-font-size-xxxl: 48px;
-  --heading-font-size-xxl: 40px;
-  --heading-font-size-xl: 36px;
-  --heading-font-size-l: 30px;
-  --heading-font-size-m: 24px;
-  --heading-font-size-s: 20px;
-  --heading-font-size-xs: 16px;
+  --heading-font-size-xxxxl: 76px;
+  --heading-font-size-xxxl: 57px;
+  --heading-font-size-xxl: 43px;
+  --heading-font-size-xl: 32px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 16px;
+  --heading-font-size-xs: 12px;
+  --heading-font-size-xxs: 10px;
 
   /* Body */
   --body-font-size-xxxl: 40px;
-  --body-font-size-xxl: 32px;
-  --body-font-size-xl: 26px;
+  --body-font-size-xxl: 36px;
+  --body-font-size-xl: 24px;
   --body-font-size-l: 20px;
-  --body-font-size-m: 16px;
-  --body-font-size-s: 14px;
-  --body-font-size-xs: 12px;
-  --body-font-size-xxs: 10px;
+  --body-font-size-m: 18px;
+  --body-font-size-s: 16px;
+  --body-font-size-xs: 14px;
+  --body-font-size-xxs: 12px;
 
   /* Line heights */
   --line-height-xs : 1.15em;
@@ -79,7 +96,8 @@
   --line-height-xxl: 2.9em;
 
   /* Common spacing values */
-  --letter-spacing-xxs : 0.015em;
+  --letter-spacing-xxxs : 0.015em;
+  --letter-spacing-xxs : 0.03em;
   --letter-spacing-xs : 0.04em;
   --letter-spacing-s  : 0.06em;
   --letter-spacing-reg: 0.07em;
@@ -90,7 +108,7 @@
 
   /* Common dimensions */
   --full-page-width: 100vw;
-  --wide-page-width: 1600px;
+  --wide-page-width: 1500px;
   --normal-page-width: 1350px;
 
   /* nav height */
@@ -101,7 +119,7 @@
 *, *::before, *::after {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: 400;
   font-size: var(--body-font-size-m);
   text-align: left;
@@ -110,30 +128,39 @@
 body {
   max-width: var(--full-page-width);
   background-color: var(--white);
+  display: none;
+}
+
+body.no-scroll {
+  overflow-y: hidden;
+}
+
+body.appear {
+  display: block;
 }
 
 h2 {
-  font-family: var(--font-family-georgia);
-  font-size: var(--heading-font-size-m);
-  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-secondary);
+  font-size: var(--heading-font-size-l);
+  font-weight: var(--font-weight-normal);
   line-height: var(--line-height-m);
 }
 
 h3 {
-  font-family: var(--font-family-georgia);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-m);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-m);
 }
 
 h4 {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-xs);
   font-weight: var(--font-weight-semibold);
 }
 
 h5 {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-xs);
   font-weight: var(--font-weight-semibold);
   letter-spacing: var(--letter-spacing-xs);
@@ -141,11 +168,12 @@ h5 {
 }
 
 p, span, input {
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-reg);
   line-height: var(--line-height-m);
+  color: var(--body-color);
 }
 
 p {
@@ -184,6 +212,52 @@ main .section.wide {
   max-width: var(--wide-page-width);
 }
 
+/* TODO: Do we need this? */
+main .section.formatted-text * {
+  letter-spacing: normal;
+  line-height: var(--line-height-m);
+  color: var(--body-color);
+}
+
+main .section.formatted-text h3 {
+  letter-spacing: 0.5px;
+  font-weight: var(--font-weight-bold);
+}
+
+main .section.page-width-two-thirds {
+  max-width: 100%;
+}
+
+main .section.numeric-list ol {
+  display: block;
+  list-style-type: decimal;
+  padding-left: 0;
+  margin-left: 1em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+main .section.numeric-list li {
+  padding-left: 1em;
+  margin-bottom: 1.5em;
+}
+
+main .section.disc-list ul {
+  display: block;
+  list-style-type: disc;
+  padding-left: 0;
+  margin-left: 1em;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+main .section.disc-list li {
+  padding-left: 1em;
+  margin-bottom: 1.5em;
+}
+
+/* End to do check */
+
 main .section.full-width {
   max-width: var(--full-page-width);
 }
@@ -193,12 +267,38 @@ main .section.full-width > div {
   margin: 0 auto;
 }
 
+main .section.full-bleed {
+  padding: 0;
+  max-width: var(--full-page-width);
+}
+
+main .section.full-bleed div {
+  max-width: var(--full-page-width);
+}
+
+main .section.full-bleed picture img {
+  width: 100%;
+  height: auto;
+}
+
 main .section.grey-background {
   background: var(--light-grey);
 }
 
+main .section.tertiary-background {
+  background: var(--tertiary-color);
+}
+
 main .section.white-background {
   background: var(--white);
+}
+
+main .section.top-border {
+  border-top: 1px solid var(--body-color);
+}
+
+main .section.tertiary-background.top-border {
+  border-top: 1px solid var(--secondary-accent);
 }
 
 main .section.padding {
@@ -216,8 +316,8 @@ main .section.two-columns > div {
   flex: 0 1 40%;
 }
 
-
 /* Center rules for a section, but don't apply it to blocks! */
+/* stylelint-disable-next-line no-descending-specificity */
 main div[data-align="center"] h1,
 main div[data-align="center"] h2,
 main div[data-align="center"] h3,
@@ -236,13 +336,30 @@ main .section.center .default-content-wrapper p {
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
-main .section .default-content-wrapper h2 {
+content-wrapper h2 {
   margin-bottom: .5em;
 }
 
 /* stylelint-disable-next-line no-descending-specificity */
 main .section .default-content-wrapper h4 {
   margin-bottom: 1.25em;
+}
+
+main .section .default-content-wrapper picture {
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+main .section .default-content-wrapper picture img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+  object-position: center;
 }
 
 /* common styles */
@@ -273,20 +390,55 @@ main .section .default-content-wrapper h4 {
 }
 
 .button-container a {
-  display: inline-block;
-  padding: .75em 1.5em;
-  font-family: var(--font-family-proxima);
-  font-size: var(--body-font-size-s);
-  font-weight: var(--font-weight-normal);
-  letter-spacing:var(--letter-spacing-s);
-  line-height: var(--line-height-s);
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
-  color: var(--body-color);
-  border: 1px solid var(--body-color);
-  background-color: var(--white);
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
   cursor: pointer;
+  display: inline-block;
+  font-family: var(--font-family-primary);
+  font-size: var(--heading-font-size-s);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-m);
+  line-height: 1;
+  padding: 10px 24px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.button-container a:hover {
+  background-color: var(--primary-color);
+  color: var(--primary-light);
+}
+
+.button-container a:focus {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  outline: var(--primary-color) solid 2px;
+  outline-offset: 3px;
+}
+
+main .section.button-primary-color .button-container a {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+main .section.button-primary-color .button-container a:hover {
+  background-color: var(--white);
+  border: 1px solid var(--grey);
+  color: var(--black);
+  box-shadow: none;
+}
+
+main .section.banner {
+  margin-bottom: 0;
+}
+
+main .section.banner .default-content-wrapper {
+  max-width: var(--wide-page-width);
+  margin: 0 auto;
+  padding: 16px;
+  position: relative;
 }
 
 .text-up {
@@ -332,6 +484,7 @@ main .section .default-content-wrapper h4 {
   text-align: center;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .modal .modal-content a {
   display: inline-block;
   margin-top: 1em;
@@ -377,6 +530,16 @@ form button[type="submit"]:hover {
     max-width: 75%;
     margin: 0 auto;
   }
+
+  main .section.page-width-two-thirds {
+    max-width: 67%;
+  }
+
+  main .section.banner .default-content-wrapper .button-container {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -386,122 +549,144 @@ form button[type="submit"]:hover {
 }
 
 @font-face {
-  font-family: 'GeorgiaPro Fallback';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Times New Roman Bold');
-  ascent-override: 82.81%;
-  descent-override: 19.80%;
-  line-gap-override: 0.00%;
-  size-adjust: 110.73%;
-}
-
-@font-face {
-  font-family: 'GeorgiaPro Fallback';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Times New Roman Bold');
-  ascent-override: 76.85%;
-  descent-override: 18.37%;
-  line-gap-override: 0.00%;
-  size-adjust: 119.32%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Arial');
-  ascent-override: 104.56%;
-  descent-override: 38.57%;
-  line-gap-override: 0.00%;
-  size-adjust: 103.19%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Arial');
-  ascent-override: 80.85%;
-  descent-override: 21.49%;
-  line-gap-override: 0.00%;
-  size-adjust: 97.72%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Arial');
-  ascent-override: 79.64%;
-  descent-override: 21.17%;
-  line-gap-override: 0.00%;
-  size-adjust: 99.19%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 600;
-  src: local('Arial Bold');
-  ascent-override: 84.49%;
-  descent-override: 22.46%;
-  line-gap-override: 0.00%;
-  size-adjust: 93.50%;
-}
-
-@font-face {
-  font-family: 'ProximaNova Fallback';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Arial Bold');
-  ascent-override: 83.31%;
-  descent-override: 22.15%;
-  line-gap-override: 0.00%;
-  size-adjust: 94.82%;
-}
-
-@font-face {
-  font-family: 'Gotham Fallback';
+  font-family: 'Manrope Fallback';
   font-style: normal;
   font-weight: 200;
   src: local('Arial');
-  ascent-override: 82.60%;
-  descent-override: 20.65%;
+  ascent-override: 106.45%;
+  descent-override: 29.96%;
   line-gap-override: 0.00%;
-  size-adjust: 116.22%;
+  size-adjust: 100.14%;
 }
 
 @font-face {
-  font-family: 'Gotham Fallback';
+  font-family: 'Manrope Fallback';
   font-style: normal;
   font-weight: 300;
   src: local('Arial');
-  ascent-override: 82.60%;
-  descent-override: 20.65%;
+  ascent-override: 104.55%;
+  descent-override: 29.42%;
   line-gap-override: 0.00%;
-  size-adjust: 116.22%;
+  size-adjust: 101.96%;
 }
 
 @font-face {
-  font-family: 'Gotham Fallback';
+  font-family: 'Manrope Fallback';
   font-style: normal;
   font-weight: 400;
   src: local('Arial');
-  ascent-override: 82.60%;
-  descent-override: 20.65%;
+  ascent-override: 102.74%;
+  descent-override: 28.91%;
   line-gap-override: 0.00%;
-  size-adjust: 116.22%;
+  size-adjust: 103.76%;
 }
 
 @font-face {
-  font-family: 'Gotham Fallback';
+  font-family: 'Manrope Fallback';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Arial');
+  ascent-override: 100.97%;
+  descent-override: 28.41%;
+  line-gap-override: 0.00%;
+  size-adjust: 105.58%;
+}
+
+@font-face {
+  font-family: 'Manrope Fallback';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Arial');
+  ascent-override: 99.26%;
+  descent-override: 27.93%;
+  line-gap-override: 0.00%;
+  size-adjust: 107.40%;
+}
+
+@font-face {
+  font-family: 'Manrope Fallback';
   font-style: normal;
   font-weight: 700;
-  src: local('Arial Bold');
-  ascent-override: 89.37%;
-  descent-override: 22.34%;
+  src: local('Arial');
+  ascent-override: 97.62%;
+  descent-override: 27.47%;
   line-gap-override: 0.00%;
-  size-adjust: 107.42%;
+  size-adjust: 109.20%;
+}
+
+@font-face {
+  font-family: 'Manrope Fallback';
+  font-style: normal;
+  font-weight: 800;
+  src: local('Arial');
+  ascent-override: 96.02%;
+  descent-override: 27.02%;
+  line-gap-override: 0.00%;
+  size-adjust: 111.02%;
+}
+
+@font-face {
+  font-family: 'Marcellus Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 95.27%;
+  descent-override: 27.36%;
+  line-gap-override: 0.00%;
+  size-adjust: 102.25%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Arial');
+  ascent-override: 87.08%;
+  descent-override: 22.58%;
+  line-gap-override: 0.00%;
+  size-adjust: 111.17%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Arial');
+  ascent-override: 86.13%;
+  descent-override: 22.33%;
+  line-gap-override: 0.00%;
+  size-adjust: 112.39%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Arial');
+  ascent-override: 84.97%;
+  descent-override: 22.03%;
+  line-gap-override: 0.00%;
+  size-adjust: 113.92%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Arial');
+  ascent-override: 83.59%;
+  descent-override: 21.67%;
+  line-gap-override: 0.00%;
+  size-adjust: 115.80%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Arial');
+  ascent-override: 80.59%;
+  descent-override: 20.90%;
+  line-gap-override: 0.00%;
+  size-adjust: 120.11%;
 }

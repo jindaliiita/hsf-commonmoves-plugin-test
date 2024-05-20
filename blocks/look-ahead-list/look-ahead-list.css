@@ -1,0 +1,110 @@
+.section.look-ahead-list-container {
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+.look-ahead-list-container > .default-content-wrapper {
+  text-align: center;
+}
+
+.look-ahead-list-container > .look-ahead-list-wrapper {
+  text-align: center;
+}
+
+.look-ahead-list .dropdown {
+  display: flex;
+  text-align: center;
+  border: 1px solid var(--primary-color);
+}
+
+.look-ahead-list .dropdown:focus-within {
+  box-shadow: 0 0 0 1px rgb(38 132 255);
+}
+
+.look-ahead-list {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.section.look-ahead-list-container.community-directory-container .look-ahead-list {
+  margin-bottom: 15px;
+}
+
+.look-ahead-list input {
+  width: 97%;
+  padding: 5px 0 5px 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: 0;
+}
+
+.look-ahead-list input:focus {
+  border: 0;
+  outline: none;
+}
+
+.look-ahead-list > div::after {
+  position: relative;
+  top: 8pt;
+  content: "";
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-right: 8px;
+  border-right: 2px solid #ccc;
+  border-top: 2px solid #ccc;
+  transform: rotate(45deg);
+}
+
+.look-ahead-list > div:hover::after {
+  border-right: 2px solid #999;
+  border-top: 2px solid #999;
+}
+
+/* Style for the dropdown content */
+.look-ahead-list .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 0 1px rgba(0 0 0 / 10%), 0 4px 11px rgba(0 0 0 / 10%);
+  max-height: 200px;
+  width: 100%;
+  overflow-y: auto;
+  top: 39px;
+  z-index: 2;
+}
+
+/* Style for the dropdown options */
+.look-ahead-list .dropdown-content a {
+  padding: 12px 16px;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Style for the selected option */
+.look-ahead-list .dropdown-content a:hover {
+  background-color: var(--color-tertiary);
+}
+
+@media (min-width: 992px) {
+  .section.look-ahead-list-container {
+    width: 36%;
+  }
+
+  .section.look-ahead-list-container.community-directory-container .look-ahead-list {
+    max-width: 228px;
+  }
+
+  .section.look-ahead-list-container.community-directory-container {
+    width: 100%;
+  }
+
+  .section .look-ahead-list-wrapper {
+    text-align: left;
+    padding-left: 10px;
+  }
+}

@@ -14,7 +14,7 @@ main .section.liveby-schools-container p {
   margin: 8px 0;
   padding-left: 15px;
   padding-right: 15px;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-normal);
   justify-content: flex-end;
@@ -24,7 +24,7 @@ main .section.liveby-schools-container p {
   appearance: none;
   padding: 8px 32px 8px 8px;
   color: var(--body-color);
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-m);
   font-weight: var(--font-weight-normal);
   border-color: var(--grey);
@@ -42,8 +42,13 @@ main .section.liveby-schools-container p {
   margin: 1em 0;
 }
 
+.liveby-schools .actions p.button-container {
+  text-align: center;
+}
+
 .liveby-schools .actions p.button-container a {
   padding: .85em 1.15em;
+  margin: 0 auto;
   font-size: var(--body-font-size-m);
   color: var(--white);
   background-color: var(--primary-color);
@@ -54,7 +59,7 @@ main .section.liveby-schools-container p {
   margin-bottom: 1em;
   padding-top: 0;
   padding-bottom: .5em;
-  font-family: var(--font-family-georgia);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   font-size: var(--heading-font-size-s);
   border-bottom: 1px solid var(--grey);
@@ -83,20 +88,19 @@ main .section.liveby-schools-container p {
 .liveby-schools .school-lists section .school-item .school-details .type {
   position: absolute;
   top: -.75em;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-xxs);
   text-transform: uppercase;
   opacity: .625;
 }
 
-
 .liveby-schools .school-lists section .school-item .school-details h3 {
   margin: 0;
-  font-family: var(--font-family-georgia);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
   font-size: var(--heading-font-size-xs);
-  line-height: var(--line-height-reg);
+  line-height: var(--line-height-m);
   border-bottom: none;
 }
 
@@ -135,7 +139,7 @@ main .section.liveby-schools-container p {
   max-width: 18%;
   margin-left: .5em;
   margin-top: .5em;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-size: var(--body-font-size-xxs);
   text-align: center;
   line-height: var(--line-height-xl);

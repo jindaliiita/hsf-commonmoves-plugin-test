@@ -23,7 +23,7 @@ body.light-nav {
       / 1fr min-content;
   align-items: start;
   overflow-y: scroll;
-  z-index: 50;
+  z-index: 1000;
 }
 
 .header.block nav[aria-expanded="true"] {
@@ -32,14 +32,14 @@ body.light-nav {
   height: 100vh;
 }
 
-.header.block nav svg {
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-}
-
 .header.block nav .nav-primary-wrapper {
   display: contents;
+}
+
+.header.block nav span.icon img {
+  display: flex;
+  height: 100%;
+  width: 100%;
 }
 
 .header.block nav .nav-logo {
@@ -64,6 +64,7 @@ body.light-nav {
   margin: auto 0;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .header.block nav .nav-logo img {
   display: block;
   max-height: calc(var(--nav-height) - 30px);
@@ -89,11 +90,11 @@ body.light-nav {
 .header.block nav .nav-profile a {
   padding: 15px 0;
   color: var(--body-color);
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
-  font-size: var(--body-font-size-s);
-  letter-spacing:var(--letter-spacing-reg);
-  line-height: var(--body-font-size-s);
+  font-size: var(--body-font-size-xs);
+  letter-spacing: var(--letter-spacing-m);
+  line-height: normal;
   text-decoration: none;
   cursor: pointer;
   display: flex;
@@ -110,16 +111,71 @@ body.light-nav {
 }
 
 .header.block nav .nav-profile .login a {
-  padding: 10px;
-  margin: 20px 0 10px;
-  width: 100px;
+  background-color: var(--primary-color);
   border: 1px solid var(--body-color);
+  color: var(--tertiary-color);
+  font-size: var(--body-font-size-s);
+  font-weight: var(--font-weight-bold);
   justify-content: center;
+  margin: 20px 0 10px;
+  padding: 10px;
+  width: 100px;
 }
 
 .header.block nav .nav-profile .username,
 .header.block nav .nav-profile .user-menu {
   display: none;
+}
+
+.header.block nav .nav-profile .level-2 {
+  filter: drop-shadow(0 0 6px rgba(0 0 0 / 25%));
+  background-color: var(--white);
+  padding: 0.25em 0;
+}
+
+.header.block nav .nav-sections > ul > li.nav-drop > a::after {
+  content: '';
+  height: 32px;
+  width: 32px;
+  background: url('/icons/chevron-right-white.svg') center center no-repeat;
+}
+
+.header.block nav .nav-profile .level-1:has(.level-2)>a::after {
+  content: '\f0d7';
+  font-family: var(--font-family-fontawesome);
+  height: var(--body-font-size-s);
+  width: var(--body-font-size-s);
+  margin-left: 10px;
+  color: var(--body-color);
+  transition: transform 0.2s ease-in-out;
+}
+
+.header.block nav .nav-profile .level-1 .level-2 {
+  display:none;
+}
+
+.header.block nav .nav-profile .level-1:hover .level-2 {
+  display: block;
+}
+
+.header.block nav .nav-profile .level-2::before {
+  content: '';
+  position: absolute;
+  top: -0.5em;
+  right: 1em;
+  height: 1em;
+  width: 1em;
+  background-color: var(--white);
+  transform: rotate(45deg);
+}
+
+
+.header.block nav .nav-sections > ul > li {
+  border-bottom: 1px solid var(--secondary-accent);
+}
+
+.header.block nav .nav-profile .level-2 li {
+  padding: 0.4em 0;
 }
 
 .header.block nav .nav-sections {
@@ -138,30 +194,20 @@ body.light-nav {
   margin: 10px 0;
 }
 
-.header.block nav .nav-sections > ul > li {
-  border-bottom: 1px solid var(--black);
-}
-
 /* stylelint-disable-next-line no-descending-specificity */
 .header.block nav .nav-sections > ul > li > a {
   display: flex;
   padding: 15px 0;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
-  font-size: var(--body-font-size-xl);
+  font-size: 26px;
+  letter-spacing: var(--letter-spacing-xxxs);
   line-height: var(--line-height-s);
   text-decoration: none;
   text-transform: uppercase;
   color: var(--white);
   align-items: center;
   justify-content: space-between;
-}
-
-.header.block nav .nav-sections > ul > li.nav-drop > a::after {
-  content: '';
-  height: 32px;
-  width: 32px;
-  background: url('/icons/chevron-right-white.svg') center center no-repeat;
 }
 
 .header.block nav .nav-sections > ul > li > ul {
@@ -171,12 +217,13 @@ body.light-nav {
 /* stylelint-disable-next-line no-descending-specificity */
 .header.block nav .nav-sections > ul > li > ul > li > a {
   display: block;
-  font-family: var(--font-family-proxima);
+  font-family: var(--font-family-primary);
   font-weight: var(--font-weight-normal);
   font-size: var(--body-font-size-m);
+  letter-spacing: var(--letter-spacing-xxxs);
   line-height: var(--line-height-l);
   text-decoration: none;
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: var(--white);
 }
 
@@ -192,6 +239,7 @@ body.light-nav {
 }
 
 .header.block nav .nav-hamburger .nav-hamburger-icon {
+  position: relative;
   height: 24px;
   width: 24px;
 }
@@ -203,9 +251,20 @@ body.light-nav {
 
 .header.block nav .nav-hamburger .close {
   display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .header.block nav .nav-hamburger .open {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   filter: var(--hamburger-filter);
 }
 
@@ -234,7 +293,7 @@ body.light-nav {
     height: var(--nav-height);
     background: transparent;
   }
-  
+
   body.light-nav .header.block nav[aria-expanded="true"] {
     --logo-filter: invert(1);
   }
@@ -258,7 +317,7 @@ body.light-nav {
     display: flex;
     height: 100%;
     width: 100%;
-    max-width: var(--normal-page-width);
+    max-width: var(--wide-page-width);
     margin: 0 auto;
     align-items: center;
     justify-content: flex-end;
@@ -270,6 +329,7 @@ body.light-nav {
 
   .header.block nav .nav-profile ul > li,
   .header.block nav .nav-profile ul > li > a {
+    font-size: var(--body-font-size-xxs);
     height: 100%;
   }
 
@@ -280,9 +340,15 @@ body.light-nav {
     margin: unset;
     width: unset;
     padding: 0 10px;
-    font-size: var(--body-font-size-xs);
+    font-size: var(--body-font-size-xxs);
     letter-spacing: var(--letter-spacing-reg);
     line-height: unset;
+  }
+
+  .header.block nav .nav-profile .login a {
+    background-color: transparent;
+    color: var(--body-color);
+    font-weight: var(--font-weight-normal);
   }
 
   .header.block nav .nav-profile a span.icon {
@@ -336,9 +402,9 @@ body.light-nav {
     display: flex;
     height: 100%;
     padding: 10px 15px;
-    font-size: var(--body-font-size-m);
+    font-size: 15px;
     text-align: center;
-    letter-spacing: var(--letter-spacing-reg);
+    letter-spacing: var(--letter-spacing-xxs);
     line-height: var(--line-height-m);
     color: var(--nav-color);
     column-gap: 2px;
@@ -355,7 +421,7 @@ body.light-nav {
     background: none;
     font-family: var(--font-family-fontawesome);
     height: unset;
-    width: 20px;
+    width: 13px;
     color: var(--nav-color);
   }
 
@@ -379,7 +445,7 @@ body.light-nav {
     right: 0;
     height: 5px;
     background-color: var(--white);
-    z-index: 10;
+    z-index: 1010;
   }
 
   .header.block nav[aria-expanded="true"] .nav-sections > ul > li > ul {
@@ -401,9 +467,9 @@ body.light-nav {
 
   .header.block nav[aria-expanded="true"] .nav-sections > ul > li.nav-drop > ul > li > a {
     padding: 10px 15px;
-    font-size: var(--body-font-size-s);
+    font-size: var(--body-font-size-xs);
     line-height: var(--body-font-size-s);
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
 
   .header.block nav[aria-expanded="true"] .nav-hamburger {
