@@ -74,9 +74,6 @@ export function createCard(listing) {
               <p>${listing.ListPriceUS}</p>
           </div>
         </div>
-            <p>${listing.ListPriceUS}</p>
-          </div> 
-        </div> 
       </div>
     </a>
     <div class="property-details">
