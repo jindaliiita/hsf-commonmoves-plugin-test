@@ -116,9 +116,15 @@
   right: 0;
 }
 
-.hero.block .content .homes .filters .select-wrapper.open .selected::after {
+.hero.block .content .homes .filters .select-wrapper.open > .selected::after {
   content: '\f0d8';
 }
+
+.hero.block .content .homes .filters .select-wrapper .selected span {
+  font-size: var(--body-font-size-xs);
+  color: var(--input-placeholder);
+}
+
 
 .hero.block .content .homes .filters .select-wrapper .select-items {
   display: none;

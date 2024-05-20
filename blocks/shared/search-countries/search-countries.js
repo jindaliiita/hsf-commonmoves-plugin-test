@@ -21,7 +21,7 @@ function addListeners(wrapper, cbs) {
       wrapper.querySelector('.select-items .item.selected')?.classList.remove('selected');
       e.currentTarget.classList.add('selected');
 
-      wrapper.querySelector('select option[selected="selected"]')?.removeAttribute('selected');
+      wrapper.querySelectorAll('select option').forEach((o) => { o.selected = false; });
       wrapper.querySelector(`select option[value="${selected}"]`).setAttribute('selected', 'selected');
       wrapper.classList.toggle('open');
       if (cbs) {
