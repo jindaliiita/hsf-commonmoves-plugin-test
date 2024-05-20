@@ -133,6 +133,7 @@ function buildPropertyDetailsMetadata(main) {
     section.append(buildBlock('property-details-metadata', { elems: [] }));
     main.prepend(section);
   }
+}
 
 export function getYoutubeVideoId(url) {
   if (url.includes('youtube.com/watch?v=')) {

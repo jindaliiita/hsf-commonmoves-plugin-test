@@ -1,5 +1,5 @@
 import { createAccordionItem } from '../../scripts/accordion.js';
-import { decorateIcons, loadCSS } from '../../scripts/lib-franklin.js';
+import { decorateIcons, loadCSS } from '../../scripts/aem.js';
 
 function createTableRow(levelData) {
   const label = levelData.level === 'zipcode' ? `Zip Code: ${levelData.label}` : levelData.label;

@@ -67,3 +67,22 @@ export async function getDetails(...listingIds) {
     });
   });
 }
+
+/**
+ * Gets the economic details for the specified listing.
+ *
+ * @param {string} lat latitude
+ * @param {string} long longitude
+ * @return {Promise<Object>} resolving the economic details
+ */
+export async function getEconomicDetails(lat, long) {
+  return new Promise((resolve) => {
+    const worker = new Worker(`${window.hlx.codeBasePath}/scripts/apis/creg/workers/economic.js`, { type: 'module' });
+    worker.onmessage = (e) => resolve(e.data);
+    worker.postMessage({
+      api: CREG_API_URL,
+      lat,
+      long,
+    });
+  });
+}

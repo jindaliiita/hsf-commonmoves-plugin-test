@@ -1,6 +1,4 @@
-const urlParams = new URLSearchParams(window.location.search);
-export const DOMAIN = urlParams.get('env') === 'stage' ? 'ignite-staging.bhhs.com' : 'www.bhhs.com';
-const API_URL = `https://${DOMAIN}/bin/bhhs`;
+import { getDetails, getEconomicDetails } from '../../scripts/apis/creg/creg.js';
 
 const keys = [
   'ListPriceUS',
@@ -31,35 +29,19 @@ function getPropIdFromPath() {
 }
 
 async function getPropertyByPropId(propId) {
-  const endpoint = `${API_URL}/CregPropertySearchServlet?SearchType=ListingId&ListingId=${propId}&ListingStatus=1,2,3&ApplicationType=FOR_SALE,FOR_RENT,RECENTLY_SOLD`;
-  const resp = await fetch(endpoint);
-  if (resp.ok) {
-    const data = await resp.json();
-    /* eslint-disable-next-line no-underscore-dangle */
-    return data;
-  }
-  /* eslint-disable-next-line no-console */
-  console.log('Unable to retrieve property information.');
-  return undefined;
+  const resp = await getDetails(propId);
+  return resp[0];
 }
 
 async function getSocioEconomicData(latitude, longitude) {
-  const endpoint = `${API_URL}/pdp/socioEconomicDataServlet?latitude=${latitude}&longitude=${longitude}`;
-  const resp = await fetch(endpoint);
-  if (resp.ok) {
-    const data = await resp.json();
-    /* eslint-disable-next-line no-underscore-dangle */
-    return data;
-  }
-  /* eslint-disable-next-line no-console */
-  console.log('Unable to retrieve socioeconomic data.');
-  return undefined;
+  const resp = await getEconomicDetails(latitude, longitude);
+  return resp[0];
 }
 
 export default async function decorate(block) {
   let property = {};
   let socioEconomicData = {};
-  const propId = '348257210';
+  const propId = '370882966';
   getPropIdFromPath();
   const propertyData = await getPropertyByPropId(propId);
   if (propertyData) {
