@@ -23,7 +23,7 @@ body.light-nav {
       / 1fr min-content;
   align-items: start;
   overflow-y: scroll;
-  z-index: 50;
+  z-index: 1000;
 }
 
 .header.block nav[aria-expanded="true"] {
@@ -259,6 +259,7 @@ body.light-nav {
 }
 
 .header.block nav .nav-hamburger .open {
+  display: block;
   position: absolute;
   top: 0;
   left: 0;
@@ -444,7 +445,7 @@ body.light-nav {
     right: 0;
     height: 5px;
     background-color: var(--white);
-    z-index: 10;
+    z-index: 1010;
   }
 
   .header.block nav[aria-expanded="true"] .nav-sections > ul > li > ul {

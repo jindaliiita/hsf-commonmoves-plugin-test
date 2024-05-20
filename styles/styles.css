@@ -173,6 +173,7 @@ p, span, input {
   font-weight: var(--font-weight-normal);
   letter-spacing: var(--letter-spacing-reg);
   line-height: var(--line-height-m);
+  color: var(--body-color);
 }
 
 p {
@@ -517,7 +518,6 @@ form button[type="submit"]:hover {
   .section .block.hide-on-mobile {
     display: none;
   }
-
 }
 
 @media screen and (min-width: 600px) {
