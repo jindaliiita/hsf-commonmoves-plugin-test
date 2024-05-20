@@ -1,5 +1,3 @@
-import { propertySearch } from '../../../scripts/apis/creg/creg.js';
-import { decorateIcons } from '../../../scripts/aem.js';
 import { decorateFormLinks } from '../../../scripts/scripts.js';
 
 function createImage(listing) {
@@ -136,4 +134,5 @@ export function render(parent, properties = []) {
     cards.push(createCard(listing));
   });
   parent.replaceChildren(...cards);
+  decorateFormLinks(parent);
 }
