@@ -71,7 +71,7 @@ export function createCard(listing) {
             <span class="property-label">${listing.mlsStatus}</span>
           </div>
           <div class="property-price">
-              ${listing.ListPriceUS}
+              <p>${listing.ListPriceUS}</p>
           </div>
         </div>
             <p>${listing.ListPriceUS}</p>
