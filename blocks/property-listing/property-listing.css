@@ -1,5 +1,5 @@
 @import url('luxury-collection-template.css');
-@import url('./cards/cards.css');
+@import url('../shared/property/cards.css');
 
 .property-listing.block {
   overflow: hidden;

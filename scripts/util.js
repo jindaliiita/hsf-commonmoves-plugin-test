@@ -95,6 +95,32 @@ export function getEnvType(hostname = window.location.hostname) {
   return fqdnToEnvType[hostname] || 'dev';
 }
 
+/**
+ * Format a provided value to a shorthand number.
+ * From: https://reacthustle.com/blog/how-to-convert-number-to-kmb-format-in-javascript
+ * @param {String|Number} num the number to format
+ * @param {Number} precision
+ */
+export function formatPrice(num, precision = 1) {
+  if (Number.isNaN(Number.parseFloat(num))) {
+    // eslint-disable-next-line no-param-reassign
+    num = Number.parseFloat(num.replaceAll(/,/g, '').replace('$', ''));
+  }
+  const map = [
+    { suffix: 'T', threshold: 1e12 },
+    { suffix: 'B', threshold: 1e9 },
+    { suffix: 'M', threshold: 1e6 },
+    { suffix: 'k', threshold: 1e3 },
+    { suffix: '', threshold: 1 },
+  ];
+
+  const found = map.find((x) => Math.abs(num) >= x.threshold);
+  if (found) {
+    return (num / found.threshold).toFixed(precision) + found.suffix;
+  }
+  return num;
+}
+
 export function phoneFormat(num) {
   // Remove any non-digit characters from the string
   let phoneNum = num.replace(/\D/g, '');

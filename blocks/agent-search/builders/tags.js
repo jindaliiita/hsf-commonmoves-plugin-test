@@ -28,6 +28,7 @@ export const addSelectionTag = (wrapper, filter, value) => {
   `;
   wrapper.querySelector('.selection-tags-list').append(li);
 };
+
 /**
  * Builds the Container for the search bar selections.
  *
