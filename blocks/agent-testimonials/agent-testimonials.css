@@ -1,22 +1,22 @@
-.carousel-container {
+.testimonials-container {
     position: relative;
     width: 100%;
     overflow: hidden;
     border-radius: 10px;
 }
 
-.carousel {
+.testimonials {
     display: flex;
     transition: transform 0.5s ease;
     width: 100%;
 }
 
-.carousel-inner {
+.testimonials-inner {
     display: flex;
     width: 100%;
 }
 
-.carousel-item {
+.testimonials-item {
     min-width: 100%;
     box-sizing: border-box;
     padding: 20px;
@@ -60,7 +60,7 @@
     align-self: center;
 }
 
-.carousel-arrow {
+.testimonials-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -80,7 +80,7 @@
     right: 10px;
 }
 
-.carousel-counter {
+.testimonials-counter {
     position: absolute;
     bottom: 10px;
     right: 10px;

@@ -1,24 +1,26 @@
+import { getMetadata } from '../../scripts/aem.js';
+
 export default function decorate(block) {
   const div = document.createElement('div');
-  div.classList.add('carousel-container');
-  div.innerHTML = `<button class="carousel-arrow left-arrow">&lt;</button>
-    <div class="carousel">
-       <div class="carousel-inner" id="carousel-inner">
+  div.classList.add('testimonials-container');
+  div.innerHTML = `<button class="testimonials-arrow left-arrow">&lt;</button>
+    <div class="testimonials">
+       <div class="testimonials-inner" id="testimonials-inner">
           <!-- Reviews will be injected here by JavaScript -->
        </div>
     </div>
-    <button class="carousel-arrow right-arrow">&gt;</button>
-    <div class="carousel-counter" id="carousel-counter"></div>`;
+    <button class="testimonials-arrow right-arrow">&gt;</button>
+    <div class="testimonials-counter" id="testimonials-counter"></div>`;
   block.append(div);
-  const carouselInner = document.getElementById('carousel-inner');
-  const carouselCounter = document.getElementById('carousel-counter');
+  const testimonialsInner = document.getElementById('testimonials-inner');
+  const testimonialsCounter = document.getElementById('testimonials-counter');
   const leftArrow = document.querySelector('.left-arrow');
   const rightArrow = document.querySelector('.right-arrow');
   let currentIndex = 0;
   let totalReviews = 0;
 
   const updateCounter = () => {
-    carouselCounter.textContent = `${currentIndex + 1} of ${totalReviews}`;
+    testimonialsCounter.textContent = `${currentIndex + 1} of ${totalReviews}`;
   };
 
   const addReadMoreFunctionality = () => {
@@ -50,41 +52,43 @@ export default function decorate(block) {
     });
   };
 
-  fetch('https://api.bridgedataoutput.com/api/v2/OData/reviews/Reviews?access_token=f1484460e98c42240bade7f853c488ed')
+  const externalID = getMetadata('externalid');
+
+  fetch(`https://testimonialtree.com/Widgets/jsonFeed.aspx?widgetid=45133&externalID=${externalID}`)
     .then((response) => response.json())
     .then((data) => {
-      const reviews = data.value.slice(0, 4);
+      const reviews = data.testimonialtreewidget.testimonials.testimonial.slice(0, 4);
       totalReviews = reviews.length;
       reviews.forEach((review) => {
         const reviewElement = document.createElement('div');
-        reviewElement.classList.add('carousel-item');
+        reviewElement.classList.add('testimonials-item');
         reviewElement.innerHTML = `
-           <div class="rating-stars">${'★'.repeat(review.Rating)}</div>
-           <div class="review-text-container">
-              <div class="review-text">
-                   ${review.Description}
-              </div>
-           </div>
-           <div class="reviewer-name">${review.ReviewerScreenName || 'Anonymous'}</div>
-        `;
-        carouselInner.appendChild(reviewElement);
+          <div class="rating-stars">${'★'.repeat(review.rating)}</div>
+          <div class="review-text-container">
+             <div class="review-text">
+                  ${decodeURIComponent(review.testimonial.replace(/\+/g, ' '))}
+             </div>
+          </div>
+          <div class="reviewer-name">${review.signature.replace('+', ' ') || 'Anonymous'}</div>
+       `;
+        testimonialsInner.appendChild(reviewElement);
       });
       addReadMoreFunctionality();
       updateCounter();
     });
 
-  const updateCarousel = () => {
-    carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+  const updatetestimonials = () => {
+    testimonialsInner.style.transform = `translateX(-${currentIndex * 100}%)`;
     updateCounter();
   };
 
   leftArrow.addEventListener('click', () => {
     currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalReviews - 1;
-    updateCarousel();
+    updatetestimonials();
   });
 
   rightArrow.addEventListener('click', () => {
     currentIndex = (currentIndex < totalReviews - 1) ? currentIndex + 1 : 0;
-    updateCarousel();
+    updatetestimonials();
   });
 }
