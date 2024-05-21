@@ -59,6 +59,21 @@ main .section.full-width > .hero-wrapper {
   height: 100%;
 }
 
+/* video included */
+.hero .hero-video {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero .hero-video.hide {
+  display: none;
+}
+
 .hero.block > div {
   padding: 0 16px;
   width: 100%;
@@ -101,6 +116,7 @@ main .section.full-width > .hero-wrapper {
 .hero.block > div .content h2,
 .hero.block > div .content p {
   color: var(--white);
+  z-index: 1;
 }
 
 .hero.block > .row > .headline {
