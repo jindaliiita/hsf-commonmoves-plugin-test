@@ -8,7 +8,7 @@
 
 .hero.block > div .content .search .options .option {
   background-color: var(--primary-color);
-  border-radius: 6px 0 0 0;
+  border-radius: 6px 0 0;
   color: var(--white);
   cursor: pointer;
   flex: 1;
@@ -23,7 +23,7 @@
 .hero.block > div .content .search .options .option.active {
   background-color: var(--white);
   border-top-left-radius: 6px;
-  border-top-right-radius: 0px;
+  border-top-right-radius: 0;
   color: var(--primary-color);
   cursor: default;
   font-weight: var(--font-weight-semibold);
@@ -45,7 +45,7 @@
 .hero.block .content .search-bar {
   background-color: var(--white);
   border-bottom: 6px solid var(--primary-color);
-  border-radius: 0 0 6px 6px;
+  border-radius: 0 6px 6px;
   display: flex;
   margin-bottom: 8px;
   padding: 5px;

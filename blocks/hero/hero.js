@@ -1,8 +1,20 @@
 import {
   preloadHeroImage,
 } from '../../scripts/scripts.js';
-
 import buildSearch from './search/search.js';
+
+const decorateVideo = (parent, src) => {
+  const video = document.createElement('video');
+  video.classList.add('hero-video');
+  video.loop = true;
+  const source = document.createElement('source');
+  source.src = src;
+  source.type = 'video/mp4';
+  video.appendChild(source);
+  parent.appendChild(video);
+  video.muted = true;
+  video.play();
+};
 
 async function getPictures(block) {
   let pictures = block.querySelectorAll('picture');
@@ -32,6 +44,21 @@ function rotateImage(images) {
 }
 
 export default async function decorate(block) {
+  // check if it has a video
+  const video = block.querySelector('a[href*=".mp4"]');
+  const videoWrapper = video && video.closest('div');
+  videoWrapper.classList.add('video-wrapper');
+  const videoLink = videoWrapper?.firstElementChild;
+  // transform link into a video tag
+  if (videoLink) {
+    const parent = videoLink.parentElement;
+    const videoHref = videoLink.href;
+    videoLink.remove();
+    setTimeout(() => {
+      decorateVideo(parent, videoHref);
+    }, 3000);
+  }
+
   const pictures = await getPictures(block);
   preloadHeroImage(pictures[0]);
   pictures[0].classList.add('active');
@@ -80,6 +107,7 @@ export default async function decorate(block) {
 
   const wrapper = document.createElement('div');
   wrapper.append(images);
+  if (videoWrapper) wrapper.append(videoWrapper);
   // don't add contentWrapper if it's empty
   if (contentWrapper.innerHTML !== '') wrapper.append(contentWrapper);
   if (headlineWrapper.hasChildNodes()) {
