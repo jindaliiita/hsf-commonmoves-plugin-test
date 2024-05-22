@@ -127,14 +127,6 @@ function buildLiveByMetadata(main) {
   }
 }
 
-function buildPropertyDetailsMetadata(main) {
-  if (getMetadata('template') === 'property-details-template') {
-    const section = document.createElement('div');
-    section.append(buildBlock('property-details-metadata', { elems: [] }));
-    main.prepend(section);
-  }
-}
-
 export function getYoutubeVideoId(url) {
   if (url.includes('youtube.com/watch?v=')) {
     return new URL(url).searchParams.get('v');
@@ -243,7 +235,6 @@ function buildLuxuryTheme() {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
-    buildPropertyDetailsMetadata(main);
     buildSearchBar(main);
     buildLiveByMetadata(main);
     buildFloatingImages(main);
