@@ -107,8 +107,8 @@ function generateDataTable(block, title, socioEconData) {
   // Create the accordion structure
   const accordion = div({ class: 'accordion' },
     div({ class: 'accordion-header', onclick: (e) => toggleAccordion(e) }, getHeaderLabels(title), div({ class: 'tooltip' },
-      span({ class: 'icon icon-info_circle' }),
-      span({ class: 'icon icon-info_circle_dark' }),
+      span({ class: 'icon icon-info-circle' }),
+      span({ class: 'icon icon-info-circle-dark' }),
       span({ class: 'tooltiptext' }, `${socioEconData.citation}`),
     ),
     ),

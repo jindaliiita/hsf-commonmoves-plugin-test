@@ -21,7 +21,7 @@
 .economic-data .accordion .accordion-header::after {
   border-color: var(--body-color) transparent transparent transparent;
   border-style: solid;
-  border-width: 6px 5px 0 5px;
+  border-width: 6px 5px 0;
   content: '';
   margin-top: -5px;
   position: absolute;
@@ -121,7 +121,7 @@
   margin-left: 5px;
 }
 
-.economic-data .tooltip .icon-info_circle_dark {
+.economic-data .tooltip .icon-info-circle-dark {
   display: none;
 }
 
@@ -143,11 +143,11 @@
   line-height: var(--line-height-s);
 }
 
-.economic-data .tooltip:hover .icon-info_circle {
+.economic-data .tooltip:hover .icon-info-circle {
   display: none;
 }
 
-.economic-data .tooltip:hover .icon-info_circle_dark {
+.economic-data .tooltip:hover .icon-info-circle-dark {
   display: block;
 }
 
