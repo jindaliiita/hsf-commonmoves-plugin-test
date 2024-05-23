@@ -114,7 +114,7 @@
   line-height: 1;
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   cursor: pointer;
 }
 
@@ -166,11 +166,6 @@
   color: var(--error);
   background-color: var(--error-highlight);
   border: 2px solid var(--error);
-}
-
-.contact-form.block .contact-form .g-recaptcha {
-  padding: 3rem 0;
-  height: 174px;
 }
 
 .contact-form.block form.contact-form .cta {
