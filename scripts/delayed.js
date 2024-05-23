@@ -35,7 +35,14 @@ async function loadIDServlet() {
   }
 }
 
-if (!window.location.host.includes('localhost')) loadAdobeLaunch();
+if (!window.location.host.includes('localhost')
+  && !window.location.host.includes('.hlx.live')
+  && !window.location.host.includes('.hlx.page')
+  && !window.location.host.includes('.aem.live')
+  && !window.location.host.includes('.aem.page')) {
+  loadAdobeLaunch();
+}
+
 if (!getCookieValue('consumerID')) {
   loadIDServlet();
 }

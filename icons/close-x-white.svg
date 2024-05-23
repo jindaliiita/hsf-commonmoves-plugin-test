@@ -1,0 +1,11 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"
+     class="filter"
+     role="img"
+     aria-hidden="true"
+     tabindex="-1"
+     viewBox="0 0 22 22">
+    <g fill="#FFF" fill-rule="evenodd">
+        <rect transform="rotate(45 11 11)" x="-3" y="10" width="28" height="2" rx="1"/>
+        <rect transform="rotate(-45 11 11)" x="-3" y="10" width="28" height="2" rx="1"/>
+    </g>
+</svg>

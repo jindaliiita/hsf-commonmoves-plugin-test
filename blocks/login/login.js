@@ -72,7 +72,7 @@ function initLogin() {
 
 export default async function decorate(block) {
   i18n = await i18nLookup();
-
+  /* eslint-disable max-len */
   block.innerHTML = `
     <div class="login-overlay"></div>
     <div class="login-form">
@@ -139,6 +139,8 @@ export default async function decorate(block) {
       </div>
     </div>
   `;
+  /* eslint-enable max-len */
+
   observeForm();
   initLogin();
 }
