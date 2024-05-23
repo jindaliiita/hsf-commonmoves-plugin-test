@@ -119,17 +119,6 @@ main .section.full-width > .hero-wrapper {
   z-index: 1;
 }
 
-.hero.block > div .content .button-container a {
-  border: 1px solid;
-  color: var(--white);
-}
-
-.hero.block > div .content .button-container a:hover {
-  background-color: var(--primary-light);
-  border: 1px solid var(--primary-light);
-  color: var(--primary-color);
-}
-
 .hero.block > .row > .headline {
   color: var(--white);
   font-size: var(--body-font-size-m);
@@ -152,6 +141,17 @@ main .section.full-width > .hero-wrapper {
   background-color: transparent;
   border: 1px solid var(--white);
   color: var(--white);
+}
+
+.hero.block > div .content .button-container a {
+  border: 1px solid;
+  color: var(--white);
+}
+
+.hero.block > div .content .button-container a:hover {
+  background-color: var(--primary-light);
+  border: 1px solid var(--primary-light);
+  color: var(--primary-color);
 }
 
 @media screen and (min-width: 600px) {
