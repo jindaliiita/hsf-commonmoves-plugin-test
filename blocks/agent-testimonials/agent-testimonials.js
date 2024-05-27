@@ -19,9 +19,9 @@ export default function decorate(block) {
     const reviewTexts = document.querySelectorAll('.review-text');
     reviewTexts.forEach((reviewText) => {
       const words = reviewText.textContent.split(' ');
-      if (words.length > 100) {
-        const initialText = words.slice(0, 100).join(' ');
-        const remainingText = words.slice(100).join(' ');
+      if (words.length > 75) {
+        const initialText = words.slice(0, 50).join(' ');
+        const remainingText = words.slice(50).join(' ');
         const readMore = document.createElement('span');
         readMore.classList.add('read-more');
         readMore.textContent = '... Read more';
@@ -51,17 +51,13 @@ export default function decorate(block) {
       const reviews = data.testimonialtreewidget.testimonials.testimonial.slice(0, 4);
       totalReviews = reviews.length;
       reviews.forEach((review) => {
-        const reviewElement = document.createElement('div');
-        reviewElement.classList.add('testimonials-item');
-        reviewElement.innerHTML = `
-          <div class="rating-stars">${'★'.repeat(review.rating)}</div>
-          <div class="review-text-container">
-             <div class="review-text">
-                  ${decodeURIComponent(review.testimonial.replace(/\+/g, ' '))}
-             </div>
-          </div>
-          <div class="reviewer-name">${review.signature.replace('+', ' ') || 'Anonymous'}</div>
-       `;
+        const reviewElement = div({ class: 'testimonials-item' },
+          div({ class: 'rating-stars' }, '★'.repeat(review.rating)),
+          div({ class: 'review-text-container' },
+            div({ class: 'review-text' }, decodeURIComponent(review.testimonial.replace(/\+/g, ' '))),
+          ),
+          div({ class: 'reviewer-name' }, review.signature.replace(/\+/g, ' ') || 'Anonymous'),
+        );
         testimonialsInner.appendChild(reviewElement);
       });
       addReadMoreFunctionality();
