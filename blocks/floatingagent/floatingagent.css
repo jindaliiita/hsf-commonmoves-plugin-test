@@ -45,7 +45,7 @@
     margin-right: 40px;
 }
 
-.floatingagent > .floating-agent-col > picture > img{
+.floatingagent.block > .floating-agent-col > picture > img{
     display: inline;
 }
 
@@ -69,12 +69,12 @@
         justify-content: flex-start;
     }
 
-    .floatingagent > .floating-agent-col > picture > img,
-    .floatingagent > .agentinfo {
+    .floatingagent.block > .floating-agent-col > picture > img,
+    .floatingagent.block > .agentinfo {
         display: none;
     }
 
-    .floatingagent > .contactagent {
+    .floatingagent.block > .contactagent {
         display: block;
         margin-left: 10px;
     }
