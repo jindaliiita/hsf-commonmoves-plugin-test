@@ -16,7 +16,7 @@ export default async function decorate(block) {
   const heading = block.closest('.section').querySelector('h1,h2,h3,h4,h5,h6');
 
   const icon = document.createElement('span');
-  icon.classList.add('icon', 'icon-info_circle');
+  icon.classList.add('icon', 'icon-info-circle');
 
   positionIcon(heading, icon);
   block.append(icon);

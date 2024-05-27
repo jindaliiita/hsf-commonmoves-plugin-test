@@ -45,17 +45,15 @@ function rotateImage(images) {
 
 export default async function decorate(block) {
   // check if it has a video
-  const video = block.querySelector('a[href*=".mp4"]');
-  const videoWrapper = video && video.closest('div');
-  videoWrapper.classList.add('video-wrapper');
-  const videoLink = videoWrapper?.firstElementChild;
-  // transform link into a video tag
+  const videoLink = block.querySelector('a[href*=".mp4"]');
+  let videoWrapper;
   if (videoLink) {
-    const parent = videoLink.parentElement;
+    videoWrapper = document.createElement('div');
+    videoWrapper.classList.add('video-wrapper');
     const videoHref = videoLink.href;
     videoLink.remove();
     setTimeout(() => {
-      decorateVideo(parent, videoHref);
+      decorateVideo(videoWrapper, videoHref);
     }, 3000);
   }
 

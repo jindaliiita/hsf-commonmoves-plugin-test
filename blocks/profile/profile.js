@@ -119,7 +119,7 @@ function showNotification(type, iconHtml, message, message2) {
 }
 
 function showError(err) {
-  showNotification('error', '<img src="/icons/info_circle.svg" aria-hidden="true" alt="Error" class="info-circle">', i18n('There was a problem processing your request.'), i18n(err));
+  showNotification('error', '<img src="/icons/info-circle.svg" aria-hidden="true" alt="Error" class="info-circle">', i18n('There was a problem processing your request.'), i18n(err));
 }
 
 function showSuccess(message) {

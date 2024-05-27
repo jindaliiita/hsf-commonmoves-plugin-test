@@ -4,6 +4,7 @@
      aria-hidden="true"
      tabindex="-1"
      viewBox="0 0 18 18">
+    <circle class="st0" cx="9" cy="10" r="9" fill="#3A3A3A" transform="translate(0 -1)"/>
     <g fill="#FFF" class="st1">
         <path class="st2" d="M7.9 4.7c0-.5.4-.9.9-.9s.9.4.9.9-.4.9-.9.9-.9-.4-.9-.9zm.2 2.1h1.3V14H8.1V6.8z"/>
     </g>
