@@ -1,0 +1,176 @@
+.economic-data.block {
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.economic-data .accordion-header {
+  border-top: 1px solid var(--grey);
+  cursor: pointer;
+  padding: 16px 30px 16px 0;
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-family-georgia);
+  font-weight: var(--font-weight-semibold);
+  line-height: 26px;
+  margin: 0 5px 0 0;
+  font-size: 22px;
+  width: 100%;
+}
+
+.economic-data .accordion .accordion-header::after {
+  border-color: var(--body-color) transparent transparent transparent;
+  border-style: solid;
+  border-width: 6px 5px 0;
+  content: '';
+  margin-top: -5px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transition: transform .3s linear;
+  transform: rotate(0);
+}
+
+.economic-data .accordion .accordion-header:not(.active)::after {
+  transform: rotate(90deg);
+  transition: transform .3s linear;
+}
+
+.economic-data .accordion-content {
+  display: none;
+  padding-bottom: 60px;
+}
+
+.economic-data .accordion-header.active + .accordion-content {
+  display: block;
+}
+
+.economic-data .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.economic-data .row {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.economic-data.block .accordion-content .row:last-child {
+  border-bottom: none;
+}
+
+.economic-data .cell {
+  padding: 10px 10px 10px 0;
+  box-sizing: border-box;
+}
+
+.economic-data .cell-header {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: var(--body-font-size-xs);
+  line-height: var(--line-height-xs);
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.economic-data .cell-1 {
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.economic-data .cell-1.cell-header {
+  padding: 0;
+}
+
+.economic-data .cell-2, .economic-data .cell-3, .economic-data .cell-4 {
+  width: 33.33%;
+}
+
+.economic-data .progress-bar {
+  width: calc(100% - 60px);
+  background-color: #f3f3f3;
+  height: 5px;
+  margin-left: 50px;
+  margin-top: -12px;
+  position: relative;
+}
+
+.economic-data .progress-owner, .progress-renter {
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.economic-data .progress-owner {
+  background-color: var(--primary-color);
+  left: 0;
+}
+
+.economic-data .progress-renter {
+  background-color: var(--light-grey);
+  right: 0;
+}
+
+.economic-data .tooltip {
+  position: relative;
+  display: inline-block;
+  height: 19px;
+  width: 19px;
+  margin-left: 5px;
+}
+
+.economic-data .tooltip .icon-info-circle-dark {
+  display: none;
+}
+
+.economic-data .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 290px;
+  background-color: var(--black);
+  color: var(--white);
+  text-align: left;
+  padding: 14px 18px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  margin: 12px 0 0 -10px;
+  font-family: var(--font-family-proxima);
+  font-size: var(--body-font-size-s);
+  letter-spacing: var(--letter-spacing-s);
+  line-height: var(--line-height-s);
+}
+
+.economic-data .tooltip:hover .icon-info-circle {
+  display: none;
+}
+
+.economic-data .tooltip:hover .icon-info-circle-dark {
+  display: block;
+}
+
+.economic-data .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.economic-data .tooltip .tooltiptext::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 8px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent transparent var(--black) transparent;
+}
+
+@media (min-width: 900px) {
+  .economic-data .cell-1 {
+      width: 25%;
+  }
+
+  .economic-data .cell-2, .economic-data .cell-3, .economic-data .cell-4 {
+      width: 25%;
+  }
+}
