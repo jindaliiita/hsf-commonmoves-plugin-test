@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     height: 100px;
-    background-color: white;
+    background-color: var(--white);
     padding: 10px;
     border-top: 1px solid #ccc;
     z-index: 999;
@@ -22,16 +22,16 @@
 
 .floatingagent.block > .agentinfo > p {
     margin-block-end: 0;
-    font-family: Manrope, serif;
-    font-size: 12px;
+    font-family: var(--font-family-primary);
+    font-size: var(--body-font-size-xxs);
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--font-weight-normal);
     letter-spacing: normal;
     color: #2a2223;
 }
 
 .floatingagent.block > .agentinfo > h2 {
-    font-size: 18px;
+    font-size: var(--heading-font-size-m);
     line-height: 130%;
     letter-spacing: .18px;
     vertical-align: top;
@@ -56,8 +56,8 @@
 
 .floatingagent.block > .contactagent {
     align-self: center;
-    background: #670038;
-    color: #f5f1f2;
+    background: var(--primary-color);
+    color: var(--tertiary-color);
     border: 0;
     flex: none;
     padding: 10px;
