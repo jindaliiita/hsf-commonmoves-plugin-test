@@ -1,24 +1,16 @@
 import { getMetadata } from '../../scripts/aem.js';
+import { button, div } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
-  const div = document.createElement('div');
-  div.classList.add('testimonials-container');
-  div.innerHTML = `<button class="testimonials-arrow left-arrow">&lt;</button>
-    <div class="testimonials">
-       <div class="testimonials-inner" id="testimonials-inner">
-          <!-- Reviews will be injected here by JavaScript -->
-       </div>
-    </div>
-    <button class="testimonials-arrow right-arrow">&gt;</button>
-    <div class="testimonials-counter" id="testimonials-counter"></div>`;
-  block.append(div);
-  const testimonialsInner = document.getElementById('testimonials-inner');
-  const testimonialsCounter = document.getElementById('testimonials-counter');
-  const leftArrow = document.querySelector('.left-arrow');
-  const rightArrow = document.querySelector('.right-arrow');
+  const leftArrow = button({ class: 'testimonials-arrow left-arrow' }, '<');
+  const testimonialsInner = div({ class: 'testimonials-inner' });
+  const testimonialsWrapper = div({ class: 'testimonials' }, testimonialsInner);
+  const rightArrow = button({ class: 'testimonials-arrow right-arrow' }, '>');
+  const testimonialsCounter = div({ class: 'testimonials-counter' });
+  block.append(leftArrow, testimonialsWrapper, rightArrow, testimonialsCounter);
+
   let currentIndex = 0;
   let totalReviews = 0;
-
   const updateCounter = () => {
     testimonialsCounter.textContent = `${currentIndex + 1} of ${totalReviews}`;
   };
@@ -53,7 +45,6 @@ export default function decorate(block) {
   };
 
   const externalID = getMetadata('externalid');
-
   fetch(`https://testimonialtree.com/Widgets/jsonFeed.aspx?widgetid=45133&externalID=${externalID}`)
     .then((response) => response.json())
     .then((data) => {
