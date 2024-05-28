@@ -1,6 +1,6 @@
-const urlParams = new URLSearchParams(window.location.search);
-export const DOMAIN = urlParams.get('env') === 'stage' ? 'ignite-staging.bhhs.com' : 'www.bhhs.com';
-const CREG_API_URL = `https://${DOMAIN}/bin/bhhs`;
+/*
+  Suggestion API
+ */
 
 let suggestionFetchController;
 
@@ -46,7 +46,7 @@ export async function get(keyword, country = undefined) {
 
   const { signal } = suggestionFetchController;
 
-  let endpoint = `${CREG_API_URL}/cregSearchSuggesterServlet?Keyword=${keyword}&_=${Date.now()}`;
+  let endpoint = `/bin/bhhs/cregSearchSuggesterServlet?Keyword=${keyword}&_=${Date.now()}`;
   if (country) {
     endpoint += `&Country=${country}`;
   }

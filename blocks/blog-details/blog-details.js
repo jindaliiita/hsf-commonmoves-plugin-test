@@ -1,6 +1,3 @@
-const urlParams = new URLSearchParams(window.location.search);
-export const API_HOST = urlParams.get('env') === 'stage' ? 'https://ignite-staging.bhhs.com' : 'https://www.bhhs.com';
-
 function getBlogDetailsPath() {
   const url = window.location.pathname;
   const startIndex = url.indexOf('/blog/blog-detail/') + '/blog/blog-detail/'.length;
@@ -8,11 +5,11 @@ function getBlogDetailsPath() {
 }
 
 function buildApiPath() {
-  return `${API_HOST}/blog/blog-detail/jcr:content/${getBlogDetailsPath()}.json`;
+  return `/blog/blog-detail/jcr:content/${getBlogDetailsPath()}.json`;
 }
 
 function buildImageUrl(path) {
-  return `${API_HOST}${path}`;
+  return `${path}`;
 }
 
 /**
