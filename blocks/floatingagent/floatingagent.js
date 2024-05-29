@@ -54,13 +54,18 @@ export default function decorate(block) {
 
 const displayedElement = document.querySelector('.floatingagent');
 
-window.addEventListener('scroll', () => {
-  const heroElement = document.querySelector('.hero-wrapper');
-  const heroRect = heroElement.getBoundingClientRect();
+const heroElement = document.querySelector('.hero-wrapper');
 
-  if (heroRect.bottom < 0) {
-    displayedElement.style.display = 'flex';
-  } else {
-    displayedElement.style.display = 'none';
-  }
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      displayedElement.style.display = 'none';
+    } else {
+      displayedElement.style.display = 'flex';
+    }
+  });
+}, {
+  threshold: [0],
 });
+
+observer.observe(heroElement);
