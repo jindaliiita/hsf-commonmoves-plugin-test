@@ -2,10 +2,6 @@
  * API for interacting with the User system.
  */
 
-const urlParams = new URLSearchParams(window.location.search);
-export const DOMAIN = urlParams.get('env') === 'stage' ? 'ignite-staging.bhhs.com' : 'www.bhhs.com';
-const API_URL = '/bin/bhhs';
-
 /**
  * Confirms if user is logged in or not
  * @return {boolean}
@@ -43,7 +39,7 @@ export function getUserDetails() {
 
 async function fetchUserProfile(username) {
   const time = new Date().getTime();
-  const profileResponse = await fetch(`${API_URL}/cregUserProfile?Email=${encodeURIComponent(username)}&_=${time}`);
+  const profileResponse = await fetch(`/bin/bhhs/cregUserProfile?Email=${encodeURIComponent(username)}&_=${time}`);
   const json = profileResponse.json();
   return json;
 }
@@ -63,7 +59,7 @@ export function onProfileUpdate(listener) {
 /** Make changes to the user profile in session (does not save to the servlet)
  * This also triggers any listeners that are registered for profile updates
  *
- * @param {Object} Updated user profile
+ * @param {Object} profile the updated user profile
 */
 export function updateProfile(profile) {
   const userDetails = getUserDetails();
@@ -80,7 +76,7 @@ export function updateProfile(profile) {
 /**
  * Attempt to update the user profile.  If successful, also update session copy.
  * Caller must look at response to see if it was successful, etc.
- * @param {Object} Updated user profile
+ * @param {Object} profile the updated user profile
  * @returns response object with status, null if user not logged in
  */
 export async function saveProfile(profile) {
@@ -91,7 +87,7 @@ export async function saveProfile(profile) {
   const existingProfile = userDetails.profile;
 
   // Update profile in backend, post object as name/value pairs
-  const url = `${API_URL}/cregUserProfile`;
+  const url = '/bin/bhhs/cregUserProfile';
   const postBody = {
     FirstName: profile.firstName,
     LastName: profile.lastName,
@@ -139,7 +135,7 @@ export async function requestPasswordReset() {
     return null;
   }
 
-  const url = `${API_URL}/cregForgotPasswordtServlet`;
+  const url = '/bin/bhhs/cregForgotPasswordtServlet';
   const postBody = {
     Email: userDetails.username,
   };
@@ -182,11 +178,11 @@ export function logout() {
  * @param {object} credentials
  * @param {string} credentials.username
  * @param {string} credentials.password
- * @param {function<Response>} failureCallback Callback provided reponse object.
+ * @param {function<Response>} failureCallback Callback provided response object.
  * @return {Promise<Object>} User details if login is successful.
  */
 export async function login(credentials, failureCallback = null) {
-  const url = `${API_URL}/cregLoginServlet`;
+  const url = '/bin/bhhs/cregLoginServlet';
   let error;
   try {
     const resp = await fetch(url, {

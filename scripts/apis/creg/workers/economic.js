@@ -7,10 +7,10 @@
  * @param {string} event.data.long longitude
  */
 onmessage = async (event) => {
-  const { api, lat, long } = event.data;
+  const { lat, long } = event.data;
   const promises = [];
   promises.push(
-    fetch(`${api}/pdp/socioEconomicDataServlet?latitude=${lat}&longitude=${long}`)
+    fetch(`/bin/bhhs/pdp/socioEconomicDataServlet?latitude=${lat}&longitude=${long}`)
       .then((resp) => (resp.ok ? resp.json() : undefined)),
   );
 
