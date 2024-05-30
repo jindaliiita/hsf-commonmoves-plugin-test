@@ -1,3 +1,8 @@
+import {
+  button, div, p, span,
+} from '../../scripts/dom-helpers.js';
+import { decorateIcons } from '../../scripts/aem.js';
+
 /**
  * Returns block content from the spreadsheet
  *
@@ -40,6 +45,7 @@ export default async function decorate(block) {
   const blockId = crypto && crypto.randomUUID ? crypto.randomUUID() : 'UUID-CRYPTO-NEEDS-HTTPS';
   const dataUrl = block.querySelector('div > div > div:nth-child(2) > a').href;
   const title = getTitle(block);
+  const content = await getContent(dataUrl);
   // generate carousel content from loaded data
   block.setAttribute('id', blockId);
   block.innerHTML = '';
@@ -48,46 +54,44 @@ export default async function decorate(block) {
   titleElement.innerText = title.trim();
   titleElement.classList.add('title');
 
-  const controlsContainer = document.createElement('div');
-  controlsContainer.classList.add('controls-container');
+  const controlsContainer = div({ class: 'controls-container' },
+    div({ class: 'pagination' },
+      span({ class: 'index' }, '1'),
+      span({ class: 'of' }, 'of'),
+      span({ class: 'total' }, content.total),
+    ),
+    button({
+      name: 'prev', class: 'control-button', 'aria-label': 'Previous', disabled: true,
+    },
+    span({ class: 'icon icon-chevron-right-white' }),
+    ),
+    button({ name: 'next', class: 'control-button', 'aria-label': 'Next' },
+      span({ class: 'icon icon-chevron-right-white' }),
+    ),
+  );
+  decorateIcons(controlsContainer);
 
   const slidesContainer = document.createElement('div');
   slidesContainer.classList.add('carousel-content');
 
   block.replaceChildren(titleElement, slidesContainer, controlsContainer);
 
-  const content = await getContent(dataUrl);
-
   if (content.data.length > 0) {
     [...content.data].forEach((row) => {
-      const rowContent = document.createElement('div');
       if (!row.quote.startsWith('"')) {
         row.quote = `"${row.quote}`;
       }
       if (!row.quote.endsWith('"')) {
         row.quote = `${row.quote}"`;
       }
-      rowContent.classList.add('item');
-      rowContent.innerHTML = `
-                <p class="quote">${row.quote}</p>
-                <p class="author">${row.author}</p>
-                <p class="position">${row.position}</p>
-                `;
-      rowContent.classList.add('item');
+      const rowContent = div({ class: 'item' },
+        p({ class: 'quote' }, row.quote),
+        p({ class: 'author' }, row.author),
+        p({ class: 'position' }, row.position),
+      );
       slidesContainer.appendChild(rowContent);
     });
     slidesContainer.children[0].setAttribute('active', true);
-
-    // generate container for carousel controls
-    controlsContainer.innerHTML = `
-      <div class="pagination">
-          <span class="index">1</span>
-          <span class="of">of</span>
-          <span class="total">${content.total}</span>
-      </div>
-      <button name="prev" aria-label="Previous" class="control-button" disabled><svg><use xlink:href="/icons/icons.svg#carrot-white"/></svg></button>
-      <button name="next" aria-label="Next" class="control-button"><svg><use xlink:href="/icons/icons.svg#carrot-white"/></svg></button>
-    `;
     window.setTimeout(observeCarousel, 3000);
   }
 }
