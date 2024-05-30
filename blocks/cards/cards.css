@@ -16,6 +16,18 @@
   width: 100%;
 }
 
+.cards.block.mobile-slide .cards-list {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  flex-direction: row;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;  /* Firefox */
+}
+
+.cards-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}
+
 .cards.block .title {
   padding: 2em 0;
 }
@@ -86,6 +98,16 @@
   text-transform: uppercase;
 }
 
+.cards.block.mobile-slide .cards-item .card-body {
+  padding: 0 30px;
+  height: 90px;
+}
+
+.cards.block.mobile-slide .cards-item .card-body h4,
+.cards.block.mobile-slide .cards-item .card-body p {
+  text-align: center;
+}
+
 .cards.block .cards-list .cards-item .card-body h3 {
   padding-top: 16px;
   font-size: var(--body-font-size-l);
@@ -115,6 +137,25 @@
   margin-bottom: 0;
   width: 100%;
   border-bottom: 1px solid var(--secondary-medium-grey);
+}
+
+.cards.block.mobile-slide .cards-list .cards-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  flex: 0 0 auto;
+  margin-right: 20px;
+  text-align: center;
+  border: 1px solid var(--secondary-accent);
+  height: 100%;
+  scroll-snap-align: start;
+}
+
+.cards.block.mobile-slide.icons .cards-list .cards-item {
+  flex-direction: column;
+  width: 90%;
 }
 
 .cards.block.icons .cards-list .cards-item .card-icon {
@@ -207,11 +248,42 @@
     max-width: 750px;
   }
 
+  .cards.block.mobile-slide .cards-list {
+    flex-wrap: unset;
+    overflow-x: unset;
+    flex-direction: column;
+  }
+
+  .cards.block.mobile-slide.icons .cards-list .cards-item {
+    flex-direction: row;
+  }
+
+  .cards.block.mobile-slide .cards-list .cards-item {
+    flex-direction: column;
+    align-items: center;
+    justify-content: unset;
+    min-width: unset;
+    flex: unset;
+    margin: unset;
+    text-align: unset;
+    border: unset;
+    border-bottom: 1px solid var(--secondary-medium-grey);
+  }
+
   .cards.block.shade-icon .cards-list {
     flex-direction: row;
     column-gap: 20px;
     align-items: stretch;
     margin-bottom: 50px;
+  }
+
+  .cards.block.mobile-slide .cards-item .card-body {
+    padding: unset;
+  }
+
+  .cards.block.mobile-slide .cards-item .card-body h4,
+  .cards.block.mobile-slide .cards-item .card-body p {
+    text-align: left;
   }
 
   .cards.block .cards-list .cards-item .card-body h3 {
