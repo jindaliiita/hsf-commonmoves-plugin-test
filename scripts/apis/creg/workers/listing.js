@@ -6,11 +6,11 @@
  * @param {string[]} event.data.ids list of listing ids
  */
 onmessage = async (event) => {
-  const { api, ids, officeId } = event.data;
+  const { ids, officeId } = event.data;
   const promises = [];
   ids.forEach((id) => {
     promises.push(
-      fetch(`${api}/CregPropertySearchServlet?SearchType=ListingId&ListingId=${id}${officeId ? `&OfficeCode=${officeId}` : ''}`)
+      fetch(`/bin/bhhs/CregPropertySearchServlet?SearchType=ListingId&ListingId=${id}${officeId ? `&OfficeCode=${officeId}` : ''}`)
         .then((resp) => (resp.ok ? resp.json() : undefined)),
     );
   });

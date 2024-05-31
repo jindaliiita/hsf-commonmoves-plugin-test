@@ -9,11 +9,11 @@ import Search from '../search/Search.js';
  *
  */
 onmessage = async (event) => {
-  const { api, search } = event.data;
+  const { search } = event.data;
   const results = await Search.fromJSON(search)
     .then((s) => {
       try {
-        return fetch(`${api}/CregPropertySearchServlet?${s.asCregURLSearchParameters()}`);
+        return fetch(`/bin/bhhs/CregPropertySearchServlet?${s.asCregURLSearchParameters()}`);
       } catch (error) {
         // eslint-disable-next-line no-console
         console.log('Failed to fetch properties from API.', error);

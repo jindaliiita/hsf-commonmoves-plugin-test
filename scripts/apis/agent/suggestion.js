@@ -1,7 +1,4 @@
-import { DOMAIN } from './agent.js';
 import Filter from './Filter.js';
-
-const API_URL = `https://${DOMAIN}/bin/bhhs`;
 
 let suggestionFetchController;
 
@@ -18,7 +15,7 @@ export async function getSuggestions(office, keyword) {
   suggestionFetchController = new AbortController();
   const { signal } = suggestionFetchController;
 
-  const endpoint = `${API_URL}/suggesterServlet?search_type=agent&keyword=${keyword}&office_id=${office}&_=${Date.now()}`;
+  const endpoint = `/bin/bhhs/suggesterServlet?search_type=agent&keyword=${keyword}&office_id=${office}&_=${Date.now()}`;
   return fetch(endpoint, { signal })
     .then((resp) => {
       if (resp.ok) {
