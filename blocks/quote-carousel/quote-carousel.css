@@ -13,6 +13,11 @@
   position: relative;
 }
 
+.quote-carousel.block p,
+.quote-carousel.block .pagination span {
+  color: var(--white);
+}
+
 .quote-carousel.block .title {
   text-align: center;
   text-transform: capitalize;
@@ -98,13 +103,13 @@
   transform: translateY(2px);
 }
 
-.quote-carousel.block .controls-container svg {
+.quote-carousel.block .controls-container img {
   color: var(--white);
   height: var(--body-font-size-m);
   width: var(--body-font-size-m);
 }
 
-.quote-carousel.block .controls-container [name="prev"] svg {
+.quote-carousel.block .controls-container [name="prev"] img {
   transform: rotate(-180deg);
 }
 
