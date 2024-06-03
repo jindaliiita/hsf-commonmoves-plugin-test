@@ -11,6 +11,11 @@ import {
 } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
+  const agentName = getMetadata('name');
+  const agentDesc = getMetadata('desc');
+  const pic = getMetadata('pic');
+  const lic = getMetadata('lic');
+
   const agentPicture = document.createElement('picture');
   agentPicture.appendChild(img({
     loading: 'lazy',
@@ -22,27 +27,19 @@ export default function decorate(block) {
   }));
 
   const agentInfo = div({ class: 'agentinfo' },
-    h2(strong('')), // Placeholder, will be updated with metadata
-    p(''), // Placeholder, will be updated with metadata
-    p(''), // Placeholder, will be updated with metadata
+    h2(strong('')),
+    p(''),
+    p(''),
   );
 
   const contactButton = button({ class: 'contactagent' }, 'CONTACT AGENT');
 
-  // Append elements directly to the block
   block.append(
     div({ class: 'floating-agent-col' }, agentPicture),
     agentInfo,
     contactButton,
   );
 
-  // Fetch metadata
-  const agentName = getMetadata('name');
-  const agentDesc = getMetadata('desc');
-  const pic = getMetadata('pic');
-  const lic = getMetadata('lic');
-
-  // Populate the elements with metadata values
   const agentImageElement = agentPicture.querySelector('img');
   const agentInfoElements = agentInfo.children;
 
