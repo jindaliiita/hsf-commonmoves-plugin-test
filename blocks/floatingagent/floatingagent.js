@@ -57,21 +57,3 @@ export default function decorate(block) {
 
   observer.observe(heroElement);
 }
-
-const displayedElement = document.querySelector('.floatingagent');
-
-const heroElement = document.querySelector('.hero-wrapper');
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      displayedElement.style.display = 'none';
-    } else {
-      displayedElement.style.display = 'flex';
-    }
-  });
-}, {
-  threshold: [0],
-});
-
-observer.observe(heroElement);
