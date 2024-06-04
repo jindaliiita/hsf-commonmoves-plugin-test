@@ -1,0 +1,157 @@
+.agent-transactions.block table {
+  width: 100%;
+  font-size: var(--body-font-size-s);
+  line-height: var(--line-height-m);
+  margin-bottom: 0.25rem;
+}
+
+.agent-transactions.block h1 {
+  font-size: var(--heading-font-size-l);
+  line-height: var(--line-height-s);
+  color: var(--primary-color);
+  margin: 0 1.875rem 1.5rem 0;
+  font-weight: 600;
+}
+
+.agent-transactions.block .hide {
+  display: none;
+}
+
+.agent-transactions.block .show {
+  display: table-row;
+}
+
+.agent-transactions.block thead {
+  background: var(--platinum);
+  font-size: var(--body-font-size-xs);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-bold);
+  text-transform: capitalize;
+}
+
+.agent-transactions.block tbody td {
+  padding-bottom: 0.5rem;
+  padding-top: 0.25rem;
+  font-size: var(--body-font-size-xs);
+}
+
+.agent-transactions.block a {
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  text-transform: uppercase;
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.agent-transactions.block a.show-more::after {
+  content: "View More";
+  display: inline-block;
+  background-image: url("../../icons/arrow-down.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 1rem;
+  font-size: var(--body-font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.agent-transactions.block a.show-less::after {
+  content: "View Less";
+  display: inline-block;
+  background-image: url("../../icons/arrow-up.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 1rem;
+  font-size: var(--body-font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.agent-transactions.block thead th {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+.agent-transactions.block thead th:first-of-type {
+  padding-left: 1rem;
+}
+
+.agent-transactions.block tbody td:first-of-type {
+  padding-left: 1rem;
+}
+
+.agent-transactions.block .default {
+  display: table-cell;
+}
+
+.agent-transactions.block .medium,
+.agent-transactions.block .large,
+.agent-transactions.block .xl {
+  display: none;
+}
+
+.agent-transactions.block .sold-price {
+  width: 40%;
+}
+
+@media (min-width: 600px) {
+  .agent-transactions.block .medium {
+    display: table-cell;
+  }
+
+  .agent-transactions.block .address {
+    width: 48.7%;
+  }
+
+  .agent-transactions.block .city {
+    width: 24.5%;
+  }
+
+  .agent-transactions.block .state {
+    width: 7.4%;
+  }
+
+  .agent-transactions.block .sold-price {
+    width: 40%;
+  }
+}
+
+@media (min-width: 992px) {
+  .agent-transactions.block h1 {
+    font-size: 1.875rem;
+  }
+
+  .agent-transactions.block thead {
+    font-size: var(--body-font-size-s);
+  }
+
+  .agent-transactions.block tbody td {
+    font-size: var(--body-font-size-s);
+    padding-top: 0.5rem;
+  }
+
+  .agent-transactions.block .large {
+    display: table-cell;
+  }
+
+  .agent-transactions.block .address {
+    width: auto;
+  }
+
+  .agent-transactions.block .city {
+    width: 15%;
+  }
+
+  .agent-transactions.block .sold-price {
+    width: 13%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .agent-transactions.block .xl {
+    display: table-cell;
+  }
+
+  .agent-transactions.block .beds,
+  .agent-transactions.block .baths {
+    width: 5%;
+  }
+}
