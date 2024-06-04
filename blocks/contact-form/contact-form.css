@@ -1,0 +1,215 @@
+.contact-form.block,
+.contact-form.block form {
+  font-family: var(--font-family-primary);
+}
+
+.contact-form.block .form-title {
+  font-size: var(--heading-font-size-l);
+  line-height: var(--line-height-xs);
+  font-weight: 700;
+  margin-top: 30px;
+  margin-left: 40px;
+  margin-bottom: 3em;
+}
+
+.contact-form.block .company-name {
+  font-size: var(--heading-font-size-m);
+  line-height: var(--line-height-xs);
+  font-weight: 800;
+  margin-bottom: .5em;
+}
+
+.contact-form.block .company-email,
+.contact-form.block .company-phone {
+  padding-bottom: .5em;
+}
+
+.contact-form.block a {
+  color: var(--body-color);
+}
+
+.contact-form.block form#property-contact {
+  margin-top: 3rem;
+}
+
+.contact-form.block form.contact-form .message {
+  display: none;
+  padding: 10px 4px;
+  margin-bottom: 1em;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid;
+  column-gap: 4px;
+}
+
+.contact-form.block form.contact-form .message.error {
+  display: flex;
+  color: var(--error);
+  border-color: var(--error);
+}
+
+.contact-form.block form.contact-form .message.success {
+  display: flex;
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.contact-form.block form.contact-form .message .icon {
+  display: none;
+  align-self: flex-start;
+  width: 20px;
+  height: 20px;
+}
+
+.contact-form.block form.contact-form .message.error .icon.error {
+  display: block;
+}
+
+.contact-form.block form.contact-form .message.success .icon.success {
+  display: block;
+}
+
+.contact-form.block form.contact-form .message .details {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form.block form.contact-form .message span {
+  font-size: var(--body-font-size-xs);
+  line-height: var(--line-height-s);
+}
+
+.contact-form.block form.contact-form .inputs .name,
+.contact-form.block form.contact-form .inputs .contact-info,
+.contact-form.block form.contact-form .inputs .size {
+  display: block;
+}
+
+.contact-form.block form.contact-form .inputs input[type="text"],
+.contact-form.block form.contact-form .inputs input[type="email"],
+.contact-form.block form.contact-form .inputs textarea,
+.contact-form.block form.contact-form .inputs select,
+.contact-form.block form.contact-form .inputs select option {
+  height: 50px;
+  width: 100%;
+  padding-left: 15px;
+  margin-bottom: 1em;
+  font-size: var(--body-font-size-s);
+  line-height: var(--line-height-xs);
+  color: var(--body-color);
+  border: 1px solid var(--dark-grey);
+}
+
+.contact-form.block form.contact-form .inputs textarea {
+  width: 100%;
+  height: 110px;
+  padding: 15px;
+}
+
+.contact-form.block form.contact-form .agent div {
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--body-color);
+  letter-spacing: .5px;
+  line-height: 1;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.contact-form.block form.contact-form .agent > div:first-child {
+  margin-bottom: .5rem;
+}
+
+.contact-form.block form.contact-form .agent .agent-check {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.contact-form.block form.contact-form .agent input[type="radio"] {
+  height: 24px;
+  min-width: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--body-color);
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.contact-form.block form.contact-form .agent .checkbox {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  border: 1px solid #aaa;
+  margin-right: 8px;
+  position: relative;
+}
+
+.contact-form.block form.contact-form .agent .checkbox svg {
+  display: none;
+  height: 10px;
+  width: 12px;
+  top: calc(50% - 5px);
+  position: absolute;
+  left: 5px;
+}
+
+.contact-form.block form.contact-form .agent input[type="radio"]:checked+.checkbox svg {
+  display: block;
+}
+
+.contact-form.block form.contact-form .inputs input[type="text"].error,
+.contact-form.block form.contact-form .inputs input[type="email"].error {
+  color: var(--error);
+  background-color: var(--error-highlight);
+  border: 2px solid var(--error);
+}
+
+.contact-form.block form.contact-form .cta {
+  padding-bottom: 2rem;
+}
+
+.contact-form.block form.contact-form .cta .button-container button.primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-transform: uppercase;
+  margin-right: 12px;
+}
+
+.contact-form.block form.contact-form .cta .button-container button.primary:hover {
+  background-color: var(--white);
+  color: var(--body-color);
+  border-color: var(--grey);
+}
+
+@media (min-width: 600px) {
+  .contact-form.block form.contact-form .inputs div {
+    display: flex !important;
+    gap: 10px;
+  }
+
+  .contact-form.block form.contact-form .inputs input[type="text"],
+  .contact-form.block form.contact-form .inputs input[type="email"] {
+    width: 50%;
+  }
+
+  .contact-form.block form.contact-form .inputs input[name="title"] {
+    width: calc(50% - 6px);
+  }
+
+  .contact-form.block form.contact-form .inputs input[name="city"] {
+    flex: 0 0 41.667%;
+  }
+
+  .contact-form.block form.contact-form .inputs input[name="state"] {
+    flex: 0 0 33.333%;
+  }
+
+  .contact-form.block form.contact-form .inputs input[name="postalCode"] {
+    flex: 0 0 25%;
+    flex-shrink: 1;
+  }
+}

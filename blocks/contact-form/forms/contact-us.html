@@ -1,0 +1,62 @@
+<div class="contact-us">
+  <form id="office-contact" class="contact-form form-elements" method="POST"
+  action="/bin/bhhs/websiteTopicServlet">
+    <div class="message">
+      <svg class="icon error" role="presentation">
+        <use xlink:href="/icons/icons.svg#error"></use>
+      </svg>
+      <svg class="icon success" role="presentation">
+        <use xlink:href="/icons/icons.svg#success"></use>
+      </svg>
+      <div class="details">
+        <span></span>
+      </div>
+    </div>
+    <div class="inputs">
+      <div class="name">
+        <input name="first_name" type="text" placeholder="First Name*" aria-label="first name"
+          aria-required="true" autocomplete="given-name">
+        <input name="last_name" type="text" placeholder="Last Name*" aria-label="last name"
+          aria-required="true" autocomplete="family-name">
+      </div>
+      <div class="contact-info">
+        <input name="email" type="email" placeholder="Email Address*" aria-label="email address"
+          aria-required="true" autocomplete="email">
+        <input type="text" name="phone" placeholder="Phone Number*" inputmode="tel" aria-label="phone number"
+          aria-required="true" autocomplete="tel-national">
+      </div>
+      <textarea name="comments"
+        placeholder="Leave a comment or question and we'll get back to you shortly."
+        autocomplete="off"></textarea>
+    </div>
+    <div class="agent">
+      <div>Are you currently working with an agent?</div>
+      <div class="agent-check">
+        <div>
+          <input type="radio" name="hasAgent" aria-label="radio" tabindex="-1" value="yes" autocomplete="off" checked>
+          <div class="checkbox">
+            <svg class="empty">
+              <use xlink:href="/icons/icons.svg#checkmark"></use>
+            </svg>
+          </div>
+          <span class="label">yes</span>
+        </div>
+        <div>
+          <input type="radio" name="hasAgent" aria-label="radio" tabindex="-1" value="no" autocomplete="off">
+          <div class="checkbox">
+            <svg class="empty">
+              <use xlink:href="/icons/icons.svg#checkmark"></use>
+            </svg>
+          </div>
+          <span class="label">no</span>
+        </div>
+      </div>
+    </div>
+    <div id="captcha-20285" class="g-recaptcha contact-form-captcha"></div>
+    <div class="cta">
+      <div class="button-container">
+        <button type="submit" class="primary submit" aria-label="Submit contact form">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
