@@ -20,16 +20,16 @@ export default function decorate(block) {
   agentPicture.appendChild(img({
     loading: 'lazy',
     alt: 'Agent Image',
-    src: '',
+    src: pic,
     width: '48',
     height: '64',
     style: 'width: 48px; height: 64px;',
   }));
 
   const agentInfo = div({ class: 'agentinfo' },
-    h2(strong('')),
-    p(''),
-    p(''),
+    h2(strong(agentName)),
+    p(agentDesc),
+    p(lic),
   );
 
   const contactButton = button({ class: 'contactagent' }, 'CONTACT AGENT');
@@ -39,14 +39,6 @@ export default function decorate(block) {
     agentInfo,
     contactButton,
   );
-
-  const agentImageElement = agentPicture.querySelector('img');
-  const agentInfoElements = agentInfo.children;
-
-  agentImageElement.src = pic;
-  agentInfoElements[0].innerHTML = `<strong>${agentName}</strong>`;
-  agentInfoElements[1].textContent = agentDesc;
-  agentInfoElements[2].textContent = lic;
 }
 
 const displayedElement = document.querySelector('.floatingagent');
