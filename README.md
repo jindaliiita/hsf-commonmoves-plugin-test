@@ -76,7 +76,7 @@ In this setup, the proxy is configured to route non-API traffic on the Staging d
 
 This setup uses a locally resolved domain, which will Proxyman will use to route the traffic. All non-API traffic will route to localhost, all API traffic will go to the Stage domain.
 
-1. Add an entry to `/etc/maps`:
+1. Add an entry to `/etc/hosts`:
    Proxyman won't proxy localhost, so a custom domain is required. Add the following (if you already have a host entry for 127.0.0.1, simply add the new domain)
 > 127.0.0.1 proxyman.debug 
 
