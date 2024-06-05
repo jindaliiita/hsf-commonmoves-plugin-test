@@ -163,6 +163,38 @@ function decorateVideoLinks(main) {
     });
 }
 
+/**
+ * Finds the parent anchor tag of the given event target.
+ * @param {Event} event - The event object.
+ * @returns {HTMLAnchorElement|null} - The parent anchor tag, or null if not found.
+ */
+function findParentAnchorTag(event) {
+  let element = event.target;
+  while (element && element.nodeName !== 'A') {
+    element = element.parentNode;
+  }
+  return element;
+}
+
+/**
+ * Decorates form links by attaching a click event listener to open a side modal.
+ * @param {HTMLElement} main - The main element containing the form links.
+ */
+export function decorateFormLinks(main) {
+  async function openSideModal(event) {
+    event.preventDefault();
+    const module = await import(`${window.hlx.codeBasePath}/blocks/side-modal/side-modal.js`);
+    if (module.showSideModal) {
+      await module.showSideModal(findParentAnchorTag(event));
+    }
+  }
+  main.querySelectorAll('a[href*="form"]').forEach((a) => {
+    if (a.href.endsWith('-form')) {
+      a.addEventListener('click', openSideModal);
+    }
+  });
+}
+
 function decorateImages(main) {
   main.querySelectorAll('.section .default-content-wrapper picture').forEach((picture) => {
     const img = picture.querySelector('img');
@@ -261,6 +293,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateVideoLinks(main);
+  decorateFormLinks(main);
   decorateImages(main);
 }
 

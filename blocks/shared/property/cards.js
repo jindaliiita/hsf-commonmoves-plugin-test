@@ -1,3 +1,5 @@
+import { decorateFormLinks } from '../../../scripts/scripts.js';
+
 function createImage(listing) {
   if (listing.SmallMedia?.length > 0) {
     return `<img src="${listing.SmallMedia[0].mediaUrl}" alt="${listing.StreetName}" loading="lazy" class="property-thumbnail">`;
@@ -60,21 +62,21 @@ export function createCard(listing) {
             </div>
           </div>
         </div>
-        <div class="image-position-bottom"> 
+        <div class="image-position-bottom">
           <div class="property-labels">
             <span class="property-label featured">Featured Listing</span>
             ${applicationType}
             <span class="property-label">${listing.mlsStatus}</span>
           </div>
           <div class="property-price">
-            <p>${listing.ListPriceUS}</p>
-          </div> 
-        </div> 
+              <p>${listing.ListPriceUS}</p>
+          </div>
+        </div>
       </div>
     </a>
     <div class="property-details">
-      <div class="property-info-wrapper"> 
-        <div class="property-info"> 
+      <div class="property-info-wrapper">
+        <div class="property-info">
           <div class="sold-date">Closed: ${listing.ClosedDate}</div>
           <div id="listing-${listing.ListingId}-address" class="address"> 
             ${listing.StreetName}
@@ -105,9 +107,9 @@ export function createCard(listing) {
         </div>
       </div>
     </div>
-    <hr> 
+    <hr>
     <div class="extra-info">
-      <div> 
+      <div>
         <div class="courtesy-info">Listing courtesy of: ${listing.CourtesyOf}</div>
         <div class="courtesy-provided">Listing provided by: ${listing.listAor}</div>
       </div>
@@ -125,10 +127,12 @@ export function createCard(listing) {
  * @param {HTMLElement} parent
  * @param {Object[]} properties results from CREG
  */
+
 export function render(parent, properties = []) {
   const cards = [];
   properties.forEach((listing) => {
     cards.push(createCard(listing));
   });
   parent.replaceChildren(...cards);
+  decorateFormLinks(parent);
 }

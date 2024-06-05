@@ -316,6 +316,20 @@ main .section.two-columns > div {
   flex: 0 1 40%;
 }
 
+main .section.form-header h1 {
+  font-size: var(--heading-font-size-m);
+  font-family: var(--font-family-proxima);
+  font-weight: 700;
+  line-height: 130%;
+  margin-bottom: 15px;
+}
+
+main .section.form-header p {
+  font-size: var(--heading-font-size-s);
+  margin: 0 auto 60px;
+  max-width: 420px;
+}
+
 /* Center rules for a section, but don't apply it to blocks! */
 /* stylelint-disable-next-line no-descending-specificity */
 main div[data-align="center"] h1,
@@ -389,11 +403,7 @@ main .section .default-content-wrapper picture img {
   animation: spinner-spin 2s linear infinite;
 }
 
-.button-container a {
-  background-color: transparent;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-  cursor: pointer;
+.button-container a, .button-container button.cancel {
   display: inline-block;
   font-family: var(--font-family-primary);
   font-size: var(--heading-font-size-s);
@@ -494,7 +504,7 @@ main .section.banner .default-content-wrapper {
   background-color: var(--primary-color);
 }
 
-form button[type="submit"] {
+form button[type="submit"], .button-container button {
   display: inline-block;
   padding: 13px 16px;
   margin: 16px 0;
