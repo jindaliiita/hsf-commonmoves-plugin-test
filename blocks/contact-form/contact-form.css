@@ -115,7 +115,13 @@
   display: flex;
   justify-content: flex-start;
   margin-bottom: 10px;
-  cursor: pointer;
+}
+
+
+.contact-form.block form.contact-form .agent div.disclaimer {
+  font-size: var(--body-font-size-xxs);
+  line-height: var(--line-height-s);
+  color: var(--dark-grey);
 }
 
 .contact-form.block form.contact-form .agent > div:first-child {

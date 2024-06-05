@@ -323,6 +323,9 @@ const addForm = async (block) => {
   if (window.selectedListingId) {
     const prop = findListing();
     taEl.value = `Hi, I would like more information about ${prop.StreetName}, ${prop.City}, ${prop.StateOrProvince} ${prop.PostalCode}.`;
+    if (window.location.pathname.length === 1) {
+      block.querySelector('.disclaimer').remove();
+    }
   }
 
   block.style.display = displayValue;

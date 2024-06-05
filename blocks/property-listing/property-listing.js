@@ -2,7 +2,9 @@ import { getMetadata, readBlockConfig } from '../../scripts/aem.js';
 import { render as renderCards } from '../shared/property/cards.js';
 import Search from '../../scripts/apis/creg/search/Search.js';
 import { propertySearch } from '../../scripts/apis/creg/creg.js';
-import { a, div, p, span } from '../../scripts/dom-helpers.js';
+import {
+  a, div, p, span,
+} from '../../scripts/dom-helpers.js';
 
 export default async function decorate(block) {
   // Find and process list type configurations.
