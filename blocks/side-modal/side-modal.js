@@ -5,6 +5,8 @@ import {
 
 export async function showSideModal(a) {
   const { href } = a;
+  const listing = a.parentNode.parentNode.previousElementSibling.querySelector('div.address').id.split('-')[1];
+  window.selectedListingId = listing;
   const module$ = import(`${window.hlx.codeBasePath}/scripts/util.js`);
   await loadCSS(`${window.hlx.codeBasePath}/blocks/side-modal/side-modal.css`);
   const content = await fetch(`${href}.plain.html`);

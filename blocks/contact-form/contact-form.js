@@ -9,6 +9,11 @@ const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 // Load reCaptcha script used on all forms.
 loadScript('/blocks/contact-form/forms/callback.js');
 
+function findListing() {
+  const temp = window.propertyListings?.properties || [];
+  return temp?.find((property) => property.ListingId === window.selectedListingId) || null;
+}
+
 /**
  * Adds form and cookie values to payload.
  *
@@ -314,7 +319,11 @@ const addForm = async (block) => {
   });
 
   const taEl = block.querySelector('textarea');
-  if (taEl && taEl.placeholder) taEl.placeholder = i18n(taEl.placeholder);
+  if (taEl?.placeholder) taEl.placeholder = i18n(taEl.placeholder);
+  if (window.selectedListingId) {
+    const prop = findListing();
+    taEl.value = `Hi, I would like more information about ${prop.StreetName}, ${prop.City}, ${prop.StateOrProvince} ${prop.PostalCode}.`;
+  }
 
   block.style.display = displayValue;
 
