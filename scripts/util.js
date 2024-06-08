@@ -7,10 +7,10 @@ import { div, domEl } from './dom-helpers.js';
  * @returns {HTMLDivElement} the spinner div.
  */
 export function getSpinner() {
-  const div = document.createElement('div');
-  div.classList.add('loading-spinner');
-  div.innerHTML = '<span></span>';
-  return div;
+  const spinner = document.createElement('div');
+  spinner.classList.add('loading-spinner');
+  spinner.innerHTML = '<span></span>';
+  return spinner;
 }
 
 /**
