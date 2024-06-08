@@ -1,0 +1,88 @@
+.floatingagent.block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--white);
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    z-index: 999;
+}
+
+.floatingagent.block > .floating-agent-col {
+    display: none;
+}
+
+.floatingagent.block > .agentinfo {
+    display: none;
+}
+
+.floatingagent.block > .contactagent {
+    display: block;
+    align-self: center;
+    background: var(--primary-color);
+    color: var(--tertiary-color);
+    border: 0;
+    padding: 10px;
+    margin-left: 35%;
+}
+
+@media (min-width: 600px) {
+    .floatingagent.block {
+        justify-content: space-between;
+    }
+
+    .floatingagent.block > .floating-agent-col {
+        margin-left: 100px;
+        display: flex;
+        margin-right: 10px;
+        flex: none;
+        margin-bottom: 20px;
+    }
+
+    .floatingagent.block > .agentinfo {
+        display: block;
+        flex-grow: 1;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .floatingagent.block > .agentinfo > p {
+        margin-block-end: 0;
+        font-family: var(--font-family-primary);
+        font-size: var(--body-font-size-xxs);
+        font-style: normal;
+        font-weight: var(--font-weight-normal);
+        letter-spacing: normal;
+        color: #2a2223;
+    }
+
+    .floatingagent.block > .agentinfo > h2 {
+        font-size: var(--heading-font-size-m);
+        line-height: 130%;
+        letter-spacing: var(--letter-spacing-xxxs);
+        vertical-align: top;
+        color: #2a2223;
+        width: max-content;
+    }
+
+    .floatingagent.block > .floating-agent-col > picture {
+        height: 40px;
+        width: 30px;
+        margin-right: 40px;
+    }
+
+    .floatingagent.block > .floating-agent-col > picture > img {
+        display: inline;
+    }
+
+    .floatingagent.block > .contactagent {
+        flex: none;
+        margin-right: 5%;
+        margin-left: 10px;
+    }
+}
