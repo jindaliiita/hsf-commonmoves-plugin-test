@@ -80,7 +80,7 @@ export function createCard(listing) {
       div({ class: 'property-info-wrapper' },
         div({ class: 'property-info' },
           div({ class: 'sold-date' }, `Closed: ${listing.ClosedDate}`),
-          div({ id: `listing-${listing.ListingId}-address`, class: 'address' },
+          div({ id: `listing-${listing.PropId}-address`, class: 'address' },
             listing.StreetName,
             domEl('br'),
             `${listing.City}, `,

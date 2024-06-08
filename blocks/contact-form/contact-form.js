@@ -1,5 +1,7 @@
-import { loadScript } from '../../scripts/aem.js';
+import { createOptimizedPicture, loadScript } from '../../scripts/aem.js';
+// import { getEnvelope } from '../../scripts/apis/creg/creg.js';
 import { removeSideModal, i18nLookup, getCookieValue } from '../../scripts/util.js';
+import { a, div } from '../../scripts/dom-helpers.js';
 
 const LOGIN_ERROR = 'There was a problem processing your request.';
 const i18n = await i18nLookup();
@@ -9,9 +11,17 @@ const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 // Load reCaptcha script used on all forms.
 loadScript('/blocks/contact-form/forms/callback.js');
 
-function findListing() {
-  const temp = window.propertyListings?.properties || [];
-  return temp?.find((property) => property.ListingId === window.selectedListingId) || null;
+function getImageURL(jsonString) {
+  try {
+    const data = JSON.parse(jsonString);
+    if (Array.isArray(data) && data.length > 0) {
+      const imageUrl = data[0].url;
+      return imageUrl;
+    }
+  } catch (error) {
+    return '/media/images/no-profile-image.png';
+  }
+  return null; // Add a return statement at the end of the function
 }
 
 /**
@@ -320,9 +330,28 @@ const addForm = async (block) => {
 
   const taEl = block.querySelector('textarea');
   if (taEl?.placeholder) taEl.placeholder = i18n(taEl.placeholder);
-  if (window.selectedListingId) {
-    const prop = findListing();
-    taEl.value = `Hi, I would like more information about ${prop.StreetName}, ${prop.City}, ${prop.StateOrProvince} ${prop.PostalCode}.`;
+  if (window.selectedListing) {
+    // const prop = await findListing();
+    const prop = window.selectedListing;
+    // if the listing agent is supposed to be displayed vs the office
+    if (prop.propertyDetails.listAgentCd) {
+      const info = block.querySelector('.contact-info');
+      const pic = getImageURL(prop.listAgent.reAgentDetail.image);
+      const profile = div({ class: 'profile' }, createOptimizedPicture(pic, prop.listAgent.recipientName, 'lazy', [{ width: '82' }]));
+      info.insertAdjacentElement('beforebegin', profile);
+      const name = block.querySelector('.company-name');
+      const link = a({ href: '#' }, prop.listAgent.recipientName); // TODO: add link to agent profile
+      name.replaceChildren(link);
+      const email = block.querySelector('.company-email a');
+      email.textContent = prop.listAgent.reAgentDetail.email;
+      email.href = `mailto:${prop.listAgent.reAgentDetail.email}`;
+      const phone = block.querySelector('.company-phone a');
+      phone.textContent = prop.listAgent.reAgentDetail.officeTelephone;
+      phone.href = `tel:${prop.listAgent.reAgentDetail.officeTelephone}`;
+    }
+
+    taEl.value = `Hi, I would like more information about ${prop.propertyDetails.unparsedAddress}`;
+
     if (window.location.pathname.length === 1) {
       block.querySelector('.disclaimer').remove();
     }

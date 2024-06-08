@@ -78,3 +78,19 @@ export async function getEconomicDetails(lat, long) {
     });
   });
 }
+
+/**
+ * Retrieves the envelope for a given listing ID.
+ *
+ * @param {string} listingId - The ID of the listing.
+ * @returns {Promise<Object>} A promise that resolves to the envelope data.
+ */
+export async function getEnvelope(listingId) {
+  return new Promise((resolve) => {
+    const worker = new Worker(`${window.hlx.codeBasePath}/scripts/apis/creg/workers/envelope.js`, { type: 'module' });
+    worker.onmessage = (e) => resolve(e.data);
+    worker.postMessage({
+      listingId,
+    });
+  });
+}

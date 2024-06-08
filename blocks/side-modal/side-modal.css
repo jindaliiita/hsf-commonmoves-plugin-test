@@ -29,4 +29,15 @@ aside.side-modal > div {
     aside.side-modal > div {
         padding: 53px 45px 15px;
     }
+
+    body > div > div.side-modal-overlay {
+        background-color: #212529;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        opacity: .5;
+        z-index: 1040;
+        top: 0;
+        left: 0;
+    }
 }
