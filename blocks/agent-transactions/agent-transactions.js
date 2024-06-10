@@ -78,8 +78,8 @@ export default async function decorate(block) {
     trBody.appendChild(trElement);
   });
 
-  const tableElement = table({}, thead({}, theadTr), trBody);
-  const heading1 = h1({}, 'Closed Transactions');
+  const tableElement = table(thead(theadTr), trBody);
+  const heading1 = h1('Closed Transactions');
   const anchor = a({ class: 'show-more' });
   anchor.addEventListener('click', () => {
     if (anchor.classList.contains('show-more')) {
