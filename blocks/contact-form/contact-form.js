@@ -27,7 +27,6 @@ function getImageURL(jsonString) {
   return null; // Add a return statement at the end of the function
 }
 
-
 /**
  * Adds form and cookie values to payload.
  *
