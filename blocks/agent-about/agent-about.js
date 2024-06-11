@@ -1,3 +1,4 @@
+import { getMetadata } from '../../scripts/aem.js';
 import {
   a, div, ul, li,
 } from '../../scripts/dom-helpers.js';
@@ -18,7 +19,23 @@ const viewMoreOnClick = (name, anchor, block) => {
   });
 };
 
+const getCol = (list, colText) => {
+  const colsUl = ul();
+  list.split(',').forEach((x) => {
+    colsUl.append(li(x.trim()));
+  });
+  return div(div(colText), div(colsUl));
+};
+
 export default function decorate(block) {
+  const aboutText = getMetadata('about');
+  const accreditations = getMetadata('professional-accreditations');
+  const languages = getMetadata('languages');
+
+  block.replaceChildren(div(div('About'), div(aboutText)),
+    getCol(accreditations, 'Professional Accreditations'),
+    getCol(languages, 'Languages'));
+
   const children = [...block.children];
   if (children?.length) {
     children.forEach((child, index) => {
@@ -31,7 +48,7 @@ export default function decorate(block) {
           child.children[1].classList.add('hide');
           child.append(div({ class: `${name}-truncate` },
             `${child.children[1].textContent.substring(0, threshold)}...`));
-          const anchor = a({ class: 'view-more' });
+          const anchor = a({ class: 'view-more', href: '#' });
           child.append(anchor);
           viewMoreOnClick(name, anchor, block);
         }
@@ -43,15 +60,15 @@ export default function decorate(block) {
 
         if (liItems.length > threshold) {
           child.children[1].classList.add('hide');
-          const tempUl = ul({ });
+          const tempUl = ul();
           Array.from(child.children[1].querySelectorAll('li'))
             .slice(0, threshold).forEach((liItem) => {
-              const tempLi = li({}, liItem.textContent);
+              const tempLi = li(liItem.textContent);
               tempUl.append(tempLi);
             });
 
           child.append(div({ class: `${name}-truncate` }, tempUl));
-          const anchor = a({ class: 'view-more' });
+          const anchor = a({ class: 'view-more', href: '#' });
           child.append(anchor);
           viewMoreOnClick(name, anchor, block);
         }
