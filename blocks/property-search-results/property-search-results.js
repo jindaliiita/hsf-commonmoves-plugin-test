@@ -103,7 +103,6 @@ async function doSearch(search, redraw = true) {
     const controller = searchController;
     propertySearch(search).then((results) => {
       if (!controller.signal.aborted) {
-        window.propertyListings = results;
         displayList(parent, results);
         contentWrapper.querySelector('.search-results-disclaimer-wrapper').replaceChildren(
           domEl('hr', { role: 'presentation', 'aria-hidden': true, tabindex: -1 }),

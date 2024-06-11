@@ -38,7 +38,6 @@ export default async function decorate(block) {
   const list = div({ class: `property-list-cards rows-${Math.floor(search.pageSize / 8)}` });
   block.append(list);
   propertySearch(search).then((results) => {
-    window.propertyListings = results;
     renderCards(list, results.properties);
   });
 }

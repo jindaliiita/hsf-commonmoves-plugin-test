@@ -1,7 +1,7 @@
-import { createOptimizedPicture, loadScript } from '../../scripts/aem.js';
+import { loadScript } from '../../scripts/aem.js';
 // import { getEnvelope } from '../../scripts/apis/creg/creg.js';
 import { removeSideModal, i18nLookup, getCookieValue } from '../../scripts/util.js';
-import { a, div } from '../../scripts/dom-helpers.js';
+import { a, div, img } from '../../scripts/dom-helpers.js';
 
 const LOGIN_ERROR = 'There was a problem processing your request.';
 const i18n = await i18nLookup();
@@ -15,14 +15,18 @@ function getImageURL(jsonString) {
   try {
     const data = JSON.parse(jsonString);
     if (Array.isArray(data) && data.length > 0) {
-      const imageUrl = data[0].url;
-      return imageUrl;
+      const imageUrl = new URL(data[0].url);
+      // Replace the hostname and pathname with the new ones
+      imageUrl.hostname = 'hsfazpw2storagesf1.blob.core.windows.net';
+      imageUrl.pathname = `/hsflibrary${imageUrl.pathname}`;
+      return imageUrl.toString();
     }
   } catch (error) {
     return '/media/images/no-profile-image.png';
   }
   return null; // Add a return statement at the end of the function
 }
+
 
 /**
  * Adds form and cookie values to payload.
@@ -337,7 +341,7 @@ const addForm = async (block) => {
     if (prop.propertyDetails.listAgentCd) {
       const info = block.querySelector('.contact-info');
       const pic = getImageURL(prop.listAgent.reAgentDetail.image);
-      const profile = div({ class: 'profile' }, createOptimizedPicture(pic, prop.listAgent.recipientName, 'lazy', [{ width: '82' }]));
+      const profile = div({ class: 'profile' }, img({ src: pic, alt: prop.listAgent.recipientName, width: '82px' }));
       info.insertAdjacentElement('beforebegin', profile);
       const name = block.querySelector('.company-name');
       const link = a({ href: '#' }, prop.listAgent.recipientName); // TODO: add link to agent profile
