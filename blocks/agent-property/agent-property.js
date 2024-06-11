@@ -59,7 +59,7 @@ export default async function decorate(block) {
        renderCards(list, result.listings.properties); */
 
   try {
-    const response = await fetch(`/bin/bhhs/agentPropertyListingsServlet.${agentId}.json`);
+    const response = await fetch('https://www.commonmoves.com/bin/bhhs/agentPropertyListingsServlet.${agentId}.json');
     data = await response.json();
     if (data) {
       const [firstProperty] = data.listings.properties;
