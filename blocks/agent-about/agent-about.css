@@ -7,10 +7,6 @@
   letter-spacing: normal;
 }
 
-.agent-about.block a {
-  cursor: pointer;
-}
-
 .agent-about.block .hide {
   display: none;
 }
@@ -20,6 +16,8 @@
   display: inline-block;
   margin-top: 1rem;
   text-decoration: underline;
+  font-size: var(--body-font-size-xs);
+  color: var(--black);
 }
 
 .agent-about.block a.view-more::after {
@@ -33,7 +31,7 @@
 .agent-about.block>div.cols-1,
 .agent-about.block>div.cols-2,
 .agent-about.block>div.cols-3 {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 .agent-about.block>div>div:first-of-type {

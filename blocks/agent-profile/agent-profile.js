@@ -8,13 +8,13 @@ const getPhoneDiv = () => {
   let phoneUl;
 
   if (getMetadata('direct-phone')) {
-    phoneUl = ul({});
-    phoneUl.append(li({}, 'Direct: ', getMetadata('direct-phone')));
+    phoneUl = ul();
+    phoneUl.append(li('Direct: ', getMetadata('direct-phone')));
   }
 
   if (getMetadata('office-phone')) {
-    phoneUl = phoneUl || ul({});
-    phoneUl.append(li({}, 'Office: ', getMetadata('office-phone')));
+    phoneUl = phoneUl || ul();
+    phoneUl.append(li('Office: ', getMetadata('office-phone')));
   }
 
   if (phoneUl) {
@@ -62,9 +62,9 @@ const getSocialDiv = () => {
 
   ['facebook', 'instagram', 'linkedin'].forEach((x) => {
     const url = getMetadata(x);
-    socialUl = socialUl || ul({});
+    socialUl = socialUl || ul();
     if (url) {
-      const socialLi = li({}, a({
+      const socialLi = li(a({
         href: url, class: x, title: x, 'aria-label': x,
       }, span({ class: `icon icon-${x}` })));
       socialUl.append(socialLi);
@@ -82,7 +82,7 @@ const getSocialDiv = () => {
 export default async function decorate(block) {
   const profileImage = getImageDiv();
   const profileContent = div({ class: 'profile-content' },
-    div({ class: 'name' }, h1({}, getMetadata('name'))),
+    div({ class: 'name' }, h1(getMetadata('name'))),
     div({ class: 'designation' }, getMetadata('designation')),
   );
 
