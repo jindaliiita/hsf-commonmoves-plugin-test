@@ -2,9 +2,12 @@
 import {
   decorateSections, decorateBlocks, loadBlocks, decorateButtons, decorateIcons, loadCSS,
 } from '../../scripts/aem.js';
+import { getEnvelope } from '../../scripts/apis/creg/creg.js';
 
 export async function showSideModal(a) {
   const { href } = a;
+  const listing = a.parentNode.parentNode.previousElementSibling.querySelector('div.address').id.split('-')[1];
+  window.selectedListing = await getEnvelope(listing);
   const module$ = import(`${window.hlx.codeBasePath}/scripts/util.js`);
   await loadCSS(`${window.hlx.codeBasePath}/blocks/side-modal/side-modal.css`);
   const content = await fetch(`${href}.plain.html`);

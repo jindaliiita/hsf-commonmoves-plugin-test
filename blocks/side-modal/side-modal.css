@@ -1,10 +1,10 @@
 aside.side-modal {
     overflow: hidden scroll;
     position: fixed;
-    top: 200px;
+    top: 65px;
     bottom: 0;
-    width: 100vw;
-    right: -100vw;
+    width: 100%;
+    right: 0;
     transition: right .2s cubic-bezier(.4,0,.2,1) .1s;
     background-color: white;
     z-index: 1090;
@@ -19,15 +19,25 @@ aside.side-modal > div {
     padding: 53px 15px 15px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
     aside.side-modal {
-        width: 50vw;
-        right: -50vw;
+        top: 0;
+        width: 600px;
+        right: -600px;
     }
-}
 
-@media (min-width: 992px) {
     aside.side-modal > div {
-        padding: 53px 16% 16%;
+        padding: 53px 45px 15px;
+    }
+
+    body > div > div.side-modal-overlay {
+        background-color: #212529;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        opacity: .5;
+        z-index: 1040;
+        top: 0;
+        left: 0;
     }
 }
