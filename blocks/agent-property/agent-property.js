@@ -16,7 +16,6 @@ let data;
 
 function initMap(block, properties) {
   const ele = block.querySelector('.gmap-canvas');
-
   const gmap = new google.maps.Map(ele, {
     zoom: 9, // Set an appropriate zoom level
     center: { lat: centerlat, lng: centerlong }, // Set a default center
@@ -33,19 +32,9 @@ function initMap(block, properties) {
     title: property.StreetName,
   });
 
-  // Create markers for all properties
   properties.forEach((property) => {
     createMarker(property, gmap);
   });
-
-  // Add markers for each property
-  /* properties.forEach((property) => {
-    new google.maps.Marker({
-      position: { lat: parseFloat(property.Latitude), lng: parseFloat(property.Longitude) },
-      map: gmap,
-      title: property.StreetName, // You can customize the title if needed
-    });
-  }); */
 }
 
 export default async function decorate(block) {
@@ -53,18 +42,13 @@ export default async function decorate(block) {
   list.classList.add('property-list-cards', 'rows-1');
   viewToggle.append(cardView, mapView);
   block.append(viewToggle, list, map);
-  /*   firstProperty = result.listings.properties[0];
-       centerlat = firstProperty.Latitude;
-       centerlong = firstProperty.Longitude;
-       renderCards(list, result.listings.properties); */
 
   try {
-    const response = await fetch('https://www.commonmoves.com/bin/bhhs/agentPropertyListingsServlet.${agentId}.json');
+    const response = await fetch(`https://www.commonmoves.com/bin/bhhs/agentPropertyListingsServlet.${agentId}.json`);
     data = await response.json();
     if (data) {
       const [firstProperty] = data.listings.properties;
       const { Latitude: latitude, Longitude: longitude } = firstProperty;
-      // Parse the latitude and longitude as floats
       centerlat = parseFloat(latitude);
       centerlong = parseFloat(longitude);
       renderCards(list, data.listings.properties);
