@@ -1,4 +1,5 @@
 import { fetchPlaceholders } from './aem.js';
+import { div, domEl } from './dom-helpers.js';
 
 /**
  * Creates the standard Spinner Div.
@@ -6,10 +7,10 @@ import { fetchPlaceholders } from './aem.js';
  * @returns {HTMLDivElement} the spinner div.
  */
 export function getSpinner() {
-  const div = document.createElement('div');
-  div.classList.add('loading-spinner');
-  div.innerHTML = '<span></span>';
-  return div;
+  const spinner = document.createElement('div');
+  spinner.classList.add('loading-spinner');
+  spinner.innerHTML = '<span></span>';
+  return spinner;
 }
 
 /**
@@ -54,6 +55,7 @@ let focusElement;
 
 export function removeSideModal() {
   if (!sideModal) return;
+  sideModal.parentNode.nextSibling.remove();
   sideModal.parentNode.remove();
   sideModal = null;
   document.body.classList.remove('disable-scroll');
@@ -62,15 +64,12 @@ export function removeSideModal() {
 
 export async function showSideModal(content, decorateContent) {
   if (!sideModal) {
-    const fragment = document.createRange().createContextualFragment(`
-            <div>
-                <aside class="side-modal">
-                    <div></div>
-                </aside>
-            </div>
-        `);
-    sideModal = fragment.querySelector('.side-modal');
-    document.body.append(...fragment.children);
+    const temp = div(
+      domEl('aside', { class: 'side-modal' }, div()),
+      div({ class: 'side-modal-overlay' }),
+    );
+    sideModal = temp.querySelector('.side-modal');
+    document.body.append(temp);
   }
   const container = sideModal.querySelector('div');
   container.replaceChildren(...content);

@@ -1,5 +1,7 @@
 import { loadScript } from '../../scripts/aem.js';
+// import { getEnvelope } from '../../scripts/apis/creg/creg.js';
 import { removeSideModal, i18nLookup, getCookieValue } from '../../scripts/util.js';
+import { a, div, img } from '../../scripts/dom-helpers.js';
 
 const LOGIN_ERROR = 'There was a problem processing your request.';
 const i18n = await i18nLookup();
@@ -8,6 +10,22 @@ const phoneRegex = /^[+]?[ (]?\d{3}[)]?[-.\s]?\d{3}[-.\s]?\d{4}$/;
 
 // Load reCaptcha script used on all forms.
 loadScript('/blocks/contact-form/forms/callback.js');
+
+function getImageURL(jsonString) {
+  try {
+    const data = JSON.parse(jsonString);
+    if (Array.isArray(data) && data.length > 0) {
+      const imageUrl = new URL(data[0].url);
+      // Replace the hostname and pathname with the new ones
+      imageUrl.hostname = 'hsfazpw2storagesf1.blob.core.windows.net';
+      imageUrl.pathname = `/hsflibrary${imageUrl.pathname}`;
+      return imageUrl.toString();
+    }
+  } catch (error) {
+    return '/media/images/no-profile-image.png';
+  }
+  return null; // Add a return statement at the end of the function
+}
 
 /**
  * Adds form and cookie values to payload.
@@ -314,7 +332,33 @@ const addForm = async (block) => {
   });
 
   const taEl = block.querySelector('textarea');
-  if (taEl && taEl.placeholder) taEl.placeholder = i18n(taEl.placeholder);
+  if (taEl?.placeholder) taEl.placeholder = i18n(taEl.placeholder);
+  if (window.selectedListing) {
+    // const prop = await findListing();
+    const prop = window.selectedListing;
+    // if the listing agent is supposed to be displayed vs the office
+    if (prop.propertyDetails.listAgentCd) {
+      const info = block.querySelector('.contact-info');
+      const pic = getImageURL(prop.listAgent.reAgentDetail.image);
+      const profile = div({ class: 'profile' }, img({ src: pic, alt: prop.listAgent.recipientName, width: '82px' }));
+      info.insertAdjacentElement('beforebegin', profile);
+      const name = block.querySelector('.company-name');
+      const link = a({ href: '#' }, prop.listAgent.recipientName); // TODO: add link to agent profile
+      name.replaceChildren(link);
+      const email = block.querySelector('.company-email a');
+      email.textContent = prop.listAgent.reAgentDetail.email;
+      email.href = `mailto:${prop.listAgent.reAgentDetail.email}`;
+      const phone = block.querySelector('.company-phone a');
+      phone.textContent = prop.listAgent.reAgentDetail.officeTelephone;
+      phone.href = `tel:${prop.listAgent.reAgentDetail.officeTelephone}`;
+    }
+
+    taEl.value = `Hi, I would like more information about ${prop.propertyDetails.unparsedAddress}`;
+
+    if (window.location.pathname.length === 1) {
+      block.querySelector('.disclaimer').remove();
+    }
+  }
 
   block.style.display = displayValue;
 

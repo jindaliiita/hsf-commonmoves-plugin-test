@@ -12,6 +12,19 @@
   margin-bottom: 3em;
 }
 
+.contact-form.block .contact-details {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.contact-form.block .profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .contact-form.block .company-name {
   font-size: var(--heading-font-size-m);
   line-height: var(--line-height-xs);
@@ -115,7 +128,13 @@
   display: flex;
   justify-content: flex-start;
   margin-bottom: 10px;
-  cursor: pointer;
+}
+
+
+.contact-form.block form.contact-form .agent div.disclaimer {
+  font-size: var(--body-font-size-xxs);
+  line-height: var(--line-height-s);
+  color: var(--dark-grey);
 }
 
 .contact-form.block form.contact-form .agent > div:first-child {
