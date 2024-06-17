@@ -44,7 +44,7 @@ export default async function decorate(block) {
   block.append(viewToggle, list, map);
 
   try {
-    const response = await fetch(`https://www.commonmoves.com/bin/bhhs/agentPropertyListingsServlet.${agentId}.json`);
+    const response = await fetch(`/bin/bhhs/agentPropertyListingsServlet.${agentId}.json`);
     data = await response.json();
     if (data) {
       const [firstProperty] = data.listings.properties;
