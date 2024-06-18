@@ -1,0 +1,100 @@
+@import url('../shared/property/cards.css');
+
+.agent-property.block {
+    overflow: hidden;
+    width: 100%;
+}
+
+.agent-property.block a {
+    text-decoration: none;
+}
+
+.agent-property.block .gmap-canvas {
+    width: 100%;
+    height: 0;
+    transition: height 0.5s ease;
+    display: none;
+}
+
+.agent-property.block .view-toggle {
+    margin-bottom: 20px;
+}
+
+.agent-property.block .gmap-canvas.active {
+    display:block;
+    height: 500px;
+}
+
+.agent-property.block .view-toggle .card-view {
+    display: none;
+    margin-left: 70%;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    border: 1px solid #2a2223;
+    line-height: 35px;
+    background: #fff;
+}
+
+.agent-property.block .view-toggle .map-view {
+    margin-left: 70%;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    border: 1px solid #2a2223;
+    line-height: 35px;
+    background: #fff;
+}
+
+.agent-property.block .header {
+    display: flex;
+    flex-direction: column;
+}
+
+.agent-property.block .header > div {
+    margin-bottom: 24px;
+}
+
+.agent-property.block .header > div > span {
+    color: var(--primary-color);
+    font-size: var(--heading-font-size-l);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: initial;
+    line-height: var(--line-height-m);
+    text-transform: capitalize;
+}
+
+.agent-property.block .header > div > p {
+    margin: 0;
+}
+
+.agent-property.block .property-list-cards .listing-tile .extra-info {
+    display:none;
+}
+
+.liveby-community .agent-property.block {
+    max-width: 1150px;
+    margin: auto;
+}
+
+@media (min-width: 600px) {
+    .agent-property.block .header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .agent-property.block .header .button-container {
+        justify-content: flex-end;
+    }
+
+    .agent-property.block .view-toggle .map-view , .agent-property.block .view-toggle .card-view {
+        margin-left: 90.5%;
+        width: 115px;
+    }
+}
