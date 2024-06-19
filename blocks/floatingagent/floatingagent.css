@@ -29,6 +29,7 @@
     border: 0;
     padding: 10px;
     margin-left: 35%;
+    text-decoration: none;
 }
 
 @media (min-width: 600px) {
