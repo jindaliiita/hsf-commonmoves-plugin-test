@@ -2,13 +2,14 @@ import {
   getMetadata,
 } from '../../scripts/aem.js';
 import {
-  button,
+  a,
   div,
   h2,
   img,
   p,
   strong,
 } from '../../scripts/dom-helpers.js';
+import { decorateFormLinks } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const agentName = getMetadata('name');
@@ -32,13 +33,14 @@ export default function decorate(block) {
     p(lic),
   );
 
-  const contactButton = button({ class: 'contactagent' }, 'CONTACT AGENT');
+  const contactButton = a({ class: 'contactagent', href: '/fragments/contact-property-form' }, 'CONTACT AGENT');
 
   block.append(
     div({ class: 'floating-agent-col' }, agentPicture),
     agentInfo,
     contactButton,
   );
+  decorateFormLinks(block);
   const displayedElement = document.querySelector('.floatingagent');
 
   const heroElement = document.querySelector('.hero-wrapper');
