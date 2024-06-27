@@ -4,7 +4,7 @@ import {
 import { getMetadata } from '../../scripts/aem.js';
 
 const getClosedTransactions = async () => {
-  const agentId = getMetadata('agent-id');
+  const agentId = getMetadata('id');
   const formattedData = [];
 
   try {
