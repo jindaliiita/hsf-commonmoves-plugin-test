@@ -13,9 +13,9 @@ import { decorateFormLinks } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const agentName = getMetadata('name');
-  const agentDesc = getMetadata('desc');
-  const pic = getMetadata('pic');
-  const lic = getMetadata('lic');
+  const agentDesc = getMetadata('description');
+  const pic = getMetadata('photo');
+  const lic = getMetadata('license-number');
 
   const agentPicture = document.createElement('picture');
   agentPicture.appendChild(img({
