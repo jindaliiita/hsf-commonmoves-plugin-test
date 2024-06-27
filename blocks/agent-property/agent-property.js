@@ -9,7 +9,7 @@ const cardView = button({ class: 'card-view' }, 'Grid View');
 const mapView = button({ class: 'map-view' }, 'Map View');
 const viewToggle = div({ class: 'view-toggle' });
 const map = div({ class: 'gmap-canvas' });
-const agentId = getMetadata('agent-id');
+const agentId = getMetadata('id');
 let centerlat;
 let centerlong;
 let data;
