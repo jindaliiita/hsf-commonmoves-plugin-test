@@ -44,7 +44,7 @@ export default function decorate(block) {
     });
   };
 
-  const externalID = getMetadata('externalid');
+  const externalID = getMetadata('id');
   fetch(`https://testimonialtree.com/Widgets/jsonFeed.aspx?widgetid=45133&externalID=${externalID}`)
     .then((response) => response.json())
     .then((data) => {
