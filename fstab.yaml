@@ -1,5 +1,5 @@
 mountpoints:
-  /: https://hsoa.sharepoint.com/:f:/r/sites/Franklin/Shared%20Documents/Website/Common%20Moves
+  /: https://adobe.sharepoint.com/sites/franktestsite/Shared%20Documents/Forms/AllItems.aspx?FolderCTID=0x012000582D4DC324435A4D9015F0C711367060&id=%2Fsites%2Ffranktestsite%2FShared%20Documents%2FWebsites%2FCommon%20Moves&viewid=c396aa16%2Ddeba%2D44fc%2D99b9%2Daf26de8c62e9
 
 folders:
   /blog/blog-detail/: /blog/blog-detail
