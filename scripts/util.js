@@ -1,4 +1,4 @@
-import { fetchPlaceholders } from './aem.js';
+import { fetchPlaceholders, loadCSS } from './aem.js';
 import { div, domEl } from './dom-helpers.js';
 
 /**
@@ -189,12 +189,35 @@ export function phoneFormat(num) {
   return phoneNum;
 }
 
+export const getDesign = (designType, defaultDesign, design1, design2, design3, design4, design5) => {
+  switch (designType.toLowerCase()) {
+    case 'design-1':
+      return design1;
+    case 'design-2':
+      return design2;
+    case 'design-3':
+      return design3;
+    case 'design-4':
+      return design4;
+    case 'design-5':
+      return design5;
+    default:
+      return defaultDesign;
+  }
+};
+
+export const loadTemplateCSS = (blockName, designType) => {
+  loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${designType.toLowerCase()}.css`);
+};
+
 const Util = {
   getSpinner,
   showModal,
   i18nLookup,
   getEnvType,
   getCookieValue,
+  getDesign,
+  loadTemplateCSS,
 };
 
 export default Util;
