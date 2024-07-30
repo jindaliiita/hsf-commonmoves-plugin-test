@@ -1,5 +1,5 @@
 import { fetchPlaceholders, loadCSS } from './aem.js';
-import { div, domEl } from './dom-helpers.js';
+import { div, img, domEl } from './dom-helpers.js';
 
 /**
  * Creates the standard Spinner Div.
@@ -210,6 +210,13 @@ export const loadTemplateCSS = (blockName, designType) => {
   loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${designType.toLowerCase()}.css`);
 };
 
+export const getLoader = (className) => div({ class: `${className}-loader` },
+  div({ class: 'animation' },
+    domEl('picture', img({ src: '/styles/images/loading.png' })),
+    div({ class: 'pulse' }),
+  ),
+);
+
 const Util = {
   getSpinner,
   showModal,
@@ -218,6 +225,7 @@ const Util = {
   getCookieValue,
   getDesign,
   loadTemplateCSS,
+  getLoader,
 };
 
 export default Util;
