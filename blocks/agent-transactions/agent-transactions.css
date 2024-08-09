@@ -116,7 +116,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 900px) {
   .agent-transactions.block h1 {
     font-size: 1.875rem;
   }
