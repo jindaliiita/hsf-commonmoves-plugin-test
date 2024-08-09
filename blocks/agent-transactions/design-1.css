@@ -1,0 +1,42 @@
+.design-1 .agent-transactions.block h1 {
+  font-family: var(--font-family-secondary);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-normal);
+  text-align: center;
+}
+
+.design-1 .agent-transactions.block th {
+  color: var(--white);
+}
+
+@media (min-width: 600px) {
+  .design-1 .agent-transactions.block h1 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .design-1 .agent-transactions.block h1 {
+    font-size: 2.75rem;
+  }
+}
+
+/* 
+----------------------------------------
+* Theme Name: Traditional
+*/
+.design-1.traditional .agent-transactions.block thead {
+  background: var(--primary-color);
+}
+
+/* 
+----------------------------------------
+* Theme Name: Black & White
+*/
+.design-1.black-white .agent-transactions.block h1 {
+  color: var(--black);
+}
+
+.design-1.black-white .agent-transactions.block thead {
+  background: var(--black);
+}

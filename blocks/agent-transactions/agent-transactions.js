@@ -11,7 +11,7 @@ const getClosedTransactions = async () => {
     const response = await fetch(`/bin/bhhs/agentPropertyListingsServlet.${agentId}.json`);
     const data = await response.json();
 
-    if (data && data?.closedTransactions?.properties?.length) {
+    if (data?.closedTransactions?.properties?.length) {
       data.closedTransactions.properties.forEach((property) => {
         formattedData.push({
           address: property.StreetName,
