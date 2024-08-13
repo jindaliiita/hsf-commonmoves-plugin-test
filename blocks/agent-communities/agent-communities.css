@@ -1,5 +1,7 @@
+@import url('./design-1.css');
+
 .agent-communities.block {
-  height: 1000px;
+  min-height: 1000px;
 }
 
 .agent-communities.block .cards-list {
@@ -36,6 +38,16 @@
   background: linear-gradient(transparent, transparent, rgba(0 0 0 / 50%));
 }
 
+.agent-communities.block .cards-list .cards-item-body h4:hover {
+  background: unset;
+}
+
+.agent-communities.block .cards-list .cards-item-body h4::before {
+  font-size: var(--heading-font-size-m);
+  font-weight: var(--font-weight-bold);
+  content: 'Explore ';
+}
+
 .agent-communities.block .cards-list .cards-item:first-of-type h4 {
   color: var(--primary-color);
   background: unset;
@@ -52,7 +64,6 @@
   width: 100%;
   height: fit-content;
   object-fit: cover;
-  filter: brightness(0.8);
   margin-bottom: 10px;
   background-position: center 70%;
   background-size: cover;
@@ -67,12 +78,19 @@
   padding: .5rem .75rem;
   text-decoration: none;
   font-size: var(--body-font-size-xs);
+  font-weight: var(--font-weight-bold);
+}
+
+.agent-communities.block .hero-item-explore:hover {
+  color: var(--primary-light);
+  background-color: var(--primary-color);
 }
 
 .agent-communities.block .hero-item-heading {
   text-transform: uppercase;
   font-size: var(--body-font-size-s);
   letter-spacing: 3.2px;
+  font-weight: var(--font-weight-bold);
 }
 
 .agent-communities.block .hero-item-bio {

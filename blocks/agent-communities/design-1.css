@@ -1,0 +1,34 @@
+.design-1 .agent-communities.block .cards-list .cards-item-body h4 {
+  font-family: var(--font-family-secondary);
+  font-size: 2rem;
+  text-transform: none;
+  padding-top: 3rem;
+}
+
+.design-1 .agent-communities.block .cards-list .cards-item-body h4::before {
+  font-size: 1rem;
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-l);
+  display: block;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/*
+Theme: Black & White
+*/
+.design-1.black-white .agent-communities.block .hero-item-explore {
+  color: var(--black);
+  border: solid 1px var(--black);
+}
+
+.design-1.black-white .agent-communities.block .hero-item-explore:hover {
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.design-1.black-white .agent-communities.block .cards-list .cards-item:first-of-type h4 {
+  color: var(--black);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

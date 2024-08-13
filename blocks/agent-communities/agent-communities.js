@@ -11,8 +11,7 @@ export default async function decorate(block) {
   block.appendChild(getLoader('agent-communities'));
 
   window.setTimeout(async () => {
-    // const url = `/commonwealth-real-estate-ma312${window.location.pathname}`;
-    const url = '/commonwealth-real-estate-ma312/east-greenwich/barry-alofsin/cid-473521';
+    const url = `/commonwealth-real-estate-ma312${window.location.pathname}`;
     const bhhsCode = 'bhhs-ma312';
 
     const finalUrl = new URL('https://api.liveby.com/v1/pages');
@@ -54,17 +53,20 @@ export default async function decorate(block) {
 
       if (data2.length) {
         modifiedData.push(...data2.map((item) => {
-          const regex = /\/communities\/\w+$/;
+          const regex = /\/communities/;
           const match = item.url.match(regex);
           const link = match ? match[0] : '';
 
-          return {
-            name: item.name.toUpperCase(),
-            exploreName: `explore ${item.name}`,
-            link,
-            banner: item.banner_16x9,
-          };
-        }));
+          if (link) {
+            return {
+              name: item.name.toUpperCase(),
+              exploreName: `${item.name}`,
+              link,
+              banner: item.banner_16x9,
+            };
+          }
+          return null;
+        }).filter((item) => item !== undefined && item !== null));
       }
 
       const cardsList = div({ class: 'cards-list' });
@@ -96,7 +98,9 @@ export default async function decorate(block) {
         cardBody.appendChild(paragraphElement);
       });
 
-      block.appendChild(cardsList);
+      if (cardsList.hasChildNodes()) {
+        block.appendChild(cardsList);
+      }
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Error fetching data', error);
