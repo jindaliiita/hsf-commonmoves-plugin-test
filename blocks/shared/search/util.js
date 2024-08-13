@@ -50,11 +50,11 @@ export function buildFilterSelect(name, placeholder, options) {
   wrapper.classList.add('select-wrapper', name);
   wrapper.innerHTML = `
     <select name="${name}" aria-label="${placeholder}">
-      <option value="">Any ${placeholder}</option>
+      <option value="">${placeholder}</option>
     </select>
-    <div class="selected" role="button" aria-haspopup="listbox" aria-label="${placeholder}" aria-expanded="false" tabindex="0"><span>Any ${placeholder}</span></div>
+    <div class="selected" role="button" aria-haspopup="listbox" aria-label="${placeholder}" aria-expanded="false" tabindex="0"><span>${placeholder}</span></div>
     <ul class="select-items" role="listbox">
-      <li role="option" class="selected" data-value="">Any ${placeholder}</li>
+      <li role="option" class="selected" data-value="">${placeholder}</li>
     </ul>
   `;
 

@@ -308,8 +308,8 @@ main .section.padding {
 
 main .section.two-columns {
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
+  flex-flow: column wrap;
 }
 
 main .section.two-columns > div {
@@ -549,6 +549,12 @@ form button[type="submit"]:hover {
     position: absolute;
     top: 16px;
     right: 16px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  main .section.two-columns {
+    flex-direction: row;
   }
 }
 

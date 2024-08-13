@@ -274,3 +274,13 @@
     max-height: 185px;
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .hero.block.small-size > div .content h2 {
+    max-width: 505px;
+  }
+
+  .hero.block.small-size .content .homes .filters .select-wrapper .selected::after {
+    position: relative;
+  }
+}
