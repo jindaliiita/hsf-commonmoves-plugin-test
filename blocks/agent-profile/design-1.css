@@ -1,0 +1,190 @@
+.design-1 .agent-profile.block {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.design-1 .agent-profile.block .profile-details {
+  position: relative;
+  top: unset;
+  flex-direction: column;
+  display: flex;
+  margin-top: 2rem;
+}
+
+.design-1 .agent-profile.block .profile-content {
+  font-size: var(--body-font-size-l);
+  font-weight: var(--font-weight-bold);
+  padding-left: 0;
+}
+
+.design-1 .agent-profile.block .profile-content div {
+  margin-bottom: 0.5rem;
+}
+
+.design-1 .agent-profile.block .profile-content .name h1 {
+  font-family: var(--font-family-secondary);
+  font-size: var(--body-font-size-xxxl);
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.design-1.traditional .agent-profile.block .profile-content .name h1 {
+  color: var(--primary-color);
+}
+
+.design-1 .agent-profile.block .about {
+  margin-bottom: 0;
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.design-1 .agent-profile.block .lang-prof-accred {
+  letter-spacing: var(--letter-spacing-xs);
+}
+
+.design-1 .agent-profile.block .profile-image img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  max-width: calc((100% - 60px * 2));
+  margin: 0 auto;
+  object-fit: cover;
+  height: fit-content;
+}
+
+.design-1.traditional .agent-profile.block .profile-image img {
+  box-shadow: var(--primary-color) 3rem -3rem;
+}
+
+.design-1 .agent-profile.block .profile-content .contact-me {
+  display: none;
+  font-size: var(--body-font-size-s);
+}
+
+.design-1 .agent-profile.block .profile-image {
+  display: flex;
+}
+
+.design-1.traditional .agent-profile.block .address {
+  background-color: var(--primary-color);
+}
+
+.design-1.traditional .agent-profile.block .address p {
+  color: var(--white);
+}
+
+.design-1.black-white .agent-profile.block .address a {
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+.design-1.traditional .agent-profile.block .address a {
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+.design-1.black-white .agent-profile.block .address a:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.design-1.traditional .agent-profile.block .address a:hover {
+  color: var(--primary-color);
+  background-color: var(--primary-light);
+}
+
+.design-1.black-white .agent-profile.block .profile-image img {
+  box-shadow: var(--black) 4.375rem -4.375rem;
+}
+
+.design-1.black-white .agent-profile.block .profile-content .name {
+  color: var(--black);
+}
+
+.design-1.black-white .agent-profile.block .profile-content .name h1 {
+  color: var(--black);
+}
+
+.design-1.black-white .agent-profile.block .profile-content .contact-me a {
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+.design-1.black-white .agent-profile.block .profile-content .contact-me a:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.design-1.black-white .agent-profile.block .address {
+  background-color: var(--black);
+}
+
+.design-1.black-white .agent-profile.block .address p {
+  color: var(--white);
+}
+
+@media (min-width: 900px) {
+  .design-1 .agent-profile.block {
+    position: relative;
+  }
+
+  .design-1 .agent-profile.block .profile-details {
+    flex-direction: row-reverse;
+  }
+
+  .design-1 .agent-profile.block .profile-content .name h1 {
+    font-size: 2.75rem;
+    margin-top: 0;
+  }
+
+  .design-1 .agent-profile.block .profile-image {
+    flex-basis: 60%;
+  }
+
+  .design-1 .agent-profile.block .profile-content {
+    flex-basis: 40%;
+    margin-top: 0;
+  }
+
+  .design-1 .agent-profile.block .profile-image img {
+    margin-top: 70px;
+    position: absolute;
+    width: 50%;
+    margin-left: calc(0.025 * 100vw);
+  }
+
+  .design-1.traditional .agent-profile.block .profile-image img {
+    box-shadow: var(--primary-color) 4.375rem -4.375rem;
+  }
+
+  .design-1 .agent-profile.block .profile-content .contact-me {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .design-1 .agent-profile.block .about {
+    flex-basis: 0;
+    width: 40%;
+  }
+
+  .design-1 .agent-profile.block .lang-prof-accred {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .design-1 .agent-profile.block .profile-content div {
+    font-size: var(--body-font-size-s);
+  }
+
+  .design-1 .agent-profile.block .profile-content .email a,
+  .design-1 .agent-profile.block .profile-content .website a {
+    font-size: var(--body-font-size-s);
+  }
+}
+
+@media (min-width: 1200px) {
+  .design-1 .agent-profile.block .profile-details {
+    padding: 0;
+    width: unset;
+  }
+}

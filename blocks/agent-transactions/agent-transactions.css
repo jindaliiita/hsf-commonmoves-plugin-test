@@ -1,3 +1,5 @@
+@import url('./design-1.css');
+
 .agent-transactions.block table {
   width: 100%;
   font-size: var(--body-font-size-s);
@@ -114,7 +116,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 900px) {
   .agent-transactions.block h1 {
     font-size: 1.875rem;
   }

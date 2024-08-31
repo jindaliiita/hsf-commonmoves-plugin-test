@@ -1,5 +1,7 @@
+@import url('./design-1.css');
+
 .quote.block {
-  border-top: 1px solid var(--body-color);
+  border-top: 1px solid var(--secondary-accent);
 }
 
 .quote.block .quote {
@@ -30,3 +32,6 @@
   text-transform: uppercase;
 }
 
+.quote.block p {
+  color: var(--secondary-color);
+}

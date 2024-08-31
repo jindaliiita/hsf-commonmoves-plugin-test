@@ -12,6 +12,7 @@ main .section.hero-container {
   margin-bottom: 57px;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 
 main .section.full-width > .hero-wrapper {

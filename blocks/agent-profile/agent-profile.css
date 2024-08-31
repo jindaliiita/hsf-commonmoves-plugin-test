@@ -1,6 +1,33 @@
+@import url('./design-1.css');
+
 .agent-profile.block {
-  display: flex;
   padding: 0 1rem;
+  gap: 3rem;
+}
+
+.agent-profile.block .profile-details {
+  display: flex;
+}
+
+.agent-profile.block .profile-content {
+  padding-left: 1.5rem;
+  font-size: var(--body-font-size-s);
+}
+
+.agent-profile.block .profile-content > div {
+  margin-bottom: 0.5rem;
+}
+
+.agent-profile.block .profile-content h1 {
+  font-size: var(--body-font-size-xl);
+  line-height: var(--line-height-m);
+  font-weight: var(--font-weight-bold);
+}
+
+.agent-profile.block .profile-content .designation,
+.agent-profile.block .profile-content .license-number {
+  font-size: var(--body-font-size-xs);
+  text-transform: uppercase;
 }
 
 main .section.agent-profile-container .agent-profile-wrapper {
@@ -9,44 +36,49 @@ main .section.agent-profile-container .agent-profile-wrapper {
 
 .agent-profile.block .profile-image img {
   width: 9.375rem;
-  height: 11.875rem;
+  aspect-ratio: 1 / 1.5;
+  object-fit: cover;
 }
 
 .agent-profile.block .profile-content .contact-me {
-  margin-top: 1.5rem;
   display: none;
 }
 
-.agent-profile.block .profile-content {
-  padding-left: 1.5rem;
-  font-size: var(--body-font-size-s);
-}
-
-.agent-profile.block .profile-content .name {
-  font-size: var(--body-font-size-xl);
-  line-height: var(--line-height-m);
-  margin-bottom: 0.5rem;
-}
-
-.agent-profile.block .profile-content .designation,
-.agent-profile.block .profile-content .license-number {
-  font-size: var(--body-font-size-xs);
-  text-transform: uppercase;
-  margin-bottom: 0.25rem;
+.agent-profile.block .lang-prof-accred ul {
+  margin-top: 1rem;
 }
 
 .agent-profile.block .profile-content .social ul {
   display: flex;
-  margin-top: 1rem;
-  opacity: .5;
+}
+
+.agent-profile.block .lang-prof-accred li {
+  list-style: outside;
+  margin-left: 1rem;
+}
+
+.agent-profile.block .profile-content .phone li {
+  margin-bottom: 0.5rem;
 }
 
 .agent-profile.block .profile-content .social li {
   margin-right: 0.5rem;
 }
 
+.agent-profile.block .address a {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-m);
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-size: var(--body-font-size-xs);
+}
+
 .agent-profile.block .profile-content .email a,
 .agent-profile.block .profile-content .website a {
+  line-height: var(--line-height-xs);
   font-size: var(--body-font-size-xs);
   color: var(--black);
   text-transform: lowercase;
@@ -63,27 +95,106 @@ main .section.agent-profile-container .agent-profile-wrapper {
   text-decoration: none;
 }
 
-.agent-profile.block .profile-content .contact-me a:hover {
+.agent-profile.block .address a:hover {
   color: var(--primary-light);
   background-color: var(--primary-color);
 }
 
-.agent-profile.block .profile-content .website,
-.agent-profile.block .profile-content .email {
-  margin-bottom: 0.25rem;
+.agent-profile.block .profile-content .contact-me a:hover {
+  color: var(--primary-light);
+  background-color: var(--primary-color);
 }
 
 .agent-profile.block .profile-content .phone {
   font-size: var(--body-font-size-xs);
 }
 
-.agent-profile.block .profile-content .phone li {
-  margin-bottom: 0.25rem;
+.agent-profile.block .address {
+  padding: 2rem;
+  background-color: var(--tertiary-color);
+  margin-top: 1.5rem;
+}
+
+.agent-profile.block .address>p {
+  margin-bottom: 0;
+  font-size: var(--body-font-size-xs);
+}
+
+.agent-profile.block .address>p:last-of-type {
+  margin-bottom: 2rem;
+}
+
+.agent-profile.block .about-non-truncate.hide,
+.agent-profile.block .languages-non-truncate.hide,
+.agent-profile.block .professional-accreditations-non-truncate.hide,
+.agent-profile.block .about-truncate.hide,
+.agent-profile.block .languages-truncate.hide,
+.agent-profile.block .professional-accreditations-truncate.hide {
+  display: none;
+}
+
+.agent-profile.block .about {
+  margin: 1rem 0 2rem;
+  font-size: var(--body-font-size-s);
+  line-height: var(--line-height-xs);
+}
+
+.agent-profile.block .lang-prof-accred .languages,
+.agent-profile.block .lang-prof-accred .professional-accreditations {
+  margin-bottom: 2rem;
+  font-size: var(--body-font-size-s);
+  line-height: var(--line-height-xs);
+}
+
+
+.agent-profile.block .about::before {
+  content: 'About';
+  font-weight: var(--font-weight-bold);
+}
+
+.agent-profile.block .lang-prof-accred .languages::before {
+  content: 'Languages';
+  font-weight: var(--font-weight-bold);
+}
+
+.agent-profile.block .lang-prof-accred .professional-accreditations::before {
+  content: 'Professional Accreditations';
+  font-weight: var(--font-weight-bold);
+}
+
+.agent-profile.block .about>div {
+  margin-top: 0.75rem;
+}
+
+.agent-profile.block a.view-more::after,
+.agent-profile.block a.view-less::after {
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: underline;
+  font-size: var(--body-font-size-s);
+  color: var(--black);
+}
+
+.agent-profile.block a.view-more::after {
+  content: "View More";
+}
+
+.agent-profile.block a.view-less::after {
+  content: "View Less";
 }
 
 @media (min-width: 600px) {
+  .agent-profile.block .about {
+    margin-top: 0;
+  }
+
   .agent-profile.block .profile-content .contact-me {
     display: block;
+    margin: 1.5rem 0;
+  }
+
+  .agent-profile.block .address {
+    display: none;
   }
 }
 
@@ -92,41 +203,26 @@ main .section.agent-profile-container .agent-profile-wrapper {
     position: relative;
   }
 
-  main .section.agent-profile-container .agent-profile-wrapper {
+  .agent-profile.block .profile-details {
     position: absolute;
     display: flex;
     left: auto;
     width: 34rem;
     right: 0;
-    bottom: 4.625rem;
+    top: -29rem;
     padding: 1.875rem 1.875rem 0;
     z-index: 1;
     background-color: var(--white);
   }
 
   .agent-profile.block {
-    position: relative;
+    display: flex;
     line-height: var(--line-height-s);
   }
 
   .agent-profile.block .profile-image img {
     width: 13.125rem;
-    height: 15.625rem;
-  }
-
-  .agent-profile.block .profile-content .phone {
-    font-size: var(--body-font-size-s);
-    margin-top: 2px;
-    line-height: var(--line-height-m);
-  }
-
-  .agent-profile.block .profile-content .email a,
-  .agent-profile.block .profile-content .website a {
-    font-size: var(--body-font-size-xs);
-  }
-
-  .agent-profile.block .profile-content {
-    padding-left: 1.875rem;
+    height: 22rem;
   }
 
   .agent-profile.block .profile-content .designation,
@@ -136,5 +232,15 @@ main .section.agent-profile-container .agent-profile-wrapper {
 
   .agent-profile.block .profile-content .phone li {
     margin-bottom: unset;
+  }
+
+  .agent-profile.block .lang-prof-accred {
+    gap: 3rem;
+    display: flex;
+    flex-basis: 40%;
+  }
+
+  .agent-profile.block .about {
+    flex-basis: 60%;
   }
 }

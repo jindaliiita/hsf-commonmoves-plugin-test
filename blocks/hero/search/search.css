@@ -85,7 +85,6 @@
   display: block;
 }
 
-
 .hero.block .content .search-bar .suggester-results > li > ul {
   padding: 0 15px;
 }
@@ -146,5 +145,11 @@
   .hero.block .content .search-bar {
     width: 680px;
     padding: 10px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .hero.block.small-size .content .search-bar {
+    max-width: 505px;
   }
 }

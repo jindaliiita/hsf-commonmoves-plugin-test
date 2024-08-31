@@ -1,1 +1,4 @@
 /* stylelint-disable-next-line no-empty-source */
+main .section.two-columns > div.fragment-wrapper {
+  flex: unset;
+}

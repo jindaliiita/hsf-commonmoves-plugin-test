@@ -1,6 +1,6 @@
 import { decorateIcons, getMetadata } from '../../scripts/aem.js';
 import {
-  a, div, h1, ul, li, img, span,
+  a, div, h1, ul, li, img, span, p,
 } from '../../scripts/dom-helpers.js';
 
 const getPhoneDiv = () => {
@@ -79,7 +79,26 @@ const getSocialDiv = () => {
   return null;
 };
 
-export default async function decorate(block) {
+const decorateAddress = (block) => {
+  const streetAddress = getMetadata('street-address');
+  const city = getMetadata('city');
+  const state = getMetadata('state');
+  const zip = getMetadata('zip');
+  const text = `${streetAddress}, ${city}, ${state} ${zip}`;
+
+  const addressDiv = div({ class: 'address' },
+    p('Berkshire Hathaway HomeServices'),
+    p('Commonwealth Real Estate'),
+    p(streetAddress),
+    p(`${city}, ${state} ${zip}`),
+    a({ href: `https://maps.google.com/maps?q=${text}`, target: '_blank' }, 'Directions'),
+  );
+
+  block.append(addressDiv);
+};
+
+const decorateProfileDetails = (block) => {
+  const profileDetails = div({ class: 'profile-details' });
   const profileImage = getImageDiv();
   const profileContent = div({ class: 'profile-content' },
     div({ class: 'name' }, h1(getMetadata('name'))),
@@ -114,6 +133,73 @@ export default async function decorate(block) {
   if (socialDiv) {
     profileContent.append(socialDiv);
   }
+
   decorateIcons(profileContent);
-  block.replaceChildren(profileImage, profileContent);
+  profileDetails.append(profileImage, profileContent);
+  block.replaceChildren(profileDetails);
+};
+
+const viewMoreOnClick = (name, anchor, block) => {
+  anchor.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (anchor.classList.contains('view-more')) {
+      anchor.classList.remove('view-more');
+      anchor.classList.add('view-less');
+      block.querySelector(`.${name}-non-truncate`).classList.remove('hide');
+      block.querySelector(`.${name}-truncate`).classList.add('hide');
+    } else {
+      anchor.classList.remove('view-less');
+      anchor.classList.add('view-more');
+      block.querySelector(`.${name}-non-truncate`).classList.add('hide');
+      block.querySelector(`.${name}-truncate`).classList.remove('hide');
+    }
+  });
+};
+
+const decorateAbout = (block) => {
+  const text = 'about';
+  const aboutText = getMetadata(text);
+  const aboutDiv = div({ class: text });
+  const threshold = 245;
+  aboutDiv.append(div({ class: `${text}-truncate` }, aboutText.substring(0, threshold)));
+  aboutDiv.append(div({ class: `${text}-non-truncate hide` }, aboutText));
+  aboutDiv.append(a({ href: '#', class: 'view-more' }));
+  viewMoreOnClick(text, aboutDiv.querySelector('a'), block);
+  block.append(aboutDiv);
+};
+
+const createLangoOrProfAccred = (key, langProfAccredDiv) => {
+  const threshold = 3;
+  const truncateDiv = ul({ class: `${key}-truncate` });
+  const nontruncateDiv = ul({ class: `${key}-non-truncate hide` });
+
+  getMetadata(key).split(',').filter((x) => x).forEach((x, index) => {
+    if (index < threshold) {
+      truncateDiv.append(li(x.trim()));
+    }
+    nontruncateDiv.append(li(x.trim()));
+  });
+
+  const anchor = a({ href: '#', class: 'view-more' });
+  langProfAccredDiv.append(div({ class: key },
+    truncateDiv,
+    nontruncateDiv,
+    anchor,
+  ));
+
+  viewMoreOnClick(key, anchor, langProfAccredDiv);
+};
+
+const decorateLangProfAccred = (block) => {
+  const langProfAccredDiv = div({ class: 'lang-prof-accred' });
+  createLangoOrProfAccred('languages', langProfAccredDiv);
+  createLangoOrProfAccred('professional-accreditations', langProfAccredDiv);
+  block.append(langProfAccredDiv);
+};
+
+export default async function decorate(block) {
+  decorateProfileDetails(block);
+  decorateAbout(block);
+  decorateLangProfAccred(block);
+  decorateAddress(block);
 }

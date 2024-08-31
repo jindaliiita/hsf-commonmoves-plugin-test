@@ -1,0 +1,7 @@
+.design-1.black-white .quote.block {
+  border-top: 1px solid var(--black);
+}
+
+.design-1.black-white .quote.block p {
+  color: var(--black);
+}

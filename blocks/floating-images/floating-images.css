@@ -1,5 +1,6 @@
 /* styles for the floating images auto block */
 @import url('luxury-collection-template.css');
+@import url('./design-1.css');
 
 .block.floating-images {
   margin-bottom: 5em;
@@ -58,6 +59,17 @@
   margin-bottom: 1.5em;
   padding-left: 1em;
   line-height: var(--line-height-m);
+}
+
+.block.floating-images .content a {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  margin-top: 1rem;
+}
+
+.block.floating-images .content a:hover {
+  background-color: var(--primary-color);
+  color: var(--primary-light);
 }
 
 @media screen and (min-width: 900px) {
