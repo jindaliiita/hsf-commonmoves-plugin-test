@@ -1,5 +1,5 @@
 mountpoints:
-  /: https://piyushjindal.sharepoint.com/sites/ankur-test-site/Shared%20Documents/website
+  /: https://piyushjindal.sharepoint.com/sites/commonmoves-site/Shared%20Documents/website
 
 folders:
   /blog/blog-detail/: /blog/blog-detail
